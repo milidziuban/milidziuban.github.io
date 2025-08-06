@@ -5,6 +5,7 @@ import { NavigationHeader } from "./components/navigation-header";
 import { ScrollReveal } from "./components/animated-components";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
+import { OtherProjects } from "./components/otherproject";
 
 export default function ProyectoHousePlants() {
   return (
@@ -237,7 +238,7 @@ Esta app permite identificar problemas comunes como plagas, enfermedades o error
             >
               <div className="relative w-full h-[650px] bg-white rounded-2xl overflow-hidden">
                 <Image
-                  src="/Userinterview.png"
+                  src="/UserInterview.png"
                   alt="userinterview"
                   fill
                   // className="object-cover"
@@ -360,6 +361,9 @@ Esta app permite identificar problemas comunes como plagas, enfermedades o error
           </div>
         </section>
       </ScrollReveal> */}
+
+       {/* Other Projects Section */}
+            <OtherProjects currentProjectId="houseplants" />
 
       {/* Footer CTA */}
       <section className="px-6 py-16 bg-gray-100">

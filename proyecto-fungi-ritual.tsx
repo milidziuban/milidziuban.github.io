@@ -6,6 +6,7 @@ import { NavigationHeader } from "./components/navigation-header";
 import { ScrollReveal } from "./components/animated-components";
 import Image from "next/image";
 import TikTokEmbed from "@/components/TikTokEmbed";
+import { OtherProjects } from "./components/otherproject";
 
 export default function ProyectoFungiRitual() {
   return (
@@ -296,6 +297,9 @@ export default function ProyectoFungiRitual() {
       <TikTokEmbed />
             </section>
       </ScrollReveal>
+
+        {/* Other Projects Section */}
+      <OtherProjects currentProjectId="fungi-ritual" />
 
       {/* Footer CTA */}
       <section className="px-6 py-16 bg-gray-100">

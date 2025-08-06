@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { NavigationHeader } from "./components/navigation-header";
 import { ScrollReveal } from "./components/animated-components";
 import Image from "next/image";
+import { OtherProjects } from "./components/otherproject";
 
 // Componente del carrusel
 function DesignCarousel() {
@@ -105,7 +106,6 @@ function DesignCarousel() {
                       className="object-cover"
                       // sizes="(max-width: 768px) 100vw, 50vw"
                     />
-                   
                   </div>
                 </motion.div>
               </div>
@@ -515,6 +515,9 @@ export default function ProyectoActiva() {
           </div>
         </section>
       </ScrollReveal>
+
+      {/* Other Projects Section */}
+      <OtherProjects currentProjectId="activa" />
 
       {/* Footer CTA */}
       <section className="px-6 py-16 bg-gray-100">
