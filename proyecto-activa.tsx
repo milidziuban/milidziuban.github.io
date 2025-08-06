@@ -15,7 +15,7 @@ function DesignCarousel() {
       title: "Dashboard Principal",
       description:
         "Vista general con métricas clave y accesos rápidos a las funcionalidades principales del sistema",
-      image: "/login.png", // Cambia por el nombre real de tu imagen
+      image: "/Login.png", // Cambia por el nombre real de tu imagen
       features: [
         "Panel de control centralizado",
         "Métricas en tiempo real",
