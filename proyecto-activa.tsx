@@ -396,12 +396,217 @@ export default function ProyectoActiva() {
         </div>
       </section>
 
+      {/* Design Thinking */}
+<section className="bg-white py-16">
+  <div className="max-w-6xl mx-auto px-4">
+    <h2 className="text-4xl font-bold text-gray-900 mb-12 text-center">
+      Design Thinking
+    </h2>
+
+    <div className="grid grid-cols-1 md:grid-cols-5 gap-8 text-center">
+      {/* Empatizar */}
+      <div>
+        <div className="w-20 h-20 mx-auto mb-4">
+          <img src="/imagen/empatizar.png" alt="Empatizar" />
+        </div>
+        <h3 className="text-xl font-semibold">Empatizar</h3>
+        <p className="text-gray-800 text-sm mt-2">
+          Entrevistas con usuarios
+        </p>
+      </div>
+
+      {/* Definir */}
+      <div>
+        <div className="w-20 h-20 mx-auto mb-4">
+          <img src="/imagen/definir.png" alt="Definir" />
+        </div>
+        <h3 className="text-xl font-semibold">Definir</h3>
+        <p className="text-gray-800 text-sm mt-2">
+          Identificación de necesidades
+        </p>
+      </div>
+
+      {/* Idear */}
+      <div>
+        <div className="w-20 h-20 mx-auto mb-4">
+          <img src="/imagen/idear.png" alt="Idear" />
+        </div>
+        <h3 className="text-xl font-semibold">Idear</h3>
+        <p className="text-gray-800 text-sm mt-2">
+          Brainstorming + Benchmark
+        </p>
+      </div>
+
+      {/* Prototipar */}
+      <div>
+        <div className="w-20 h-20 mx-auto mb-4">
+          <img src="/imagen/prototipar.png" alt="Prototipar" />
+        </div>
+        <h3 className="text-xl font-semibold">Prototipar</h3>
+        <p className="text-gray-800 text-sm mt-2">
+          Wireframes de baja fidelidad
+        </p>
+      </div>
+
+      {/* Testear */}
+      <div>
+        <div className="w-20 h-20 mx-auto mb-4">
+          <img src="/imagen/testear.png" alt="Testear" />
+        </div>
+        <h3 className="text-xl font-semibold">Testear</h3>
+        <p className="text-gray-800 text-sm mt-2">
+          Validación con usuarios
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+      {/* Arquitectura */}
+      <section className="px-6 py-16 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+           
+
+            {/* Imagen */}
+            <ScrollReveal direction="left">
+              <motion.div
+                whileHover={{ scale: 1.02, rotateY: 5 }}
+                transition={{ duration: 0.3 }}
+              >
+                <Image
+                  src="/arqActiva.png"
+                  alt="arquitectura"
+                  width={320}
+                  height={400}
+                  className="w-full h-full object-cover"
+                />
+              </motion.div>
+            </ScrollReveal>
+
+             {/* Texto */}
+            <ScrollReveal direction="right" delay={0.2}>
+              <div className="space-y-12">
+                {/* Problema */}
+                <div>
+                  <h2 className="text-4xl font-bold text-gray-900 mb-6">
+                    Arquitectura
+                  </h2>
+                  <p className="text-gray-600 leading-relaxed mb-6">
+                    Como primer paso en el diseño de la solución, se elaboró una
+                    arquitectura de información clara, tomando como base los
+                    flujos más frecuentes y relevantes para el negocio. Este
+                    mapa ayudó a organizar las secciones principales de la
+                    aplicación, definir jerarquías, y sentar las bases para una
+                    navegación fluida y coherente. La arquitectura fue validada
+                    con el equipo interno para asegurar que cubría todos los
+                    casos de uso necesarios.
+                  </p>
+                </div>
+              </div>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
+      {/* Wireframes */}
+      <section className="px-6 py-16 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            {/* Texto */}
+            <ScrollReveal direction="right" delay={0.2}>
+              <div className="space-y-12">
+                {/* Problema */}
+                <div>
+                  <h2 className="text-4xl font-bold text-gray-900 mb-6">
+                    Wireframes
+                  </h2>
+                  <p className="text-gray-600 leading-relaxed mb-6">
+                    Los wireframes permitieron visualizar la estructura de la
+                    plataforma desde las primeras etapas del diseño. Trabajé en
+                    varias iteraciones de baja fidelidad para definir la
+                    disposición de los elementos, jerarquizar la información y
+                    asegurar la usabilidad desde el comienzo. Estas primeras
+                    versiones fueron clave para alinear expectativas con el
+                    equipo y realizar ajustes rápidos antes de pasar a diseño
+                    visual.
+                  </p>
+                </div>
+              </div>
+            </ScrollReveal>
+
+            {/* Imagen */}
+            <ScrollReveal direction="left">
+              <motion.div
+                whileHover={{ scale: 1.02, rotateY: 5 }}
+                transition={{ duration: 0.3 }}
+              >
+                <Image
+                  src="/wireframeActiva.png"
+                  alt="arquitectura"
+                  width={320}
+                  height={400}
+                  className="w-full h-full object-cover"
+                />
+              </motion.div>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
+      {/* DS */}
+      <section className="px-6 py-16 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            {/* Imagen */}
+            <ScrollReveal direction="left">
+              <motion.div
+                whileHover={{ scale: 1.02, rotateY: 5 }}
+                transition={{ duration: 0.3 }}
+              >
+                <Image
+                  src="designSystemActiva.png"
+                  alt="arquitectura"
+                  width={320}
+                  height={400}
+                  className="w-full h-full object-cover"
+                />
+              </motion.div>
+            </ScrollReveal>
+
+            {/* Texto */}
+            <ScrollReveal direction="right" delay={0.2}>
+              <div className="space-y-12">
+                {/* Problema */}
+                <div>
+                  <h2 className="text-4xl font-bold text-gray-900 mb-6">
+                    Design System
+                  </h2>
+                  <p className="text-gray-600 leading-relaxed mb-6">
+                    Para lograr coherencia visual y una implementación
+                    eficiente, diseñé un sistema de diseño adaptado a la
+                    identidad institucional de ACTIVA. Incluye componentes
+                    reutilizables, estados interactivos y patrones consistentes
+                    que facilitan el desarrollo y aseguran una experiencia
+                    homogénea en toda la aplicación. El Design System también
+                    permite escalar la plataforma fácilmente a nuevas
+                    funcionalidades o futuras versiones, sin perder consistencia
+                    visual.
+                  </p>
+                </div>
+              </div>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
       {/* Typography */}
       <ScrollReveal>
         <section className="px-6 py-16 bg-white">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl font-regular text-gray-300 mb-2">
-              Tipografía y color
+              Guía Visual
             </h2>
             <motion.h3
               className="text-8xl font-bold text-blue-600 mb-12"
@@ -480,13 +685,56 @@ export default function ProyectoActiva() {
         </section>
       </ScrollReveal>
 
+      {/* Screens */}
+      <section className="px-6 py-16 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            {/* Imagen */}
+            <ScrollReveal direction="left">
+              <motion.div
+                whileHover={{ scale: 1.02, rotateY: 5 }}
+                transition={{ duration: 0.3 }}
+              >
+                <Image
+                  src="screensActiva.png"
+                  alt="arquitectura"
+                  width={320}
+                  height={400}
+                  className="w-full h-full object-cover"
+                />
+              </motion.div>
+            </ScrollReveal>
+
+            {/* Texto */}
+            <ScrollReveal direction="right" delay={0.2}>
+              <div className="space-y-12">
+                {/* Problema */}
+                <div>
+                  <h2 className="text-4xl font-bold text-gray-900 mb-6">
+                    Pantallas
+                  </h2>
+                  <p className="text-gray-600 leading-relaxed mb-6">
+                    Aquí se muestran algunas de las pantallas principales de la
+                    plataforma: Pantalla de login, diseñada para ser simple,
+                    segura y alineada a la identidad de marca. Dashboard
+                    principal, que ofrece una visión general del estado de los
+                    procesos, las tareas automatizadas y métricas relevantes.
+                    Otras vistas como visualización de estadísticas, carga de
+                    tareas y reclamos permiten al equipo trabajar con fluidez y
+                    orden. Cada pantalla fue diseñada pensando en minimizar la
+                    fricción del usuario, priorizando la claridad y la
+                    eficiencia en la interacción.
+                  </p>
+                </div>
+              </div>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
       <ScrollReveal>
         <section className="px-6 py-16 bg-white">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-4xl font-bold text-gray-900 mb-8 text-left">
-              Screens
-            </h2>
-
             <DesignCarousel />
           </div>
         </section>
