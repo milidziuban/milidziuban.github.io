@@ -27,7 +27,7 @@ function DesignCarousel() {
       title: "Gestión de Usuarios",
       description:
         "Administración completa de perfiles, permisos y roles dentro del sistema",
-      image: "/dashboard.png", // Cambia por el nombre real de tu imagen
+      image: "/Dashboard.png", // Cambia por el nombre real de tu imagen
       features: [
         "Creación y edición de usuarios",
         "Asignación de roles y permisos",
@@ -39,7 +39,7 @@ function DesignCarousel() {
       title: "Reportes y Analytics",
       description:
         "Análisis detallado con gráficos interactivos y exportación de datos",
-      image: "/gestion.png", // Cambia por el nombre real de tu imagen
+      image: "/Gestion.png", // Cambia por el nombre real de tu imagen
       features: [
         "Gráficos interactivos",
         "Filtros avanzados",
@@ -51,7 +51,7 @@ function DesignCarousel() {
       title: "Configuración del Sistema",
       description:
         "Personalización completa del sistema según las necesidades de la empresa",
-      image: "/clientes.png", // Cambia por el nombre real de tu imagen
+      image: "/Clientes.png", // Cambia por el nombre real de tu imagen
       features: [
         "Configuración de módulos",
         "Personalización de interfaz",

@@ -237,7 +237,7 @@ Esta app permite identificar problemas comunes como plagas, enfermedades o error
             >
               <div className="relative w-full h-[650px] bg-white rounded-2xl overflow-hidden">
                 <Image
-                  src="/userinterview.png"
+                  src="/Userinterview.png"
                   alt="userinterview"
                   fill
                   // className="object-cover"
@@ -267,7 +267,7 @@ Esta app permite identificar problemas comunes como plagas, enfermedades o error
             >
               <div className="relative w-full h-[560px] bg-white rounded-2xl overflow-hidden">
                 <Image
-                 src="/architecture.png"
+                 src="/Architecture.png"
                   alt="architecture"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
@@ -296,7 +296,7 @@ Esta app permite identificar problemas comunes como plagas, enfermedades o error
             >
               <div className="relative w-full h-[800px] bg-white overflow-hidden">
                 <Image
-                  src="/screens.png"
+                  src="/Screens.png"
                   alt="screens"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
