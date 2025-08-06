@@ -22,7 +22,7 @@ export function PlaygroundMode() {
       >
         <button
           onClick={togglePlaygroundMode}
-          className="flex items-center space-x-2 bg-white text-gray-800 border border-gray-200 px-4 py-2 rounded-full shadow-sm hover:shadow-md transition-all"
+          className="flex items-center space-x-2 bg-white text-gray-800 border border-gray-200 px-4 py-2 rounded-full shadow-sm hover:shadow-md transition-all  cursor-pointer"
         >
           <span className="text-sm">
             {isPlaygroundMode ? "Modo Normal" : "Modo Juego"}
@@ -35,7 +35,7 @@ export function PlaygroundMode() {
       <AnimatePresence>
         {isPlaygroundMode && (
           <motion.div
-            className="fixed top-20 right-4 z-40 bg-purple-100 border border-purple-200 rounded-lg p-4 max-w-xs shadow-md"
+            className="fixed top-16 right-4 z-40 bg-purple-100 border border-purple-200 rounded-lg p-4 max-w-xs shadow-md"
             initial={{ opacity: 0, x: 100 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 100 }}

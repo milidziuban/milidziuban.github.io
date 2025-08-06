@@ -132,10 +132,10 @@ function HeroSection() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
         >
-          <div className="relative w-full max-w-lg">
+          <div className="relative w-full h-60 max-w-lg">
             {/* Imagen principal - Monitor/Desktop */}
             <motion.div
-              className="absolute -bottom-8 right-60 z-20"
+              className="absolute -bottom-35 right-60 z-20"
               // Solo animar si NO está en modo playground
               {...(!isPlaygroundMode
                 ? {
@@ -170,7 +170,7 @@ function HeroSection() {
 
             {/* Imagen secundaria - Mobile/Tablet */}
             <motion.div
-              className={`absolute bottom-10 -right-10 z-20 ${
+              className={`absolute bottom-10 -right-20 z-20 ${
                 isPlaygroundMode ? "cursor-grab active:cursor-grabbing" : ""
               }`}
               animate={{
@@ -282,20 +282,11 @@ function HeroSection() {
                 className="rounded-lg"
                 style={{ pointerEvents: "none" }} // Importante: evita que la imagen capture eventos
               />
-              {/* Tooltip para modo playground */}
-              {isPlaygroundMode && (
-                <motion.div
-                  className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-black text-white text-xs px-2 py-1 rounded opacity-0 pointer-events-none"
-                  whileHover={{ opacity: 1 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  ¡Arrástrame!
-                </motion.div>
-              )}
+              
             </motion.div>
             {/* Frase - 2 */}
             <motion.div
-              className="absolute -bottom-45 -right-30 z-20"
+              className="absolute -bottom-30 -right-15 z-20"
               // Solo animar si NO está en modo playground
               {...(!isPlaygroundMode
                 ? {
@@ -376,8 +367,8 @@ function HeroSection() {
 // Sección Design Think Create Inspire
 function DesignSection() {
   return (
-    <section id="sobre-mi" className="px-6 py-16 bg-white">
-      <div className="max-w-6xl mx-auto">
+    <section id="sobre-mi" className="px-6 py-30 bg-white">
+      <div className="max-w-6xl mx-auto ">
         <div className="grid md:grid-cols-2 gap-12 items-start">
           <ScrollReveal direction="left">
             <motion.h2
@@ -512,17 +503,17 @@ function DesignSection() {
         </div>
 
         {/* Nueva sección de Formación y Experiencia */}
-        <div className="mt-16 grid md:grid-cols-2 gap-12">
+        <div className="mt-8 grid md:grid-cols-2 gap-12">
           <ScrollReveal direction="left" delay={0.4}>
-            <div className="bg-white rounded-3xl p-8 shadow-lg h-110">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6 font-space-grotesk">
+            <div className="bg-white rounded-3xl p-8 shadow-lg h-full">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4 font-space-grotesk text-lg">
                 FORMACIÓN ACADÉMICA
               </h3>
               <div className="space-y-4 text-gray-700 font-manrope">
-                <p className="font-semibold">Universidad:</p>
-                <ul className="list-disc pl-5 space-y-2">
+                <p className="font-semibold text-sm">Universidad:</p>
+                <ul className="list-disc pl-5 space-y-2 text-sm">
                   <li>
-                    <span className="font-bold">
+                    <span className="font-bold text-sm">
                       Licenciatura en Diseño Industrial
                     </span>{" "}
                     (2017 - 2024)
@@ -530,18 +521,18 @@ function DesignSection() {
                     Universidad Nacional del Litoral.
                   </li>
                 </ul>
-                <p className="font-semibold mt-6">Cursos:</p>
-                <ul className="list-disc pl-5 space-y-2">
+                <p className="font-semibold mt-6 text-sm">Cursos:</p>
+                <ul className="list-disc pl-5 space-y-2 text-sm">
                   <li>
-                    <span className="font-bold">Diseño UX/UI Avanzado</span>{" "}
+                    <span className="font-bold text-sm">Diseño UX/UI Avanzado</span>{" "}
                     (2022 Ago - Nov) CoderHouse
                   </li>
                   <li>
-                    <span className="font-bold">Diseño UX/UI</span> (2022 Mar -
+                    <span className="font-bold text-sm">Diseño UX/UI</span> (2022 Mar -
                     Jun) CoderHouse
                   </li>
                   <li>
-                    <span className="font-bold">Full Stack Developer</span>{" "}
+                    <span className="font-bold text-sm">Full Stack Developer</span>{" "}
                     (2022 Sep - 2023 Ene) SoyHenry
                   </li>
                 </ul>
@@ -550,17 +541,17 @@ function DesignSection() {
           </ScrollReveal>
 
           <ScrollReveal direction="right" delay={0.6}>
-            <div className="bg-white rounded-3xl p-8 shadow-lg h-110">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6 font-space-grotesk">
-                EXPERIENCIAS LABORALES
+            <div className="bg-white rounded-3xl p-8 shadow-lg h-full">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4 font-space-grotesk text-lg">
+                EXPERIENCIA LABORAL
               </h3>
               <div className="space-y-4 text-gray-700 font-manrope">
                 <div>
-                  <p className="font-bold">Diseño UX en Avature</p>
+                  <p className="font-bold text-sm">Diseño UX en Avature</p>
                   <p className="text-sm text-gray-600">
                     (Abril 2024 - Actualidad)
                   </p>
-                  <ul className="list-disc pl-5 space-y-1 mt-2">
+                  <ul className="list-disc pl-5 space-y-1 mt-2 text-sm">
                     <li>
                       Diseño de producto y análisis para mejorar en la
                       experiencia de usuario.
@@ -568,21 +559,21 @@ function DesignSection() {
                   </ul>
                 </div>
                 <div>
-                  <p className="font-bold">Diseño UX/UI en Crombie</p>
-                  <p className="text-sm text-gray-600">
+                  <p className="font-bold text-sm">Diseño UX/UI en Crombie</p>
+                  <p className="text-sm text-gray-600 text-sm">
                     (Mayo 2023 - Abril 2024)
                   </p>
-                  <ul className="list-disc pl-5 space-y-1 mt-2">
+                  <ul className="list-disc pl-5 space-y-1 mt-2 text-sm">
                     <li>Diseño para clientes en el exterior.</li>
                     <li>Diseño y coordinación de proyecto.</li>
                   </ul>
                 </div>
                 <div>
-                  <p className="font-bold">Diseño UX/UI en Santa Fe Sistemas</p>
-                  <p className="text-sm text-gray-600">
+                  <p className="font-bold text-sm">Diseño UX/UI en Santa Fe Sistemas</p>
+                  <p className="text-sm text-gray-600 text-sm">
                     (Enero 2023 - Mayo 2023)
                   </p>
-                  <ul className="list-disc pl-5 space-y-1 mt-2">
+                  <ul className="list-disc pl-5 space-y-1 mt-2 text-sm">
                     <li>Diseñadora UX/UI freelance para empresa local.</li>
                   </ul>
                 </div>
@@ -612,7 +603,7 @@ function ProjectsSection() {
   }, []);
 
   return (
-    <section id="proyectos" className="px-6 pt-20 md:pt-20 pb-20 bg-gray-100">
+    <section id="proyectos" className="px-6 pt-20 md:pt-30 pb-30 bg-gray-100">
       <div className="max-w-6xl mx-auto">
         <ScrollReveal>
           <div className="flex items-center justify-between mb-8">
@@ -840,7 +831,7 @@ function ContactSection() {
   }, []);
 
   return (
-    <section id="contacto" className="px-6 py-16 bg-white">
+    <section id="contacto" className="px-30 py-30 bg-white">
       <div className="max-w-6xl mx-auto">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <ScrollReveal direction="left">
