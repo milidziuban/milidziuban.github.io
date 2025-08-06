@@ -4,6 +4,7 @@ import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 import { Space_Grotesk } from "next/font/google";
 import { Manrope } from "next/font/google";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -45,6 +46,7 @@ html {
         className={`${manrope.variable} ${spaceGrotesk.variable} font-manrope`}
       >
         {children}
+         <SpeedInsights />
       </body>
     </html>
   );
