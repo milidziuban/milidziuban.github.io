@@ -35,8 +35,12 @@ export default function ProyectoHousePlants() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.9 }}
               >
-             Aplicación móvil diseñada para ayudar a los usuarios a diagnosticar y cuidar sus plantas de interior de manera sencilla y efectiva.
-Esta app permite identificar problemas comunes como plagas, enfermedades o errores de riego, y brinda recomendaciones personalizadas para el cuidado diario de cada planta. 
+                Aplicación móvil diseñada para ayudar a los usuarios a
+                diagnosticar y cuidar sus plantas de interior de manera sencilla
+                y efectiva. Esta app permite identificar problemas comunes como
+                plagas, enfermedades o errores de riego, y brinda
+                recomendaciones personalizadas para el cuidado diario de cada
+                planta.
               </motion.p>
               <motion.div
                 className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center"
@@ -196,10 +200,16 @@ Esta app permite identificar problemas comunes como plagas, enfermedades o error
                     Problema
                   </h2>
                   <p className="text-gray-600 leading-relaxed mb-6">
-                  Muchas personas que tienen plantas de interior, especialmente quienes están dando sus primeros pasos en el cuidado de plantas, enfrentan dificultades para reconocer problemas como plagas, enfermedades, falta o exceso de riego, o condiciones inadecuadas de luz. 
+                    Muchas personas que tienen plantas de interior,
+                    especialmente quienes están dando sus primeros pasos en el
+                    cuidado de plantas, enfrentan dificultades para reconocer
+                    problemas como plagas, enfermedades, falta o exceso de
+                    riego, o condiciones inadecuadas de luz.
                   </p>
                   <p className="text-gray-600 leading-relaxed">
-                   La información disponible suele ser confusa, poco confiable o no está adaptada a sus necesidades, lo que genera frustración y, muchas veces, la pérdida de la planta.
+                    La información disponible suele ser confusa, poco confiable
+                    o no está adaptada a sus necesidades, lo que genera
+                    frustración y, muchas veces, la pérdida de la planta.
                   </p>
                 </div>
 
@@ -209,10 +219,15 @@ Esta app permite identificar problemas comunes como plagas, enfermedades o error
                     Objetivo
                   </h2>
                   <p className="text-gray-600 leading-relaxed mb-6">
-                  Desarrollar una aplicación móvil intuitiva y accesible que ayude a los usuarios a diagnosticar rápidamente los problemas de sus plantas de interior y brindarles recomendaciones claras y personalizadas para su cuidado. 
+                    Desarrollar una aplicación móvil intuitiva y accesible que
+                    ayude a los usuarios a diagnosticar rápidamente los
+                    problemas de sus plantas de interior y brindarles
+                    recomendaciones claras y personalizadas para su cuidado.
                   </p>
-                   <p className="text-gray-600 leading-relaxed mb-6">
-                  La app busca fomentar una experiencia de cuidado más consciente, educativa y satisfactoria, independientemente del nivel de conocimiento del usuario.
+                  <p className="text-gray-600 leading-relaxed mb-6">
+                    La app busca fomentar una experiencia de cuidado más
+                    consciente, educativa y satisfactoria, independientemente
+                    del nivel de conocimiento del usuario.
                   </p>
                 </div>
               </div>
@@ -221,72 +236,194 @@ Esta app permite identificar problemas comunes como plagas, enfermedades o error
         </div>
       </section>
 
+      {/* Herramientas utilizadas */}
+      <section className="bg-white py-16">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-4xl font-bold text-gray-900 mb-12 text-center">
+            Herramientas utilizadas
+          </h2>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 text-center">
+            {/* Herramienta 1 */}
+            <div>
+              <div className="w-10 h-10 bg-gray-900 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-sm font-bold">
+                1
+              </div>
+              <h3 className="text-lg font-semibold">Entrevistas</h3>
+              <p className="text-gray-600 text-sm mt-2">
+                Hablamos con usuarios para conocer sus necesidades,
+                comportamientos, motivaciones y frustraciones. Esto nos permite
+                obtener insights reales desde su perspectiva.
+              </p>
+            </div>
+
+            {/* Herramienta 2 */}
+            <div>
+              <div className="w-10 h-10 bg-gray-900 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-sm font-bold">
+                2
+              </div>
+              <h3 className="text-lg font-semibold">Mapa de empatía</h3>
+              <p className="text-gray-600 text-sm mt-2">
+                Ayuda a comprender mejor el contexto emocional y cognitivo del
+                usuario, para diseñar soluciones alineadas con sus verdaderas
+                necesidades.
+              </p>
+            </div>
+
+            {/* Herramienta 3 */}
+            <div>
+              <div className="w-10 h-10 bg-gray-900 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-sm font-bold">
+                3
+              </div>
+              <h3 className="text-lg font-semibold">Puntos de dolor</h3>
+              <p className="text-gray-600 text-sm mt-2">
+                Son los problemas o frustraciones que experimentan los usuarios
+                en su recorrido. Identificarlos permite resolver lo que
+                realmente genera malestar o fricción.
+              </p>
+            </div>
+
+            {/* Herramienta 4 */}
+            <div>
+              <div className="w-10 h-10 bg-gray-900 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-sm font-bold">
+                4
+              </div>
+              <h3 className="text-lg font-semibold">User Persona</h3>
+              <p className="text-gray-600 text-sm mt-2">
+                Arquetipo del usuario ideal, construido a partir de datos
+                reales. Resume características, objetivos, necesidades y
+                comportamientos.
+              </p>
+            </div>
+
+            {/* Herramienta 5 */}
+            <div>
+              <div className="w-10 h-10 bg-gray-900 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-sm font-bold">
+                5
+              </div>
+              <h3 className="text-lg font-semibold">Mapa de experiencia</h3>
+              <p className="text-gray-600 text-sm mt-2">
+                Visualiza el recorrido del usuario a través de una experiencia o
+                producto, incluyendo acciones, emociones, pensamientos y puntos
+                de contacto.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* User Interviews */}
-      <ScrollReveal>
-        <section className="px-6 py-16 bg-white">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-4xl font-bold text-gray-600 mb-12">
-              User Interviews
-            </h2>
-
-            {/* Imagen de la pantalla */}
-
-            <motion.div
-              className="relative h-full w-full flex items-center justify-center"
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.3 }}
-            >
-              <div className="relative w-full h-[650px] bg-white rounded-2xl overflow-hidden">
+      <section className="px-6 py-16 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            {/* Imagen */}
+            <ScrollReveal direction="left">
+              <motion.div
+                whileHover={{ scale: 1.02, rotateY: 5 }}
+                transition={{ duration: 0.3 }}
+              >
                 <Image
-                  src="/UserInterview.png"
-                  alt="userinterview"
-                  fill
-                  // className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 50vw"
+                  src="hallazgos.png"
+                  alt="arquitectura"
+                  width={320}
+                  height={400}
                   className="w-full h-full object-cover"
                 />
+              </motion.div>
+            </ScrollReveal>
+
+            {/* Texto */}
+            <ScrollReveal direction="right" delay={0.2}>
+              <div className="space-y-12">
+                {/* Problema */}
+                <div>
+                  <h2 className="text-4xl font-bold text-gray-900 mb-6">
+                    Hallazgos
+                  </h2>
+                  <p className="text-gray-600 leading-relaxed mb-6">
+                    Durante la investigación surgieron frases clave que revelan
+                    las emociones e inseguridades de los usuarios al enfrentarse
+                    a un problema con sus plantas. Muchos expresaron miedo a
+                    “hacer algo mal” o “no saber qué está pasando”. Este insight
+                    fue clave para diseñar una experiencia clara, comprensiva y
+                    no juzgadora.
+                  </p>
+                </div>
               </div>
-            </motion.div>
+            </ScrollReveal>
           </div>
-        </section>
-      </ScrollReveal>
+        </div>
+      </section>
 
- {/* Architecture */}
-      <ScrollReveal>
-        <section className="px-6 py-16 bg-white">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-4xl font-bold text-gray-600 mb-12">
-              Architecture
-            </h2>
+      {/* User Persona */}
+      <section className="px-6 py-16 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            {/* Texto */}
+            <ScrollReveal direction="right" delay={0.2}>
+              <div className="space-y-12">
+                {/* Problema */}
+                <div>
+                  <h2 className="text-4xl font-bold text-gray-900 mb-6">
+                    User Persona
+                  </h2>
+                  <p className="text-gray-900 leading-relaxed mb-6 font-bold">
+                    Paula
+                  </p>
+                  <p className="text-gray-600 leading-relaxed mb-4">
+                    📍 32 años - Vive en un departamento en la ciudad
+                  </p>
+                  <p className="text-gray-600 leading-relaxed mb-4">
+                    💼 Trabaja de forma híbrida y pasa mucho tiempo en casa
+                  </p>{" "}
+                  <p className="text-gray-600 leading-relaxed mb-4">
+                    🌱 Tiene varias plantas pero poca experiencia en jardinería
+                  </p>
+                  <p className="italic text-sm text-gray-600 leading-relaxed mb-3 font-light">
+                    “Si una planta se pone fea, tardo mucho en darme cuenta de
+                    lo que tiene.”
+                  </p>
+                  <p className="italic text-sm text-gray-600 leading-relaxed mb-3 font-light">
+                    “A veces intento soluciones que encuentro en Google, pero no
+                    sé si están bien.”
+                  </p>
+                  <p className="italic text-sm text-gray-600 leading-relaxed mb-3">
+                    “Necesito que alguien me diga qué hacer con una planta sin
+                    tener que investigar horas.”
+                  </p>
+                  <p className="text-gray-900 leading-relaxed mb-6 font-bold">
+                    Su perfil fue clave para diseñar una solución empática y
+                    clara, enfocada en la accesibilidad del lenguaje y la
+                    facilidad de uso.
+                  </p>
+                </div>
+              </div>
+            </ScrollReveal>
 
-            {/* Imagen de la pantalla */}
-
-            <motion.div
-              className="relative h-full w-full flex items-center justify-center"
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.3 }}
-            >
-              <div className="relative w-full h-[560px] bg-white rounded-2xl overflow-hidden">
+            {/* Imagen */}
+            <ScrollReveal direction="left">
+              <motion.div
+                whileHover={{ scale: 1.02, rotateY: 5 }}
+                transition={{ duration: 0.3 }}
+              >
                 <Image
-                 src="/Architecture.png"
-                  alt="architecture"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
+                  src="userpersona.png"
+                  alt="arquitectura"
+                  width={320}
+                  height={400}
                   className="w-full h-full object-cover"
                 />
-              </div>
-            </motion.div>
+              </motion.div>
+            </ScrollReveal>
           </div>
-        </section>
-      </ScrollReveal>
+        </div>
+      </section>
 
- {/* Screens */}
+      {/* Screens */}
       <ScrollReveal>
         <section className="px-6 py-16 bg-white">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-4xl font-bold text-gray-600 mb-12">
-              Screens
-            </h2>
+            {/* <h2 className="text-4xl font-bold text-gray-600 mb-12">Screens</h2> */}
 
             {/* Imagen de la pantalla */}
 
@@ -362,8 +499,8 @@ Esta app permite identificar problemas comunes como plagas, enfermedades o error
         </section>
       </ScrollReveal> */}
 
-       {/* Other Projects Section */}
-            <OtherProjects currentProjectId="houseplants" />
+      {/* Other Projects Section */}
+      <OtherProjects currentProjectId="houseplants" />
 
       {/* Footer CTA */}
       <section className="px-6 py-16 bg-gray-100">
