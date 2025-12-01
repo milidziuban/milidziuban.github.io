@@ -28,4 +28,11 @@ export const projects: Project[] = [
     image: "/imagen/Fungi.png",
     href: "/proyecto-fungi-ritual",
   },
+    {
+    id: "jalife",
+    title: "Proyecto Jalife",
+    subtitle: "App",
+    image: "/imagen/Jalife.png",
+    href: "/proyecto-jalife",
+  },
 ]
