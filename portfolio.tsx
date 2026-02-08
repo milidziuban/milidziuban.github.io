@@ -560,7 +560,7 @@ function ProjectsSection() {
               <div className="flex flex-col justify-between p-6 flex-1">
                 <div className="space-y-3">
                   <h3 className="text-xl font-semibold text-gray-900 font-space-grotesk">
-                    Proyecto HousePlant
+                    Proyecto Jalife (En progreso)
                   </h3>
 
                   <p className="text-gray-600 text-sm leading-relaxed font-manrope">

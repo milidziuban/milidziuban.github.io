@@ -369,21 +369,23 @@ export default function ProyectoJalife() {
             </motion.div>
 
             <div className="ml-12 grid gap-8 items-center relative">
+                <div className="space-y-4">
+                <p className="text-gray-600 leading-relaxed font-manrope text-sm">
+                  <span className="font-bold text-gray-900">Rediseño UI/UX:</span>{" "}
+               Presentación visual del proyecto mostrando la nueva interfaz limpia, moderna y alineada con la identidad de la marca, diseñada para facilitar la navegación y destacar los servicios principales
+                </p>
+              </div>
+
               <div className="space-y-4">
                 <p className="text-gray-600 leading-relaxed font-manrope text-sm">
                   <span className="font-bold text-gray-900">Grid Layout:</span>{" "}
-                  Organización sistemática de contenido en una cuadrícula que
-                  optimiza el espacio y mejora la navegación visual del usuario.
+                Distribución de contenido organizada mediante cuadrículas para mejorar la lectura, jerarquía de información y flujo visual intuitivo dentro de la página
                 </p>
               </div>
 
               <div className="space-y-4 relative">
                 <p className="text-gray-600 leading-relaxed font-manrope text-sm">
-                  <span className="font-bold text-gray-900">Navbar:</span> Lo
-                  ideal sería que al hacer scroll down desaparezca la barra, y
-                  al hacer scroll up, aparezca de nuevo. Esto mejoraría la
-                  experiencia de lectura y enfoque en el contenido sin perder
-                  accesibilidad a la navegación.
+                  <span className="font-bold text-gray-900">Navbar:</span> Barra de navegación pensada para desaparecer al hacer scroll down y reaparecer al subir, mejorando la legibilidad sin perder accesibilidad a las secciones clave
                 </p>
               </div>
             </div>
@@ -400,19 +402,8 @@ export default function ProyectoJalife() {
             <div className="mr-12 grid gap-8 items-center relative">
               <div className="space-y-4">
                 <p className="text-gray-600 leading-relaxed font-manrope text-sm">
-                  <span className="font-bold text-gray-900">Grid Layout:</span>{" "}
-                  Organización sistemática de contenido en una cuadrícula que
-                  optimiza el espacio y mejora la navegación visual del usuario.
-                </p>
-              </div>
-
-              <div className="space-y-4 relative">
-                <p className="text-gray-600 leading-relaxed font-manrope text-sm">
-                  <span className="font-bold text-gray-900">Navbar:</span> Lo
-                  ideal sería que al hacer scroll down desaparezca la barra, y
-                  al hacer scroll up, aparezca de nuevo. Esto mejoraría la
-                  experiencia de lectura y enfoque en el contenido sin perder
-                  accesibilidad a la navegación.
+                  <span className="font-bold text-gray-900">Contenido dinámico:</span>{" "}
+            Se incorporaron videos de influencers mostrando su experiencia con Jalife, junto con información clara sobre la marca, sus valores y propuesta, reforzando la confianza del usuario y enriqueciendo la narrativa del sitio.
                 </p>
               </div>
             </div>
