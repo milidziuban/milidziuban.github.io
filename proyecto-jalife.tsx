@@ -44,7 +44,7 @@ export default function ProyectoJalife() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
-              <div className="w-100 h-100 relative rounded-3xl overflow-hidden">
+              <div className="w-120 h-120 relative rounded-3xl overflow-hidden">
                 <Image
                   src="/imagen/jalife1.png"
                   alt="Jalife Project"
@@ -125,7 +125,7 @@ export default function ProyectoJalife() {
       {/* Problem & Objective */}
       <section className="bg-gray-100 min-h-screen">
         <section className="px-6 pb-6 pt-12 bg-gray-100">
-          <div className="max-w-6xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             <div className="grid md:grid-cols-2 gap-21 items-center">
               <ScrollReveal direction="left">
                 <div>
@@ -143,13 +143,13 @@ export default function ProyectoJalife() {
               </ScrollReveal>
 
               <ScrollReveal direction="right" delay={0.2}>
-                <div className="relative w-full max-w-[500px] h-auto mx-auto">
+                <div className="relative w-full max-w-[400px] h-auto mx-auto ">
                   <Image
-                    src="/jalifeproblema.png"
+                    src="/Negociacion.webp"
                     alt="Jalife Project"
-                    width={500}
+                    width={400}
                     height={300}
-                    className="object-contain w-full h-auto"
+                    className="object-contain w-full h-auto rounded-3xl"
                   />
                 </div>
               </ScrollReveal>
@@ -158,16 +158,16 @@ export default function ProyectoJalife() {
         </section>
 
         <section className="px-6 pb-12 pt-6 bg-gray-100">
-          <div className="max-w-6xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             <div className="grid md:grid-cols-2 gap-21 items-center">
               <ScrollReveal direction="left" delay={0.2}>
-                <div className="relative w-full max-w-[500px] h-auto mx-auto">
+                <div className="relative w-full max-w-[400px] h-auto mx-auto">
                   <Image
-                    src="/jalifeproblema.png"
+                    src="/Analisis.webp"
                     alt="Jalife Project"
-                    width={500}
+                    width={400}
                     height={300}
-                    className="object-contain w-full h-auto"
+                    className="object-contain w-full h-auto rounded-3xl"
                   />
                 </div>
               </ScrollReveal>
@@ -391,6 +391,102 @@ export default function ProyectoJalife() {
         </div>
       </section>
 
+      <section className="px-6 py-16 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <h3 className="text-2xl font-bold text-gray-900 mb-8 font-space-grotesk">
+            Body section
+          </h3>
+          <div className="grid md:grid-cols-2 gap-8 items-center relative">
+            <div className="mr-12 grid gap-8 items-center relative">
+              <div className="space-y-4">
+                <p className="text-gray-600 leading-relaxed font-manrope text-sm">
+                  <span className="font-bold text-gray-900">Grid Layout:</span>{" "}
+                  Organización sistemática de contenido en una cuadrícula que
+                  optimiza el espacio y mejora la navegación visual del usuario.
+                </p>
+              </div>
+
+              <div className="space-y-4 relative">
+                <p className="text-gray-600 leading-relaxed font-manrope text-sm">
+                  <span className="font-bold text-gray-900">Navbar:</span> Lo
+                  ideal sería que al hacer scroll down desaparezca la barra, y
+                  al hacer scroll up, aparezca de nuevo. Esto mejoraría la
+                  experiencia de lectura y enfoque en el contenido sin perder
+                  accesibilidad a la navegación.
+                </p>
+              </div>
+            </div>
+
+            {/* Center image/GIF */}
+            <motion.div
+              className="relative"
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <div className="relative w-full max-w-[640px] mx-auto">
+                <Image
+                  src="/bodysection.png"
+                  alt="Mockup Jalife Brothers"
+                  width={1200}
+                  height={800}
+                  className="rounded-xl shadow-lg"
+                />
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      <section className="px-6 py-16 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <h3 className="text-2xl font-bold text-gray-900 mb-8 font-space-grotesk">
+            Contact section
+          </h3>
+          <div className="grid md:grid-cols-2 gap-8 items-center relative">
+            {/* Center image/GIF */}
+            <motion.div
+              className="relative"
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <div className="relative w-full max-w-[640px] mx-auto">
+                <Image
+                  src="/1.gif"
+                  alt="Mockup Jalife Brothers"
+                  width={1200}
+                  height={800}
+                  className="rounded-xl shadow-lg"
+                />
+              </div>
+            </motion.div>
+
+            <div className="ml-12 grid gap-8 items-center relative">
+              <div className="space-y-4">
+                <p className="text-gray-600 leading-relaxed font-manrope text-sm">
+                  <span className="font-bold text-gray-900">Grid Layout:</span>{" "}
+                  Organización sistemática de contenido en una cuadrícula que
+                  optimiza el espacio y mejora la navegación visual del usuario.
+                </p>
+              </div>
+
+              <div className="space-y-4 relative">
+                <p className="text-gray-600 leading-relaxed font-manrope text-sm">
+                  <span className="font-bold text-gray-900">Navbar:</span> Lo
+                  ideal sería que al hacer scroll down desaparezca la barra, y
+                  al hacer scroll up, aparezca de nuevo. Esto mejoraría la
+                  experiencia de lectura y enfoque en el contenido sin perder
+                  accesibilidad a la navegación.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Prototype Section */}
       <section className="px-6 py-16 bg-gray-100">
         <div className="max-w-6xl mx-auto">
@@ -411,7 +507,6 @@ export default function ProyectoJalife() {
                   width="800"
                   height="450"
                   src="https://embed.figma.com/proto/TUIAkraAUQ5sCvrZbctgaK/Jalife-Proyect?node-id=211-2703&scaling=scale-down-width&content-scaling=fixed&page-id=152%3A470&starting-point-node-id=211%3A2703&embed-host=share"
-                  allowfullscreen
                 ></iframe>
               </div>
             </div>

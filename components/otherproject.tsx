@@ -19,7 +19,7 @@ export function OtherProjects({ currentProjectId }: OtherProjectsProps) {
         <ScrollReveal>
           <h2 className="text-4xl font-bold text-gray-900 mb-12 text-center font-space-grotesk">Otros Proyectos</h2>
         </ScrollReveal>
-        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {otherProjects.map((project, index) => (
             <ScrollReveal key={project.id} delay={index * 0.1}>
               <Link href={project.href} className="block">
@@ -28,7 +28,7 @@ export function OtherProjects({ currentProjectId }: OtherProjectsProps) {
                   whileHover={{ scale: 1.02, rotateY: 3 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <div className="relative h-100 w-full mb-4 rounded-xl overflow-hidden">
+                  <div className="relative h-60 w-full mb-4 rounded-xl overflow-hidden">
                     <Image
                       src={project.image || "/placeholder.svg"}
                       alt={project.title}

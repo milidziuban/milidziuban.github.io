@@ -9,7 +9,6 @@ import {
   ScrollReveal,
 } from "./components/animated-components";
 import Image from "next/image";
-import { PlaygroundMode } from "./components/playground-mode";
 import { useState, useEffect } from "react";
 
 // Sección Hero
@@ -32,49 +31,26 @@ function HeroSection() {
   return (
     <section
       id="inicio"
-      className="px-6 pt-24 md:pt-32 pb-8 bg-gray-100 min-h-screen flex flex-col"
+      className="px-6 pt-24 md:pt-32 pb-8 bg-gradient-to-br from-gray-50 via-gray-100 to-purple-50
+ min-h-screen flex flex-col"
     >
-      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-0 items-center flex-1">
+      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-24 items-center flex-1">
         <motion.div
           initial={{ opacity: 0, x: -100 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, delay: 0.5 }}
         >
-          <motion.h1
-            className="text-6xl font-medium text-gray-900 mb-4 font-space-grotesk"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
-          >
+          <span className="uppercase tracking-widest text-sm text-purple-500 font-medium">
+            Portfolio
+          </span>
+          <motion.h1 className="text-5xl md:text-6xl font-medium tracking-tight text-gray-900 mb-6 font-space-grotesk">
             Hola! Soy Milagros
           </motion.h1>
-          <motion.h2
-            className="text-5xl text-gray-800 mb-4 font-space-grotesk"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.9 }}
-          >
-            Diseñadora{" "}
-            <span
-              className=" text-6xl font-bold text-secondary px-2 py-1 rounded text-bordered"
-              style={{
-                textShadow:
-                  "1px 1px 0 black, -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black",
-              }}
-            >
-              UX/UI
-            </span>
-          </motion.h2>
 
-          <motion.p
-            className="text-gray-700 mb-10 leading-relaxed text-lg font-manrope py-4"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.1 }}
-          >
-            Soy Diseñadora UX/UI y Diseñadora Industrial. Me encanta combinar lo
-            tangible con lo digital, y aplicar el diseño como herramienta para
-            mejorar la vida de las personas.
+          <motion.p className="mb-6 text-gray-600 leading-relaxed text-lg font-manrope max-w-xl">
+            Licenciada en Diseño Industrial, especializada en{" "}
+            <span className="text-gray-900 font-semibold">UX/UI</span> y{" "}
+            <span className="text-gray-900 font-semibold">UX Game Design</span>.
           </motion.p>
 
           <motion.div
@@ -95,18 +71,11 @@ function HeroSection() {
             ].map((item, index) => (
               <motion.div
                 key={index}
-                className={`w-16 h-16 bg-gray-800 rounded-full flex items-center justify-center ${
-                  isPlaygroundMode
-                    ? "cursor-grab active:cursor-grabbing"
-                    : "cursor-pointer"
-                }`}
-                drag={isPlaygroundMode}
-                dragMomentum={false}
-                dragElastic={0.1}
+                className={`w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center cursor-pointer`}
                 whileHover={{
                   scale: 1.1,
                   backgroundColor: "#9b51e0",
-                  rotateY: isPlaygroundMode ? 0 : 180,
+                  rotateY: 180,
                   transition: { duration: 0.4 },
                 }}
                 whileTap={{ scale: 0.9 }}
@@ -131,203 +100,24 @@ function HeroSection() {
           initial={{ opacity: 0, x: 100 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
+          whileHover={{
+            scale: 1.03,
+            rotate: -0.5,
+            transition: { duration: 0.4 },
+          }}
         >
-          <div className="relative w-full h-60 max-w-lg">
-            {/* Imagen principal - Monitor/Desktop */}
-            <motion.div
-              className="absolute -bottom-35 right-60 z-20"
-              // Solo animar si NO está en modo playground
-              {...(!isPlaygroundMode
-                ? {
-                    animate: { y: [0, -10, 0] },
-                    transition: {
-                      duration: 3,
-                      repeat: Number.POSITIVE_INFINITY,
-                    },
-                  }
-                : {})}
-              // Solo drag en modo playground
-              {...(isPlaygroundMode
-                ? {
-                    drag: true,
-                    dragMomentum: false,
-                    dragElastic: 0.1,
-                    whileDrag: { scale: 1.1, zIndex: 1000, rotate: 5 },
-                    whileHover: { scale: 1.05 },
-                    style: { cursor: "grab" },
-                  }
-                : {})}
-            >
-              <Image
-                src="/imagen/property1.svg"
-                alt="Desktop Design Interface"
-                width={200}
-                height={100}
-                className="rounded-lg"
-                style={{ pointerEvents: "none" }} // Importante: evita que la imagen capture eventos
-              />
-            </motion.div>
-
-            {/* Imagen secundaria - Mobile/Tablet */}
-            <motion.div
-              className={`absolute bottom-10 -right-20 z-20 ${
-                isPlaygroundMode ? "cursor-grab active:cursor-grabbing" : ""
-              }`}
-              animate={{
-                y: isPlaygroundMode ? 0 : [0, -8, 0],
-                rotateZ: isPlaygroundMode ? 0 : [0, 2, 0],
-              }}
-              transition={{
-                duration: 2.5,
-                repeat: isPlaygroundMode ? 0 : Number.POSITIVE_INFINITY,
-                delay: 0.5,
-              }}
-              drag={isPlaygroundMode}
-              dragMomentum={false}
-              dragElastic={0.1}
-              whileHover={
-                isPlaygroundMode
-                  ? {
-                      scale: 1.05,
-                      rotate: [0, -3, 3, 0],
-                      transition: { duration: 0.3 },
-                    }
-                  : {}
-              }
-              whileDrag={
-                isPlaygroundMode ? { scale: 1.02, zIndex: 50, rotate: -5 } : {}
-              }
-            >
-              <Image
-                src="/imagen/property2.png"
-                alt="Mobile Design Interface"
-                width={200}
-                height={250}
-                className="rounded-lg"
-                style={{ pointerEvents: "none" }} // Importante: evita que la imagen capture eventos
-              />
-              {/* Tooltip para modo playground */}
-            </motion.div>
-
-            {/* Imagen terciaria - Elementos de diseño */}
-            <motion.div
-              className={`absolute top-20 left-40 z-15 ${
-                isPlaygroundMode ? "cursor-grab active:cursor-grabbing" : ""
-              }`}
-              animate={{
-                rotateZ: isPlaygroundMode ? 0 : [0, -3, 0],
-                scale: isPlaygroundMode ? 1 : [1, 1.05, 1],
-              }}
-              transition={{
-                duration: 4,
-                repeat: isPlaygroundMode ? 0 : Number.POSITIVE_INFINITY,
-                delay: 1,
-              }}
-              drag={isPlaygroundMode}
-              dragMomentum={false}
-              dragElastic={0.1}
-              whileHover={
-                isPlaygroundMode
-                  ? {
-                      scale: 1.05,
-                      rotate: [0, 5, -5, 0],
-                      transition: { duration: 0.3 },
-                    }
-                  : {}
-              }
-              whileDrag={
-                isPlaygroundMode ? { scale: 1.02, zIndex: 50, rotate: 8 } : {}
-              }
-            >
-              <Image
-                src="/imagen/property3.png"
-                alt="Design Elements"
-                width={200}
-                height={180}
-                className="rounded-lg"
-                style={{ pointerEvents: "none" }} // Importante: evita que la imagen capture eventos
-              />
-              {/* Tooltip para modo playground */}
-            </motion.div>
-            {/* Frase - 1 */}
-            <motion.div
-              className="absolute bottom-45 right-50 z-20"
-              // Solo animar si NO está en modo playground
-              {...(!isPlaygroundMode
-                ? {
-                    animate: { y: [0, -10, 0] },
-                    transition: {
-                      duration: 3,
-                      repeat: Number.POSITIVE_INFINITY,
-                    },
-                  }
-                : {})}
-              // Solo drag en modo playground
-              {...(isPlaygroundMode
-                ? {
-                    drag: true,
-                    dragMomentum: false,
-                    dragElastic: 0.1,
-                    whileDrag: { scale: 1.1, zIndex: 1000, rotate: 5 },
-                    whileHover: { scale: 1.05 },
-                    style: { cursor: "grab" },
-                  }
-                : {})}
-            >
-              <Image
-                src="/frase1.png"
-                alt="Desktop Design Interface"
-                width={200}
-                height={100}
-                className="rounded-lg"
-                style={{ pointerEvents: "none" }} // Importante: evita que la imagen capture eventos
-              />
-              
-            </motion.div>
-            {/* Frase - 2 */}
-            <motion.div
-              className="absolute -bottom-30 -right-15 z-20"
-              // Solo animar si NO está en modo playground
-              {...(!isPlaygroundMode
-                ? {
-                    animate: { y: [0, -10, 0] },
-                    transition: {
-                      duration: 3,
-                      repeat: Number.POSITIVE_INFINITY,
-                    },
-                  }
-                : {})}
-              // Solo drag en modo playground
-              {...(isPlaygroundMode
-                ? {
-                    drag: true,
-                    dragMomentum: false,
-                    dragElastic: 0.1,
-                    whileDrag: { scale: 1.1, zIndex: 1000, rotate: 5 },
-                    whileHover: { scale: 1.05 },
-                    style: { cursor: "grab" },
-                  }
-                : {})}
-            >
-              <Image
-                src="/frase2.png"
-                alt="Desktop Design Interface"
-                width={200}
-                height={100}
-                className="rounded-lg"
-                style={{ pointerEvents: "none" }} // Importante: evita que la imagen capture eventos
-              />
-              {/* Tooltip para modo playground */}
-              {isPlaygroundMode && (
-                <motion.div
-                  className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-black text-white text-xs px-2 py-1 rounded opacity-0 pointer-events-none"
-                  whileHover={{ opacity: 1 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  ¡Arrástrame!
-                </motion.div>
-              )}
-            </motion.div>
+          <div
+            className="absolute -inset-10 bg-gradient-to-tr from-purple-200/60 to-pink-200/40 
+            rounded-[40%] blur-3xl animate-pulse"
+          />
+          <div className="relative w-full max-w-[640px] mx-auto">
+            <Image
+              src="/yodibujo.png"
+              alt="yo"
+              width={1200}
+              height={800}
+              className="rounded-xl"
+            />
           </div>
         </motion.div>
       </div>
@@ -354,9 +144,17 @@ function HeroSection() {
                 element.scrollIntoView({ behavior: "smooth" });
               }
             }}
-            className="bg-gray-800 hover:bg-purple-600 text-white px-8 py-3 rounded-full font-manrope cursor-pointer"
+            className="
+  bg-gray-900 
+  hover:bg-purple-600 
+  text-white 
+  px-10 py-4 
+  rounded-full 
+  font-manrope 
+  shadow-lg
+"
           >
-            Ver más
+            Ver más sobre mí →
           </Button>
         </motion.div>
       </motion.div>
@@ -369,7 +167,7 @@ function DesignSection() {
   return (
     <section id="sobre-mi" className="px-6 py-30 bg-white">
       <div className="max-w-6xl mx-auto ">
-        <div className="grid md:grid-cols-2 gap-12 items-start">
+        <div className="grid md:grid-cols-2 gap-16 items-start">
           <ScrollReveal direction="left">
             <motion.h2
               className="text-5xl md:text-6xl font-bold text-gray-900 mb-1 leading-tight font-space-grotesk"
@@ -377,60 +175,41 @@ function DesignSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <span
-                className=" text-6xl font-bold text-white -px-2 py-1 rounded text-bordered"
-                style={{
-                  textShadow:
-                    "1px 1px 0 black, -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black",
-                }}
-              >
-                Design
-              </span>{" "}
-              Think
+              Design Think
             </motion.h2>
             <h3 className="text-5xl md:text-6xl font-bold text-gray-900 mb-12 leading-tight font-space-grotesk">
-              Create{" "}
-              <span
-                className=" text-6xl font-bold text-white -px-2 py-1 rounded text-bordered"
-                style={{
-                  textShadow:
-                    "1px 1px 0 black, -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black",
-                }}
-              >
-                Inspire
-              </span>
+              Create Inspire
             </h3>
-            <p className="text-gray-600 mb-8 leading-relaxed text-lg max-w-lg font-manrope">
-              Creo experiencias digitales que combinan diseño estratégico,
-              pensamiento centrado en el usuario y una estética visual cuidada.
-            </p>
-            <p className="text-gray-600 leading-relaxed text-lg mb-12 max-w-lg font-manrope">
-              Trabajo desde la investigación hasta el diseño final, aplicando
-              metodologías UX/UI para resolver problemas reales y generar
-              impacto.
-            </p>
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <div className="relative">
+              <span className="absolute left-0 top-1 w-[2px] h-full" />
+              <p className="text-gray-600 mb-10 text-md max-w-md">
+                Creo experiencias digitales que combinan diseño estratégico,
+                pensamiento centrado en el usuario y una estética visual
+                cuidada.
+              </p>
+            </div>
+            <motion.div whileHover={{ y: -3 }} whileTap={{ scale: 0.95 }}>
               <a
                 href="/CV_MilagrosDziuban_2025.pdf"
                 download
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Button className="bg-gray-800 hover:bg-purple-600 text-white px-6 py-2 font-medium rounded-[32px] font-manrope cursor-pointer">
+                <Button className=" bg-gray-900 hover:bg-purple-600  text-white  px-8 py-3 rounded-full  shadow-lg font-manrope">
                   Descargar CV
                 </Button>
               </a>
             </motion.div>
           </ScrollReveal>
           <ScrollReveal direction="right" delay={0.2} className="relative">
-            <div className="grid grid-cols-2 gap-4 mt-2">
+            <div className="grid grid-cols-2 gap-6 mt-2">
               {[
                 {
                   bg: "bg-purple-200",
                   icon: "🕒",
                   title: "Años de experiencia",
                   subtitle:
-                    "Creando experiencias intuitivas desde la investigación hasta el prototipo final.",
+                    "Creando experiencias desde la investigación hasta el prototipo.",
                 },
                 {
                   bg: "bg-green-200",
@@ -462,7 +241,7 @@ function DesignSection() {
                   bg: "bg-teal-200",
                   icon: "🎯",
                   title: " Tendencias con criterio",
-                  subtitle: "Actualizada con tendencias UX/UI.",
+                  subtitle: "Actualizada con las nuevas tendencias UX/UI.",
                 },
               ].map((item, index) => (
                 <motion.div
@@ -471,22 +250,20 @@ function DesignSection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   whileHover={{
-                    scale: 1.05,
-                    rotateZ: 1,
-                    transition: { duration: 0.2 },
+                    y: -6,
+                    boxShadow: "0 20px 40px rgba(0,0,0,0.12)",
                   }}
                   viewport={{ once: true }}
                 >
-                  <Card
-                    className={`${item.bg} border-none cursor-default h-full text-white`}
-                  >
+                  <Card className="bg-white/70 backdrop-blur border border-gray-200 shadow-sm rounded-2xl">
                     <CardContent className="py-1 px-6">
                       <motion.div
                         className="w-10 h-10 bg-white/30 rounded-lg mb-4 flex items-center justify-center"
-                        whileHover={{ rotateZ: 360 }}
                         transition={{ duration: 0.5 }}
                       >
-                        <span className="text-white text-lg">{item.icon}</span>
+                        <div className="w-10 h-10 rounded-xl bg-black/5 flex items-center justify-center">
+                          <span className="text-lg">{item.icon}</span>
+                        </div>
                       </motion.div>
                       <h4 className="font-semibold text-black mb-4 text-lg leading-tight font-manrope">
                         {item.title}
@@ -505,7 +282,7 @@ function DesignSection() {
         {/* Nueva sección de Formación y Experiencia */}
         <div className="mt-8 grid md:grid-cols-2 gap-12">
           <ScrollReveal direction="left" delay={0.4}>
-            <div className="bg-white rounded-3xl p-8 shadow-lg h-full">
+            <div className="bg-white/70 p-8 h-full backdrop-blur border border-gray-200 shadow-sm rounded-2xl">
               <h3 className="text-2xl font-bold text-gray-900 mb-4 font-space-grotesk text-lg">
                 FORMACIÓN ACADÉMICA
               </h3>
@@ -524,15 +301,19 @@ function DesignSection() {
                 <p className="font-semibold mt-6 text-sm">Cursos:</p>
                 <ul className="list-disc pl-5 space-y-2 text-sm">
                   <li>
-                    <span className="font-bold text-sm">Diseño UX/UI Avanzado</span>{" "}
+                    <span className="font-bold text-sm">
+                      Diseño UX/UI Avanzado
+                    </span>{" "}
                     (2022 Ago - Nov) CoderHouse
                   </li>
                   <li>
-                    <span className="font-bold text-sm">Diseño UX/UI</span> (2022 Mar -
-                    Jun) CoderHouse
+                    <span className="font-bold text-sm">Diseño UX/UI</span>{" "}
+                    (2022 Mar - Jun) CoderHouse
                   </li>
                   <li>
-                    <span className="font-bold text-sm">Full Stack Developer</span>{" "}
+                    <span className="font-bold text-sm">
+                      Full Stack Developer
+                    </span>{" "}
                     (2022 Sep - 2023 Ene) SoyHenry
                   </li>
                 </ul>
@@ -541,7 +322,7 @@ function DesignSection() {
           </ScrollReveal>
 
           <ScrollReveal direction="right" delay={0.6}>
-            <div className="bg-white rounded-3xl p-8 shadow-lg h-full">
+            <div className="bg-white/70 p-8 h-full backdrop-blur border border-gray-200 shadow-sm rounded-2xl">
               <h3 className="text-2xl font-bold text-gray-900 mb-4 font-space-grotesk text-lg">
                 EXPERIENCIA LABORAL
               </h3>
@@ -569,7 +350,9 @@ function DesignSection() {
                   </ul>
                 </div>
                 <div>
-                  <p className="font-bold text-sm">Diseño UX/UI en Santa Fe Sistemas</p>
+                  <p className="font-bold text-sm">
+                    Diseño UX/UI en Santa Fe Sistemas
+                  </p>
                   <p className="text-sm text-gray-600 text-sm">
                     (Enero 2023 - Mayo 2023)
                   </p>
@@ -603,210 +386,203 @@ function ProjectsSection() {
   }, []);
 
   return (
-    <section id="proyectos" className="px-6 pt-20 md:pt-30 pb-30 bg-gray-100">
+    <section
+      id="proyectos"
+      className="px-6 pt-20 md:pt-30 pb-30 bg-gradient-to-br from-gray-50 via-gray-100 to-purple-50"
+    >
       <div className="max-w-6xl mx-auto">
         <ScrollReveal>
           <div className="flex items-center justify-between mb-8">
             <h2 className="text-5xl md:text-6xl font-bold text-gray-900 font-space-grotesk">
               Proyectos
             </h2>
-            <a
-              href="https://www.behance.net/milagrosdziuban1"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <motion.div
-                className="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center"
-                whileHover={{
-                  scale: 1.1,
-                  backgroundColor: "#9b51e0",
-                  rotateZ: 360,
-                }}
-                transition={{ duration: 0.5 }}
-              >
-                <span className="text-white text-sm font-bold font-space-grotesk">
-                  Be
-                </span>
-              </motion.div>
-            </a>
           </div>
         </ScrollReveal>
-        <div className="space-y-6 grid md:grid-cols-1">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Proyecto 1 - Software de Gestión */}
-          <AnimatedProjectCard delay={0} className="overflow-hidden">
-            <div className="bg-white/50 rounded-3xl p-8 cursor-default">
-              <div className="grid md:grid-cols-[1fr_2fr] items-center gap-16">
-                <motion.div
-                  className={`relative`}
-                  whileHover={{ scale: 1.02, rotateY: 5 }}
-                  transition={{ duration: 0.3 }}
-                  onClick={
-                    !isPlaygroundMode
-                      ? () => (window.location.href = "/proyecto-activa")
-                      : undefined
-                  }
-                >
-                  <Image
-                    src="/imagen/Activa.png"
-                    alt="Proyecto Activa"
-                    width={100}
-                    height={120}
-                    className="w-110 object-cover"
-                  />
-                </motion.div>
-                <div className="space-y-6">
-                  <h3 className="text-2xl font-bold text-gray-900 font-space-grotesk">
+          <AnimatedProjectCard delay={0}>
+            <motion.div
+              className="h-full bg-white/70 backdrop-blur border border-gray-200 
+    rounded-3xl overflow-hidden shadow-sm"
+              whileHover={{
+                y: -6,
+                boxShadow: "0 20px 40px rgba(0,0,0,0.12)",
+              }}
+            >
+              {/* Imagen */}
+              <div className="relative h-56 overflow-hidden">
+                <Image
+                  src="/imagen/Activa.png"
+                  alt="Proyecto Activa"
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+
+              {/* Contenido */}
+              <div className="flex flex-col justify-between p-6 flex-1">
+                <div className="space-y-3">
+                  <h3 className="text-xl font-semibold text-gray-900 font-space-grotesk">
                     Proyecto Activa
                   </h3>
-                  <p className="text-gray-600 leading-relaxed font-manrope">
-                    Actualmente, la empresa Activa enfrenta dificultades para
-                    gestionar sus procesos internos debido a la falta de control
-                    y seguimiento de los mismos. Las tareas administrativas,
-                    operativas y de seguimiento se realizan en diferentes y
-                    múltiples plataformas o de manera manual, lo que genera
-                    ineficiencias, pérdida de tiempo, errores y dificultad para
-                    acceder a la información de manera rápida y efectiva.
+
+                  <p className="text-gray-600 text-sm leading-relaxed font-manrope">
+                    Plataforma de gestión para optimizar procesos internos y
+                    centralizar información operativa.
                   </p>
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <Button
-                      className="bg-gray-700 hover:bg-gray-800 text-white px-6 py-3 rounded-full font-manrope cursor-pointer"
-                      onClick={() =>
-                        (window.location.href = "/proyecto-activa")
-                      }
-                    >
-                      Ver más
-                    </Button>
-                  </motion.div>
                 </div>
+
+                <Button
+                  className="mt-6 w-fit bg-gray-900 hover:bg-purple-600 text-white 
+        px-6 py-2 rounded-full font-manrope"
+                  onClick={() => (window.location.href = "/proyecto-activa")}
+                >
+                  Ver caso →
+                </Button>
               </div>
-            </div>
+            </motion.div>
           </AnimatedProjectCard>
 
           {/* Proyecto 2 - House Plant */}
-          <AnimatedProjectCard delay={0.2} className="overflow-hidden">
-            <div className="bg-white/50 rounded-3xl p-8 cursor-default">
-              <div className="grid md:grid-cols-[1fr_2fr] items-center gap-16">
-                <motion.div
-                  className={`relative ${
-                    isPlaygroundMode ? "cursor-grab active:cursor-grabbing" : ""
-                  }`}
-                  whileHover={{ scale: 1.02, rotateY: -5 }}
-                  transition={{ duration: 0.3 }}
-                  drag={isPlaygroundMode}
-                  dragMomentum={false}
-                  dragElastic={0.1}
-                  whileDrag={
-                    isPlaygroundMode
-                      ? { scale: 1.05, zIndex: 50, rotate: -3 }
-                      : {}
-                  }
-                  onClick={
-                    !isPlaygroundMode
-                      ? () => (window.location.href = "/proyecto-houseplant")
-                      : undefined
-                  }
-                  style={{ pointerEvents: "auto" }}
-                >
-                  <Image
-                    src="/imagen/HousePlant.png"
-                    alt="Proyecto HousePlants"
-                    width={100}
-                    height={200}
-                    className="w-120 object-cover"
-                  />
-                </motion.div>
-                <div className="space-y-7">
-                  <h3 className="text-2xl font-bold text-gray-900 font-space-grotesk">
-                    Proyecto HousePlants
-                  </h3>
-                  <p className="text-gray-600 leading-relaxed font-manrope">
-                    Aplicación móvil que revoluciona el cuidado de plantas de
-                    interior mediante diagnóstico inteligente, recordatorios
-                    personalizados y una comunidad activa de jardineros.
-                    Diseñada para hacer la jardinería doméstica accesible a
-                    todos.
-                  </p>
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <Button
-                      className="bg-gray-700 hover:bg-gray-800 text-white px-6 py-3 rounded-full font-manrope cursor-pointer"
-                      onClick={() =>
-                        (window.location.href = "/proyecto-houseplant")
-                      }
-                    >
-                      Ver más
-                    </Button>
-                  </motion.div>
-                </div>
+          <AnimatedProjectCard delay={0}>
+            <motion.div
+              className="h-full bg-white/70 backdrop-blur border border-gray-200 
+    rounded-3xl overflow-hidden shadow-sm"
+              whileHover={{
+                y: -6,
+                boxShadow: "0 20px 40px rgba(0,0,0,0.12)",
+              }}
+            >
+              <div className="relative h-56 overflow-hidden">
+                <Image
+                  src="/imagen/houseplant.png"
+                  alt="Proyecto House Plant"
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
               </div>
-            </div>
+
+              {/* Contenido */}
+              <div className="flex flex-col justify-between p-6 flex-1">
+                <div className="space-y-3">
+                  <h3 className="text-xl font-semibold text-gray-900 font-space-grotesk">
+                    Proyecto HousePlant
+                  </h3>
+
+                  <p className="text-gray-600 text-sm leading-relaxed font-manrope">
+                    Aplicación móvil para el cuidado de plantas de interior
+                    mediante diagnóstico inteligente, recordatorios
+                    personalizados y una comunidad activa.
+                  </p>
+                </div>
+
+                <Button
+                  className="mt-6 w-fit bg-gray-900 hover:bg-purple-600 text-white 
+        px-6 py-2 rounded-full font-manrope"
+                  onClick={() =>
+                    (window.location.href = "/proyecto-houseplant")
+                  }
+                >
+                  Ver caso →
+                </Button>
+              </div>
+            </motion.div>
           </AnimatedProjectCard>
 
           {/* Proyecto 3 - Fungi Ritual */}
-          <AnimatedProjectCard delay={0.4} className="overflow-hidden">
-            <div className="bg-white/50 rounded-3xl p-8 cursor-default">
-              <div className="grid md:grid-cols-[1fr_2fr] items-center gap-16">
-                <motion.div
-                  className={`relative ${
-                    isPlaygroundMode ? "cursor-grab active:cursor-grabbing" : ""
-                  }`}
-                  whileHover={{ scale: 1.02, rotateY: 5 }}
-                  transition={{ duration: 0.3 }}
-                  drag={isPlaygroundMode}
-                  dragMomentum={false}
-                  dragElastic={0.1}
-                  whileDrag={
-                    isPlaygroundMode
-                      ? { scale: 1.05, zIndex: 50, rotate: 5 }
-                      : {}
-                  }
-                  onClick={
-                    !isPlaygroundMode
-                      ? () => (window.location.href = "/proyecto-fungi-ritual")
-                      : undefined
-                  }
-                  style={{ pointerEvents: "auto" }}
-                >
-                  <Image
-                    src="/imagen/Fungi.png"
-                    alt="Proyecto Fungi Ritual"
-                    width={320}
-                    height={400}
-                    className="w-full h-full object-cover"
-                  />
-                </motion.div>
-                <div className="space-y-6">
-                  <h3 className="text-2xl font-bold text-gray-900 font-space-grotesk">
+          <AnimatedProjectCard delay={0}>
+            <motion.div
+              className="h-full bg-white/70 backdrop-blur border border-gray-200 
+    rounded-3xl overflow-hidden shadow-sm"
+              whileHover={{
+                y: -6,
+                boxShadow: "0 20px 40px rgba(0,0,0,0.12)",
+              }}
+            >
+              {/* Imagen */}
+              <div className="relative h-56 overflow-hidden">
+                <Image
+                  src="/imagen/Fungi.png"
+                  alt="Proyecto Fungi"
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+
+              {/* Contenido */}
+              <div className="flex flex-col justify-between p-6 flex-1">
+                <div className="space-y-3">
+                  <h3 className="text-xl font-semibold text-gray-900 font-space-grotesk">
                     Proyecto Fungi Ritual
                   </h3>
-                  <p className="text-gray-600 leading-relaxed font-manrope">
-                    Plataforma digital inmersiva que conecta tradición y
-                    modernidad en el mundo de los hongos medicinales. Combina
-                    educación ancestral, comercio responsable y experiencias
-                    rituales guiadas en un ecosistema digital único.
+
+                  <p className="text-gray-600 text-sm leading-relaxed font-manrope">
+                    Landingpage centrada en brindar información sobre estos
+                    nuevos adaptogenos y muestra de productos que se tienen a la
+                    venta.
                   </p>
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <Button
-                      className="bg-gray-700 hover:bg-gray-800 text-white px-6 py-3 rounded-full font-manrope cursor-pointer"
-                      onClick={() =>
-                        (window.location.href = "/proyecto-fungi-ritual")
-                      }
-                    >
-                      Ver más
-                    </Button>
-                  </motion.div>
                 </div>
+
+                <Button
+                  className="mt-6 w-fit bg-gray-900 hover:bg-purple-600 text-white 
+        px-6 py-2 rounded-full font-manrope"
+                  onClick={() =>
+                    (window.location.href = "/proyecto-fungi-ritual")
+                  }
+                >
+                  Ver caso →
+                </Button>
               </div>
-            </div>
+            </motion.div>
           </AnimatedProjectCard>
+
+          {/* Proyecto 4 - Jalife */}
+          <AnimatedProjectCard delay={0}>
+            <motion.div
+              className="h-full bg-white/70 backdrop-blur border border-gray-200 
+    rounded-3xl overflow-hidden shadow-sm"
+              whileHover={{
+                y: -6,
+                boxShadow: "0 20px 40px rgba(0,0,0,0.12)",
+              }}
+            >
+              {/* Imagen */}
+              <div className="relative h-56 overflow-hidden">
+                <Image
+                  src="/imagen/Jalife.png"
+                  alt="Proyecto Jalife"
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+
+              {/* Contenido */}
+              <div className="flex flex-col justify-between p-6 flex-1">
+                <div className="space-y-3">
+                  <h3 className="text-xl font-semibold text-gray-900 font-space-grotesk">
+                    Proyecto HousePlant
+                  </h3>
+
+                  <p className="text-gray-600 text-sm leading-relaxed font-manrope">
+                    Proyecto enfocado en rediseñar y modernizar la pagina de la
+                    marca, optimizando la navegación, la presentación de
+                    productos y contenidos.
+                  </p>
+                </div>
+
+                <Button
+                  className="mt-6 w-fit bg-gray-900 hover:bg-purple-600 text-white 
+        px-6 py-2 rounded-full font-manrope"
+                  onClick={() => (window.location.href = "/proyecto-jalife")}
+                >
+                  Ver caso →
+                </Button>
+              </div>
+            </motion.div>
+          </AnimatedProjectCard>
+        </div>
+        <div className="h-full mt-12 grid grid-cols-1">
+         
         </div>
       </div>
     </section>
@@ -831,19 +607,27 @@ function ContactSection() {
   }, []);
 
   return (
-    <section id="contacto" className="px-30 py-30 bg-white">
+    <section
+      id="contacto"
+      className="px-30 py-30 bg-gradient-to-b from-white via-gray-50 to-white
+"
+    >
       <div className="max-w-6xl mx-auto">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <ScrollReveal direction="left">
-            <h2 className="text-6xl font-bold text-gray-900 mb-12 font-space-grotesk">
-              Contactame
+            <h2 className="text-5xl md:text-6xl font-semibold text-gray-900 font-space-grotesk">
+              ¿Hablamos?
             </h2>
+            <p className="text-gray-500 mt-4 max-w-md font-manrope  mb-12">
+              Si te interesa trabajar conmigo o charlar sobre diseño, podés
+              escribirme por cualquiera de estos medios.
+            </p>
             <div className="space-y-6">
               {[
                 {
                   icon: "📧",
-                  text: "milagrosdziuban@gmail.com",
-                  url: "mailto:milagrosdziuban@gmail.com",
+                  text: "milagrosdziuban1@gmail.com",
+                  url: "mailto:milagrosdziuban1@gmail.com",
                 },
                 {
                   icon: "In",
@@ -864,19 +648,27 @@ function ContactSection() {
                   whileHover={{ scale: 1.02, x: 10 }}
                   viewport={{ once: true }}
                 >
-                  <Card className="border border-gray-200 cursor-pointer">
-                    <CardContent className="py-1 px-6">
+                  <Card
+                    className="
+  bg-white/70 backdrop-blur 
+  border border-gray-200 
+  rounded-2xl 
+  shadow-sm
+"
+                  >
+                    <CardContent className="px-6">
                       <a
                         href={item.url}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center space-x-3"
                       >
-                        <div className="w-12 h-12 bg-gray-100 rounded flex items-center justify-center">
-                          <span className="text-lg font-space-grotesk">
+                        <div className="w-12 h-12 rounded-xl bg-gray-100 flex items-center justify-center">
+                          <span className="text-purple-700 font-medium">
                             {item.icon}
                           </span>
                         </div>
+
                         <span className="text-gray-700 font-manrope">
                           {item.text}
                         </span>
@@ -888,7 +680,7 @@ function ContactSection() {
             </div>
             <motion.div
               className="mt-12"
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ y: -3 }}
               whileTap={{ scale: 0.95 }}
             >
               <a
@@ -897,8 +689,18 @@ function ContactSection() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Button className="bg-gray-800 hover:bg-purple-600 text-white px-6 py-2 font-medium rounded-[32px] font-manrope cursor-pointer">
-                  Descargar CV
+                <Button
+                  className="
+  bg-gray-900 
+  hover:bg-purple-600 
+  text-white 
+  px-8 py-3 
+  rounded-full 
+  shadow-lg 
+  font-manrope
+"
+                >
+                  Descargar CV →
                 </Button>
               </a>
             </motion.div>
@@ -936,7 +738,7 @@ export default function Portfolio() {
   return (
     <div className="min-h-screen bg-gray-50 overflow-x-hidden relative">
       <NavigationHeader />
-      <PlaygroundMode />
+      {/* <PlaygroundMode /> */}
       <HeroSection />
       <DesignSection />
       <ProjectsSection />
