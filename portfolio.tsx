@@ -10,12 +10,13 @@ import {
 } from "./components/animated-components";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import NeonGridBackground from "./components/NeonGridBackground";
 
 // Sección Hero
+
 function HeroSection() {
   const [isPlaygroundMode, setIsPlaygroundMode] = useState(false);
 
-  // Escuchar el estado del playground mode
   useEffect(() => {
     const checkPlaygroundMode = () => {
       const context = document.getElementById("playground-context");
@@ -30,90 +31,114 @@ function HeroSection() {
 
   return (
     <section
-      id="inicio"
-      className="px-6 pt-24 md:pt-32 pb-8 bg-gradient-to-br from-gray-50 via-gray-100 to-purple-50
- min-h-screen flex flex-col"
+    id="inicio"
+    className="
+   px-6 pt-28 md:pt-36 pb-12 min-h-screen flex flex-col relative z-10
+    "
     >
-      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-24 items-center flex-1">
+      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-18 items-center flex-1">
+        {/* TEXTO */}
         <motion.div
-          initial={{ opacity: 0, x: -100 }}
+          initial={{ opacity: 0, x: -80 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1, delay: 0.5 }}
+          transition={{ duration: 1 }}
+          className="relative"
         >
-          <span className="uppercase tracking-widest text-sm text-purple-500 font-medium">
-            Portfolio
-          </span>
-          <motion.h1 className="text-5xl md:text-6xl font-medium tracking-tight text-gray-900 mb-6 font-space-grotesk">
-            Hola! Soy Milagros
-          </motion.h1>
+          {/* Badge */}
 
-          <motion.p className="mb-6 text-gray-600 leading-relaxed text-lg font-manrope max-w-xl">
-            Licenciada en Diseño Industrial, especializada en{" "}
-            <span className="text-gray-900 font-semibold">UX/UI</span> y{" "}
-            <span className="text-gray-900 font-semibold">UX Game Design</span>.
-          </motion.p>
+          {/* <div className="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full bg-white/70 backdrop-blur border border-gray-200 shadow-sm">
+            <span className="w-2 h-2 rounded-full bg-purple-500 animate-pulse" />
+            <span className="text-xs uppercase tracking-widest text-gray-700 font-manrope">
+              Disponible para proyectos
+            </span>
+          </div> */}
 
-          <motion.div
-            className="flex space-x-4"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 1.3 }}
-          >
-            {[
-              {
-                label: "Be",
-                url: "https://www.behance.net/milagrosdziuban1",
-              },
-              {
-                label: "In",
-                url: "https://www.linkedin.com/in/milagros-dziuban-dise%C3%B1adora/",
-              },
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                className={`w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center cursor-pointer`}
-                whileHover={{
-                  scale: 1.1,
-                  backgroundColor: "#9b51e0",
-                  rotateY: 180,
-                  transition: { duration: 0.4 },
-                }}
-                whileTap={{ scale: 0.9 }}
-                whileDrag={isPlaygroundMode ? { scale: 1.1, zIndex: 50 } : {}}
-                onClick={
-                  !isPlaygroundMode
-                    ? () => window.open(item.url, "_blank")
-                    : undefined
+          <div className="inline-flex items-center gap-2 mb-6">
+  
+           <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
+             PORTFOLIO
+            </span>
+          </div>
+
+          <h1 className="text-6xl md:text-5xl font-medium tracking-tight text-gray-900 mb-6 font-space-grotesk">
+            Diseño{" "}
+            <span className="bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
+              experiencias
+            </span>
+            <br />
+            digitales que conectan
+          </h1>
+
+          <p className="mb-10 text-gray-600 leading-relaxed text-lg font-manrope max-w-xl">
+            Soy Milagros, diseñadora UX/UI enfocada en crear productos claros,
+            funcionales y visualmente atractivos, centrados en las personas.
+          </p>
+
+          {/* CTAs */}
+          <div className="flex items-center gap-6">
+            <Button
+              onClick={() => {
+                const element = document.getElementById("proyectos");
+                if (element) {
+                  element.scrollIntoView({ behavior: "smooth" });
                 }
-                style={{ pointerEvents: isPlaygroundMode ? "auto" : "auto" }}
-              >
-                <span className="text-white font-bold font-space-grotesk">
-                  {item.label}
-                </span>
-              </motion.div>
-            ))}
-          </motion.div>
+              }}
+              className="
+                bg-gray-900 hover:bg-purple-600 text-white
+                px-4 py-4 rounded-full font-manrope shadow-lg
+                cursor-pointer
+              "
+            >
+              Ver proyectos
+            </Button>
+
+            <button
+              onClick={
+                !isPlaygroundMode
+                  ? () =>
+                      window.open(
+                        "https://www.linkedin.com/in/milagros-dziuban-dise%C3%B1adora/",
+                        "_blank",
+                      )
+                  : undefined
+              }
+              className="
+                text-gray-700 font-manrope font-medium
+                hover:text-purple-600 transition
+                cursor-pointer
+              "
+            >
+              LinkedIn
+            </button>
+          </div>
         </motion.div>
 
+        {/* VISUAL */}
         <motion.div
           className="relative flex items-center justify-center"
-          initial={{ opacity: 0, x: 100 }}
+          initial={{ opacity: 0, x: 80 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          whileHover={{
-            scale: 1.03,
-            rotate: -0.5,
-            transition: { duration: 0.4 },
-          }}
+          transition={{ duration: 1 }}
+          whileHover={{ scale: 1.04 }}
         >
+          {/* Glow */}
           <div
-            className="absolute -inset-10 bg-gradient-to-tr from-purple-200/60 to-pink-200/40 
-            rounded-[40%] blur-3xl animate-pulse"
+            className="
+            absolute -inset-16 
+            bg-gradient-to-tr from-purple-300/50 via-pink-200/40 to-indigo-200/40
+            rounded-[45%] blur-3xl animate-pulse
+          "
           />
-          <div className="relative w-full max-w-[640px] mx-auto">
+
+          {/* Marco glass */}
+          <div
+            className="
+            relative p-3 rounded-2xl
+          "
+          >
             <Image
               src="/yodibujo.png"
-              alt="yo"
+              alt="Retrato ilustrado de Milagros"
               width={1200}
               height={800}
               className="rounded-xl"
@@ -122,166 +147,116 @@ function HeroSection() {
         </motion.div>
       </div>
 
-      {/* Botón Ver más centrado al final */}
+      {/* Flecha scroll */}
       <motion.div
-        className="text-center mt-8 pb-8"
-        initial={{ opacity: 0, y: 50 }}
+        className="text-center mt-6"
+        initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 1.5 }}
+        transition={{ delay: 1.2 }}
       >
         <motion.div
-          whileHover={{
-            scale: 1.1,
-            y: -5,
-            transition: { duration: 0.3 },
-          }}
-          whileTap={{ scale: 0.95 }}
+          whileHover={{ y: 6 }}
+          className="text-gray-500 text-sm font-manrope"
         >
-          <Button
-            onClick={() => {
-              const element = document.getElementById("sobre-mi");
-              if (element) {
-                element.scrollIntoView({ behavior: "smooth" });
-              }
-            }}
-            className="
-  bg-gray-900 
-  hover:bg-purple-600 
-  text-white 
-  px-10 py-4 
-  rounded-full 
-  font-manrope 
-  shadow-lg
-"
-          >
-            Ver más sobre mí →
-          </Button>
+          ↓ Desplazá para explorar
         </motion.div>
       </motion.div>
     </section>
   );
 }
 
-// Sección Design Think Create Inspire
 function DesignSection() {
   return (
-    <section id="sobre-mi" className="px-6 py-30 bg-white">
-      <div className="max-w-6xl mx-auto ">
-        <div className="grid md:grid-cols-2 gap-16 items-start">
+    <section
+      id="sobre-mi"
+      className="
+        px-6 py-32
+       bg-gradient-to-b from-white via-gray-50 to-white
+      "
+    >
+      <div className="max-w-6xl mx-auto">
+
+        {/* HEADER */}
+        <div className="grid md:grid-cols-2 gap-20 items-start mb-12">
+
           <ScrollReveal direction="left">
             <motion.h2
-              className="text-5xl md:text-6xl font-bold text-gray-900 mb-1 leading-tight font-space-grotesk"
+              className="
+                text-5xl md:text-5xl font-medium
+                text-gray-900 leading-tight
+                font-space-grotesk
+              "
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              Design Think
+               Sobre Mí
             </motion.h2>
-            <h3 className="text-5xl md:text-6xl font-bold text-gray-900 mb-12 leading-tight font-space-grotesk">
-              Create Inspire
-            </h3>
-            <div className="relative">
-              <span className="absolute left-0 top-1 w-[2px] h-full" />
-              <p className="text-gray-600 mb-10 text-md max-w-md">
-                Creo experiencias digitales que combinan diseño estratégico,
-                pensamiento centrado en el usuario y una estética visual
-                cuidada.
-              </p>
-            </div>
-            <motion.div whileHover={{ y: -3 }} whileTap={{ scale: 0.95 }}>
-              <a
-                href="/CV_MilagrosDziuban_2025.pdf"
-                download
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Button className=" bg-gray-900 hover:bg-purple-600  text-white  px-8 py-3 rounded-full  shadow-lg font-manrope">
-                  Descargar CV
-                </Button>
-              </a>
-            </motion.div>
           </ScrollReveal>
-          <ScrollReveal direction="right" delay={0.2} className="relative">
-            <div className="grid grid-cols-2 gap-6 mt-2">
+
+          {/* FEATURE CARDS */}
+          {/* <ScrollReveal direction="right" delay={0.2}>
+            <div className="grid grid-cols-2 gap-6">
+
               {[
                 {
-                  bg: "bg-purple-200",
-                  icon: "🕒",
-                  title: "Años de experiencia",
-                  subtitle:
-                    "Creando experiencias desde la investigación hasta el prototipo.",
+                  icon: "🧠",
+                  title: "Pensamiento estratégico",
+                  text: "Decisiones basadas en investigación y objetivos.",
                 },
                 {
-                  bg: "bg-green-200",
                   icon: "💻",
-                  title: "Interfaces limpias",
-                  subtitle:
-                    "Diseño centrado en la accesibilidad, usabilidad y escalabilidad.",
+                  title: "Interfaces claras",
+                  text: "Usabilidad, accesibilidad y escalabilidad.",
                 },
                 {
-                  bg: "bg-pink-200",
                   icon: "🎨",
-                  title: "Experiencia en diseño",
-                  subtitle:
-                    "Testing, handoff y validación constante con desarrolladores",
+                  title: "Diseño visual",
+                  text: "Estética cuidada y consistente.",
                 },
                 {
-                  bg: "bg-blue-200",
-                  icon: "💙",
-                  title: "Diseño de librerías",
-                  subtitle: "Componentes modulares, documentados y escalables.",
+                  icon: "🧩",
+                  title: "Sistemas de diseño",
+                  text: "Componentes documentados.",
                 },
                 {
-                  bg: "bg-yellow-200",
-                  icon: "✍️",
-                  title: "Prototipos claros",
-                  subtitle: "Entregables que mejoran la comunicación con Devs",
+                  icon: "⚡",
+                  title: "Prototipado",
+                  text: "Flujos claros y testeables.",
                 },
                 {
-                  bg: "bg-teal-200",
-                  icon: "🎯",
-                  title: " Tendencias con criterio",
-                  subtitle: "Actualizada con las nuevas tendencias UX/UI.",
+                  icon: "🚀",
+                  title: "Evolución constante",
+                  text: "Actualizada en tendencias.",
                 },
               ].map((item, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  whileHover={{
-                    y: -6,
-                    boxShadow: "0 20px 40px rgba(0,0,0,0.12)",
-                  }}
-                  viewport={{ once: true }}
+                  whileHover={{ y: -6 }}
+                  className="
+                    bg-white/60 backdrop-blur
+                    border border-white/40
+                    rounded-2xl p-6 shadow-sm
+                  "
                 >
-                  <Card className="bg-white/70 backdrop-blur border border-gray-200 shadow-sm rounded-2xl">
-                    <CardContent className="py-1 px-6">
-                      <motion.div
-                        className="w-10 h-10 bg-white/30 rounded-lg mb-4 flex items-center justify-center"
-                        transition={{ duration: 0.5 }}
-                      >
-                        <div className="w-10 h-10 rounded-xl bg-black/5 flex items-center justify-center">
-                          <span className="text-lg">{item.icon}</span>
-                        </div>
-                      </motion.div>
-                      <h4 className="font-semibold text-black mb-4 text-lg leading-tight font-manrope">
-                        {item.title}
-                      </h4>
-                      <p className="text-black/80 text-xs leading-tight font-manrope">
-                        {item.subtitle}
-                      </p>
-                    </CardContent>
-                  </Card>
+                  <div className="text-2xl mb-3">{item.icon}</div>
+                  <h4 className="font-manrope font-semibold mb-2">
+                    {item.title}
+                  </h4>
+                  <p className="text-sm text-gray-600">
+                    {item.text}
+                  </p>
                 </motion.div>
               ))}
+
             </div>
-          </ScrollReveal>
+          </ScrollReveal> */}
         </div>
 
-        {/* Nueva sección de Formación y Experiencia */}
-        <div className="mt-8 grid md:grid-cols-2 gap-12">
-          <ScrollReveal direction="left" delay={0.4}>
+        {/* EXPERIENCE */}
+        <div className="grid md:grid-cols-2 gap-12">
+
+            <ScrollReveal direction="left" delay={0.4}>
             <div className="bg-white/70 p-8 h-full backdrop-blur border border-gray-200 shadow-sm rounded-2xl">
               <h3 className="text-2xl font-bold text-gray-900 mb-4 font-space-grotesk text-lg">
                 FORMACIÓN ACADÉMICA
@@ -363,6 +338,7 @@ function DesignSection() {
               </div>
             </div>
           </ScrollReveal>
+
         </div>
       </div>
     </section>
@@ -372,7 +348,6 @@ function DesignSection() {
 function ProjectsSection() {
   const [isPlaygroundMode, setIsPlaygroundMode] = useState(false);
 
-  // Escuchar el estado del playground mode
   useEffect(() => {
     const checkPlaygroundMode = () => {
       const context = document.getElementById("playground-context");
@@ -385,204 +360,126 @@ function ProjectsSection() {
     return () => clearInterval(interval);
   }, []);
 
+  const projects = [
+    {
+      title: "Proyecto Activa",
+      description:
+        "Plataforma de gestión para optimizar procesos internos y centralizar información operativa.",
+      image: "/Activa.png",
+      url: "/proyecto-activa",
+      tags: ["UX/UI", "Web App", "Research"],
+    },
+    {
+      title: "Proyecto HousePlant",
+      description:
+        "App móvil para el cuidado de plantas mediante diagnóstico inteligente y recordatorios personalizados.",
+      image: "/HousePlant.png",
+      url: "/proyecto-houseplant",
+      tags: ["UX/UI", "Mobile App"],
+    },
+    {
+      title: "Proyecto Fungi Ritual",
+      description:
+        "Landing page informativa con catálogo de productos y enfoque en conversión.",
+      image: "/FungiRitual.png",
+      url: "/proyecto-fungi-ritual",
+      tags: ["UX/UI", "Landing Page"],
+    },
+    {
+      title: "Proyecto Jalife",
+      description:
+        "Rediseño y modernización de e-commerce con foco en navegación y contenidos.",
+      image: "/Jalife.png",
+      url: "/proyecto-jalife",
+      tags: ["UX/UI", "E-commerce"],
+    },
+  ];
+
   return (
     <section
       id="proyectos"
-      className="px-6 pt-20 md:pt-30 pb-30 bg-gradient-to-br from-gray-50 via-gray-100 to-purple-50"
+      className="
+        px-6 pt-28 pb-32
+        bg-gradient-to-br from-[#f7f7fb] via-[#f1f1f6] to-[#f5edff]
+      "
     >
       <div className="max-w-6xl mx-auto">
+
+        {/* Header */}
         <ScrollReveal>
-          <div className="flex items-center justify-between mb-8">
-            <h2 className="text-5xl md:text-6xl font-bold text-gray-900 font-space-grotesk">
+          <div className="mb-16 max-w-2xl">
+            <span className="uppercase tracking-widest text-sm text-purple-500 font-manrope">
+              TRABAJOS SELECCIONADOS
+            </span>
+
+            <h2 className="text-5xl md:text-6xl font-medium text-gray-900 font-space-grotesk mt-2">
               Proyectos
             </h2>
           </div>
         </ScrollReveal>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Proyecto 1 - Software de Gestión */}
-          <AnimatedProjectCard delay={0}>
+
+        {/* Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+
+          {projects.map((project, index) => (
             <motion.div
-              className="h-full bg-white/70 backdrop-blur border border-gray-200 
-    rounded-3xl overflow-hidden shadow-sm"
-              whileHover={{
-                y: -6,
-                boxShadow: "0 20px 40px rgba(0,0,0,0.12)",
-              }}
+              key={index}
+              className="group relative rounded-3xl overflow-hidden cursor-pointer"
+              whileHover={{ y: -8 }}
+              transition={{ duration: 0.4 }}
+              onClick={
+                !isPlaygroundMode
+                  ? () => (window.location.href = project.url)
+                  : undefined
+              }
             >
               {/* Imagen */}
-              <div className="relative h-56 overflow-hidden">
+              <div className="relative h-[360px] overflow-hidden">
                 <Image
-                  src="/imagen/Activa.png"
-                  alt="Proyecto Activa"
+                  src={project.image}
+                  alt={project.title}
                   fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
                 />
               </div>
 
-              {/* Contenido */}
-              <div className="flex flex-col justify-between p-6 flex-1">
-                <div className="space-y-3">
-                  <h3 className="text-xl font-semibold text-gray-900 font-space-grotesk">
-                    Proyecto Activa
-                  </h3>
-
-                  <p className="text-gray-600 text-sm leading-relaxed font-manrope">
-                    Plataforma de gestión para optimizar procesos internos y
-                    centralizar información operativa.
-                  </p>
+              {/* Overlay */}
+              <div
+                className="
+                  absolute inset-0 
+                  bg-gradient-to-t from-black/90 via-black/60 to-transparent
+                  opacity-0 group-hover:opacity-100
+                  transition duration-500
+                  flex flex-col justify-end p-8
+                "
+              >
+                {/* Tags */}
+                <div className="flex flex-wrap gap-2 mb-3">
+                  {project.tags.map((tag, i) => (
+                    <span
+                      key={i}
+                      className="text-xs px-3 py-1 rounded-full bg-white/20 backdrop-blur text-white"
+                    >
+                      {tag}
+                    </span>
+                  ))}
                 </div>
 
-                <Button
-                  className="mt-6 w-fit bg-gray-900 hover:bg-purple-600 text-white 
-        px-6 py-2 rounded-full font-manrope"
-                  onClick={() => (window.location.href = "/proyecto-activa")}
-                >
+                <h3 className="text-2xl font-space-grotesk text-white mb-2">
+                  {project.title}
+                </h3>
+
+                <p className="text-white/80 text-sm mb-4 max-w-md">
+                  {project.description}
+                </p>
+
+                <span className="text-white underline underline-offset-4">
                   Ver caso →
-                </Button>
+                </span>
               </div>
             </motion.div>
-          </AnimatedProjectCard>
+          ))}
 
-          {/* Proyecto 2 - House Plant */}
-          <AnimatedProjectCard delay={0}>
-            <motion.div
-              className="h-full bg-white/70 backdrop-blur border border-gray-200 
-    rounded-3xl overflow-hidden shadow-sm"
-              whileHover={{
-                y: -6,
-                boxShadow: "0 20px 40px rgba(0,0,0,0.12)",
-              }}
-            >
-              <div className="relative h-56 overflow-hidden">
-                <Image
-                  src="/imagen/houseplant.png"
-                  alt="Proyecto House Plant"
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-              </div>
-
-              {/* Contenido */}
-              <div className="flex flex-col justify-between p-6 flex-1">
-                <div className="space-y-3">
-                  <h3 className="text-xl font-semibold text-gray-900 font-space-grotesk">
-                    Proyecto HousePlant
-                  </h3>
-
-                  <p className="text-gray-600 text-sm leading-relaxed font-manrope">
-                    Aplicación móvil para el cuidado de plantas de interior
-                    mediante diagnóstico inteligente, recordatorios
-                    personalizados y una comunidad activa.
-                  </p>
-                </div>
-
-                <Button
-                  className="mt-6 w-fit bg-gray-900 hover:bg-purple-600 text-white 
-        px-6 py-2 rounded-full font-manrope"
-                  onClick={() =>
-                    (window.location.href = "/proyecto-houseplant")
-                  }
-                >
-                  Ver caso →
-                </Button>
-              </div>
-            </motion.div>
-          </AnimatedProjectCard>
-
-          {/* Proyecto 3 - Fungi Ritual */}
-          <AnimatedProjectCard delay={0}>
-            <motion.div
-              className="h-full bg-white/70 backdrop-blur border border-gray-200 
-    rounded-3xl overflow-hidden shadow-sm"
-              whileHover={{
-                y: -6,
-                boxShadow: "0 20px 40px rgba(0,0,0,0.12)",
-              }}
-            >
-              {/* Imagen */}
-              <div className="relative h-56 overflow-hidden">
-                <Image
-                  src="/imagen/Fungi.png"
-                  alt="Proyecto Fungi"
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-              </div>
-
-              {/* Contenido */}
-              <div className="flex flex-col justify-between p-6 flex-1">
-                <div className="space-y-3">
-                  <h3 className="text-xl font-semibold text-gray-900 font-space-grotesk">
-                    Proyecto Fungi Ritual
-                  </h3>
-
-                  <p className="text-gray-600 text-sm leading-relaxed font-manrope">
-                    Landingpage centrada en brindar información sobre estos
-                    nuevos adaptogenos y muestra de productos que se tienen a la
-                    venta.
-                  </p>
-                </div>
-
-                <Button
-                  className="mt-6 w-fit bg-gray-900 hover:bg-purple-600 text-white 
-        px-6 py-2 rounded-full font-manrope"
-                  onClick={() =>
-                    (window.location.href = "/proyecto-fungi-ritual")
-                  }
-                >
-                  Ver caso →
-                </Button>
-              </div>
-            </motion.div>
-          </AnimatedProjectCard>
-
-          {/* Proyecto 4 - Jalife */}
-          <AnimatedProjectCard delay={0}>
-            <motion.div
-              className="h-full bg-white/70 backdrop-blur border border-gray-200 
-    rounded-3xl overflow-hidden shadow-sm"
-              whileHover={{
-                y: -6,
-                boxShadow: "0 20px 40px rgba(0,0,0,0.12)",
-              }}
-            >
-              {/* Imagen */}
-              <div className="relative h-56 overflow-hidden">
-                <Image
-                  src="/imagen/Jalife.png"
-                  alt="Proyecto Jalife"
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-              </div>
-
-              {/* Contenido */}
-              <div className="flex flex-col justify-between p-6 flex-1">
-                <div className="space-y-3">
-                  <h3 className="text-xl font-semibold text-gray-900 font-space-grotesk">
-                    Proyecto Jalife (En progreso)
-                  </h3>
-
-                  <p className="text-gray-600 text-sm leading-relaxed font-manrope">
-                    Proyecto enfocado en rediseñar y modernizar la pagina de la
-                    marca, optimizando la navegación, la presentación de
-                    productos y contenidos.
-                  </p>
-                </div>
-
-                <Button
-                  className="mt-6 w-fit bg-gray-900 hover:bg-purple-600 text-white 
-        px-6 py-2 rounded-full font-manrope"
-                  onClick={() => (window.location.href = "/proyecto-jalife")}
-                >
-                  Ver caso →
-                </Button>
-              </div>
-            </motion.div>
-          </AnimatedProjectCard>
-        </div>
-        <div className="h-full mt-12 grid grid-cols-1">
-         
         </div>
       </div>
     </section>
@@ -593,7 +490,6 @@ function ProjectsSection() {
 function ContactSection() {
   const [isPlaygroundMode, setIsPlaygroundMode] = useState(false);
 
-  // Escuchar el estado del playground mode
   useEffect(() => {
     const checkPlaygroundMode = () => {
       const context = document.getElementById("playground-context");
@@ -609,78 +505,92 @@ function ContactSection() {
   return (
     <section
       id="contacto"
-      className="px-30 py-30 bg-gradient-to-b from-white via-gray-50 to-white
-"
+      className="
+        px-6 py-32
+        bg-gradient-to-br from-[#f7f7fb] via-[#f1f1f6] to-[#f5edff]
+      "
     >
       <div className="max-w-6xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+
+        <div className="grid md:grid-cols-2 gap-20 items-center">
+
+          {/* TEXTO */}
           <ScrollReveal direction="left">
-            <h2 className="text-5xl md:text-6xl font-semibold text-gray-900 font-space-grotesk">
+            <span className="uppercase tracking-widest text-sm text-purple-500 font-manrope">
+              Contacto
+            </span>
+
+            <h2 className="text-5xl md:text-6xl font-medium text-gray-900 font-space-grotesk mt-3">
               ¿Hablamos?
             </h2>
-            <p className="text-gray-500 mt-4 max-w-md font-manrope  mb-12">
-              Si te interesa trabajar conmigo o charlar sobre diseño, podés
-              escribirme por cualquiera de estos medios.
+
+            <p className="text-gray-600 mt-6 max-w-md font-manrope text-lg">
+              Si tenés un proyecto en mente o querés charlar sobre diseño,
+              escribime por cualquiera de estos medios.
             </p>
-            <div className="space-y-6">
+
+            {/* CONTACTOS */}
+            <div className="mt-12 space-y-4">
+
               {[
                 {
-                  icon: "📧",
+                  icon: "✉️",
                   text: "milagrosdziuban1@gmail.com",
                   url: "mailto:milagrosdziuban1@gmail.com",
                 },
                 {
-                  icon: "In",
-                  text: "Milagros Dziuban",
+                  icon: "in",
+                  text: "LinkedIn",
                   url: "https://www.linkedin.com/in/milagros-dziuban-dise%C3%B1adora/",
                 },
                 {
-                  icon: "Be",
-                  text: "MilagrosDziuban",
+                  icon: "be",
+                  text: "Behance",
                   url: "https://www.behance.net/milagrosdziuban1",
                 },
               ].map((item, index) => (
-                <motion.div
+                <motion.a
                   key={index}
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="
+                    group flex items-center gap-4
+                    bg-white/60 backdrop-blur
+                    border border-white/40
+                    rounded-2xl px-6 py-4
+                    shadow-sm
+                    hover:bg-white/80
+                    transition
+                  "
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  whileHover={{ scale: 1.02, x: 10 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
                 >
-                  <Card
+                  <div
                     className="
-  bg-white/70 backdrop-blur 
-  border border-gray-200 
-  rounded-2xl 
-  shadow-sm
-"
+                      w-12 h-12 rounded-xl
+                      bg-gray-900 text-white
+                      flex items-center justify-center
+                      font-manrope
+                    "
                   >
-                    <CardContent className="px-6">
-                      <a
-                        href={item.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center space-x-3"
-                      >
-                        <div className="w-12 h-12 rounded-xl bg-gray-100 flex items-center justify-center">
-                          <span className="text-purple-700 font-medium">
-                            {item.icon}
-                          </span>
-                        </div>
+                    {item.icon}
+                  </div>
 
-                        <span className="text-gray-700 font-manrope">
-                          {item.text}
-                        </span>
-                      </a>
-                    </CardContent>
-                  </Card>
-                </motion.div>
+                  <span className="font-manrope text-gray-800">
+                    {item.text}
+                  </span>
+                </motion.a>
               ))}
+
             </div>
+
+            {/* CTA */}
             <motion.div
               className="mt-12"
-              whileHover={{ y: -3 }}
+              whileHover={{ y: -4 }}
               whileTap={{ scale: 0.95 }}
             >
               <a
@@ -691,43 +601,52 @@ function ContactSection() {
               >
                 <Button
                   className="
-  bg-gray-900 
-  hover:bg-purple-600 
-  text-white 
-  px-8 py-3 
-  rounded-full 
-  shadow-lg 
-  font-manrope
-"
+                    bg-gray-900 hover:bg-purple-600
+                    text-white px-8 py-4
+                    rounded-full shadow-lg
+                    font-manrope
+                  "
                 >
-                  Descargar CV →
+                  Descargar CV
                 </Button>
               </a>
             </motion.div>
+
           </ScrollReveal>
-          <ScrollReveal
-            direction="right"
-            delay={0.2}
-            className="relative flex justify-end"
-          >
+
+          {/* IMAGEN */}
+          <ScrollReveal direction="right" delay={0.2}>
             <motion.div
-              className={`relative z-10`}
-              transition={{
-                duration: 3,
-                repeat: Number.POSITIVE_INFINITY,
-              }}
+              className="relative flex justify-center"
+              whileHover={{ scale: 1.03 }}
             >
-              <div className="w-120 h-130 rounded-4xl overflow-hidden relative">
+              {/* Glow */}
+              <div
+                className="
+                  absolute -inset-12
+                  bg-gradient-to-tr from-purple-300/40 to-pink-300/30
+                  rounded-[40%] blur-3xl
+                "
+              />
+
+              {/* Marco glass */}
+              <div
+                className="
+                  relative p-3
+                  rounded-3xl
+                "
+              >
                 <Image
                   src="/imagen/pngcv.png"
-                  alt="Milagros - UX/UI Designer"
-                  width={320}
-                  height={400}
-                  className="w-full h-full object-cover"
+                  alt="Milagros UX/UI Designer"
+                  width={420}
+                  height={480}
+                  className="rounded-2xl object-cover"
                 />
               </div>
             </motion.div>
           </ScrollReveal>
+
         </div>
       </div>
     </section>
@@ -739,6 +658,7 @@ export default function Portfolio() {
     <div className="min-h-screen bg-gray-50 overflow-x-hidden relative">
       <NavigationHeader />
       {/* <PlaygroundMode /> */}
+      <NeonGridBackground />
       <HeroSection />
       <DesignSection />
       <ProjectsSection />
