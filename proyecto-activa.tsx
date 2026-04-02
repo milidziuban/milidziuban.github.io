@@ -86,8 +86,8 @@ function DesignCarousel() {
                   index === currentSlide
                     ? 0
                     : index < currentSlide
-                    ? -100
-                    : 100,
+                      ? -100
+                      : 100,
               }}
               transition={{ duration: 0.5, ease: "easeInOut" }}
             >
@@ -186,208 +186,138 @@ export default function ProyectoActiva() {
       <NavigationHeader />
 
       {/* Project Header */}
-      <section className="px-6 py-32 bg-gray-100">
+      <section className="relative px-6 py-32 bg-[#f5f7fb] overflow-hidden">
         <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -100 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1, delay: 0.5 }}
-            >
-              <motion.h1
-                className="text-5xl font-bold text-gray-900 mb-6"
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.7 }}
-              >
-                Proyecto <span className="font-normal">Activa</span>
-              </motion.h1>
-              <motion.p
-                className="text-gray-600 leading-relaxed mb-8"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.9 }}
-              >
-                Plataforma integral que permite optimizar y centralizar los
-                procesos de la empresa, reduciendo la carga manual, mejorando la
-                eficiencia y facilitando el acceso a la información de forma
-                clara y ordenada.
-              </motion.p>
-              <motion.div
-                className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: 1.1 }}
-                whileHover={{
-                  scale: 1.2,
-                  backgroundColor: "#9b51e0",
-                  rotateZ: 360,
-                }}
-              >
-                <a
-                  href="https://www.behance.net/gallery/225209813/Gestion-de-empresas" // Reemplazá por tu URL
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <motion.div
-                    className="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center"
-                    whileHover={{
-                      scale: 1.1,
-                      backgroundColor: "#9b51e0",
-                      rotateZ: 360,
-                    }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    <span className="text-white text-sm font-bold">Be</span>
-                  </motion.div>
-                </a>
-              </motion.div>
-            </motion.div>
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+            <div>
+              {/* tags */}
+              <div className="flex gap-3 mb-6 text-sm text-gray-600">
+                <span className="px-3 py-1 bg-white rounded-full border">
+                  Diseño UX/UI
+                </span>
+                <span className="px-3 py-1 bg-white rounded-full border">
+                  Desktop App
+                </span>
+                <span className="px-3 py-1 bg-white rounded-full border">
+                  2025
+                </span>
+              </div>
+
+              <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+                Proyecto <span className="text-blue-500 font-bold">Activa</span>
+              </h1>
+
+              <p className="text-lg text-gray-600 max-w-xl leading-relaxed mb-10">
+                Plataforma diseñada para optimizar y centralizar procesos
+                internos, mejorando la eficiencia operativa y facilitando el
+                acceso a la información en tiempo real.
+              </p>
+
+              <div className="grid grid-cols-3 gap-6 text-sm">
+                <div>
+                  <p className="text-gray-400 mb-1">Rol</p>
+                  <p className="text-gray-900 font-medium">UX/UI Designer</p>
+                </div>
+
+                <div>
+                  <p className="text-gray-400 mb-1">Duración</p>
+                  <p className="text-gray-900 font-medium">3 meses</p>
+                </div>
+
+                <div>
+                  <p className="text-gray-400 mb-1">Herramientas</p>
+                  <p className="text-gray-900 font-medium">
+                    Figma, FigJam, Visual Studio Code
+                  </p>
+                </div>
+              </div>
+            </div>
 
             <motion.div
-              className="relative"
-              initial={{ opacity: 0, x: 100 }}
+              className="relative flex justify-center"
+              initial={{ opacity: 0, x: 60 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
+              transition={{ duration: 0.8 }}
             >
-              <div>
+              <motion.div
+                className="rounded-2xl overflow-hidden"
+                transition={{ type: "spring", stiffness: 120 }}
+              >
                 <Image
                   src="/imagen/Activa.png"
-                  alt="PortadaActiva"
-                  width={320}
-                  height={400}
-                  className="w-full h-full object-cover"
+                  alt="Activa preview"
+                  width={500}
+                  height={600}
+                  className="object-cover w-full h-full"
                 />
-              </div>
+              </motion.div>
+
+              <div className="absolute -bottom-6 w-[70%] h-10 bg-indigo-500/20 blur-2xl rounded-full" />
             </motion.div>
           </div>
         </div>
       </section>
 
       {/* Software Interface + Problem & Objective */}
-      <section className="px-6 py-16 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-start">
-            {/* Software Interface - Izquierda */}
-            <ScrollReveal direction="left">
-              <motion.div
-                whileHover={{ scale: 1.02, rotateY: 5 }}
-                transition={{ duration: 0.3 }}
-                style={{ transformStyle: "preserve-3d" }}
-              >
-                <Card className="overflow-hidden rounded-xl border py-1 shadow-sm">
-                  <CardContent className="p-4">
-                    <h2 className="text-3xl font-bold text-gray-500 mb-6">
-                      Software de Gestión
-                    </h2>
-                    <div className="bg-white rounded-lg p-6 shadow-lg">
-                      <div className="flex items-center justify-between mb-6">
-                        <div className="flex space-x-4">
-                          <div className="w-3 h-3 bg-red-400 rounded-full"></div>
-                          <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
-                          <div className="w-3 h-3 bg-green-400 rounded-full"></div>
-                        </div>
-                        <div className="text-sm text-gray-500">Dashboard</div>
-                      </div>
+      <section className="relative px-6 py-24 bg-white overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(99,102,241,0.08),transparent_50%)]" />
 
-                      <div className="grid grid-cols-4 gap-4 mb-6">
-                        <div className="col-span-1 space-y-3">
-                          <motion.div
-                            className="h-4 bg-gray-200 rounded"
-                            animate={{ width: ["0%", "100%"] }}
-                            transition={{ duration: 2, delay: 1 }}
-                          />
-                          <motion.div
-                            className="h-4 bg-gray-200 rounded w-3/4"
-                            animate={{ width: ["0%", "75%"] }}
-                            transition={{ duration: 2, delay: 1.2 }}
-                          />
-                          <motion.div
-                            className="h-4 bg-gray-200 rounded w-1/2"
-                            animate={{ width: ["0%", "50%"] }}
-                            transition={{ duration: 2, delay: 1.4 }}
-                          />
-                        </div>
-                        <div className="col-span-3">
-                          <div className="grid grid-cols-3 gap-4 mb-4">
-                            {[
-                              { bg: "bg-blue-100" },
-                              { bg: "bg-green-100" },
-                              { bg: "bg-yellow-100" },
-                            ].map((item, index) => (
-                              <motion.div
-                                key={index}
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{
-                                  duration: 0.6,
-                                  delay: 1.5 + index * 0.1,
-                                }}
-                              >
-                                <Card>
-                                  <CardContent className="p-3">
-                                    <div
-                                      className={`h-8 ${item.bg} rounded mb-2`}
-                                    ></div>
-                                    <div className="h-3 bg-gray-200 rounded"></div>
-                                  </CardContent>
-                                </Card>
-                              </motion.div>
-                            ))}
-                          </div>
-                          <motion.div
-                            className="h-32 bg-gray-100 rounded flex items-center justify-center"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ duration: 0.8, delay: 2 }}
-                          >
-                            <div className="text-gray-400">
-                              Gráfico de datos
-                            </div>
-                          </motion.div>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            </ScrollReveal>
+        <div className="max-w-6xl mx-auto relative z-10">
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+            {/* Imagen */}
+            <motion.div
+              className="relative flex justify-center"
+              initial={{ opacity: 0, x: 60 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              whileHover={{ scale: 1.02, rotateY: 5 }}
+            >
+              <Image
+                src="/problemayobjetivo1.png"
+                alt="Activa preview"
+                width={120}
+                height={200}
+                className="w-130 h-120 object-cover rounded-2xl"
+              />
+            </motion.div>
 
-            {/* Problem & Objective - Derecha */}
             <ScrollReveal direction="right" delay={0.2}>
               <div className="space-y-12">
                 {/* Problema */}
                 <div>
-                  <h2 className="text-4xl font-bold text-gray-900 mb-6">
+                  <span className="text-2xl font-bold text-black-800 font-bold">
                     Problema
-                  </h2>
-                  <p className="text-gray-600 leading-relaxed mb-6">
+                  </span>
+
+                  <p className="text-gray-600 leading-relaxed mb-2">
                     La empresa Activa enfrenta dificultades para gestionar sus
-                    procesos internos debido a la falta de control y
-                    organización adecuada.
+                    procesos internos debido a la falta de organización y
+                    control.
                   </p>
+
                   <p className="text-gray-600 leading-relaxed">
-                    Las tareas administrativas, operativas y de seguimiento se
-                    realizan de manera manual, lo que genera ineficiencias,
-                    pérdida de tiempo, errores y dificultad para acceder a la
-                    información de manera rápida y precisa.
+                    Las tareas administrativas y operativas se realizan de forma
+                    manual, generando ineficiencias, errores y dificultades para
+                    acceder a la información de manera rápida y clara.
                   </p>
                 </div>
 
                 {/* Objetivo */}
                 <div>
-                  <h2 className="text-4xl font-bold text-gray-900 mb-6">
+                  <span className="text-2xl font-bold text-black-800 font-bold">
                     Objetivo
-                  </h2>
-                  <p className="text-gray-600 leading-relaxed mb-6">
-                    Diseñar una plataforma personalizada que permita gestionar
-                    los procesos internos de manera centralizada, eficiente e
-                    intuitiva. Se busca centralizar la información en una única
-                    herramienta, mejorar la experiencia de los usuarios
-                    internos, facilitar el seguimiento de tareas, optimizar los
-                    tiempos de trabajo y minimizar errores operativos. La
-                    solución deberá ser flexible para adaptarse a las
-                    necesidades actuales y futuras de la empresa.
+                  </span>
+
+                  <p className="text-gray-600 leading-relaxed">
+                    Diseñar una plataforma centralizada que optimice la gestión
+                    de procesos internos, mejore la experiencia de los usuarios
+                    y reduzca errores operativos.
+                  </p>
+
+                  <p className="text-gray-600 leading-relaxed">
+                    La solución busca facilitar el seguimiento de tareas,
+                    optimizar tiempos y adaptarse a las necesidades futuras de
+                    la empresa.
                   </p>
                 </div>
               </div>
@@ -397,84 +327,78 @@ export default function ProyectoActiva() {
       </section>
 
       {/* Design Thinking */}
-<section className="bg-white py-16">
-  <div className="max-w-6xl mx-auto px-4">
-    <h2 className="text-4xl font-bold text-gray-900 mb-12 text-center">
-      Design Thinking
-    </h2>
+      <section className="bg-white py-16">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-4xl font-bold text-gray-900 mb-12 text-center">
+            Design Thinking
+          </h2>
 
-    <div className="grid grid-cols-1 md:grid-cols-5 gap-8 text-center">
-      {/* Empatizar */}
-      <div>
-        <div className="w-20 h-20 mx-auto mb-4">
-          <img src="/imagen/empatizar.png" alt="Empatizar" />
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-8 text-center">
+            {/* Empatizar */}
+            <div>
+              <div className="w-20 h-20 mx-auto mb-4">
+                <img src="/imagen/empatizar.png" alt="Empatizar" />
+              </div>
+              <h3 className="text-xl font-semibold">Empatizar</h3>
+              <p className="text-gray-800 text-sm mt-2">
+                Entrevistas con usuarios
+              </p>
+            </div>
+
+            {/* Definir */}
+            <div>
+              <div className="w-20 h-20 mx-auto mb-4">
+                <img src="/imagen/definir.png" alt="Definir" />
+              </div>
+              <h3 className="text-xl font-semibold">Definir</h3>
+              <p className="text-gray-800 text-sm mt-2">
+                Identificación de necesidades
+              </p>
+            </div>
+
+            {/* Idear */}
+            <div>
+              <div className="w-20 h-20 mx-auto mb-4">
+                <img src="/imagen/idear.png" alt="Idear" />
+              </div>
+              <h3 className="text-xl font-semibold">Idear</h3>
+              <p className="text-gray-800 text-sm mt-2">
+                Brainstorming + Benchmark
+              </p>
+            </div>
+
+            {/* Prototipar */}
+            <div>
+              <div className="w-20 h-20 mx-auto mb-4">
+                <img src="/imagen/prototipar.png" alt="Prototipar" />
+              </div>
+              <h3 className="text-xl font-semibold">Prototipar</h3>
+              <p className="text-gray-800 text-sm mt-2">
+                Wireframes de baja fidelidad
+              </p>
+            </div>
+
+            {/* Testear */}
+            <div>
+              <div className="w-20 h-20 mx-auto mb-4">
+                <img src="/imagen/testear.png" alt="Testear" />
+              </div>
+              <h3 className="text-xl font-semibold">Testear</h3>
+              <p className="text-gray-800 text-sm mt-2">
+                Validación con usuarios
+              </p>
+            </div>
+          </div>
         </div>
-        <h3 className="text-xl font-semibold">Empatizar</h3>
-        <p className="text-gray-800 text-sm mt-2">
-          Entrevistas con usuarios
-        </p>
-      </div>
-
-      {/* Definir */}
-      <div>
-        <div className="w-20 h-20 mx-auto mb-4">
-          <img src="/imagen/definir.png" alt="Definir" />
-        </div>
-        <h3 className="text-xl font-semibold">Definir</h3>
-        <p className="text-gray-800 text-sm mt-2">
-          Identificación de necesidades
-        </p>
-      </div>
-
-      {/* Idear */}
-      <div>
-        <div className="w-20 h-20 mx-auto mb-4">
-          <img src="/imagen/idear.png" alt="Idear" />
-        </div>
-        <h3 className="text-xl font-semibold">Idear</h3>
-        <p className="text-gray-800 text-sm mt-2">
-          Brainstorming + Benchmark
-        </p>
-      </div>
-
-      {/* Prototipar */}
-      <div>
-        <div className="w-20 h-20 mx-auto mb-4">
-          <img src="/imagen/prototipar.png" alt="Prototipar" />
-        </div>
-        <h3 className="text-xl font-semibold">Prototipar</h3>
-        <p className="text-gray-800 text-sm mt-2">
-          Wireframes de baja fidelidad
-        </p>
-      </div>
-
-      {/* Testear */}
-      <div>
-        <div className="w-20 h-20 mx-auto mb-4">
-          <img src="/imagen/testear.png" alt="Testear" />
-        </div>
-        <h3 className="text-xl font-semibold">Testear</h3>
-        <p className="text-gray-800 text-sm mt-2">
-          Validación con usuarios
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
+      </section>
 
       {/* Arquitectura */}
       <section className="px-6 py-16 bg-white">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
-           
-
             {/* Imagen */}
             <ScrollReveal direction="left">
-              <motion.div
-                whileHover={{ scale: 1.02, rotateY: 5 }}
-                transition={{ duration: 0.3 }}
-              >
+              <motion.div transition={{ duration: 0.3 }}>
                 <Image
                   src="/arqActiva.png"
                   alt="arquitectura"
@@ -485,19 +409,26 @@ export default function ProyectoActiva() {
               </motion.div>
             </ScrollReveal>
 
-             {/* Texto */}
+            {/* Texto */}
             <ScrollReveal direction="right" delay={0.2}>
               <div className="space-y-12">
                 {/* Problema */}
                 <div>
-                  <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                    Arquitectura
-                  </h2>
+                  <div className="mb-6">
+                    <h2 className="text-2xl font-bold text-gray-900">
+                      Arquitectura
+                    </h2>
+                    <p className="text-gray-400">
+                      Estructurando la información y flujos
+                    </p>
+                  </div>
                   <p className="text-gray-600 leading-relaxed mb-6">
-                    Como primer paso en el diseño de la solución, se elaboró una
-                    arquitectura de información clara, tomando como base los
-                    flujos más frecuentes y relevantes para el negocio. Este
-                    mapa ayudó a organizar las secciones principales de la
+                    Como primer paso en el diseño se elaboró una arquitectura de
+                    información clara, tomando como base los flujos más
+                    frecuentes y relevantes para el negocio.
+                  </p>
+                  <p className="text-gray-600 leading-relaxed mb-6">
+                    Este mapa ayudó a organizar las secciones principales de la
                     aplicación, definir jerarquías, y sentar las bases para una
                     navegación fluida y coherente. La arquitectura fue validada
                     con el equipo interno para asegurar que cubría todos los
@@ -519,18 +450,25 @@ export default function ProyectoActiva() {
               <div className="space-y-12">
                 {/* Problema */}
                 <div>
-                  <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                    Wireframes
-                  </h2>
+                  <div className="mb-6">
+                    <h2 className="text-2xl font-bold text-gray-900">
+                      Wireframes
+                    </h2>
+                    <p className="text-gray-400">
+                      Diseñando patrones y estructura de la plataforma
+                    </p>
+                  </div>
                   <p className="text-gray-600 leading-relaxed mb-6">
                     Los wireframes permitieron visualizar la estructura de la
                     plataforma desde las primeras etapas del diseño. Trabajé en
                     varias iteraciones de baja fidelidad para definir la
                     disposición de los elementos, jerarquizar la información y
-                    asegurar la usabilidad desde el comienzo. Estas primeras
-                    versiones fueron clave para alinear expectativas con el
-                    equipo y realizar ajustes rápidos antes de pasar a diseño
-                    visual.
+                    asegurar la usabilidad desde el comienzo.
+                  </p>
+                  <p className="text-gray-600 leading-relaxed mb-6">
+                    Estas primeras versiones fueron clave para alinear
+                    expectativas con el equipo y realizar ajustes rápidos antes
+                    de pasar a diseño visual.
                   </p>
                 </div>
               </div>
@@ -580,19 +518,28 @@ export default function ProyectoActiva() {
               <div className="space-y-12">
                 {/* Problema */}
                 <div>
-                  <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                    Design System
-                  </h2>
+                  <div className="mb-6">
+                    <h2 className="text-2xl font-bold text-gray-900">
+                      Design System
+                    </h2>
+                    <p className="text-gray-400">
+                      Creando primeros componentes{" "}
+                    </p>
+                  </div>
                   <p className="text-gray-600 leading-relaxed mb-6">
                     Para lograr coherencia visual y una implementación
                     eficiente, diseñé un sistema de diseño adaptado a la
-                    identidad institucional de ACTIVA. Incluye componentes
-                    reutilizables, estados interactivos y patrones consistentes
-                    que facilitan el desarrollo y aseguran una experiencia
-                    homogénea en toda la aplicación. El Design System también
-                    permite escalar la plataforma fácilmente a nuevas
-                    funcionalidades o futuras versiones, sin perder consistencia
-                    visual.
+                    identidad institucional de Activa.
+                  </p>
+                  <p className="text-gray-600 leading-relaxed mb-6">
+                    Incluye componentes reutilizables, estados interactivos y
+                    patrones consistentes que facilitan el desarrollo y aseguran
+                    una experiencia homogénea en toda la aplicación.
+                  </p>
+                  <p className="text-gray-600 leading-relaxed mb-6">
+                    El Design System también permite escalar la plataforma
+                    fácilmente a nuevas funcionalidades o futuras versiones, sin
+                    perder consistencia visual.
                   </p>
                 </div>
               </div>
@@ -603,19 +550,17 @@ export default function ProyectoActiva() {
 
       {/* Typography */}
       <ScrollReveal>
-        <section className="px-6 py-16 bg-white">
+        <section className="px-6 py-8 bg-grey-50">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-regular text-gray-300 mb-2">
+            <h2 className="text-m font-regular text-gray-300 mb-2">
               Guía Visual
             </h2>
             <motion.h3
-              className="text-8xl font-bold text-blue-600 mb-12"
+              className="text-7xl font-bold text-blue-600 mb-12"
               animate={{ color: ["#2563eb", "#9b51e0", "#2563eb"] }}
               transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY }}
             >
-              Inter
-              <br />
-              typeface
+              Inter typeface
             </motion.h3>
 
             <div className="grid md:grid-cols-2 gap-12">
@@ -628,25 +573,19 @@ export default function ProyectoActiva() {
                         <motion.span
                           key={weight}
                           className={`px-3 py-1 rounded text-sm bg-gray-200`}
-                          whileHover={{
-                            scale: 1.05,
-                            backgroundColor: "#9b51e0",
-                            color: "white",
-                          }}
                           initial={{ opacity: 0, y: 10 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ duration: 0.2, delay: index * 0.1 }}
                         >
                           {weight}
                         </motion.span>
-                      )
+                      ),
                     )}
                   </div>
                 </div>
 
                 <motion.div
                   className="text-6xl font-bold text-gray-900 mb-4"
-                  animate={{ rotateY: [0, 10, 0] }}
                   transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY }}
                 >
                   Aa
@@ -691,10 +630,7 @@ export default function ProyectoActiva() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             {/* Imagen */}
             <ScrollReveal direction="left">
-              <motion.div
-                whileHover={{ scale: 1.02, rotateY: 5 }}
-                transition={{ duration: 0.3 }}
-              >
+              <motion.div transition={{ duration: 0.3 }}>
                 <Image
                   src="screensActiva.png"
                   alt="arquitectura"
@@ -707,24 +643,38 @@ export default function ProyectoActiva() {
 
             {/* Texto */}
             <ScrollReveal direction="right" delay={0.2}>
-              <div className="space-y-12">
+              <div className="space-y-8">
                 {/* Problema */}
                 <div>
-                  <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                    Pantallas
-                  </h2>
-                  <p className="text-gray-600 leading-relaxed mb-6">
-                    Aquí se muestran algunas de las pantallas principales de la
-                    plataforma: Pantalla de login, diseñada para ser simple,
-                    segura y alineada a la identidad de marca. Dashboard
-                    principal, que ofrece una visión general del estado de los
-                    procesos, las tareas automatizadas y métricas relevantes.
-                    Otras vistas como visualización de estadísticas, carga de
-                    tareas y reclamos permiten al equipo trabajar con fluidez y
-                    orden. Cada pantalla fue diseñada pensando en minimizar la
-                    fricción del usuario, priorizando la claridad y la
-                    eficiencia en la interacción.
+                  <div className="mb-6">
+                    <h2 className="text-2xl font-bold text-gray-900">
+                      Pantallas
+                    </h2>
+                    <p className="text-gray-400">Dando vida a las ideas</p>
+                  </div>
+                  <p className="text-gray-600 leading-relaxed">
+                    Se diseñaron las pantallas alineadas al diseño de la marca.
+                    Cada pantalla fue diseñada pensando en minimizar la fricción
+                    del usuario, priorizando la claridad y la eficiencia en la
+                    interacción.
                   </p>
+                  <p className="text-gray-600 leading-relaxed mt-6">
+                    Algunas de las pantallas diseñadas fueron:
+                  </p>
+                </div>
+                <div className="bg-white border border-gray-200 rounded-lg p-6 space-y-4">
+                  <div className="flex items-center justify-between pb-4 border-b border-gray-200">
+                    <span className="text-gray-700">Formulario de Login</span>
+                    <span className="text-sm text-gray-900">1 pantalla / 3 pasos</span>
+                  </div>
+                  <div className="flex items-center justify-between pb-4 border-b border-gray-200">
+                    <span className="text-gray-700">Funcionalidades principales</span>
+                    <span className="text-sm text-gray-900">8 pantallas</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-gray-700">Chat web</span>
+                    <span className="text-sm text-gray-900">2 pantallas</span>
+                  </div>
                 </div>
               </div>
             </ScrollReveal>
@@ -736,30 +686,6 @@ export default function ProyectoActiva() {
         <section className="px-6 py-16 bg-white">
           <div className="max-w-6xl mx-auto">
             <DesignCarousel />
-          </div>
-        </section>
-      </ScrollReveal>
-
-      {/* Call to Action */}
-      <ScrollReveal>
-        <section className="px-6 py-16 bg-white">
-          <div className="max-w-4xl mx-auto">
-            <motion.div
-              whileHover={{ scale: 1.02, rotateY: 5 }}
-              transition={{ duration: 0.3 }}
-              style={{ transformStyle: "preserve-3d" }}
-            >
-              <Card className="overflow-hidden bg-gradient-to-r from-blue-500 via-purple-500 to-purple-600">
-                <CardContent className="p-12 text-center">
-                  <h2 className="text-3xl font-regular text-white mb-4">
-                    Transformar la rutina en
-                    <br />
-                    eficiencia:{" "}
-                    <span className="font-bold">digitalizar para crecer.</span>
-                  </h2>
-                </CardContent>
-              </Card>
-            </motion.div>
           </div>
         </section>
       </ScrollReveal>

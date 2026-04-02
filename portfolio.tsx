@@ -31,9 +31,9 @@ function HeroSection() {
 
   return (
     <section
-    id="inicio"
-    className="
-   px-6 pt-28 md:pt-36 pb-12 min-h-screen flex flex-col relative z-10
+      id="inicio"
+      className="
+   px-6 pt-28 md:pt-36 pb-12 min-h-screen flex flex-col 
     "
     >
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-18 items-center flex-1">
@@ -54,9 +54,8 @@ function HeroSection() {
           </div> */}
 
           <div className="inline-flex items-center gap-2 mb-6">
-  
-           <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
-             PORTFOLIO
+            <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
+              PORTFOLIO
             </span>
           </div>
 
@@ -175,10 +174,8 @@ function DesignSection() {
       "
     >
       <div className="max-w-6xl mx-auto">
-
         {/* HEADER */}
         <div className="grid md:grid-cols-2 gap-20 items-start mb-12">
-
           <ScrollReveal direction="left">
             <motion.h2
               className="
@@ -190,7 +187,7 @@ function DesignSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-               Sobre Mí
+              Sobre Mí
             </motion.h2>
           </ScrollReveal>
 
@@ -255,8 +252,7 @@ function DesignSection() {
 
         {/* EXPERIENCE */}
         <div className="grid md:grid-cols-2 gap-12">
-
-            <ScrollReveal direction="left" delay={0.4}>
+          <ScrollReveal direction="left" delay={0.4}>
             <div className="bg-white/70 p-8 h-full backdrop-blur border border-gray-200 shadow-sm rounded-2xl">
               <h3 className="text-2xl font-bold text-gray-900 mb-4 font-space-grotesk text-lg">
                 FORMACIÓN ACADÉMICA
@@ -275,6 +271,12 @@ function DesignSection() {
                 </ul>
                 <p className="font-semibold mt-6 text-sm">Cursos:</p>
                 <ul className="list-disc pl-5 space-y-2 text-sm">
+                          <li>
+                    <span className="font-bold text-sm">
+                     Diplomatura en Game UX Design
+                    </span>{" "}
+                    (2025 Ago - 2026 Ene) Docta Visual Arts Academy
+                  </li>
                   <li>
                     <span className="font-bold text-sm">
                       Diseño UX/UI Avanzado
@@ -338,7 +340,6 @@ function DesignSection() {
               </div>
             </div>
           </ScrollReveal>
-
         </div>
       </div>
     </section>
@@ -367,17 +368,33 @@ function ProjectsSection() {
         "Plataforma de gestión para optimizar procesos internos y centralizar información operativa.",
       image: "/Activa.png",
       url: "/proyecto-activa",
-      tags: ["UX/UI", "Web App", "Research"],
+      tags: ["UX/UI", "Desktop App", "Research"],
     },
+    // {
+    //   title: "Proyecto HousePlant",
+    //   description:
+    //     "App móvil para el cuidado de plantas mediante diagnóstico inteligente y recordatorios personalizados.",
+    //   image: "/HousePlant.png",
+    //   url: "/proyecto-houseplant",
+    //   tags: ["UX/UI", "Mobile App"],
+    // },
     {
-      title: "Proyecto HousePlant",
+      title: "Proyecto Jalife",
       description:
-        "App móvil para el cuidado de plantas mediante diagnóstico inteligente y recordatorios personalizados.",
-      image: "/HousePlant.png",
-      url: "/proyecto-houseplant",
-      tags: ["UX/UI", "Mobile App"],
+        "Rediseño y modernización de e-commerce con foco en navegación y contenidos.",
+      image: "/Jalife.png",
+      url: "/proyecto-jalife",
+      tags: ["UX/UI", "WebPage"],
     },
-    {
+    //     {
+    //   title: "Gestión de Stock",
+    //   description:
+    //     "Rediseño y modernización de e-commerce con foco en navegación y contenidos.",
+    //   image: "/Gestióndestock.png",
+    //   url: "/proyecto-gestion-stock",
+    //   tags: ["UX/UI", "Desktop App"],
+    // },
+        {
       title: "Proyecto Fungi Ritual",
       description:
         "Landing page informativa con catálogo de productos y enfoque en conversión.",
@@ -386,12 +403,12 @@ function ProjectsSection() {
       tags: ["UX/UI", "Landing Page"],
     },
     {
-      title: "Proyecto Jalife",
+      title: "Game Design",
       description:
         "Rediseño y modernización de e-commerce con foco en navegación y contenidos.",
-      image: "/Jalife.png",
-      url: "/proyecto-jalife",
-      tags: ["UX/UI", "E-commerce"],
+      image: "/GameDesign.png",
+      url: "/proyecto-towerdefense",
+      tags: ["UX/UI", "VideoJuego"],
     },
   ];
 
@@ -404,10 +421,9 @@ function ProjectsSection() {
       "
     >
       <div className="max-w-6xl mx-auto">
-
         {/* Header */}
         <ScrollReveal>
-          <div className="mb-16 max-w-2xl">
+          <div className="mb-8 max-w-2xl">
             <span className="uppercase tracking-widest text-sm text-purple-500 font-manrope">
               TRABAJOS SELECCIONADOS
             </span>
@@ -419,8 +435,7 @@ function ProjectsSection() {
         </ScrollReveal>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {projects.map((project, index) => (
             <motion.div
               key={index}
@@ -479,7 +494,6 @@ function ProjectsSection() {
               </div>
             </motion.div>
           ))}
-
         </div>
       </div>
     </section>
@@ -511,9 +525,7 @@ function ContactSection() {
       "
     >
       <div className="max-w-6xl mx-auto">
-
         <div className="grid md:grid-cols-2 gap-20 items-center">
-
           {/* TEXTO */}
           <ScrollReveal direction="left">
             <span className="uppercase tracking-widest text-sm text-purple-500 font-manrope">
@@ -531,7 +543,6 @@ function ContactSection() {
 
             {/* CONTACTOS */}
             <div className="mt-12 space-y-4">
-
               {[
                 {
                   icon: "✉️",
@@ -584,7 +595,6 @@ function ContactSection() {
                   </span>
                 </motion.a>
               ))}
-
             </div>
 
             {/* CTA */}
@@ -611,7 +621,6 @@ function ContactSection() {
                 </Button>
               </a>
             </motion.div>
-
           </ScrollReveal>
 
           {/* IMAGEN */}
@@ -646,7 +655,6 @@ function ContactSection() {
               </div>
             </motion.div>
           </ScrollReveal>
-
         </div>
       </div>
     </section>

@@ -28,4 +28,11 @@ export const projects: Project[] = [
     image: "/imagen/Fungi.png",
     href: "/proyecto-fungi-ritual",
   },
+    {
+    id: "towerdefense",
+    title: "Proyecto Tower Defense",
+    subtitle: "Analisis de Juego de Tower Defense para PC",
+    image: "/imagen/gdheader.png",
+    href: "/proyecto-towerdefense",
+  },
 ]

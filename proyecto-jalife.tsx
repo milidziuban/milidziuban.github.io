@@ -13,22 +13,29 @@ export default function ProyectoJalife() {
       <NavigationHeader />
 
       {/* Hero Section */}
-      <section className="bg-gray-100 min-h-170 flex items-center justify-center">
-        <div className="max-w-6xl mx-auto my-auto ">
-          <div className="grid md:grid-cols-2 gap-24 items-center">
-            <motion.div
-              className="grid md:grid-row-2 gap-4"
-              initial={{ opacity: 0, x: -100 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1, delay: 0.5 }}
-            >
-              <h1
-                className="text-6xl font-bold text-gray-500 mb-2 font-urbanist
-            "
-              >
-                Proyecto <span className="text-red-500">Jalife</span>
+
+      <section className="relative px-6 py-32 bg-[#f5f7fb] overflow-hidden">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+            <div>
+              {/* tags */}
+              <div className="flex gap-3 mb-6 text-sm text-gray-600">
+                <span className="px-3 py-1 bg-white rounded-full border">
+                  Diseño UX/UI
+                </span>
+                <span className="px-3 py-1 bg-white rounded-full border">
+                  Website
+                </span>
+                <span className="px-3 py-1 bg-white rounded-full border">
+                  2025
+                </span>
+              </div>
+
+              <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+                Proyecto <span className="text-red-500 font-bold">Jalife</span>
               </h1>
-              <p className="text-gray-600 leading-relaxed mb-8 font-manrope">
+
+              <p className="text-lg text-gray-600 max-w-xl leading-relaxed mb-10">
                 Proyecto enfocado en rediseñar la pagina web de la marca,
                 optimizando la experiencia de navegación y la presentación de
                 sus productos. Se trabajó en una interfaz más limpia, actual y
@@ -36,109 +43,94 @@ export default function ProyectoJalife() {
                 usabilidad y un diseño que refleja mejor la esencia de la
                 empresa.
               </p>
-            </motion.div>
+
+              <div className="grid grid-cols-3 gap-6 text-sm">
+                <div>
+                  <p className="text-gray-400 mb-1">Rol</p>
+                  <p className="text-gray-900 font-medium">UX/UI Designer</p>
+                </div>
+
+                <div>
+                  <p className="text-gray-400 mb-1">Duración</p>
+                  <p className="text-gray-900 font-medium">4 Semanas</p>
+                </div>
+
+                <div>
+                  <p className="text-gray-400 mb-1">Herramientas</p>
+                  <p className="text-gray-900 font-medium">Figma</p>
+                </div>
+              </div>
+            </div>
 
             <motion.div
-              className="relative"
-              initial={{ opacity: 0, x: 100 }}
+              className="relative flex justify-center"
+              initial={{ opacity: 0, x: 60 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
+              transition={{ duration: 0.8 }}
             >
-              <div className="w-120 h-120 relative rounded-3xl overflow-hidden">
+              <motion.div
+                className="rounded-2xl overflow-hidden"
+                transition={{ type: "spring", stiffness: 120 }}
+              >
                 <Image
                   src="/imagen/jalife1.png"
-                  alt="Jalife Project"
-                  fill
-                  className="object-cover"
+                  alt="Activa preview"
+                  width={500}
+                  height={600}
+                  className="object-cover w-full h-full"
                 />
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
+              </motion.div>
 
-      <section className="md:pb-8 pt-10 bg-[#E44D4D]">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-auto items-center">
-            <motion.div
-              className="text-white font-manrope flex items-center"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.9 }}
-            >
-              {/* ITEM 1 */}
-              <div className="w-[320px] flex flex-row items-center text-white gap-2">
-                <div className="flex items-center justify-center">
-                  <Image
-                    src="/icons/icon1.svg" // tu icono
-                    alt="Rediseño"
-                    width={60}
-                    height={60}
-                  />
-                </div>
-                <p>Rediseño de página web de la marca.</p>
-              </div>
-            </motion.div>
-            <motion.div
-              className="text-white  font-manrope flex items-center"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.9 }}
-            >
-              {/* ITEM 2 */}
-              <div className="w-[320px] flex flex-row items-center text-white gap-2">
-                <div className="flex items-center justify-center">
-                  <Image
-                    src="/icons/icon2.svg" // tu icono
-                    alt="Rediseño"
-                    width={60}
-                    height={60}
-                  />
-                </div>
-                <p>Rol: Diseñadora UX/UI.</p>
-              </div>
-            </motion.div>{" "}
-            <motion.div
-              className="text-white  font-manrope flex items-center"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.9 }}
-            >
-              {/* ITEM 3 */}
-              <div className="w-[320px] flex flex-row items-center text-white gap-2">
-                <div className="flex items-center justify-center">
-                  <Image
-                    src="/icons/icon3.svg" // tu icono
-                    alt="Rediseño"
-                    width={60}
-                    height={60}
-                  />
-                </div>
-
-                <p> 4 Semanas de duración.</p>
-              </div>
+              <div className="absolute -bottom-6 w-[70%] h-10 bg-indigo-500/20 blur-2xl rounded-full" />
             </motion.div>
           </div>
         </div>
       </section>
 
       {/* Problem & Objective */}
-      <section className="bg-gray-100 min-h-screen">
-        <section className="px-6 pb-6 pt-12 bg-gray-100">
+      <section className="bg-gray-100">
+        <section className="px-6 pb-12 pt-12 bg-gray-100">
           <div className="max-w-5xl mx-auto">
             <div className="grid md:grid-cols-2 gap-21 items-center">
-              <ScrollReveal direction="left">
-                <div>
-                  <h2 className="text-4xl font-bold text-gray-900 mb-6 font-space-grotesk">
-                    Problema
-                  </h2>
-                  <p className="text-gray-600 leading-relaxed font-manrope">
-                    El sitio web presentaba una estructura visual poco clara y
-                    dificultades de navegación que afectaban la comprensión de
-                    sus servicios y productos. Esto generaba una percepción poco
-                    profesional de la marca y complicaba el proceso de encontrar
-                    información relevante.
-                  </p>
+              <ScrollReveal direction="right" delay={0.2}>
+                <div className="space-y-12">
+                  {/* Problema */}
+                  <div>
+                    <span className="text-2xl font-bold text-black-800 font-bold">
+                      Problema
+                    </span>
+
+                    <p className="text-gray-600 leading-relaxed mb-2">
+                      El sitio web presentaba una estructura visual poco clara y
+                      dificultades de navegación que afectaban la comprensión de
+                      sus servicios y productos.
+                    </p>
+
+                    <p className="text-gray-600 leading-relaxed">
+                      Esto generaba una percepción poco profesional de la marca
+                      y complicaba el proceso de encontrar información
+                      relevante.
+                    </p>
+                  </div>
+
+                  {/* Objetivo */}
+                  <div>
+                    <span className="text-2xl font-bold text-black-800 font-bold">
+                      Objetivo
+                    </span>
+
+                    <p className="text-gray-600 leading-relaxed">
+                      Rediseñar el sitio web para mejorar la experiencia del
+                      usuario mediante una interfaz moderna, clara y funcional.
+                    </p>
+
+                    <p className="text-gray-600 leading-relaxed">
+                      Lograr una navegación intuitiva, una presentación visual
+                      atractiva y alineada con la identidad de la marca, y una
+                      estructura que facilite el acceso rápido a la información
+                      clave.
+                    </p>
+                  </div>
                 </div>
               </ScrollReveal>
 
@@ -151,40 +143,6 @@ export default function ProyectoJalife() {
                     height={300}
                     className="object-contain w-full h-auto rounded-3xl"
                   />
-                </div>
-              </ScrollReveal>
-            </div>
-          </div>
-        </section>
-
-        <section className="px-6 pb-12 pt-6 bg-gray-100">
-          <div className="max-w-5xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-21 items-center">
-              <ScrollReveal direction="left" delay={0.2}>
-                <div className="relative w-full max-w-[400px] h-auto mx-auto">
-                  <Image
-                    src="/Analisis.webp"
-                    alt="Jalife Project"
-                    width={400}
-                    height={300}
-                    className="object-contain w-full h-auto rounded-3xl"
-                  />
-                </div>
-              </ScrollReveal>
-
-              <ScrollReveal direction="right">
-                <div>
-                  <h2 className="text-4xl font-bold text-gray-900 mb-6 font-space-grotesk">
-                    Objetivo
-                  </h2>
-                  <p className="text-gray-600 leading-relaxed font-manrope">
-                    Rediseñar el sitio web para mejorar la experiencia del
-                    usuario mediante una interfaz moderna, clara y funcional.
-                    Lograr una navegación intuitiva, una presentación visual
-                    atractiva y alineada con la identidad de la marca, y una
-                    estructura que facilite el acceso rápido a la información
-                    clave.
-                  </p>
                 </div>
               </ScrollReveal>
             </div>
@@ -207,25 +165,27 @@ export default function ProyectoJalife() {
             {[
               {
                 title: "Mala organización de la información",
-                icon: "📋",
+                icon: "📑",
                 color: "bg-yellow-200",
                 rotation: "-3deg",
               },
               {
-                title: "Los servicios no llaman la atención",
-                icon: "♿",
+                title:
+                  "Los servicios que se querían vender no llamaban la atención",
+                icon: "👩🏽‍💻",
                 color: "bg-pink-200",
                 rotation: "2deg",
               },
               {
-                title: "Pagina de contactos no representaban lo que se quería",
-                icon: "🗺️",
+                title:
+                  "La página de contactos no representaba lo que se quería",
+                icon: "📞",
                 color: "bg-blue-200",
                 rotation: "-2deg",
               },
               {
-                title: "Imagenes poco representativas",
-                icon: "👥",
+                title: "Las imagenes son poco representativas",
+                icon: "🖼️",
                 color: "bg-green-200",
                 rotation: "3deg",
               },
@@ -329,12 +289,20 @@ export default function ProyectoJalife() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.9 }}
                 >
-                  Proyecto enfocado en rediseñar la pagina web de la marca,
-                  optimizando la experiencia de navegación y la presentación de
-                  sus productos. Se trabajó en una interfaz más limpia, actual y
-                  funcional, con una estructura visual coherente, mejoras en
-                  usabilidad y un diseño que refleja mejor la esencia de la
-                  empresa.
+                  Como parte del proceso de rediseño, se desarrollaron
+                  wireframes que permitieron definir la estructura del sitio y
+                  organizar la información de manera clara y jerárquica.
+                </motion.p>
+                <motion.p
+                  className="text-gray-600 leading-relaxed mb-8 font-manrope text-lg"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.9 }}
+                >
+                  A partir de esta base, se trabajó en una interfaz más limpia,
+                  actual y funcional, optimizando la navegación y mejorando la
+                  presentación de los productos, con una experiencia más
+                  coherente y alineada a la identidad de la marca.
                 </motion.p>
               </motion.div>
             </div>
@@ -369,23 +337,33 @@ export default function ProyectoJalife() {
             </motion.div>
 
             <div className="ml-12 grid gap-8 items-center relative">
-                <div className="space-y-4">
+              <div className="space-y-4">
                 <p className="text-gray-600 leading-relaxed font-manrope text-sm">
-                  <span className="font-bold text-gray-900">Rediseño UI/UX:</span>{" "}
-               Presentación visual del proyecto mostrando la nueva interfaz limpia, moderna y alineada con la identidad de la marca, diseñada para facilitar la navegación y destacar los servicios principales
+                  <span className="font-bold text-gray-900">
+                    Rediseño UI/UX:
+                  </span>{" "}
+                  Presentación visual del proyecto mostrando la nueva interfaz
+                  limpia, moderna y alineada con la identidad de la marca,
+                  diseñada para facilitar la navegación y destacar los servicios
+                  principales
                 </p>
               </div>
 
               <div className="space-y-4">
                 <p className="text-gray-600 leading-relaxed font-manrope text-sm">
                   <span className="font-bold text-gray-900">Grid Layout:</span>{" "}
-                Distribución de contenido organizada mediante cuadrículas para mejorar la lectura, jerarquía de información y flujo visual intuitivo dentro de la página
+                  Distribución de contenido organizada mediante cuadrículas para
+                  mejorar la lectura, jerarquía de información y flujo visual
+                  intuitivo dentro de la página
                 </p>
               </div>
 
               <div className="space-y-4 relative">
                 <p className="text-gray-600 leading-relaxed font-manrope text-sm">
-                  <span className="font-bold text-gray-900">Navbar:</span> Barra de navegación pensada para desaparecer al hacer scroll down y reaparecer al subir, mejorando la legibilidad sin perder accesibilidad a las secciones clave
+                  <span className="font-bold text-gray-900">Navbar:</span> Barra
+                  de navegación pensada para desaparecer al hacer scroll down y
+                  reaparecer al subir, mejorando la legibilidad sin perder
+                  accesibilidad a las secciones clave
                 </p>
               </div>
             </div>
@@ -402,8 +380,13 @@ export default function ProyectoJalife() {
             <div className="mr-12 grid gap-8 items-center relative">
               <div className="space-y-4">
                 <p className="text-gray-600 leading-relaxed font-manrope text-sm">
-                  <span className="font-bold text-gray-900">Contenido dinámico:</span>{" "}
-            Se incorporaron videos de influencers mostrando su experiencia con Jalife, junto con información clara sobre la marca, sus valores y propuesta, reforzando la confianza del usuario y enriqueciendo la narrativa del sitio.
+                  <span className="font-bold text-gray-900">
+                    Contenido dinámico:
+                  </span>{" "}
+                  Se incorporaron videos de influencers mostrando su experiencia
+                  con Jalife, junto con información clara sobre la marca, sus
+                  valores y propuesta, reforzando la confianza del usuario y
+                  enriqueciendo la narrativa del sitio.
                 </p>
               </div>
             </div>
@@ -430,13 +413,13 @@ export default function ProyectoJalife() {
         </div>
       </section>
 
-      <section className="px-6 py-16 bg-white">
+      {/* <section className="px-6 py-16 bg-white">
         <div className="max-w-6xl mx-auto">
           <h3 className="text-2xl font-bold text-gray-900 mb-8 font-space-grotesk">
             Contact section
           </h3>
           <div className="grid md:grid-cols-2 gap-8 items-center relative">
-            {/* Center image/GIF */}
+        
             <motion.div
               className="relative"
               initial={{ opacity: 0, scale: 0.9 }}
@@ -476,7 +459,7 @@ export default function ProyectoJalife() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Prototype Section */}
       <section className="px-6 py-16 bg-gray-100">
@@ -508,7 +491,7 @@ export default function ProyectoJalife() {
       {/* Other Projects */}
       <section className="px-6 py-16 bg-gray-100">
         <div className="max-w-6xl mx-auto">
-          <OtherProjects currentProjectId="jalife" />
+          <OtherProjects currentProjectId="fungi-ritual" />
         </div>
       </section>
 
@@ -536,7 +519,7 @@ export default function ProyectoJalife() {
               >
                 <Button
                   onClick={() => {
-                    window.scrollTo({ top: 0, behavior: "smooth" });
+                    window.location.href = "/#proyectos";
                   }}
                   className="bg-gray-800 hover:bg-gray-900 text-white px-8 py-3 rounded-full font-manrope"
                 >
@@ -547,7 +530,7 @@ export default function ProyectoJalife() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <a href="mailto:milagrosdizuban@gmail.com">
+                <a href="mailto:milagrosdizuban1@gmail.com">
                   <Button className="bg-red-500 hover:bg-red-600 text-white px-8 py-3 rounded-full font-manrope">
                     Contactame
                   </Button>

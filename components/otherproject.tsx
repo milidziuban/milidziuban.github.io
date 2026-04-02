@@ -7,12 +7,13 @@ import { projects } from "@/components/data/projects-data"
 import { ScrollReveal } from "./animated-components"
 
 interface OtherProjectsProps {
-  currentProjectId: string
+  currentProjectId: string;
 }
+
 
 export function OtherProjects({ currentProjectId }: OtherProjectsProps) {
   const otherProjects = projects.filter((project) => project.id !== currentProjectId)
-
+  
   return (
     <section className="px-6 py-16 bg-gray-100">
       <div className="max-w-6xl mx-auto">
@@ -39,7 +40,9 @@ export function OtherProjects({ currentProjectId }: OtherProjectsProps) {
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-gray-900 mb-2 font-space-grotesk">{project.title}</h3>
-                    <p className="text-gray-600 text-sm font-manrope">{project.subtitle}</p>
+                    <p className="text-gray-600 text-sm font-manrope">{project.subtitle}
+                      
+                    </p>
                   </div>
                 </motion.div>
               </Link>
