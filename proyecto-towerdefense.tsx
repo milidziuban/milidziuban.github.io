@@ -273,8 +273,6 @@ export default function ProyectoTowerDefense() {
               </div>
             </section>
 
-
-
       {/* Software Interface + Problem & Objective */}
       <section className="px-6 py-16 bg-[#0B001A]">
         <div className="max-w-6xl mx-auto">
@@ -308,6 +306,46 @@ export default function ProyectoTowerDefense() {
           </div>
         </div>
       </section>
+
+<section className="px-6 py-20 bg-[#0B001A]">
+  <div className="max-w-6xl mx-auto relative">
+    
+    {/* CARD */}
+    <div className="bg-[#121826] border border-white/10 rounded-3xl md:p-10 grid md:grid-cols-2 gap-10 items-center">
+      
+      {/* TEXTO */}
+      <div>
+        <span className="text-sm text-[#7C8DB5] uppercase tracking-wider mb-4 block">
+          Game Concept
+        </span>
+
+        <h2 className="text-4xl md:text-3xl font-semibold text-white mb-6 leading-tight">
+          ¿Qué es un juego de Tower Defense?
+        </h2>
+
+        <p className="text-[#AAB3C5] leading-relaxed text-m">
+      Un Tower Defense es un juego de estrategia en el que el jugador debe defender una base colocando y mejorando torres a lo largo de un recorrido, con el objetivo de frenar oleadas de enemigos antes de que lleguen al final. Combina planificación, gestión de recursos y toma de decisiones tácticas.
+        </p>
+      </div>
+
+      {/* IMAGEN */}
+      <div className="relative">
+        <div className="absolute inset-0 bg-gradient-to-tr from-[#3B82F6]/20 to-transparent rounded-2xl blur-xl" />
+        
+        <img
+          src="/queestowerdefense.png"
+          alt="Mapa Tower Defense"
+              width={160}
+                height={200}
+          className="relative rounded-2xl w-140 h-70 object-cover border border-white/10"
+        />
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
   
  {/*Wireframes*/}
       <section className="px-6 pt-24 md:pt-32 pb-16 bg-[#0B001A]">
@@ -323,7 +361,7 @@ export default function ProyectoTowerDefense() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
               >
-                <div className="w-full h-90 relative">
+                <div className="w-full h-93 relative">
                   <Image
                     src="/wireframeTD.png"
                     alt="Jalife Project"
@@ -418,9 +456,9 @@ export default function ProyectoTowerDefense() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
               >
-                <div className="w-full h-80 relative">
+                <div className="w-full h-85 relative">
                   <Image
-                    src="/wireframe1.png"
+                    src="/wireframe11.png"
                     alt="Jalife Project"
                     fill
                     className="object-cover"
@@ -542,13 +580,13 @@ export default function ProyectoTowerDefense() {
         </div>
       </section>
 
-            <ScrollReveal>
+           
               <section className="px-6 py-16 bg-[#0B001A]">
                 <div className="max-w-6xl mx-auto">
                   <DesignCarousel />
                 </div>
               </section>
-            </ScrollReveal>
+          
 
       {/* Footer CTA */}
       <section className="px-6 py-16 bg-[#0B001A]">

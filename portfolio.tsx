@@ -554,11 +554,6 @@ function ContactSection() {
                   text: "LinkedIn",
                   url: "https://www.linkedin.com/in/milagros-dziuban-dise%C3%B1adora/",
                 },
-                {
-                  icon: "be",
-                  text: "Behance",
-                  url: "https://www.behance.net/milagrosdziuban1",
-                },
               ].map((item, index) => (
                 <motion.a
                   key={index}
