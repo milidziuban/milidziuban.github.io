@@ -245,6 +245,7 @@ export default function ProyectoTowerDefense() {
                       </div>
                     </div>
                   </div>
+
       
                   {/* IMAGEN */}
                   <motion.div
@@ -257,6 +258,13 @@ export default function ProyectoTowerDefense() {
                       className="rounded-2xl overflow-hidden"
                       transition={{ type: "spring", stiffness: 120 }}
                     >
+                  <div
+        className="
+        absolute -inset-16 
+        bg-gradient-to-tr from-purple-400/20 via-purple-400/200 to-indigo-200/40
+        rounded-[45%] blur-3xl animate-pulse 
+      "
+      />
                       <Image
                          src="/imagen/gdheader.png"
                   alt="Portadatowerdefense"

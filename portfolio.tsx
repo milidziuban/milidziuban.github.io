@@ -386,14 +386,14 @@ function ProjectsSection() {
       url: "/proyecto-jalife",
       tags: ["UX/UI", "WebPage"],
     },
-    //     {
-    //   title: "Gestión de Stock",
-    //   description:
-    //     "Rediseño y modernización de e-commerce con foco en navegación y contenidos.",
-    //   image: "/Gestióndestock.png",
-    //   url: "/proyecto-gestion-stock",
-    //   tags: ["UX/UI", "Desktop App"],
-    // },
+        {
+      title: "Gestión de Stock",
+      description:
+        "Rediseño y modernización de e-commerce con foco en navegación y contenidos.",
+      image: "/Gestióndestock.png",
+      url: "/proyecto-gestion-stock",
+      tags: ["UX/UI", "Desktop App"],
+    },
         {
       title: "Proyecto Fungi Ritual",
       description:
