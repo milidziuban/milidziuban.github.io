@@ -4,6 +4,7 @@ import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 import { Space_Grotesk } from "next/font/google";
 import { Manrope } from "next/font/google";
+import { Instrument_Serif } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const manrope = Manrope({
@@ -14,6 +15,13 @@ const manrope = Manrope({
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-space-grotesk",
+});
+
+const instrumentSerif = Instrument_Serif({
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
+  variable: "--font-instrument-serif",
 });
 
 export const metadata: Metadata = {
@@ -39,11 +47,12 @@ html {
   --font-mono: ${GeistMono.variable};
     --font-manrope: ${manrope.variable};
   --font-space-grotesk: ${spaceGrotesk.variable};
+  --font-instrument-serif: ${instrumentSerif.variable};
 }
         `}</style>
       </head>
       <body
-        className={`${manrope.variable} ${spaceGrotesk.variable} font-manrope`}
+        className={`${manrope.variable} ${spaceGrotesk.variable} ${instrumentSerif.variable} font-manrope`}
       >
         {children}
          <SpeedInsights />
