@@ -381,7 +381,7 @@ function ProjectsSection() {
     {
       title: "Proyecto Jalife",
       description:
-        "Rediseño y modernización de e-commerce con foco en navegación y contenidos.",
+        "Rediseño y modernización de landing con foco en navegación y contenidos.",
       image: "/Jalife.png",
       url: "/proyecto-jalife",
       tags: ["UX/UI", "WebPage"],
@@ -389,7 +389,7 @@ function ProjectsSection() {
         {
       title: "Gestión de Stock",
       description:
-        "Rediseño y modernización de e-commerce con foco en navegación y contenidos.",
+        "Diseño desde cero de plataforma de gestión y organización de stock.",
       image: "/Gestióndestock.png",
       url: "/proyecto-gestion-stock",
       tags: ["UX/UI", "Desktop App"],
@@ -405,7 +405,7 @@ function ProjectsSection() {
     {
       title: "Game Design",
       description:
-        "Rediseño y modernización de e-commerce con foco en navegación y contenidos.",
+        "Diseño básico de juego de tower defense realizado con fines educativos.",
       image: "/GameDesign.png",
       url: "/proyecto-towerdefense",
       tags: ["UX/UI", "VideoJuego"],
