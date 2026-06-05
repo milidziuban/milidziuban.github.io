@@ -1,6 +1,5 @@
 "use client";
 import { motion } from "framer-motion";
-import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { NavigationHeader } from "./components/navigation-header";
@@ -8,56 +7,186 @@ import { ScrollReveal } from "./components/animated-components";
 import { OtherProjects } from "./components/otherproject";
 
 export default function ProyectoJalife() {
+  // Datos del case study
+  const audienceTraits = [
+    {
+      label: "Edad",
+      value: "25 – 45 años",
+    },
+    {
+      label: "Comportamiento",
+      value: "Investigan online antes de contactar",
+    },
+    {
+      label: "Expectativa",
+      value: "Claridad, credibilidad y rapidez",
+    },
+  ];
+
+  const researchMethods = [
+    {
+      title: "Auditoría heurística",
+      text: "Revisión del sitio actual contra principios de usabilidad (Nielsen) para detectar fricciones concretas.",
+    },
+    {
+      title: "Análisis competitivo",
+      text: "Benchmark de sitios similares para identificar patrones que funcionan y oportunidades de diferenciación.",
+    },
+    {
+      title: "Revisión con el cliente",
+      text: "Conversaciones con la marca para entender objetivos de negocio, valores y prioridades comerciales.",
+    },
+  ];
+
+  const insights = [
+    { title: "Mala organización de la información", icon: "📑" },
+    { title: "Los servicios no llamaban la atención", icon: "👩🏽‍💻" },
+    { title: "La página de contacto no representaba la marca", icon: "📞" },
+    { title: "Las imágenes eran poco representativas", icon: "🖼️" },
+  ];
+
+  const beforeAfter = [
+    {
+      aspect: "Navegación",
+      before:
+        "Menú con muchos ítems sin jerarquía clara, difícil de escanear en el primer vistazo.",
+      after:
+        "Navbar reducida a las secciones esenciales, con jerarquía visual y comportamiento contextual al scroll.",
+    },
+    {
+      aspect: "Presentación de servicios",
+      before:
+        "Servicios listados como bloques de texto, sin diferenciación visual entre los principales.",
+      after:
+        "Grid visual que prioriza los servicios estrella, con jerarquía clara y CTAs por categoría.",
+    },
+    {
+      aspect: "Identidad visual",
+      before:
+        "Inconsistencia entre páginas, imágenes genéricas y tipografía sin sistema.",
+      after:
+        "Sistema visual unificado: tipografía, paleta y componentes consistentes en todo el sitio.",
+    },
+  ];
+
+  const sitemap = [
+    { title: "Home", children: ["Hero", "Servicios destacados", "Body content"] },
+    { title: "Quiénes somos", children: ["Historia", "Equipo", "Valores"] },
+    { title: "Servicios", children: ["Categorías", "Detalle de servicio"] },
+    { title: "Contacto", children: ["Formulario", "Redes"] },
+  ];
+
+  const decisions = [
+    {
+      number: "01",
+      title: "Grid de 12 columnas",
+      rationale:
+        "Permite variantes de layout por sección sin romper la jerarquía global. Da consistencia y flexibilidad para escalar el sitio.",
+    },
+    {
+      number: "02",
+      title: "Navbar contextual",
+      rationale:
+        "Se oculta al hacer scroll down y reaparece al subir. Mejora la legibilidad sin perder accesibilidad a las secciones clave.",
+    },
+    {
+      number: "03",
+      title: "Hero con visual fuerte",
+      rationale:
+        "Primera impresión que transmite la propuesta de la marca antes que cualquier texto, alineado a la identidad y al tono.",
+    },
+    {
+      number: "04",
+      title: "Contenido dinámico con video",
+      rationale:
+        "Incorporación de testimonios en video para reforzar la confianza del usuario y romper la monotonía del scroll.",
+    },
+  ];
+
+  const visualPalette = [
+    { hex: "#E11D2E", name: "Rojo Jalife" },
+    { hex: "#1A1A1A", name: "Negro principal" },
+    { hex: "#F5F5F5", name: "Gris claro" },
+    { hex: "#FFFFFF", name: "Blanco base" },
+  ];
+
+  const takeaways = [
+    {
+      number: "01",
+      title: "La navegación va primero",
+      text: "Antes que el visual, había que resolver cómo se entendía el sitio. Una jerarquía clara hizo más por la experiencia que cualquier decisión estética.",
+    },
+    {
+      number: "02",
+      title: "Validar con el cliente, no asumir",
+      text: "Lo que parecía obvio desde diseño no siempre lo era desde negocio. Las conversaciones con la marca evitaron varios callejones sin salida.",
+    },
+    {
+      number: "03",
+      title: "Pensar en sistema, no en pantallas",
+      text: "Definir reglas de tipografía, color y grilla desde el inicio aceleró todas las decisiones siguientes y dejó una base escalable.",
+    },
+  ];
+
   return (
     <div className="min-h-screen bg-gray-50">
       <NavigationHeader />
 
-      {/* Hero Section */}
-
+      {/* HERO */}
       <section className="relative px-6 py-32 bg-[#f5f7fb] overflow-hidden">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div>
-              {/* tags */}
-              <div className="flex gap-3 mb-6 text-sm text-gray-600">
-                <span className="px-3 py-1 bg-white rounded-full border">
-                  Diseño UX/UI
-                </span>
-                <span className="px-3 py-1 bg-white rounded-full border">
-                  Website
-                </span>
-                <span className="px-3 py-1 bg-white rounded-full border">
-                  2025
-                </span>
+              <div className="flex flex-wrap gap-2 mb-6">
+                {["UX/UI", "Website", "2025"].map((tag) => (
+                  <span
+                    key={tag}
+                    className="text-xs px-3 py-1 rounded-full border border-gray-300 text-gray-600 font-manrope"
+                  >
+                    {tag}
+                  </span>
+                ))}
               </div>
 
-              <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-                Proyecto <span className="text-red-500 font-bold">Jalife</span>
+              <h1 className="text-5xl md:text-6xl font-medium tracking-tighter text-gray-900 leading-[1.05] font-space-grotesk mb-6">
+                Proyecto{" "}
+                <span className="font-instrument-serif italic font-normal text-red-500">
+                  Jalife
+                </span>
               </h1>
 
-              <p className="text-lg text-gray-600 max-w-xl leading-relaxed mb-10">
-                Proyecto enfocado en rediseñar la pagina web de la marca,
+              <p className="text-lg text-gray-600 max-w-xl leading-relaxed mb-10 font-manrope">
+                Proyecto enfocado en rediseñar la página web de la marca,
                 optimizando la experiencia de navegación y la presentación de
-                sus productos. Se trabajó en una interfaz más limpia, actual y
-                funcional, con una estructura visual coherente, mejoras en
-                usabilidad y un diseño que refleja mejor la esencia de la
-                empresa.
+                sus servicios. Se trabajó en una interfaz más limpia, actual y
+                funcional, con una estructura visual coherente y mejoras en
+                usabilidad.
               </p>
 
               <div className="grid grid-cols-3 gap-6 text-sm">
                 <div>
-                  <p className="text-gray-400 mb-1">Rol</p>
-                  <p className="text-gray-900 font-medium">UX/UI Designer</p>
+                  <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-2">
+                    Rol
+                  </p>
+                  <p className="text-gray-900 font-medium font-space-grotesk">
+                    UX/UI Designer
+                  </p>
                 </div>
-
                 <div>
-                  <p className="text-gray-400 mb-1">Duración</p>
-                  <p className="text-gray-900 font-medium">4 Semanas</p>
+                  <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-2">
+                    Duración
+                  </p>
+                  <p className="text-gray-900 font-medium font-space-grotesk">
+                    4 semanas
+                  </p>
                 </div>
-
                 <div>
-                  <p className="text-gray-400 mb-1">Herramientas</p>
-                  <p className="text-gray-900 font-medium">Figma</p>
+                  <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-2">
+                    Herramientas
+                  </p>
+                  <p className="text-gray-900 font-medium font-space-grotesk">
+                    Figma
+                  </p>
                 </div>
               </div>
             </div>
@@ -68,185 +197,241 @@ export default function ProyectoJalife() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <motion.div
-                className="rounded-2xl overflow-hidden"
-                transition={{ type: "spring", stiffness: 120 }}
-              >
+              <div className="rounded-2xl overflow-hidden">
                 <Image
                   src="/imagen/jalife1.png"
-                  alt="Activa preview"
+                  alt="Jalife preview"
                   width={500}
                   height={600}
                   className="object-cover w-full h-full"
                 />
-              </motion.div>
-
-              <div className="absolute -bottom-6 w-[70%] h-10 bg-indigo-500/20 blur-2xl rounded-full" />
+              </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Problem & Objective */}
-      <section className="bg-gray-100">
-        <section className="px-6 pb-12 pt-12 bg-gray-100">
-          <div className="max-w-5xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-21 items-center">
-              <ScrollReveal direction="right" delay={0.2}>
-                <div className="space-y-12">
-                  {/* Problema */}
-                  <div>
-                    <span className="text-2xl font-bold text-black-800 font-bold">
-                      Problema
-                    </span>
+      {/* PROBLEMA + OBJETIVO */}
+      <section className="px-6 py-32 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-16">
+            <ScrollReveal direction="left">
+              <div>
+                <span className="font-instrument-serif italic text-2xl text-purple-400 mb-3 block">
+                  01
+                </span>
+                <h2 className="text-4xl md:text-5xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mb-6">
+                  Problema
+                </h2>
+                <p className="text-gray-600 leading-relaxed mb-4 font-manrope">
+                  El sitio web presentaba una estructura visual poco clara y
+                  dificultades de navegación que afectaban la comprensión de
+                  sus servicios y productos.
+                </p>
+                <p className="text-gray-600 leading-relaxed font-manrope">
+                  Esto generaba una percepción poco profesional de la marca y
+                  complicaba el proceso de encontrar información relevante.
+                </p>
+              </div>
+            </ScrollReveal>
 
-                    <p className="text-gray-600 leading-relaxed mb-2">
-                      El sitio web presentaba una estructura visual poco clara y
-                      dificultades de navegación que afectaban la comprensión de
-                      sus servicios y productos.
-                    </p>
-
-                    <p className="text-gray-600 leading-relaxed">
-                      Esto generaba una percepción poco profesional de la marca
-                      y complicaba el proceso de encontrar información
-                      relevante.
-                    </p>
-                  </div>
-
-                  {/* Objetivo */}
-                  <div>
-                    <span className="text-2xl font-bold text-black-800 font-bold">
-                      Objetivo
-                    </span>
-
-                    <p className="text-gray-600 leading-relaxed">
-                      Rediseñar el sitio web para mejorar la experiencia del
-                      usuario mediante una interfaz moderna, clara y funcional.
-                    </p>
-
-                    <p className="text-gray-600 leading-relaxed">
-                      Lograr una navegación intuitiva, una presentación visual
-                      atractiva y alineada con la identidad de la marca, y una
-                      estructura que facilite el acceso rápido a la información
-                      clave.
-                    </p>
-                  </div>
-                </div>
-              </ScrollReveal>
-
-              <ScrollReveal direction="right" delay={0.2}>
-                <div className="relative w-full max-w-[400px] h-auto mx-auto ">
-                  <Image
-                    src="/Negociacion.webp"
-                    alt="Jalife Project"
-                    width={400}
-                    height={300}
-                    className="object-contain w-full h-auto rounded-3xl"
-                  />
-                </div>
-              </ScrollReveal>
-            </div>
+            <ScrollReveal direction="right" delay={0.2}>
+              <div>
+                <span className="font-instrument-serif italic text-2xl text-purple-400 mb-3 block">
+                  02
+                </span>
+                <h2 className="text-4xl md:text-5xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mb-6">
+                  Objetivo
+                </h2>
+                <p className="text-gray-600 leading-relaxed mb-4 font-manrope">
+                  Rediseñar el sitio web para mejorar la experiencia del
+                  usuario mediante una interfaz moderna, clara y funcional.
+                </p>
+                <p className="text-gray-600 leading-relaxed font-manrope">
+                  Lograr una navegación intuitiva, una presentación visual
+                  atractiva y alineada con la identidad de la marca, y una
+                  estructura que facilite el acceso rápido a la información
+                  clave.
+                </p>
+              </div>
+            </ScrollReveal>
           </div>
-        </section>
+        </div>
       </section>
 
-      <section className="px-6 py-16 bg-white">
-        <div className="max-w-6xl mx-auto min-h-100 items-center ">
+      {/* PARA QUIÉN */}
+      <section className="px-6 py-32 bg-gradient-to-b from-white via-gray-50 to-white">
+        <div className="max-w-6xl mx-auto">
           <ScrollReveal>
-            <h2 className="text-4xl font-bold text-gray-900 mb-2 font-space-grotesk">
-              Insights, hallazgos, puntos de dolor
-            </h2>
-            <p className="text-gray-600 mb-12 font-manrope text-lg">
-              Conceptos clave que guiaron el diseño
-            </p>
+            <div className="mb-12 max-w-2xl">
+              <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
+                AUDIENCIA
+              </span>
+              <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
+                Para{" "}
+                <span className="font-instrument-serif italic font-normal text-purple-600">
+                  quién
+                </span>{" "}
+                diseñé
+              </h2>
+              <p className="text-gray-600 mt-4 font-manrope text-lg">
+                Personas que llegan al sitio buscando información clara y
+                rápida sobre los servicios de la marca, en general antes de
+                tomar contacto comercial.
+              </p>
+            </div>
           </ScrollReveal>
 
-          <div className="grid md:grid-cols-4 gap-6">
-            {[
-              {
-                title: "Mala organización de la información",
-                icon: "📑",
-                color: "bg-yellow-200",
-                rotation: "-3deg",
-              },
-              {
-                title:
-                  "Los servicios que se querían vender no llamaban la atención",
-                icon: "👩🏽‍💻",
-                color: "bg-pink-200",
-                rotation: "2deg",
-              },
-              {
-                title:
-                  "La página de contactos no representaba lo que se quería",
-                icon: "📞",
-                color: "bg-blue-200",
-                rotation: "-2deg",
-              },
-              {
-                title: "Las imagenes son poco representativas",
-                icon: "🖼️",
-                color: "bg-green-200",
-                rotation: "3deg",
-              },
-            ].map((insight, index) => (
+          <div className="grid sm:grid-cols-3 gap-4">
+            {audienceTraits.map((trait, i) => (
               <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                whileHover={{ scale: 1.08, rotateZ: 5 }}
-                className="h-full"
+                transition={{ delay: i * 0.1 }}
+                className="bg-white border border-gray-200 rounded-2xl p-6"
               >
-                <div
-                  className={`${insight.color} p-10 rounded-lg shadow-lg h-full w-full flex flex-col items-center justify-center text-center relative overflow-hidden`}
-                  style={{
-                    transform: `perspective(1000px) rotateZ(${insight.rotation}) rotateX(2deg)`,
-                    boxShadow:
-                      "0 10px 25px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.5)",
-                  }}
-                >
-                  {/* Post-it shadow effect */}
-                  <div className="absolute inset-0 pointer-events-none">
-                    <div
-                      className="absolute inset-0 rounded-lg"
-                      style={{
-                        boxShadow: "inset 0 2px 4px rgba(255,255,255,0.8)",
-                      }}
-                    ></div>
-                  </div>
+                <p className="text-xs uppercase tracking-widest text-purple-500 font-manrope mb-2">
+                  {trait.label}
+                </p>
+                <p className="text-lg font-medium font-space-grotesk text-gray-900">
+                  {trait.value}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-                  {/* Pin effect */}
-                  <motion.div
-                    className="absolute top-2 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-red-600 rounded-full shadow-md"
-                    animate={{ y: [0, 2, 0] }}
-                    transition={{
-                      duration: 3,
-                      repeat: Number.POSITIVE_INFINITY,
-                    }}
+      {/* HALLAZGOS + MÉTODOS */}
+      <section className="px-6 py-32 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <ScrollReveal>
+            <div className="mb-16 max-w-2xl">
+              <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
+                INVESTIGACIÓN
+              </span>
+              <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
+                Puntos de{" "}
+                <span className="font-instrument-serif italic font-normal text-purple-600">
+                  dolor
+                </span>
+              </h2>
+              <p className="text-gray-600 mt-4 font-manrope text-lg">
+                Conceptos clave que guiaron el rediseño.
+              </p>
+            </div>
+          </ScrollReveal>
+
+          {/* Métodos */}
+          <ScrollReveal delay={0.1}>
+            <div className="mb-12">
+              <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-4">
+                Cómo llegué a estos hallazgos
+              </p>
+              <div className="grid md:grid-cols-3 gap-4">
+                {researchMethods.map((method, i) => (
+                  <div
+                    key={i}
+                    className="border-l-2 border-purple-200 pl-4"
                   >
-                    <div className="absolute inset-1 bg-red-400 rounded-full"></div>
-                  </motion.div>
-
-                  <div className="relative z-10">
-                    <motion.div
-                      className="text-5xl mb-4"
-                      animate={{ rotateZ: [0, 5, -5, 0] }}
-                      transition={{
-                        duration: 4,
-                        repeat: Number.POSITIVE_INFINITY,
-                      }}
-                    >
-                      {insight.icon}
-                    </motion.div>
-                    <h3 className="text-sm font-bold text-gray-800 mb-2 font-space-grotesk leading-tight">
-                      {insight.title}
-                    </h3>
+                    <p className="font-medium font-space-grotesk text-gray-900 mb-2">
+                      {method.title}
+                    </p>
+                    <p className="text-sm text-gray-600 font-manrope leading-relaxed">
+                      {method.text}
+                    </p>
                   </div>
+                ))}
+              </div>
+            </div>
+          </ScrollReveal>
 
-                  {/* Crease effect */}
-                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-black opacity-5"></div>
+          {/* Insights */}
+          <ScrollReveal delay={0.2}>
+            <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
+              {insights.map((insight, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.08 }}
+                  className="bg-white border border-gray-200 rounded-2xl p-6 hover:border-purple-300 transition"
+                >
+                  <div className="text-3xl mb-4">{insight.icon}</div>
+                  <span className="font-instrument-serif italic text-sm text-purple-400 block mb-2">
+                    0{i + 1}
+                  </span>
+                  <h3 className="text-base font-medium font-space-grotesk text-gray-900 leading-snug">
+                    {insight.title}
+                  </h3>
+                </motion.div>
+              ))}
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ANTES vs DESPUÉS conceptual */}
+      <section className="px-6 py-32 bg-gradient-to-b from-white via-gray-50 to-white">
+        <div className="max-w-6xl mx-auto">
+          <ScrollReveal>
+            <div className="mb-16 max-w-2xl">
+              <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
+                IMPACTO
+              </span>
+              <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
+                Antes vs{" "}
+                <span className="font-instrument-serif italic font-normal text-purple-600">
+                  después
+                </span>
+              </h2>
+              <p className="text-gray-600 mt-4 font-manrope text-lg">
+                Tres ejes clave donde el rediseño aportó valor concreto.
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <div className="space-y-6">
+            {beforeAfter.map((row, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="grid md:grid-cols-[180px_1fr_1fr] gap-6 bg-white border border-gray-200 rounded-2xl p-8"
+              >
+                {/* Aspect */}
+                <div>
+                  <span className="font-instrument-serif italic text-2xl text-purple-400 block mb-1">
+                    0{i + 1}
+                  </span>
+                  <h3 className="font-medium font-space-grotesk text-gray-900">
+                    {row.aspect}
+                  </h3>
+                </div>
+
+                {/* Antes */}
+                <div className="border-l-2 border-gray-200 pl-6">
+                  <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-2">
+                    Antes
+                  </p>
+                  <p className="text-sm text-gray-600 font-manrope leading-relaxed">
+                    {row.before}
+                  </p>
+                </div>
+
+                {/* Después */}
+                <div className="border-l-2 border-purple-300 pl-6">
+                  <p className="text-xs uppercase tracking-widest text-purple-500 font-manrope mb-2">
+                    Después
+                  </p>
+                  <p className="text-sm text-gray-700 font-manrope leading-relaxed">
+                    {row.after}
+                  </p>
                 </div>
               </motion.div>
             ))}
@@ -254,289 +439,377 @@ export default function ProyectoJalife() {
         </div>
       </section>
 
-      {/*Wireframes*/}
-      <section className="px-6 pt-24 md:pt-32 pb-16 bg-gray-100">
+      {/* ARQUITECTURA DE INFORMACIÓN */}
+      <section className="px-6 py-32 bg-white">
         <div className="max-w-6xl mx-auto">
-          <h3 className="text-2xl font-bold text-gray-900 mb-8 font-space-grotesk">
-            Wireframes
-          </h3>
-          <div className="max-w-6xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              <motion.div
-                className="relative"
-                initial={{ opacity: 0, x: 100 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-              >
-                <div className="w-full h-90 relative">
+          <ScrollReveal>
+            <div className="mb-16 max-w-2xl">
+              <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
+                ESTRUCTURA
+              </span>
+              <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
+                Arquitectura de{" "}
+                <span className="font-instrument-serif italic font-normal text-purple-600">
+                  información
+                </span>
+              </h2>
+              <p className="text-gray-600 mt-4 font-manrope text-lg">
+                Reorganización del sitemap para priorizar lo que el usuario
+                viene a buscar.
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.2}>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {sitemap.map((section, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.08 }}
+                  className="bg-gray-50 border border-gray-200 rounded-2xl p-6"
+                >
+                  <span className="font-instrument-serif italic text-sm text-purple-400 block mb-2">
+                    0{i + 1}
+                  </span>
+                  <h3 className="font-medium font-space-grotesk text-gray-900 text-lg mb-4">
+                    {section.title}
+                  </h3>
+                  <div className="space-y-2">
+                    {section.children.map((child, j) => (
+                      <div
+                        key={j}
+                        className="flex items-center gap-2 text-sm text-gray-600 font-manrope"
+                      >
+                        <span className="text-purple-400">└</span>
+                        {child}
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* WIREFRAMES */}
+      <section className="px-6 py-32 bg-gradient-to-b from-white via-gray-50 to-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <ScrollReveal direction="left">
+              <div>
+                <span className="font-instrument-serif italic text-5xl text-purple-400 block mb-4 leading-none">
+                  01
+                </span>
+                <h3 className="text-3xl md:text-4xl font-medium text-gray-900 font-space-grotesk leading-tight mb-2">
+                  Wireframes
+                </h3>
+                <p className="text-gray-400 font-manrope mb-6">
+                  Estructurando el sitio desde la base
+                </p>
+                <p className="text-gray-600 leading-relaxed mb-4 font-manrope">
+                  Se desarrollaron wireframes que permitieron definir la
+                  estructura del sitio y organizar la información de manera
+                  clara y jerárquica.
+                </p>
+                <p className="text-gray-600 leading-relaxed font-manrope">
+                  A partir de esta base, se trabajó en una interfaz más
+                  limpia, actual y funcional, optimizando la navegación y
+                  mejorando la presentación de los productos.
+                </p>
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal direction="right" delay={0.2}>
+              <div className="relative">
+                <Image
+                  src="/imagen/jalife2.png"
+                  alt="Wireframes Jalife"
+                  width={640}
+                  height={480}
+                  className="w-full h-auto object-contain"
+                />
+              </div>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
+      {/* DECISIONES DE DISEÑO */}
+      <section className="px-6 py-32 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <ScrollReveal>
+            <div className="mb-16 max-w-2xl">
+              <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
+                RACIONAL
+              </span>
+              <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
+                Decisiones de{" "}
+                <span className="font-instrument-serif italic font-normal text-purple-600">
+                  diseño
+                </span>
+              </h2>
+              <p className="text-gray-600 mt-4 font-manrope text-lg">
+                Qué decidí y por qué, en las definiciones clave del proyecto.
+              </p>
+            </div>
+          </ScrollReveal>
+
+          {/* Grid de decisiones */}
+          <ScrollReveal delay={0.2}>
+            <div className="grid md:grid-cols-2 gap-4 mb-16">
+              {decisions.map((d, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.08 }}
+                  className="bg-gray-50 border border-gray-200 rounded-2xl p-8 hover:border-purple-300 transition"
+                >
+                  <span className="font-instrument-serif italic text-3xl text-purple-400 block mb-3 leading-none">
+                    {d.number}
+                  </span>
+                  <h3 className="text-xl font-medium font-space-grotesk text-gray-900 mb-3">
+                    {d.title}
+                  </h3>
+                  <p className="text-gray-600 font-manrope leading-relaxed text-sm">
+                    {d.rationale}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </ScrollReveal>
+
+          {/* Aplicación visual */}
+          <ScrollReveal delay={0.3}>
+            <div>
+              <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-4">
+                Aplicación visual
+              </p>
+              <div className="grid md:grid-cols-2 gap-4">
+                <div className="rounded-2xl overflow-hidden border border-gray-200/60">
                   <Image
-                    src="/imagen/jalife2.png"
-                    alt="Jalife Project"
-                    fill
-                    className="object-cover"
+                    src="/1.gif"
+                    alt="Hero section Jalife"
+                    width={1200}
+                    height={800}
+                    className="w-full h-auto"
                   />
                 </div>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, x: -100 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 1, delay: 0.5 }}
-              >
-                <motion.p
-                  className="text-gray-600 leading-relaxed mb-8 font-manrope text-lg"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.9 }}
-                >
-                  Como parte del proceso de rediseño, se desarrollaron
-                  wireframes que permitieron definir la estructura del sitio y
-                  organizar la información de manera clara y jerárquica.
-                </motion.p>
-                <motion.p
-                  className="text-gray-600 leading-relaxed mb-8 font-manrope text-lg"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.9 }}
-                >
-                  A partir de esta base, se trabajó en una interfaz más limpia,
-                  actual y funcional, optimizando la navegación y mejorando la
-                  presentación de los productos, con una experiencia más
-                  coherente y alineada a la identidad de la marca.
-                </motion.p>
-              </motion.div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/*Section definitions*/}
-      <section className="px-6 py-16 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <h3 className="text-2xl font-bold text-gray-900 mb-8 font-space-grotesk">
-            Hero section
-          </h3>
-          <div className="grid md:grid-cols-2 gap-8 items-center relative">
-            {/* Center image/GIF */}
-            <motion.div
-              className="relative"
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-            >
-              <div className="relative w-full max-w-[640px] mx-auto">
-                <Image
-                  src="/1.gif"
-                  alt="Mockup Jalife Brothers"
-                  width={1200}
-                  height={800}
-                  className="rounded-xl shadow-lg"
-                />
-              </div>
-            </motion.div>
-
-            <div className="ml-12 grid gap-8 items-center relative">
-              <div className="space-y-4">
-                <p className="text-gray-600 leading-relaxed font-manrope text-sm">
-                  <span className="font-bold text-gray-900">
-                    Rediseño UI/UX:
-                  </span>{" "}
-                  Presentación visual del proyecto mostrando la nueva interfaz
-                  limpia, moderna y alineada con la identidad de la marca,
-                  diseñada para facilitar la navegación y destacar los servicios
-                  principales
-                </p>
-              </div>
-
-              <div className="space-y-4">
-                <p className="text-gray-600 leading-relaxed font-manrope text-sm">
-                  <span className="font-bold text-gray-900">Grid Layout:</span>{" "}
-                  Distribución de contenido organizada mediante cuadrículas para
-                  mejorar la lectura, jerarquía de información y flujo visual
-                  intuitivo dentro de la página
-                </p>
-              </div>
-
-              <div className="space-y-4 relative">
-                <p className="text-gray-600 leading-relaxed font-manrope text-sm">
-                  <span className="font-bold text-gray-900">Navbar:</span> Barra
-                  de navegación pensada para desaparecer al hacer scroll down y
-                  reaparecer al subir, mejorando la legibilidad sin perder
-                  accesibilidad a las secciones clave
-                </p>
+                <div className="rounded-2xl overflow-hidden border border-gray-200/60">
+                  <Image
+                    src="/bodysection.png"
+                    alt="Body section Jalife"
+                    width={1200}
+                    height={800}
+                    className="w-full h-auto"
+                  />
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="px-6 py-16 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <h3 className="text-2xl font-bold text-gray-900 mb-8 font-space-grotesk">
-            Body section
-          </h3>
-          <div className="grid md:grid-cols-2 gap-8 items-center relative">
-            <div className="mr-12 grid gap-8 items-center relative">
-              <div className="space-y-4">
-                <p className="text-gray-600 leading-relaxed font-manrope text-sm">
-                  <span className="font-bold text-gray-900">
-                    Contenido dinámico:
-                  </span>{" "}
-                  Se incorporaron videos de influencers mostrando su experiencia
-                  con Jalife, junto con información clara sobre la marca, sus
-                  valores y propuesta, reforzando la confianza del usuario y
-                  enriqueciendo la narrativa del sitio.
-                </p>
-              </div>
-            </div>
-
-            {/* Center image/GIF */}
-            <motion.div
-              className="relative"
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-            >
-              <div className="relative w-full max-w-[640px] mx-auto">
-                <Image
-                  src="/bodysection.png"
-                  alt="Mockup Jalife Brothers"
-                  width={1200}
-                  height={800}
-                  className="rounded-xl shadow-lg"
-                />
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* <section className="px-6 py-16 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <h3 className="text-2xl font-bold text-gray-900 mb-8 font-space-grotesk">
-            Contact section
-          </h3>
-          <div className="grid md:grid-cols-2 gap-8 items-center relative">
-        
-            <motion.div
-              className="relative"
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-            >
-              <div className="relative w-full max-w-[640px] mx-auto">
-                <Image
-                  src="/1.gif"
-                  alt="Mockup Jalife Brothers"
-                  width={1200}
-                  height={800}
-                  className="rounded-xl shadow-lg"
-                />
-              </div>
-            </motion.div>
-
-            <div className="ml-12 grid gap-8 items-center relative">
-              <div className="space-y-4">
-                <p className="text-gray-600 leading-relaxed font-manrope text-sm">
-                  <span className="font-bold text-gray-900">Grid Layout:</span>{" "}
-                  Organización sistemática de contenido en una cuadrícula que
-                  optimiza el espacio y mejora la navegación visual del usuario.
-                </p>
-              </div>
-
-              <div className="space-y-4 relative">
-                <p className="text-gray-600 leading-relaxed font-manrope text-sm">
-                  <span className="font-bold text-gray-900">Navbar:</span> Lo
-                  ideal sería que al hacer scroll down desaparezca la barra, y
-                  al hacer scroll up, aparezca de nuevo. Esto mejoraría la
-                  experiencia de lectura y enfoque en el contenido sin perder
-                  accesibilidad a la navegación.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> */}
-
-      {/* Prototype Section */}
-      <section className="px-6 py-16 bg-gray-100">
-        <div className="max-w-6xl mx-auto">
-          <ScrollReveal>
-            <h2 className="text-4xl font-bold text-gray-900 mb-12 font-space-grotesk">
-              Prototipo
-            </h2>
           </ScrollReveal>
-          <motion.div
-            className="relative w-full h-120 flex items-center justify-center overflow-hidden"
-            whileHover={{ scale: 1.02 }}
-            transition={{ duration: 0.3 }}
-          >
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="text-center">
-                <iframe
-                  className="border: 1px solid rgba(0, 0, 0, 0.1);"
-                  width="800"
-                  height="450"
-                  src="https://embed.figma.com/proto/TUIAkraAUQ5sCvrZbctgaK/Jalife-Proyect?node-id=211-2703&scaling=scale-down-width&content-scaling=fixed&page-id=152%3A470&starting-point-node-id=211%3A2703&embed-host=share"
-                ></iframe>
-              </div>
-            </div>
-          </motion.div>
         </div>
       </section>
 
-      {/* Other Projects */}
-      <section className="px-6 py-16 bg-gray-100">
+      {/* SISTEMA VISUAL */}
+      <section className="px-6 py-32 bg-gradient-to-b from-white via-gray-50 to-white">
         <div className="max-w-6xl mx-auto">
-          <OtherProjects currentProjectId="fungi-ritual" />
+          <ScrollReveal>
+            <div className="mb-16 max-w-2xl">
+              <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
+                GUÍA VISUAL
+              </span>
+              <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
+                Sistema{" "}
+                <span className="font-instrument-serif italic font-normal text-purple-600">
+                  visual
+                </span>
+              </h2>
+            </div>
+          </ScrollReveal>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Tipografía */}
+            <ScrollReveal direction="left">
+              <div className="bg-white border border-gray-200 rounded-2xl p-8 h-full">
+                <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-6">
+                  Tipografía
+                </p>
+                <p className="text-7xl md:text-8xl font-bold text-gray-900 mb-2 leading-none">
+                  Aa
+                </p>
+                <p className="text-2xl font-space-grotesk text-gray-900 mb-6">
+                  Inter
+                </p>
+                <div className="flex flex-wrap gap-2 mb-8">
+                  {["Light", "Regular", "Medium", "SemiBold", "Bold"].map(
+                    (w) => (
+                      <span
+                        key={w}
+                        className="px-3 py-1 rounded-full text-xs bg-gray-100 text-gray-700 font-manrope"
+                      >
+                        {w}
+                      </span>
+                    ),
+                  )}
+                </div>
+                <div className="space-y-2 text-gray-700 font-manrope">
+                  <p className="text-lg">ABCDEFGHIJKLMNOPQRSTUVWXYZ</p>
+                  <p className="text-lg">abcdefghijklmnopqrstuvwxyz</p>
+                  <p className="text-lg">1234567890</p>
+                </div>
+              </div>
+            </ScrollReveal>
+
+            {/* Paleta */}
+            <ScrollReveal direction="right" delay={0.2}>
+              <div className="bg-white border border-gray-200 rounded-2xl p-8 h-full">
+                <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-6">
+                  Paleta de colores
+                </p>
+                <div className="grid grid-cols-2 gap-4">
+                  {visualPalette.map((color, i) => (
+                    <motion.div
+                      key={i}
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: i * 0.08 }}
+                      className="space-y-2"
+                    >
+                      <div
+                        className="w-full aspect-square rounded-xl border border-gray-200"
+                        style={{ backgroundColor: color.hex }}
+                      />
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm font-medium text-gray-900 font-space-grotesk">
+                          {color.name}
+                        </span>
+                        <span className="text-xs text-gray-500 font-mono">
+                          {color.hex}
+                        </span>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </ScrollReveal>
+          </div>
         </div>
       </section>
 
-      {/* Footer CTA */}
-      <section className="px-6 py-16 bg-white">
-        <div className="max-w-6xl mx-auto text-center">
+      {/* PROTOTIPO */}
+      <section className="px-6 py-32 bg-white">
+        <div className="max-w-6xl mx-auto">
           <ScrollReveal>
-            <h2 className="text-4xl font-bold text-gray-900 mb-8 font-space-grotesk">
+            <div className="mb-12 max-w-2xl">
+              <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
+                INTERACTIVO
+              </span>
+              <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
+                Prototipo{" "}
+                <span className="font-instrument-serif italic font-normal text-purple-600">
+                  navegable
+                </span>
+              </h2>
+            </div>
+          </ScrollReveal>
+
+          <ScrollReveal delay={0.2}>
+            <div className="rounded-2xl overflow-hidden border border-gray-200 bg-white flex items-center justify-center">
+              <iframe
+                width="800"
+                height="450"
+                src="https://embed.figma.com/proto/TUIAkraAUQ5sCvrZbctgaK/Jalife-Proyect?node-id=211-2703&scaling=scale-down-width&content-scaling=fixed&page-id=152%3A470&starting-point-node-id=211%3A2703&embed-host=share"
+                className="max-w-full"
+              />
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* APRENDIZAJES */}
+      <section className="px-6 py-32 bg-gradient-to-br from-[#f7f7fb] via-[#f1f1f6] to-[#f5edff]">
+        <div className="max-w-6xl mx-auto">
+          <ScrollReveal>
+            <div className="mb-16 max-w-2xl">
+              <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
+                REFLEXIÓN
+              </span>
+              <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
+                Aprendizajes{" "}
+                <span className="font-instrument-serif italic font-normal text-purple-600">
+                  clave
+                </span>
+              </h2>
+            </div>
+          </ScrollReveal>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {takeaways.map((item, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="bg-white border border-gray-200 rounded-2xl p-8"
+              >
+                <span className="font-instrument-serif italic text-3xl text-purple-400 block mb-4">
+                  {item.number}
+                </span>
+                <h3 className="text-xl font-medium font-space-grotesk text-gray-900 mb-3">
+                  {item.title}
+                </h3>
+                <p className="text-gray-600 leading-relaxed font-manrope text-sm">
+                  {item.text}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <OtherProjects currentProjectId="jalife" />
+
+      {/* CTA */}
+      <section className="px-6 py-32 bg-white">
+        <div className="max-w-4xl mx-auto text-center">
+          <ScrollReveal>
+            <p className="text-gray-600 mb-6 font-manrope">
               ¿Te gustó este proyecto?
-            </h2>
-            <p className="text-gray-600 text-lg mb-8 max-w-2xl mx-auto font-manrope">
-              Explora más de mi trabajo o contáctame para colaboraciones y
-              proyectos.
             </p>
-            <motion.div
-              className="flex flex-wrap gap-4 justify-center"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+            <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mb-10">
+              Explorá más de mi{" "}
+              <span className="font-instrument-serif italic font-normal text-purple-600">
+                trabajo
+              </span>
+            </h2>
+            <div className="flex flex-wrap gap-4 justify-center">
+              <Button
+                onClick={() => {
+                  window.location.href = "/#proyectos";
+                }}
+                className="group bg-gray-900 hover:bg-purple-600 text-white px-6 py-4 rounded-full shadow-lg font-manrope inline-flex items-center gap-2"
               >
-                <Button
-                  onClick={() => {
-                    window.location.href = "/#proyectos";
-                  }}
-                  className="bg-gray-800 hover:bg-gray-900 text-white px-8 py-3 rounded-full font-manrope"
-                >
-                  Volver al inicio
+                <span className="inline-block transition-transform duration-300 group-hover:-translate-x-1">
+                  ←
+                </span>
+                Volver al inicio
+              </Button>
+              <a href="mailto:milagrosdziuban1@gmail.com">
+                <Button className="group bg-white hover:bg-purple-50 text-gray-900 border border-gray-300 hover:border-purple-300 px-6 py-4 rounded-full font-manrope inline-flex items-center gap-2">
+                  Contactame
+                  <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">
+                    →
+                  </span>
                 </Button>
-              </motion.div>
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <a href="mailto:milagrosdizuban1@gmail.com">
-                  <Button className="bg-red-500 hover:bg-red-600 text-white px-8 py-3 rounded-full font-manrope">
-                    Contactame
-                  </Button>
-                </a>
-              </motion.div>
-            </motion.div>
+              </a>
+            </div>
           </ScrollReveal>
         </div>
       </section>

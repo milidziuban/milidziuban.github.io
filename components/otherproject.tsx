@@ -12,7 +12,9 @@ interface OtherProjectsProps {
 
 
 export function OtherProjects({ currentProjectId }: OtherProjectsProps) {
-  const otherProjects = projects.filter((project) => project.id !== currentProjectId)
+  const otherProjects = projects
+    .filter((project) => project.id !== currentProjectId)
+    .slice(0, 3)
   
   return (
     <section className="px-6 py-16 bg-gray-100">

@@ -453,14 +453,14 @@ function ProjectsSection() {
       url: "/proyecto-gestion-stock",
       tags: ["UX/UI", "Desktop App"],
     },
-        {
-      title: "Proyecto Fungi Ritual",
-      description:
-        "Landing page informativa con catálogo de productos y enfoque en conversión.",
-      image: "/FungiRitual.png",
-      url: "/proyecto-fungi-ritual",
-      tags: ["UX/UI", "Landing Page"],
-    },
+    // {
+    //   title: "Proyecto Fungi Ritual",
+    //   description:
+    //     "Landing page informativa con catálogo de productos y enfoque en conversión.",
+    //   image: "/FungiRitual.png",
+    //   url: "/proyecto-fungi-ritual",
+    //   tags: ["UX/UI", "Landing Page"],
+    // },
     {
       title: "Game Design",
       description:
