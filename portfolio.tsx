@@ -10,6 +10,7 @@ import {
 } from "./components/animated-components";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { track } from "@vercel/analytics";
 
 // Sección Hero
 
@@ -76,6 +77,7 @@ function HeroSection() {
           <div className="flex items-center gap-6">
             <Button
               onClick={() => {
+                track("cta_ver_proyectos", { source: "hero" });
                 const element = document.getElementById("proyectos");
                 if (element) {
                   element.scrollIntoView({ behavior: "smooth" });
@@ -96,11 +98,13 @@ function HeroSection() {
             <button
               onClick={
                 !isPlaygroundMode
-                  ? () =>
+                  ? () => {
+                      track("linkedin_click", { source: "hero" });
                       window.open(
                         "https://www.linkedin.com/in/milagros-dziuban-dise%C3%B1adora/",
                         "_blank",
-                      )
+                      );
+                    }
                   : undefined
               }
               className="
@@ -516,7 +520,13 @@ function ProjectsSection() {
               transition={{ duration: 0.6, delay: (index % 2) * 0.1 }}
               onClick={
                 !isPlaygroundMode
-                  ? () => (window.location.href = project.url)
+                  ? () => {
+                      track("project_click", {
+                        project: project.title,
+                        url: project.url,
+                      });
+                      window.location.href = project.url;
+                    }
                   : undefined
               }
             >
@@ -651,6 +661,12 @@ function ContactSection() {
                   href={item.url}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() =>
+                    track("contact_click", {
+                      method: item.text,
+                      source: "contact_section",
+                    })
+                  }
                   className="
                     group flex items-center gap-4
                     bg-white border border-gray-200
@@ -697,6 +713,7 @@ function ContactSection() {
                 download
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => track("cv_download")}
               >
                 <Button
                   className="
