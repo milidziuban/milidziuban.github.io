@@ -8,6 +8,13 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: "wappoints",
+    title: "Wappoints",
+    subtitle: "Plataforma de fidelización construida con AI",
+    image: "/imagen/Wappoints.png",
+    href: "/proyecto-wappoints",
+  },
+  {
     id: "activa",
     title: "Proyecto Activa",
     subtitle: "Software de Gestión",

@@ -422,6 +422,14 @@ function ProjectsSection() {
 
   const projects = [
     {
+      title: "Wappoints",
+      description:
+        "Plataforma de fidelización para comercios chicos, diseñada y construida desde cero con ayuda de AI.",
+      image: "/Wappoints.png",
+      url: "/proyecto-wappoints",
+      tags: ["UX/UI", "Web App", "Built with AI"],
+    },
+    {
       title: "Proyecto Activa",
       description:
         "Plataforma de gestión para optimizar procesos internos y centralizar información operativa.",
@@ -717,6 +725,7 @@ function ContactSection() {
               <div
                 className="
                   absolute w-[88%] h-[88%]
+
                   bg-purple-200
                   rounded-[55%_45%_42%_58%/58%_55%_45%_42%]
                   rotate-6
