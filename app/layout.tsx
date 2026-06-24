@@ -7,6 +7,7 @@ import { Manrope } from "next/font/google";
 import { Instrument_Serif } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/next"
+import { Providers } from "@/components/providers"
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -55,7 +56,7 @@ html {
       <body
         className={`${manrope.variable} ${spaceGrotesk.variable} ${instrumentSerif.variable} font-manrope`}
       >
-        {children}
+        <Providers>{children}</Providers>
          <SpeedInsights />
          <Analytics />
       </body>

@@ -6,6 +6,7 @@ import { NavigationHeader } from "./components/navigation-header";
 import { ScrollReveal } from "./components/animated-components";
 import Image from "next/image";
 import { OtherProjects } from "./components/otherproject";
+import { useLanguage } from "./contexts/language-context";
 
 function ProcessStep({
   number,
@@ -97,112 +98,63 @@ function ProcessStep({
 }
 
 export default function ProyectoWappoints() {
-  const audienceTraits = [
-    {
-      label: "Rubro",
-      value: "Gastronomía con sucursales: cafeterías, restaurantes, postres",
-    },
-    {
-      label: "Rol del usuario",
-      value: "Dueño multi-negocio, encargado de sucursal y cliente final",
-    },
-    {
-      label: "Necesidad",
-      value: "Programa de fidelización profesional sin fricción para el cliente",
-    },
+  const { lang } = useLanguage();
+  const es = lang === "es";
+
+  const audienceTraits = es ? [
+    { label: "Rubro", value: "Gastronomía con sucursales: cafeterías, restaurantes, postres" },
+    { label: "Rol del usuario", value: "Dueño multi-negocio, encargado de sucursal y cliente final" },
+    { label: "Necesidad", value: "Programa de fidelización profesional sin fricción para el cliente" },
+  ] : [
+    { label: "Industry", value: "Food & beverage with branches: cafés, restaurants, desserts" },
+    { label: "User role", value: "Multi-business owner, branch manager and end customer" },
+    { label: "Need", value: "Professional loyalty program with zero friction for the customer" },
   ];
 
-  const aiToolkit = [
-    {
-      title: "Lovable",
-      text: "Núcleo del build. Pasé del diseño en Figma a un producto navegable iterando con prompts, manteniendo el sistema visual y el tono.",
-    },
-    {
-      title: "Claude Code",
-      text: "Para refactors profundos, decisiones de arquitectura y features que escapan a la generación de UI: lógica de reglas, cálculo de puntos, vistas multi-rol.",
-    },
-    {
-      title: "Cursor",
-      text: "Edición fina en el editor: ajustes localizados, tipos, y revisión de cada cambio antes de mergear.",
-    },
+  const aiToolkit = es ? [
+    { title: "Lovable", text: "Núcleo del build. Pasé del diseño en Figma a un producto navegable iterando con prompts, manteniendo el sistema visual y el tono." },
+    { title: "Claude Code", text: "Para refactors profundos, decisiones de arquitectura y features que escapan a la generación de UI: lógica de reglas, cálculo de puntos, vistas multi-rol." },
+    { title: "Cursor", text: "Edición fina en el editor: ajustes localizados, tipos, y revisión de cada cambio antes de mergear." },
+  ] : [
+    { title: "Lovable", text: "Core of the build. I went from Figma design to a navigable product by iterating with prompts, keeping the visual system and tone consistent." },
+    { title: "Claude Code", text: "For deep refactors, architecture decisions and features beyond UI generation: rule logic, point calculation, multi-role views." },
+    { title: "Cursor", text: "Fine editing in the editor: localized adjustments, types, and reviewing each change before merging." },
   ];
 
-  const findings = [
-    {
-      title: "El cliente final no quiere otra app",
-      text: "Pedir descarga es el principal motivo de abandono. WhatsApp ya está instalado, ya está autenticado y es el canal donde el cliente espera recibir cosas del comercio.",
-    },
-    {
-      title: "El dueño quiere ver todo desde un solo lugar",
-      text: "Muchos comercios chicos tienen 2 o 3 sucursales (o incluso varios negocios). Necesitan comparar performance, no entrar a cada panel por separado.",
-    },
-    {
-      title: "El empleado de mostrador necesita velocidad",
-      text: "Asignar puntos o canjear un premio tiene que pasar entre el saludo y el cobro. Cada paso extra es un cliente esperando.",
-    },
+  const findings = es ? [
+    { title: "El cliente final no quiere otra app", text: "Pedir descarga es el principal motivo de abandono. WhatsApp ya está instalado, ya está autenticado y es el canal donde el cliente espera recibir cosas del comercio." },
+    { title: "El dueño quiere ver todo desde un solo lugar", text: "Muchos comercios chicos tienen 2 o 3 sucursales (o incluso varios negocios). Necesitan comparar performance, no entrar a cada panel por separado." },
+    { title: "El empleado de mostrador necesita velocidad", text: "Asignar puntos o canjear un premio tiene que pasar entre el saludo y el cobro. Cada paso extra es un cliente esperando." },
+  ] : [
+    { title: "The end customer doesn't want another app", text: "Asking for a download is the main reason for drop-off. WhatsApp is already installed, already authenticated, and is the channel where customers expect to receive things from businesses." },
+    { title: "The owner wants to see everything in one place", text: "Many small businesses have 2 or 3 branches (or even multiple businesses). They need to compare performance, not log into each panel separately." },
+    { title: "The counter employee needs speed", text: "Assigning points or redeeming a reward must happen between the greeting and the payment. Every extra step is a customer waiting." },
   ];
 
-  const beforeAfter = [
-    {
-      aspect: "Inscripción del cliente",
-      before:
-        "Tarjetas de sellos físicas que se pierden, o pedir descarga de app que el cliente nunca hace.",
-      after:
-        "El cliente escanea un QR en mostrador, llega al bot de WhatsApp y queda registrado en segundos. Sin app, sin login.",
-    },
-    {
-      aspect: "Gestión multi-sucursal",
-      before:
-        "Cada local lleva su propio registro. El dueño consolida números a mano o no los consolida.",
-      after:
-        "Vista global con comparativa entre sucursales, alertas automáticas y ranking de clientes consolidado.",
-    },
-    {
-      aspect: "Configuración del programa",
-      before:
-        "Reglas fijas que no se adaptan a cada negocio o que cambiar es un trámite.",
-      after:
-        "Pesos por punto, bonificaciones, vencimientos y puntos de bienvenida configurables, con preview en vivo del cálculo.",
-    },
+  const beforeAfter = es ? [
+    { aspect: "Inscripción del cliente", before: "Tarjetas de sellos físicas que se pierden, o pedir descarga de app que el cliente nunca hace.", after: "El cliente escanea un QR en mostrador, llega al bot de WhatsApp y queda registrado en segundos. Sin app, sin login." },
+    { aspect: "Gestión multi-sucursal", before: "Cada local lleva su propio registro. El dueño consolida números a mano o no los consolida.", after: "Vista global con comparativa entre sucursales, alertas automáticas y ranking de clientes consolidado." },
+    { aspect: "Configuración del programa", before: "Reglas fijas que no se adaptan a cada negocio o que cambiar es un trámite.", after: "Pesos por punto, bonificaciones, vencimientos y puntos de bienvenida configurables, con preview en vivo del cálculo." },
+  ] : [
+    { aspect: "Customer registration", before: "Physical stamp cards that get lost, or asking for an app download the customer never completes.", after: "The customer scans a QR at the counter, reaches the WhatsApp bot and is registered in seconds. No app, no login." },
+    { aspect: "Multi-branch management", before: "Each location keeps its own records. The owner consolidates numbers by hand or doesn't consolidate at all.", after: "Global view with branch comparisons, automatic alerts and a consolidated customer ranking." },
+    { aspect: "Program configuration", before: "Fixed rules that don't adapt to each business or are a hassle to change.", after: "Points per peso, bonuses, expiries and welcome points all configurable, with a live preview of the calculation." },
   ];
 
-  const decisions = [
-    {
-      number: "01",
-      title: "Cliente final sin app, vía WhatsApp",
-      rationale:
-        "El QR de mostrador lleva al bot de WhatsApp, que detecta quién escanea y lo registra. Eliminó el mayor punto de abandono de programas tradicionales: la descarga.",
-    },
-    {
-      number: "02",
-      title: "Vista dual: sucursal vs. administración",
-      rationale:
-        "Un empleado ve solo lo de su sucursal y las acciones del día. El dueño ve el panel global con comparativas, alertas y exportación. Cada rol con su nivel de información.",
-    },
-    {
-      number: "03",
-      title: "Acciones principales arriba de todo",
-      rationale:
-        "Asignar puntos y canjear premio están como primary actions visibles en el home de sucursal. El resto es secundario porque eso es lo que el empleado hace 50 veces al día.",
-    },
-    {
-      number: "04",
-      title: "Reglas con preview en vivo",
-      rationale:
-        "Cuando el dueño cambia el valor de un punto o el monto mínimo, ve al instante cómo se calcularían los puntos en compras de ejemplo. Decisiones informadas, sin probar y ver qué pasa.",
-    },
-    {
-      number: "05",
-      title: "Trazabilidad por empleado y sucursal",
-      rationale:
-        "Cada movimiento muestra quién lo hizo, en qué sucursal y cuándo. Genera confianza y permite auditar sin fricción.",
-    },
-    {
-      number: "06",
-      title: "Alertas accionables, no dashboards densos",
-      rationale:
-        "El admin no recibe gráficos vacíos: recibe avisos concretos como “Belgrano cayó 3.4% esta semana” o “Stock bajo en Combo desayuno”.",
-    },
+  const decisions = es ? [
+    { number: "01", title: "Cliente final sin app, vía WhatsApp", rationale: "El QR de mostrador lleva al bot de WhatsApp, que detecta quién escanea y lo registra. Eliminó el mayor punto de abandono de programas tradicionales: la descarga." },
+    { number: "02", title: "Vista dual: sucursal vs. administración", rationale: "Un empleado ve solo lo de su sucursal y las acciones del día. El dueño ve el panel global con comparativas, alertas y exportación. Cada rol con su nivel de información." },
+    { number: "03", title: "Acciones principales arriba de todo", rationale: "Asignar puntos y canjear premio están como primary actions visibles en el home de sucursal. El resto es secundario porque eso es lo que el empleado hace 50 veces al día." },
+    { number: "04", title: "Reglas con preview en vivo", rationale: "Cuando el dueño cambia el valor de un punto o el monto mínimo, ve al instante cómo se calcularían los puntos en compras de ejemplo. Decisiones informadas, sin probar y ver qué pasa." },
+    { number: "05", title: "Trazabilidad por empleado y sucursal", rationale: "Cada movimiento muestra quién lo hizo, en qué sucursal y cuándo. Genera confianza y permite auditar sin fricción." },
+    { number: "06", title: "Alertas accionables, no dashboards densos", rationale: "El admin no recibe gráficos vacíos: recibe avisos concretos como 'Belgrano cayó 3.4% esta semana' o 'Stock bajo en Combo desayuno'." },
+  ] : [
+    { number: "01", title: "End customer without an app, via WhatsApp", rationale: "The counter QR leads to the WhatsApp bot, which detects who scans it and registers them. It eliminated the biggest drop-off point of traditional programs: the download." },
+    { number: "02", title: "Dual view: branch vs. administration", rationale: "An employee sees only their branch and the day's actions. The owner sees the global panel with comparisons, alerts and export. Each role with its own information level." },
+    { number: "03", title: "Main actions at the very top", rationale: "Assign points and redeem reward are visible as primary actions on the branch home. Everything else is secondary because that's what the employee does 50 times a day." },
+    { number: "04", title: "Rules with live preview", rationale: "When the owner changes the value of a point or the minimum amount, they instantly see how points would be calculated on sample purchases. Informed decisions, no trial and error." },
+    { number: "05", title: "Traceability by employee and branch", rationale: "Each movement shows who did it, at which branch and when. It builds trust and allows auditing without friction." },
+    { number: "06", title: "Actionable alerts, not dense dashboards", rationale: "The admin doesn't receive empty charts: they receive concrete notices like 'Belgrano dropped 3.4% this week' or 'Low stock on Breakfast Combo'." },
   ];
 
   const visualPalette = [
@@ -212,22 +164,14 @@ export default function ProyectoWappoints() {
     { hex: "#0F172A", name: "Slate 900" },
   ];
 
-  const takeaways = [
-    {
-      number: "01",
-      title: "La AI acelera, pero el criterio sigue siendo humano",
-      text: "Lovable y Claude Code escriben rápido, pero las decisiones de UX, jerarquía y prioridades de producto siguen siendo mías. La AI ejecuta una visión, no la define.",
-    },
-    {
-      number: "02",
-      title: "Diseñar con AI exige prompts pensados como specs",
-      text: "Cuanto más clara la intención (objetivo, restricciones, criterios de éxito), más alineado el output. Aprendí a escribir prompts como mini-briefs de diseño.",
-    },
-    {
-      number: "03",
-      title: "El loop diseño → código → uso real se acortó muchísimo",
-      text: "Pude validar decisiones probando el producto vivo en horas, no semanas. Eso cambió cómo iterar: menos especulación, más evidencia.",
-    },
+  const takeaways = es ? [
+    { number: "01", title: "La AI acelera, pero el criterio sigue siendo humano", text: "Lovable y Claude Code escriben rápido, pero las decisiones de UX, jerarquía y prioridades de producto siguen siendo mías. La AI ejecuta una visión, no la define." },
+    { number: "02", title: "Diseñar con AI exige prompts pensados como specs", text: "Cuanto más clara la intención (objetivo, restricciones, criterios de éxito), más alineado el output. Aprendí a escribir prompts como mini-briefs de diseño." },
+    { number: "03", title: "El loop diseño → código → uso real se acortó muchísimo", text: "Pude validar decisiones probando el producto vivo en horas, no semanas. Eso cambió cómo iterar: menos especulación, más evidencia." },
+  ] : [
+    { number: "01", title: "AI accelerates, but the judgment stays human", text: "Lovable and Claude Code write fast, but the UX, hierarchy and product priority decisions are still mine. AI executes a vision, it doesn't define it." },
+    { number: "02", title: "Designing with AI requires prompts written as specs", text: "The clearer the intent (goal, constraints, success criteria), the more aligned the output. I learned to write prompts as mini design briefs." },
+    { number: "03", title: "The design → code → real use loop got much shorter", text: "I could validate decisions by testing the live product in hours, not weeks. That changed how I iterate: less speculation, more evidence." },
   ];
 
   return (
@@ -251,44 +195,25 @@ export default function ProyectoWappoints() {
               </div>
 
               <h1 className="text-5xl md:text-6xl font-medium tracking-tighter text-gray-900 leading-[1.05] font-space-grotesk mb-6">
-                Wappoints,{" "}
-                <span className="font-instrument-serif italic font-normal text-purple-600">
-                  fidelización
-                </span>{" "}
-                construida con AI
+                {es ? <>Wappoints,{" "}<span className="font-instrument-serif italic font-normal text-purple-600">fidelización</span>{" "}construida con AI</> : <>Wappoints,{" "}<span className="font-instrument-serif italic font-normal text-purple-600">loyalty</span>{" "}built with AI</>}
               </h1>
 
               <p className="text-lg text-gray-600 max-w-xl leading-relaxed mb-10 font-manrope">
-                Plataforma multi-negocio y multi-sucursal para programas de
-                fidelización, donde el cliente final se inscribe por WhatsApp
-                sin descargar nada. Diseñada en Figma y construida desde cero
-                usando AI como copiloto.
+                {es ? "Plataforma multi-negocio y multi-sucursal para programas de fidelización, donde el cliente final se inscribe por WhatsApp sin descargar nada. Diseñada en Figma y construida desde cero usando AI como copiloto." : "Multi-business and multi-branch platform for loyalty programs, where the end customer signs up via WhatsApp without downloading anything. Designed in Figma and built from scratch using AI as co-pilot."}
               </p>
 
               <div className="grid grid-cols-3 gap-6 text-sm">
                 <div>
-                  <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-2">
-                    Rol
-                  </p>
-                  <p className="text-gray-900 font-medium font-space-grotesk">
-                    Diseño + Build con AI
-                  </p>
+                  <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-2">{es ? "Rol" : "Role"}</p>
+                  <p className="text-gray-900 font-medium font-space-grotesk">{es ? "Diseño + Build con AI" : "Design + Build with AI"}</p>
                 </div>
                 <div>
-                  <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-2">
-                    Duración
-                  </p>
-                  <p className="text-gray-900 font-medium font-space-grotesk">
-                    En curso
-                  </p>
+                  <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-2">{es ? "Duración" : "Duration"}</p>
+                  <p className="text-gray-900 font-medium font-space-grotesk">{es ? "En curso" : "Ongoing"}</p>
                 </div>
                 <div>
-                  <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-2">
-                    Herramientas
-                  </p>
-                  <p className="text-gray-900 font-medium font-space-grotesk">
-                    Figma, Lovable, Claude Code, Cursor
-                  </p>
+                  <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-2">{es ? "Herramientas" : "Tools"}</p>
+                  <p className="text-gray-900 font-medium font-space-grotesk">Figma, Lovable, Claude Code, Cursor</p>
                 </div>
               </div>
             </div>
@@ -323,19 +248,13 @@ export default function ProyectoWappoints() {
                   01
                 </span>
                 <h2 className="text-4xl md:text-5xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mb-6">
-                  Problema
+                  {es ? "Problema" : "Problem"}
                 </h2>
                 <p className="text-gray-600 leading-relaxed mb-4 font-manrope">
-                  Los programas de fidelización del mercado están pensados
-                  para cadenas grandes: caros, complejos y con un onboarding
-                  que el cliente final rara vez completa. Pedir que descargue
-                  una app es el principal motivo de abandono.
+                  {es ? "Los programas de fidelización del mercado están pensados para cadenas grandes: caros, complejos y con un onboarding que el cliente final rara vez completa. Pedir que descargue una app es el principal motivo de abandono." : "Loyalty programs on the market are designed for large chains: expensive, complex, with an onboarding the end customer rarely completes. Asking them to download an app is the main reason for drop-off."}
                 </p>
                 <p className="text-gray-600 leading-relaxed font-manrope">
-                  Para los comercios chicos con varias sucursales (o varios
-                  negocios), no existe una plataforma simple que les permita
-                  administrar todo desde un solo lugar y que el cliente pueda
-                  empezar a sumar puntos en segundos.
+                  {es ? "Para los comercios chicos con varias sucursales (o varios negocios), no existe una plataforma simple que les permita administrar todo desde un solo lugar y que el cliente pueda empezar a sumar puntos en segundos." : "For small businesses with several branches (or multiple businesses), there's no simple platform that lets them manage everything from one place while customers can start earning points in seconds."}
                 </p>
               </div>
             </ScrollReveal>
@@ -346,20 +265,25 @@ export default function ProyectoWappoints() {
                   02
                 </span>
                 <h2 className="text-4xl md:text-5xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mb-6">
-                  Objetivo
+                  {es ? "Objetivo" : "Goal"}
                 </h2>
                 <p className="text-gray-600 leading-relaxed mb-4 font-manrope">
-                  Diseñar y construir una plataforma profesional pensada
-                  para gastronomía multi-sucursal.
+                  {es ? "Diseñar y construir una plataforma profesional pensada para gastronomía multi-sucursal." : "Design and build a professional platform built for multi-branch food & beverage businesses."}
                 </p>
                 <ul className="space-y-2">
-                  {[
+                  {(es ? [
                     "Cliente final cero fricción (QR + WhatsApp)",
                     "Vista de administración multi-negocio",
                     "Operación rápida en mostrador",
                     "Reglas del programa configurables con preview",
                     "Construcción acelerada con AI sin perder criterio",
-                  ].map((item, i) => (
+                  ] : [
+                    "Zero-friction end customer (QR + WhatsApp)",
+                    "Multi-business administration view",
+                    "Fast counter operation",
+                    "Configurable program rules with live preview",
+                    "AI-accelerated build without losing design judgment",
+                  ]).map((item, i) => (
                     <li
                       key={i}
                       className="flex items-start gap-3 text-gray-600 font-manrope"
@@ -381,18 +305,13 @@ export default function ProyectoWappoints() {
           <ScrollReveal>
             <div className="mb-12 max-w-2xl">
               <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
-                AUDIENCIA
+                {es ? "AUDIENCIA" : "AUDIENCE"}
               </span>
               <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-                Para{" "}
-                <span className="font-instrument-serif italic font-normal text-purple-600">
-                  quién
-                </span>{" "}
-                diseñé
+                {es ? <>Para{" "}<span className="font-instrument-serif italic font-normal text-purple-600">quién</span>{" "}diseñé</> : <>Who I{" "}<span className="font-instrument-serif italic font-normal text-purple-600">designed</span>{" "}for</>}
               </h2>
               <p className="text-gray-600 mt-4 font-manrope text-lg">
-                Tres perfiles muy distintos conviven en la plataforma. Cada
-                pantalla se diseñó pensando en qué rol la va a usar.
+                {es ? "Tres perfiles muy distintos conviven en la plataforma. Cada pantalla se diseñó pensando en qué rol la va a usar." : "Three very different profiles coexist in the platform. Every screen was designed thinking about which role will use it."}
               </p>
             </div>
           </ScrollReveal>
@@ -425,17 +344,13 @@ export default function ProyectoWappoints() {
           <ScrollReveal>
             <div className="mb-16 max-w-2xl">
               <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
-                INVESTIGACIÓN
+                {es ? "INVESTIGACIÓN" : "RESEARCH"}
               </span>
               <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-                Lo que{" "}
-                <span className="font-instrument-serif italic font-normal text-purple-600">
-                  descubrí
-                </span>
+                {es ? <>Lo que{" "}<span className="font-instrument-serif italic font-normal text-purple-600">descubrí</span></> : <>What I{" "}<span className="font-instrument-serif italic font-normal text-purple-600">found</span></>}
               </h2>
               <p className="text-gray-600 mt-4 font-manrope text-lg">
-                Insights de hablar con comercios y de probar plataformas
-                existentes como cliente y como admin.
+                {es ? "Insights de hablar con comercios y de probar plataformas existentes como cliente y como admin." : "Insights from talking to businesses and testing existing platforms as both a customer and an admin."}
               </p>
             </div>
           </ScrollReveal>
@@ -476,15 +391,10 @@ export default function ProyectoWappoints() {
                 BUILT WITH AI
               </span>
               <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-                Diseñar y{" "}
-                <span className="font-instrument-serif italic font-normal text-purple-600">
-                  construir
-                </span>{" "}
-                con AI
+                {es ? <>Diseñar y{" "}<span className="font-instrument-serif italic font-normal text-purple-600">construir</span>{" "}con AI</> : <>Designing and{" "}<span className="font-instrument-serif italic font-normal text-purple-600">building</span>{" "}with AI</>}
               </h2>
               <p className="text-gray-600 mt-4 font-manrope text-lg">
-                No tercericé la decisión: usé la AI como un equipo extendido
-                para ejecutar más rápido lo que ya tenía claro.
+                {es ? "No tercericé la decisión: usé la AI como un equipo extendido para ejecutar más rápido lo que ya tenía claro." : "I didn't outsource the decision-making: I used AI as an extended team to execute faster what I already had clear."}
               </p>
             </div>
           </ScrollReveal>
@@ -501,7 +411,7 @@ export default function ProyectoWappoints() {
                   className="bg-white border border-gray-200 rounded-2xl p-8"
                 >
                   <p className="text-xs uppercase tracking-widest text-purple-500 font-manrope mb-3">
-                    Herramienta
+                    {es ? "Herramienta" : "Tool"}
                   </p>
                   <h3 className="text-xl font-medium font-space-grotesk text-gray-900 mb-3">
                     {tool.title}
@@ -517,35 +427,23 @@ export default function ProyectoWappoints() {
           <ScrollReveal delay={0.2}>
             <div className="bg-gray-900 text-white rounded-2xl p-10 md:p-14">
               <p className="text-xs uppercase tracking-widest text-purple-300 font-manrope mb-4">
-                Mi flujo de trabajo
+                {es ? "Mi flujo de trabajo" : "My workflow"}
               </p>
               <h3 className="text-2xl md:text-3xl font-medium font-space-grotesk leading-tight mb-8 max-w-3xl">
-                Pensé el producto como diseñadora primero. La AI entró cuando
-                hizo falta acelerar la ejecución sin perder consistencia.
+                {es ? "Pensé el producto como diseñadora primero. La AI entró cuando hizo falta acelerar la ejecución sin perder consistencia." : "I thought about the product as a designer first. AI came in when I needed to accelerate execution without losing consistency."}
               </h3>
               <div className="grid md:grid-cols-4 gap-6">
-                {[
-                  {
-                    n: "01",
-                    t: "Visión",
-                    d: "Definí el problema, los tres roles (admin, sucursal, cliente) y los principios antes de abrir el editor.",
-                  },
-                  {
-                    n: "02",
-                    t: "Diseño",
-                    d: "Arquitectura de información, flujos y sistema visual en Figma. Decisiones críticas resueltas a mano.",
-                  },
-                  {
-                    n: "03",
-                    t: "Build con AI",
-                    d: "Lovable para generar pantallas, Claude Code y Cursor para refactors y lógica. Revisión de cada cambio.",
-                  },
-                  {
-                    n: "04",
-                    t: "Validación",
-                    d: "Pruebas en producto real, ajustes en horas y vuelta al loop.",
-                  },
-                ].map((step, i) => (
+                {(es ? [
+                  { n: "01", t: "Visión", d: "Definí el problema, los tres roles (admin, sucursal, cliente) y los principios antes de abrir el editor." },
+                  { n: "02", t: "Diseño", d: "Arquitectura de información, flujos y sistema visual en Figma. Decisiones críticas resueltas a mano." },
+                  { n: "03", t: "Build con AI", d: "Lovable para generar pantallas, Claude Code y Cursor para refactors y lógica. Revisión de cada cambio." },
+                  { n: "04", t: "Validación", d: "Pruebas en producto real, ajustes en horas y vuelta al loop." },
+                ] : [
+                  { n: "01", t: "Vision", d: "Defined the problem, the three roles (admin, branch, customer) and the principles before opening the editor." },
+                  { n: "02", t: "Design", d: "Information architecture, flows and visual system in Figma. Critical decisions resolved by hand." },
+                  { n: "03", t: "Build with AI", d: "Lovable to generate screens, Claude Code and Cursor for refactors and logic. Reviewing each change." },
+                  { n: "04", t: "Validation", d: "Tests on the real product, adjustments in hours and back to the loop." },
+                ]).map((step, i) => (
                   <div key={i}>
                     <span className="font-instrument-serif italic text-2xl text-purple-300 block mb-2">
                       {step.n}
@@ -570,17 +468,13 @@ export default function ProyectoWappoints() {
           <ScrollReveal>
             <div className="mb-16 max-w-2xl">
               <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
-                IMPACTO
+                {es ? "IMPACTO" : "IMPACT"}
               </span>
               <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-                Antes vs{" "}
-                <span className="font-instrument-serif italic font-normal text-purple-600">
-                  con Wappoints
-                </span>
+                {es ? <>Antes vs{" "}<span className="font-instrument-serif italic font-normal text-purple-600">con Wappoints</span></> : <>Before vs{" "}<span className="font-instrument-serif italic font-normal text-purple-600">with Wappoints</span></>}
               </h2>
               <p className="text-gray-600 mt-4 font-manrope text-lg">
-                Tres ejes donde la plataforma cambia la forma en que un
-                comercio gestiona su relación con clientes.
+                {es ? "Tres ejes donde la plataforma cambia la forma en que un comercio gestiona su relación con clientes." : "Three areas where the platform changes how a business manages its relationship with customers."}
               </p>
             </div>
           </ScrollReveal>
@@ -606,7 +500,7 @@ export default function ProyectoWappoints() {
 
                 <div className="border-l-2 border-gray-200 pl-6">
                   <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-2">
-                    Antes
+                    {es ? "Antes" : "Before"}
                   </p>
                   <p className="text-sm text-gray-600 font-manrope leading-relaxed">
                     {row.before}
@@ -615,7 +509,7 @@ export default function ProyectoWappoints() {
 
                 <div className="border-l-2 border-purple-300 pl-6">
                   <p className="text-xs uppercase tracking-widest text-purple-500 font-manrope mb-2">
-                    Con Wappoints
+                    {es ? "Con Wappoints" : "With Wappoints"}
                   </p>
                   <p className="text-sm text-gray-700 font-manrope leading-relaxed">
                     {row.after}
@@ -633,39 +527,36 @@ export default function ProyectoWappoints() {
           <ScrollReveal>
             <div className="mb-20 max-w-2xl">
               <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
-                PRODUCTO
+                {es ? "PRODUCTO" : "PRODUCT"}
               </span>
               <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-                Qué hay{" "}
-                <span className="font-instrument-serif italic font-normal text-purple-600">
-                  adentro
-                </span>
+                {es ? <>Qué hay{" "}<span className="font-instrument-serif italic font-normal text-purple-600">adentro</span></> : <>What's{" "}<span className="font-instrument-serif italic font-normal text-purple-600">inside</span></>}
               </h2>
               <p className="text-gray-600 mt-4 font-manrope text-lg">
-                Recorrido por los módulos principales que componen la
-                plataforma.
+                {es ? "Recorrido por los módulos principales que componen la plataforma." : "A walkthrough of the main modules that make up the platform."}
               </p>
             </div>
           </ScrollReveal>
 
           <ProcessStep
             number="01"
-            title="Home sucursal"
-            subtitle="Operación diaria del mostrador"
+            title={es ? "Home sucursal" : "Branch home"}
+            subtitle={es ? "Operación diaria del mostrador" : "Daily counter operation"}
             image="/imagen/wappoints-home-sucursal.gif"
           >
             <p>
-              La pantalla que ve el empleado de cara al cliente. Las dos
-              acciones principales —asignar puntos y canjear premio— viven
-              arriba de todo, seguidas de las métricas del día y la
-              actividad reciente.
+              {es ? "La pantalla que ve el empleado de cara al cliente. Las dos acciones principales —asignar puntos y canjear premio— viven arriba de todo, seguidas de las métricas del día y la actividad reciente." : "The screen the employee sees when facing the customer. The two main actions — assign points and redeem reward — live at the very top, followed by the day's metrics and recent activity."}
             </p>
             <ul className="space-y-2 mt-4">
-              {[
+              {(es ? [
                 "KPIs del día: puntos asignados, canjes, clientes activos",
                 "Actividad en tiempo real con autor y monto",
                 "Ranking local de clientes del mes",
-              ].map((item, i) => (
+              ] : [
+                "Daily KPIs: assigned points, redemptions, active customers",
+                "Real-time activity with author and amount",
+                "Local customer ranking for the month",
+              ]).map((item, i) => (
                 <li key={i} className="flex items-start gap-3">
                   <span className="text-purple-500 mt-1">✦</span>
                   {item}
@@ -676,64 +567,52 @@ export default function ProyectoWappoints() {
 
           <ProcessStep
             number="02"
-            title="Vista global de administración"
-            subtitle="Para dueños con varias sucursales o varios negocios"
+            title={es ? "Vista global de administración" : "Global admin view"}
+            subtitle={es ? "Para dueños con varias sucursales o varios negocios" : "For owners with multiple branches or businesses"}
             image="/imagen/wappoints-vista-global.gif"
             imageLeft
           >
             <p>
-              Panel consolidado con métricas de todas las sucursales,
-              comparativas semanales, alertas accionables y ranking de
-              clientes global.
+              {es ? "Panel consolidado con métricas de todas las sucursales, comparativas semanales, alertas accionables y ranking de clientes global." : "Consolidated panel with metrics from all branches, weekly comparisons, actionable alerts and a global customer ranking."}
             </p>
             <p className="border-l-2 border-purple-200 pl-4 italic">
-              💡 Las alertas no son gráficos vacíos: son avisos concretos
-              como “Belgrano cayó 3.4% esta semana” o “Stock bajo en Combo
-              desayuno”.
+              {es ? "💡 Las alertas no son gráficos vacíos: son avisos concretos como \"Belgrano cayó 3.4% esta semana\" o \"Stock bajo en Combo desayuno\"." : "💡 Alerts aren't empty charts: they're concrete notices like \"Belgrano dropped 3.4% this week\" or \"Low stock on Breakfast Combo\"."}
             </p>
           </ProcessStep>
 
           <ProcessStep
             number="03"
-            title="Clientes y movimientos"
-            subtitle="Perfil completo y trazabilidad total"
+            title={es ? "Clientes y movimientos" : "Customers and movements"}
+            subtitle={es ? "Perfil completo y trazabilidad total" : "Complete profile and full traceability"}
             image="/imagen/wappoints-clientes.gif"
           >
             <p>
-              Cada cliente tiene su perfil con tags (VIP, frecuente, alto
-              ticket), histórico de visitas, ticket promedio y sucursal
-              favorita. Cada movimiento queda trazado por empleado y
-              sucursal, con la posibilidad de deshacer y restaurar.
+              {es ? "Cada cliente tiene su perfil con tags (VIP, frecuente, alto ticket), histórico de visitas, ticket promedio y sucursal favorita. Cada movimiento queda trazado por empleado y sucursal, con la posibilidad de deshacer y restaurar." : "Each customer has their profile with tags (VIP, frequent, high ticket), visit history, average ticket and favorite branch. Every movement is traced by employee and branch, with the ability to undo and restore."}
             </p>
           </ProcessStep>
 
           <ProcessStep
             number="04"
-            title="Reglas del programa"
-            subtitle="Configuración con preview en vivo"
+            title={es ? "Reglas del programa" : "Program rules"}
+            subtitle={es ? "Configuración con preview en vivo" : "Configuration with live preview"}
             image="/imagen/wappoints-reglas.gif"
             imageLeft
           >
             <p>
-              El dueño configura cómo se acumulan, multiplican y vencen los
-              puntos. Cada cambio se ve al instante en una vista previa con
-              compras de ejemplo, así sabe qué impacto va a tener antes de
-              guardar.
+              {es ? "El dueño configura cómo se acumulan, multiplican y vencen los puntos. Cada cambio se ve al instante en una vista previa con compras de ejemplo, así sabe qué impacto va a tener antes de guardar." : "The owner configures how points accumulate, multiply and expire. Each change is instantly previewed with sample purchases, so they know the impact before saving."}
             </p>
           </ProcessStep>
 
           <ProcessStep
             number="05"
             title="QR + WhatsApp"
-            subtitle="El cliente final entra sin descargar nada"
+            subtitle={es ? "El cliente final entra sin descargar nada" : "The end customer joins without downloading anything"}
             image="/imagen/wappoints-qr.gif"
             imagePortrait
             imageLeft
           >
             <p>
-              El QR de mostrador lleva al bot de WhatsApp, que detecta
-              quién escanea y lo registra como cliente. Sin app, sin login,
-              sin formulario. Es el diferencial central del producto.
+              {es ? "El QR de mostrador lleva al bot de WhatsApp, que detecta quién escanea y lo registra como cliente. Sin app, sin login, sin formulario. Es el diferencial central del producto." : "The counter QR leads to the WhatsApp bot, which detects who scans it and registers them as a customer. No app, no login, no form. This is the product's core differentiator."}
             </p>
           </ProcessStep>
         </div>
@@ -745,17 +624,13 @@ export default function ProyectoWappoints() {
           <ScrollReveal>
             <div className="mb-16 max-w-2xl">
               <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
-                RACIONAL
+                {es ? "RACIONAL" : "RATIONALE"}
               </span>
               <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-                Decisiones de{" "}
-                <span className="font-instrument-serif italic font-normal text-purple-600">
-                  diseño
-                </span>
+                {es ? <>Decisiones de{" "}<span className="font-instrument-serif italic font-normal text-purple-600">diseño</span></> : <>Design{" "}<span className="font-instrument-serif italic font-normal text-purple-600">decisions</span></>}
               </h2>
               <p className="text-gray-600 mt-4 font-manrope text-lg">
-                Qué decidí y por qué, en los puntos que más impactan en la
-                adopción.
+                {es ? "Qué decidí y por qué, en los puntos que más impactan en la adopción." : "What I decided and why, at the points that most impact adoption."}
               </p>
             </div>
           </ScrollReveal>
@@ -793,17 +668,13 @@ export default function ProyectoWappoints() {
           <ScrollReveal>
             <div className="mb-16 max-w-2xl">
               <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
-                GUÍA VISUAL
+                {es ? "GUÍA VISUAL" : "VISUAL GUIDE"}
               </span>
               <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-                Sistema{" "}
-                <span className="font-instrument-serif italic font-normal text-purple-600">
-                  visual
-                </span>
+                {es ? <>Sistema{" "}<span className="font-instrument-serif italic font-normal text-purple-600">visual</span></> : <>Visual{" "}<span className="font-instrument-serif italic font-normal text-purple-600">system</span></>}
               </h2>
               <p className="text-gray-600 mt-4 font-manrope text-lg">
-                Tipografía moderna y una paleta con códigos claros: azul
-                para sumar, naranja para canjear, verde y rojo para estado.
+                {es ? "Tipografía moderna y una paleta con códigos claros: azul para sumar, naranja para canjear, verde y rojo para estado." : "Modern typography and a palette with clear codes: blue for earning, orange for redeeming, green and red for status."}
               </p>
             </div>
           </ScrollReveal>
@@ -812,7 +683,7 @@ export default function ProyectoWappoints() {
             <ScrollReveal direction="left">
               <div className="bg-gray-50 border border-gray-200 rounded-2xl p-8 h-full">
                 <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-6">
-                  Tipografía
+                  {es ? "Tipografía" : "Typography"}
                 </p>
                 <p className="text-7xl md:text-8xl font-bold text-gray-900 mb-2 leading-none">
                   Aa
@@ -843,7 +714,7 @@ export default function ProyectoWappoints() {
             <ScrollReveal direction="right" delay={0.2}>
               <div className="bg-gray-50 border border-gray-200 rounded-2xl p-8 h-full">
                 <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-6">
-                  Paleta de colores
+                  {es ? "Paleta de colores" : "Color palette"}
                 </p>
                 <div className="grid grid-cols-2 gap-4">
                   {visualPalette.map((color, i) => (
@@ -882,13 +753,10 @@ export default function ProyectoWappoints() {
           <ScrollReveal>
             <div className="mb-16 max-w-2xl">
               <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
-                REFLEXIÓN
+                {es ? "REFLEXIÓN" : "REFLECTION"}
               </span>
               <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-                Aprendizajes{" "}
-                <span className="font-instrument-serif italic font-normal text-purple-600">
-                  clave
-                </span>
+                {es ? <>Aprendizajes{" "}<span className="font-instrument-serif italic font-normal text-purple-600">clave</span></> : <>Key{" "}<span className="font-instrument-serif italic font-normal text-purple-600">takeaways</span></>}
               </h2>
             </div>
           </ScrollReveal>
@@ -925,13 +793,10 @@ export default function ProyectoWappoints() {
         <div className="max-w-4xl mx-auto text-center">
           <ScrollReveal>
             <p className="text-gray-600 mb-6 font-manrope">
-              ¿Te gustó este proyecto?
+              {es ? "¿Te gustó este proyecto?" : "Did you like this project?"}
             </p>
             <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mb-10">
-              Explorá más de mi{" "}
-              <span className="font-instrument-serif italic font-normal text-purple-600">
-                trabajo
-              </span>
+              {es ? <>Explorá más de mi{" "}<span className="font-instrument-serif italic font-normal text-purple-600">trabajo</span></> : <>Explore more of my{" "}<span className="font-instrument-serif italic font-normal text-purple-600">work</span></>}
             </h2>
             <div className="flex flex-wrap gap-4 justify-center">
               <Button
@@ -943,11 +808,11 @@ export default function ProyectoWappoints() {
                 <span className="inline-block transition-transform duration-300 group-hover:-translate-x-1">
                   ←
                 </span>
-                Volver al inicio
+                {es ? "Volver al inicio" : "Back to home"}
               </Button>
               <a href="mailto:milagrosdziuban1@gmail.com">
                 <Button className="group bg-white hover:bg-purple-50 text-gray-900 border border-gray-300 hover:border-purple-300 px-6 py-4 rounded-full font-manrope inline-flex items-center gap-2">
-                  Contactame
+                  {es ? "Contactame" : "Contact me"}
                   <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">
                     →
                   </span>

@@ -5,6 +5,7 @@ import { ScrollReveal } from "./components/animated-components";
 import Image from "next/image";
 import { Button } from "./components/ui/button";
 import { NavigationHeaderDark } from "./components/navigation-header-dark";
+import { useLanguage } from "./contexts/language-context";
 
 // Helper para fases del proceso (dark)
 function ProcessStepDark({
@@ -186,61 +187,21 @@ function ScreensCarouselDark({
 }
 
 export default function ProyectoTowerDefense() {
-  const screens = [
-    {
-      title: "Onboarding",
-      description:
-        "Introducción al juego con explicación de mecánicas y controles principales.",
-      image: "/Onboarding.png",
-      features: [
-        "Tutorial guiado",
-        "Mecánicas básicas explicadas",
-        "Controles principales",
-      ],
-    },
-    {
-      title: "Nivel 1",
-      description:
-        "Primer nivel introductorio con dificultad accesible para nuevos jugadores.",
-      image: "/Level1.png",
-      features: [
-        "Curva de aprendizaje suave",
-        "Feedback visual claro",
-        "Recompensas tempranas",
-      ],
-    },
-    {
-      title: "Pre-nivel",
-      description:
-        "Pantalla previa al nivel con selección de torres y estrategia.",
-      image: "/Pre-nivel.png",
-      features: [
-        "Selección de loadout",
-        "Información del nivel",
-        "Recursos disponibles",
-      ],
-    },
-    {
-      title: "Nivel 2",
-      description:
-        "Segundo nivel con mecánicas avanzadas y mayor desafío estratégico.",
-      image: "/Level2.png",
-      features: [
-        "Nuevas torres disponibles",
-        "Enemigos con habilidades",
-        "Múltiples rutas",
-      ],
-    },
-    {
-      title: "Nivel 2.1",
-      description: "Variación del nivel 2 con configuración alternativa.",
-      image: "/Level2.1.png",
-      features: [
-        "Layout alterno",
-        "Recursos limitados",
-        "Mayor dificultad",
-      ],
-    },
+  const { lang } = useLanguage();
+  const es = lang === "es";
+
+  const screens = es ? [
+    { title: "Onboarding", description: "Introducción al juego con explicación de mecánicas y controles principales.", image: "/Onboarding.png", features: ["Tutorial guiado", "Mecánicas básicas explicadas", "Controles principales"] },
+    { title: "Nivel 1", description: "Primer nivel introductorio con dificultad accesible para nuevos jugadores.", image: "/Level1.png", features: ["Curva de aprendizaje suave", "Feedback visual claro", "Recompensas tempranas"] },
+    { title: "Pre-nivel", description: "Pantalla previa al nivel con selección de torres y estrategia.", image: "/Pre-nivel.png", features: ["Selección de loadout", "Información del nivel", "Recursos disponibles"] },
+    { title: "Nivel 2", description: "Segundo nivel con mecánicas avanzadas y mayor desafío estratégico.", image: "/Level2.png", features: ["Nuevas torres disponibles", "Enemigos con habilidades", "Múltiples rutas"] },
+    { title: "Nivel 2.1", description: "Variación del nivel 2 con configuración alternativa.", image: "/Level2.1.png", features: ["Layout alterno", "Recursos limitados", "Mayor dificultad"] },
+  ] : [
+    { title: "Onboarding", description: "Introduction to the game with explanation of mechanics and main controls.", image: "/Onboarding.png", features: ["Guided tutorial", "Basic mechanics explained", "Main controls"] },
+    { title: "Level 1", description: "First introductory level with accessible difficulty for new players.", image: "/Level1.png", features: ["Smooth learning curve", "Clear visual feedback", "Early rewards"] },
+    { title: "Pre-level", description: "Screen before the level with tower selection and strategy.", image: "/Pre-nivel.png", features: ["Loadout selection", "Level information", "Available resources"] },
+    { title: "Level 2", description: "Second level with advanced mechanics and greater strategic challenge.", image: "/Level2.png", features: ["New towers available", "Enemies with abilities", "Multiple routes"] },
+    { title: "Level 2.1", description: "Variation of level 2 with alternative configuration.", image: "/Level2.1.png", features: ["Alternate layout", "Limited resources", "Higher difficulty"] },
   ];
 
   return (
@@ -271,36 +232,21 @@ export default function ProyectoTowerDefense() {
               </h1>
 
               <p className="text-lg text-gray-300 max-w-xl leading-relaxed mb-10 font-manrope">
-                Caso de estudio desarrollado en el curso de UX Game Design
-                (Docta). Se analizó un juego de Tower Defense para PC, en
-                estado de prototipo, desarrollado como ejercicio práctico
-                para otras carreras.
+                {es ? "Caso de estudio desarrollado en el curso de UX Game Design (Docta). Se analizó un juego de Tower Defense para PC, en estado de prototipo, desarrollado como ejercicio práctico para otras carreras." : "Case study developed in the UX Game Design course (Docta). A Tower Defense PC game was analyzed in prototype state, developed as a practical exercise for other programs."}
               </p>
 
               <div className="grid grid-cols-3 gap-6 text-sm">
                 <div>
-                  <p className="text-xs uppercase tracking-widest text-purple-300/60 font-manrope mb-2">
-                    Rol
-                  </p>
-                  <p className="text-white font-medium font-space-grotesk">
-                    UX/UI Designer
-                  </p>
+                  <p className="text-xs uppercase tracking-widest text-purple-300/60 font-manrope mb-2">{es ? "Rol" : "Role"}</p>
+                  <p className="text-white font-medium font-space-grotesk">UX/UI Designer</p>
                 </div>
                 <div>
-                  <p className="text-xs uppercase tracking-widest text-purple-300/60 font-manrope mb-2">
-                    Duración
-                  </p>
-                  <p className="text-white font-medium font-space-grotesk">
-                    3 meses
-                  </p>
+                  <p className="text-xs uppercase tracking-widest text-purple-300/60 font-manrope mb-2">{es ? "Duración" : "Duration"}</p>
+                  <p className="text-white font-medium font-space-grotesk">{es ? "3 meses" : "3 months"}</p>
                 </div>
                 <div>
-                  <p className="text-xs uppercase tracking-widest text-purple-300/60 font-manrope mb-2">
-                    Herramientas
-                  </p>
-                  <p className="text-white font-medium font-space-grotesk">
-                    Figma, Miro
-                  </p>
+                  <p className="text-xs uppercase tracking-widest text-purple-300/60 font-manrope mb-2">{es ? "Herramientas" : "Tools"}</p>
+                  <p className="text-white font-medium font-space-grotesk">Figma, Miro</p>
                 </div>
               </div>
             </div>
@@ -335,15 +281,10 @@ export default function ProyectoTowerDefense() {
                   01
                 </span>
                 <h2 className="text-4xl md:text-5xl font-medium text-white leading-[1.05] tracking-tighter font-space-grotesk mb-6">
-                  Problema
+                  {es ? "Problema" : "Problem"}
                 </h2>
                 <p className="text-gray-300 leading-relaxed font-manrope">
-                  Al tratarse de un prototipo desarrollado con fines
-                  educativos, el juego presenta dificultades en la claridad
-                  de las mecánicas, la curva de aprendizaje y la
-                  comunicación de objetivos al jugador, lo que impacta en la
-                  experiencia de juego y en la comprensión de las decisiones
-                  estratégicas.
+                  {es ? "Al tratarse de un prototipo desarrollado con fines educativos, el juego presenta dificultades en la claridad de las mecánicas, la curva de aprendizaje y la comunicación de objetivos al jugador, lo que impacta en la experiencia de juego y en la comprensión de las decisiones estratégicas." : "Being a prototype developed for educational purposes, the game presents difficulties in the clarity of mechanics, the learning curve and the communication of objectives to the player, which impacts the gameplay experience and the understanding of strategic decisions."}
                 </p>
               </div>
             </ScrollReveal>
@@ -354,14 +295,10 @@ export default function ProyectoTowerDefense() {
                   02
                 </span>
                 <h2 className="text-4xl md:text-5xl font-medium text-white leading-[1.05] tracking-tighter font-space-grotesk mb-6">
-                  Objetivo
+                  {es ? "Objetivo" : "Goal"}
                 </h2>
                 <p className="text-gray-300 leading-relaxed font-manrope">
-                  Analizar un prototipo de juego de Tower Defense aplicando
-                  los principios de UX Game Design, evaluando la experiencia
-                  del jugador, las mecánicas, la curva de aprendizaje y la
-                  usabilidad, para identificar oportunidades de mejora y
-                  proponer soluciones de diseño.
+                  {es ? "Analizar un prototipo de juego de Tower Defense aplicando los principios de UX Game Design, evaluando la experiencia del jugador, las mecánicas, la curva de aprendizaje y la usabilidad, para identificar oportunidades de mejora y proponer soluciones de diseño." : "Analyze a Tower Defense game prototype applying UX Game Design principles, evaluating the player experience, mechanics, learning curve and usability, to identify improvement opportunities and propose design solutions."}
                 </p>
               </div>
             </ScrollReveal>
@@ -379,19 +316,10 @@ export default function ProyectoTowerDefense() {
                   GAME CONCEPT
                 </span>
                 <h2 className="text-3xl md:text-4xl font-medium text-white mt-4 mb-6 leading-tight font-space-grotesk">
-                  ¿Qué es un juego de{" "}
-                  <span className="font-instrument-serif italic font-normal text-purple-400">
-                    Tower Defense
-                  </span>
-                  ?
+                  {es ? <>¿Qué es un juego de{" "}<span className="font-instrument-serif italic font-normal text-purple-400">Tower Defense</span>?</> : <>What is a{" "}<span className="font-instrument-serif italic font-normal text-purple-400">Tower Defense</span>{" "}game?</>}
                 </h2>
                 <p className="text-gray-300 leading-relaxed font-manrope">
-                  Un Tower Defense es un juego de estrategia en el que el
-                  jugador debe defender una base colocando y mejorando
-                  torres a lo largo de un recorrido, con el objetivo de
-                  frenar oleadas de enemigos antes de que lleguen al final.
-                  Combina planificación, gestión de recursos y toma de
-                  decisiones tácticas.
+                  {es ? "Un Tower Defense es un juego de estrategia en el que el jugador debe defender una base colocando y mejorando torres a lo largo de un recorrido, con el objetivo de frenar oleadas de enemigos antes de que lleguen al final. Combina planificación, gestión de recursos y toma de decisiones tácticas." : "A Tower Defense is a strategy game in which the player must defend a base by placing and upgrading towers along a path, with the goal of stopping waves of enemies before they reach the end. It combines planning, resource management and tactical decision-making."}
                 </p>
               </div>
 
@@ -415,13 +343,10 @@ export default function ProyectoTowerDefense() {
           <ScrollReveal>
             <div className="mb-20 max-w-2xl">
               <span className="uppercase tracking-widest text-sm text-purple-400 font-bold">
-                PROCESO
+                {es ? "PROCESO" : "PROCESS"}
               </span>
               <h2 className="text-4xl md:text-6xl font-medium text-white leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-                Cómo lo{" "}
-                <span className="font-instrument-serif italic font-normal text-purple-400">
-                  analicé
-                </span>
+                {es ? <>Cómo lo{" "}<span className="font-instrument-serif italic font-normal text-purple-400">analicé</span></> : <>How I{" "}<span className="font-instrument-serif italic font-normal text-purple-400">analyzed it</span></>}
               </h2>
             </div>
           </ScrollReveal>
@@ -429,77 +354,73 @@ export default function ProyectoTowerDefense() {
           <ProcessStepDark
             number="01"
             title="Wireframes"
-            subtitle="Estructurando el HUD desde la base"
+            subtitle={es ? "Estructurando el HUD desde la base" : "Structuring the HUD from scratch"}
             image="/wireframeTD.png"
             imageLeft
           >
             <p>
-              Los wireframes permitieron visualizar la estructura de uno de
-              los niveles del juego desde las primeras etapas del diseño.
-              Trabajé en varias iteraciones de baja fidelidad para definir
-              la disposición de los elementos del HUD, jerarquizar la
-              información y asegurar la usabilidad desde el inicio.
+              {es
+                ? "Los wireframes permitieron visualizar la estructura de uno de los niveles del juego desde las primeras etapas del diseño. Trabajé en varias iteraciones de baja fidelidad para definir la disposición de los elementos del HUD, jerarquizar la información y asegurar la usabilidad desde el inicio."
+                : "Wireframes allowed us to visualize the structure of one of the game levels from the earliest design stages. I worked through several low-fidelity iterations to define HUD element layout, prioritize information hierarchy, and ensure usability from the start."}
             </p>
           </ProcessStepDark>
 
           <ProcessStepDark
             number="02"
             title="Flow"
-            subtitle="Mapeando el recorrido del jugador"
+            subtitle={es ? "Mapeando el recorrido del jugador" : "Mapping the player's journey"}
             image="/flow.png"
           >
             <p>
-              El flow se diseñó para mapear el recorrido del jugador dentro
-              del nivel, desde el inicio de la partida hasta la
-              finalización, identificando decisiones clave, acciones
-              principales y puntos de fricción.
+              {es
+                ? "El flow se diseñó para mapear el recorrido del jugador dentro del nivel, desde el inicio de la partida hasta la finalización, identificando decisiones clave, acciones principales y puntos de fricción."
+                : "The flow was designed to map the player's journey through the level, from the start of the match to its completion, identifying key decisions, main actions, and friction points."}
             </p>
             <p>
-              Este proceso permitió analizar la claridad de los objetivos,
-              la progresión del juego y la coherencia entre las mecánicas,
-              la interfaz y la experiencia general del jugador.
+              {es
+                ? "Este proceso permitió analizar la claridad de los objetivos, la progresión del juego y la coherencia entre las mecánicas, la interfaz y la experiencia general del jugador."
+                : "This process allowed us to analyze objective clarity, game progression, and coherence between mechanics, interface, and the overall player experience."}
             </p>
           </ProcessStepDark>
 
           <ProcessStepDark
             number="03"
-            title="Screen en baja fidelidad"
-            subtitle="Validando la disposición visual"
+            title={es ? "Screen en baja fidelidad" : "Low-fidelity screens"}
+            subtitle={es ? "Validando la disposición visual" : "Validating visual layout"}
             image="/wireframe11.png"
             imageLeft
           >
             <p>
-              Las pantallas de baja fidelidad se utilizaron para explorar y
-              validar la disposición de los elementos de la interfaz, las
-              interacciones principales y la jerarquía visual.
+              {es
+                ? "Las pantallas de baja fidelidad se utilizaron para explorar y validar la disposición de los elementos de la interfaz, las interacciones principales y la jerarquía visual."
+                : "Low-fidelity screens were used to explore and validate interface element placement, main interactions, and visual hierarchy."}
             </p>
           </ProcessStepDark>
 
           <ProcessStepDark
             number="04"
             title="Game World"
-            subtitle="Definiendo el universo del juego"
+            subtitle={es ? "Definiendo el universo del juego" : "Defining the game universe"}
             image="/gameworld.png"
           >
             <p>
-              Análisis del recorrido del jugador dentro del nivel, desde el
-              inicio hasta la finalización, identificando decisiones clave,
-              acciones principales y puntos de fricción que afectan la
-              experiencia.
+              {es
+                ? "Análisis del recorrido del jugador dentro del nivel, desde el inicio hasta la finalización, identificando decisiones clave, acciones principales y puntos de fricción que afectan la experiencia."
+                : "Analysis of the player's journey within the level, from start to finish, identifying key decisions, main actions, and friction points that affect the experience."}
             </p>
           </ProcessStepDark>
 
           <ProcessStepDark
             number="05"
-            title="Sistema de progreso"
-            subtitle="Motivando al jugador"
+            title={es ? "Sistema de progreso" : "Progress system"}
+            subtitle={es ? "Motivando al jugador" : "Motivating the player"}
             image="/sistemadeprogreso.png"
             imageLeft
           >
             <p>
-              Se puede incorporar un sistema de progreso adicional basado
-              en objetivos dentro de cada partida o recompensas al
-              finalizarlas, para motivar al jugador a seguir jugando.
+              {es
+                ? "Se puede incorporar un sistema de progreso adicional basado en objetivos dentro de cada partida o recompensas al finalizarlas, para motivar al jugador a seguir jugando."
+                : "An additional progress system can be incorporated based on in-match objectives or end-of-match rewards to motivate the player to keep playing."}
             </p>
           </ProcessStepDark>
         </div>
@@ -511,13 +432,10 @@ export default function ProyectoTowerDefense() {
           <ScrollReveal>
             <div className="mb-16 max-w-2xl">
               <span className="uppercase tracking-widest text-sm text-purple-400 font-bold">
-                RESULTADO
+                {es ? "RESULTADO" : "RESULT"}
               </span>
               <h2 className="text-4xl md:text-6xl font-medium text-white leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-                Pantallas{" "}
-                <span className="font-instrument-serif italic font-normal text-purple-400">
-                  del juego
-                </span>
+                {es ? <>Pantallas{" "}<span className="font-instrument-serif italic font-normal text-purple-400">del juego</span></> : <>Game{" "}<span className="font-instrument-serif italic font-normal text-purple-400">screens</span></>}
               </h2>
             </div>
           </ScrollReveal>
@@ -533,13 +451,10 @@ export default function ProyectoTowerDefense() {
         <div className="max-w-4xl mx-auto text-center">
           <ScrollReveal>
             <p className="text-gray-300 mb-6 font-manrope">
-              ¿Te gustó este proyecto?
+              {es ? "¿Te gustó este proyecto?" : "Did you like this project?"}
             </p>
             <h2 className="text-4xl md:text-6xl font-medium text-white leading-[1.05] tracking-tighter font-space-grotesk mb-10">
-              Explorá más de mi{" "}
-              <span className="font-instrument-serif italic font-normal text-purple-400">
-                trabajo
-              </span>
+              {es ? <>Explorá más de mi{" "}<span className="font-instrument-serif italic font-normal text-purple-400">trabajo</span></> : <>Explore more of my{" "}<span className="font-instrument-serif italic font-normal text-purple-400">work</span></>}
             </h2>
             <div className="flex flex-wrap gap-4 justify-center">
               <Button
@@ -551,11 +466,11 @@ export default function ProyectoTowerDefense() {
                 <span className="inline-block transition-transform duration-300 group-hover:-translate-x-1">
                   ←
                 </span>
-                Volver a proyectos
+                {es ? "Volver a proyectos" : "Back to projects"}
               </Button>
               <a href="mailto:milagrosdziuban1@gmail.com">
                 <Button className="group bg-transparent hover:bg-white/5 text-white border border-white/20 hover:border-purple-400 px-6 py-4 rounded-full font-manrope inline-flex items-center gap-2">
-                  Contactame
+                  {es ? "Contactame" : "Contact me"}
                   <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">
                     →
                   </span>

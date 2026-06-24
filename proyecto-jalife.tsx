@@ -5,127 +5,98 @@ import Image from "next/image";
 import { NavigationHeader } from "./components/navigation-header";
 import { ScrollReveal } from "./components/animated-components";
 import { OtherProjects } from "./components/otherproject";
+import { useLanguage } from "./contexts/language-context";
 
 export default function ProyectoJalife() {
-  // Datos del case study
-  const audienceTraits = [
-    {
-      label: "Edad",
-      value: "25 – 45 años",
-    },
-    {
-      label: "Comportamiento",
-      value: "Investigan online antes de contactar",
-    },
-    {
-      label: "Expectativa",
-      value: "Claridad, credibilidad y rapidez",
-    },
+  const { lang } = useLanguage();
+  const es = lang === "es";
+
+  const audienceTraits = es ? [
+    { label: "Edad", value: "25 – 45 años" },
+    { label: "Comportamiento", value: "Investigan online antes de contactar" },
+    { label: "Expectativa", value: "Claridad, credibilidad y rapidez" },
+  ] : [
+    { label: "Age", value: "25 – 45 years old" },
+    { label: "Behavior", value: "They research online before making contact" },
+    { label: "Expectation", value: "Clarity, credibility and speed" },
   ];
 
-  const researchMethods = [
-    {
-      title: "Auditoría heurística",
-      text: "Revisión del sitio actual contra principios de usabilidad (Nielsen) para detectar fricciones concretas.",
-    },
-    {
-      title: "Análisis competitivo",
-      text: "Benchmark de sitios similares para identificar patrones que funcionan y oportunidades de diferenciación.",
-    },
-    {
-      title: "Revisión con el cliente",
-      text: "Conversaciones con la marca para entender objetivos de negocio, valores y prioridades comerciales.",
-    },
+  const researchMethods = es ? [
+    { title: "Auditoría heurística", text: "Revisión del sitio actual contra principios de usabilidad (Nielsen) para detectar fricciones concretas." },
+    { title: "Análisis competitivo", text: "Benchmark de sitios similares para identificar patrones que funcionan y oportunidades de diferenciación." },
+    { title: "Revisión con el cliente", text: "Conversaciones con la marca para entender objetivos de negocio, valores y prioridades comerciales." },
+  ] : [
+    { title: "Heuristic audit", text: "Review of the current site against usability principles (Nielsen) to detect concrete friction points." },
+    { title: "Competitive analysis", text: "Benchmark of similar sites to identify working patterns and differentiation opportunities." },
+    { title: "Client review", text: "Conversations with the brand to understand business goals, values and commercial priorities." },
   ];
 
-  const insights = [
+  const insights = es ? [
     { title: "Mala organización de la información", icon: "📑" },
     { title: "Los servicios no llamaban la atención", icon: "👩🏽‍💻" },
     { title: "La página de contacto no representaba la marca", icon: "📞" },
     { title: "Las imágenes eran poco representativas", icon: "🖼️" },
+  ] : [
+    { title: "Poor information organization", icon: "📑" },
+    { title: "Services didn't stand out", icon: "👩🏽‍💻" },
+    { title: "The contact page didn't represent the brand", icon: "📞" },
+    { title: "Images were not representative", icon: "🖼️" },
   ];
 
-  const beforeAfter = [
-    {
-      aspect: "Navegación",
-      before:
-        "Menú con muchos ítems sin jerarquía clara, difícil de escanear en el primer vistazo.",
-      after:
-        "Navbar reducida a las secciones esenciales, con jerarquía visual y comportamiento contextual al scroll.",
-    },
-    {
-      aspect: "Presentación de servicios",
-      before:
-        "Servicios listados como bloques de texto, sin diferenciación visual entre los principales.",
-      after:
-        "Grid visual que prioriza los servicios estrella, con jerarquía clara y CTAs por categoría.",
-    },
-    {
-      aspect: "Identidad visual",
-      before:
-        "Inconsistencia entre páginas, imágenes genéricas y tipografía sin sistema.",
-      after:
-        "Sistema visual unificado: tipografía, paleta y componentes consistentes en todo el sitio.",
-    },
+  const beforeAfter = es ? [
+    { aspect: "Navegación", before: "Menú con muchos ítems sin jerarquía clara, difícil de escanear en el primer vistazo.", after: "Navbar reducida a las secciones esenciales, con jerarquía visual y comportamiento contextual al scroll." },
+    { aspect: "Presentación de servicios", before: "Servicios listados como bloques de texto, sin diferenciación visual entre los principales.", after: "Grid visual que prioriza los servicios estrella, con jerarquía clara y CTAs por categoría." },
+    { aspect: "Identidad visual", before: "Inconsistencia entre páginas, imágenes genéricas y tipografía sin sistema.", after: "Sistema visual unificado: tipografía, paleta y componentes consistentes en todo el sitio." },
+  ] : [
+    { aspect: "Navigation", before: "Menu with many items and no clear hierarchy, hard to scan at first glance.", after: "Navbar reduced to essential sections, with visual hierarchy and contextual scroll behavior." },
+    { aspect: "Services presentation", before: "Services listed as text blocks, with no visual differentiation between the main ones.", after: "Visual grid that prioritizes star services, with clear hierarchy and CTAs per category." },
+    { aspect: "Visual identity", before: "Inconsistency between pages, generic images and unsystematic typography.", after: "Unified visual system: consistent typography, palette and components across the entire site." },
   ];
 
-  const sitemap = [
+  const sitemap = es ? [
     { title: "Home", children: ["Hero", "Servicios destacados", "Body content"] },
     { title: "Quiénes somos", children: ["Historia", "Equipo", "Valores"] },
     { title: "Servicios", children: ["Categorías", "Detalle de servicio"] },
     { title: "Contacto", children: ["Formulario", "Redes"] },
+  ] : [
+    { title: "Home", children: ["Hero", "Featured services", "Body content"] },
+    { title: "About us", children: ["History", "Team", "Values"] },
+    { title: "Services", children: ["Categories", "Service detail"] },
+    { title: "Contact", children: ["Form", "Social media"] },
   ];
 
-  const decisions = [
-    {
-      number: "01",
-      title: "Grid de 12 columnas",
-      rationale:
-        "Permite variantes de layout por sección sin romper la jerarquía global. Da consistencia y flexibilidad para escalar el sitio.",
-    },
-    {
-      number: "02",
-      title: "Navbar contextual",
-      rationale:
-        "Se oculta al hacer scroll down y reaparece al subir. Mejora la legibilidad sin perder accesibilidad a las secciones clave.",
-    },
-    {
-      number: "03",
-      title: "Hero con visual fuerte",
-      rationale:
-        "Primera impresión que transmite la propuesta de la marca antes que cualquier texto, alineado a la identidad y al tono.",
-    },
-    {
-      number: "04",
-      title: "Contenido dinámico con video",
-      rationale:
-        "Incorporación de testimonios en video para reforzar la confianza del usuario y romper la monotonía del scroll.",
-    },
+  const decisions = es ? [
+    { number: "01", title: "Grid de 12 columnas", rationale: "Permite variantes de layout por sección sin romper la jerarquía global. Da consistencia y flexibilidad para escalar el sitio." },
+    { number: "02", title: "Navbar contextual", rationale: "Se oculta al hacer scroll down y reaparece al subir. Mejora la legibilidad sin perder accesibilidad a las secciones clave." },
+    { number: "03", title: "Hero con visual fuerte", rationale: "Primera impresión que transmite la propuesta de la marca antes que cualquier texto, alineado a la identidad y al tono." },
+    { number: "04", title: "Contenido dinámico con video", rationale: "Incorporación de testimonios en video para reforzar la confianza del usuario y romper la monotonía del scroll." },
+  ] : [
+    { number: "01", title: "12-column grid", rationale: "Allows layout variants per section without breaking the global hierarchy. Provides consistency and flexibility to scale the site." },
+    { number: "02", title: "Contextual navbar", rationale: "Hides on scroll down and reappears on scroll up. Improves readability without losing access to key sections." },
+    { number: "03", title: "Strong visual hero", rationale: "First impression that conveys the brand's proposition before any text, aligned with the identity and tone." },
+    { number: "04", title: "Dynamic content with video", rationale: "Video testimonials were incorporated to reinforce user trust and break the monotony of scrolling." },
   ];
 
-  const visualPalette = [
+  const visualPalette = es ? [
     { hex: "#E11D2E", name: "Rojo Jalife" },
     { hex: "#1A1A1A", name: "Negro principal" },
     { hex: "#F5F5F5", name: "Gris claro" },
     { hex: "#FFFFFF", name: "Blanco base" },
+  ] : [
+    { hex: "#E11D2E", name: "Jalife Red" },
+    { hex: "#1A1A1A", name: "Main Black" },
+    { hex: "#F5F5F5", name: "Light Grey" },
+    { hex: "#FFFFFF", name: "Base White" },
   ];
 
-  const takeaways = [
-    {
-      number: "01",
-      title: "La navegación va primero",
-      text: "Antes que el visual, había que resolver cómo se entendía el sitio. Una jerarquía clara hizo más por la experiencia que cualquier decisión estética.",
-    },
-    {
-      number: "02",
-      title: "Validar con el cliente, no asumir",
-      text: "Lo que parecía obvio desde diseño no siempre lo era desde negocio. Las conversaciones con la marca evitaron varios callejones sin salida.",
-    },
-    {
-      number: "03",
-      title: "Pensar en sistema, no en pantallas",
-      text: "Definir reglas de tipografía, color y grilla desde el inicio aceleró todas las decisiones siguientes y dejó una base escalable.",
-    },
+  const takeaways = es ? [
+    { number: "01", title: "La navegación va primero", text: "Antes que el visual, había que resolver cómo se entendía el sitio. Una jerarquía clara hizo más por la experiencia que cualquier decisión estética." },
+    { number: "02", title: "Validar con el cliente, no asumir", text: "Lo que parecía obvio desde diseño no siempre lo era desde negocio. Las conversaciones con la marca evitaron varios callejones sin salida." },
+    { number: "03", title: "Pensar en sistema, no en pantallas", text: "Definir reglas de tipografía, color y grilla desde el inicio aceleró todas las decisiones siguientes y dejó una base escalable." },
+  ] : [
+    { number: "01", title: "Navigation comes first", text: "Before the visuals, the priority was solving how the site was understood. A clear hierarchy did more for the experience than any aesthetic decision." },
+    { number: "02", title: "Validate with the client, don't assume", text: "What seemed obvious from a design perspective wasn't always so from a business one. Conversations with the brand avoided several dead ends." },
+    { number: "03", title: "Think in systems, not screens", text: "Defining typography, color and grid rules from the start accelerated all subsequent decisions and left a scalable foundation." },
   ];
 
   return (
@@ -156,37 +127,21 @@ export default function ProyectoJalife() {
               </h1>
 
               <p className="text-lg text-gray-600 max-w-xl leading-relaxed mb-10 font-manrope">
-                Proyecto enfocado en rediseñar la página web de la marca,
-                optimizando la experiencia de navegación y la presentación de
-                sus servicios. Se trabajó en una interfaz más limpia, actual y
-                funcional, con una estructura visual coherente y mejoras en
-                usabilidad.
+                {es ? "Proyecto enfocado en rediseñar la página web de la marca, optimizando la experiencia de navegación y la presentación de sus servicios. Se trabajó en una interfaz más limpia, actual y funcional, con una estructura visual coherente y mejoras en usabilidad." : "Project focused on redesigning the brand's website, optimizing the navigation experience and the presentation of its services. The work produced a cleaner, more modern and functional interface with coherent visual structure and usability improvements."}
               </p>
 
               <div className="grid grid-cols-3 gap-6 text-sm">
                 <div>
-                  <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-2">
-                    Rol
-                  </p>
-                  <p className="text-gray-900 font-medium font-space-grotesk">
-                    UX/UI Designer
-                  </p>
+                  <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-2">{es ? "Rol" : "Role"}</p>
+                  <p className="text-gray-900 font-medium font-space-grotesk">UX/UI Designer</p>
                 </div>
                 <div>
-                  <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-2">
-                    Duración
-                  </p>
-                  <p className="text-gray-900 font-medium font-space-grotesk">
-                    4 semanas
-                  </p>
+                  <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-2">{es ? "Duración" : "Duration"}</p>
+                  <p className="text-gray-900 font-medium font-space-grotesk">{es ? "4 semanas" : "4 weeks"}</p>
                 </div>
                 <div>
-                  <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-2">
-                    Herramientas
-                  </p>
-                  <p className="text-gray-900 font-medium font-space-grotesk">
-                    Figma
-                  </p>
+                  <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-2">{es ? "Herramientas" : "Tools"}</p>
+                  <p className="text-gray-900 font-medium font-space-grotesk">Figma</p>
                 </div>
               </div>
             </div>
@@ -221,16 +176,13 @@ export default function ProyectoJalife() {
                   01
                 </span>
                 <h2 className="text-4xl md:text-5xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mb-6">
-                  Problema
+                  {es ? "Problema" : "Problem"}
                 </h2>
                 <p className="text-gray-600 leading-relaxed mb-4 font-manrope">
-                  El sitio web presentaba una estructura visual poco clara y
-                  dificultades de navegación que afectaban la comprensión de
-                  sus servicios y productos.
+                  {es ? "El sitio web presentaba una estructura visual poco clara y dificultades de navegación que afectaban la comprensión de sus servicios y productos." : "The website had an unclear visual structure and navigation difficulties that affected the understanding of its services and products."}
                 </p>
                 <p className="text-gray-600 leading-relaxed font-manrope">
-                  Esto generaba una percepción poco profesional de la marca y
-                  complicaba el proceso de encontrar información relevante.
+                  {es ? "Esto generaba una percepción poco profesional de la marca y complicaba el proceso de encontrar información relevante." : "This created an unprofessional perception of the brand and complicated the process of finding relevant information."}
                 </p>
               </div>
             </ScrollReveal>
@@ -241,17 +193,13 @@ export default function ProyectoJalife() {
                   02
                 </span>
                 <h2 className="text-4xl md:text-5xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mb-6">
-                  Objetivo
+                  {es ? "Objetivo" : "Goal"}
                 </h2>
                 <p className="text-gray-600 leading-relaxed mb-4 font-manrope">
-                  Rediseñar el sitio web para mejorar la experiencia del
-                  usuario mediante una interfaz moderna, clara y funcional.
+                  {es ? "Rediseñar el sitio web para mejorar la experiencia del usuario mediante una interfaz moderna, clara y funcional." : "Redesign the website to improve the user experience through a modern, clear and functional interface."}
                 </p>
                 <p className="text-gray-600 leading-relaxed font-manrope">
-                  Lograr una navegación intuitiva, una presentación visual
-                  atractiva y alineada con la identidad de la marca, y una
-                  estructura que facilite el acceso rápido a la información
-                  clave.
+                  {es ? "Lograr una navegación intuitiva, una presentación visual atractiva y alineada con la identidad de la marca, y una estructura que facilite el acceso rápido a la información clave." : "Achieve intuitive navigation, an attractive visual presentation aligned with the brand identity, and a structure that facilitates quick access to key information."}
                 </p>
               </div>
             </ScrollReveal>
@@ -265,19 +213,13 @@ export default function ProyectoJalife() {
           <ScrollReveal>
             <div className="mb-12 max-w-2xl">
               <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
-                AUDIENCIA
+                {es ? "AUDIENCIA" : "AUDIENCE"}
               </span>
               <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-                Para{" "}
-                <span className="font-instrument-serif italic font-normal text-purple-600">
-                  quién
-                </span>{" "}
-                diseñé
+                {es ? <>Para{" "}<span className="font-instrument-serif italic font-normal text-purple-600">quién</span>{" "}diseñé</> : <>Who I{" "}<span className="font-instrument-serif italic font-normal text-purple-600">designed</span>{" "}for</>}
               </h2>
               <p className="text-gray-600 mt-4 font-manrope text-lg">
-                Personas que llegan al sitio buscando información clara y
-                rápida sobre los servicios de la marca, en general antes de
-                tomar contacto comercial.
+                {es ? "Personas que llegan al sitio buscando información clara y rápida sobre los servicios de la marca, en general antes de tomar contacto comercial." : "People who visit the site looking for clear and quick information about the brand's services, usually before making commercial contact."}
               </p>
             </div>
           </ScrollReveal>
@@ -310,16 +252,13 @@ export default function ProyectoJalife() {
           <ScrollReveal>
             <div className="mb-16 max-w-2xl">
               <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
-                INVESTIGACIÓN
+                {es ? "INVESTIGACIÓN" : "RESEARCH"}
               </span>
               <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-                Puntos de{" "}
-                <span className="font-instrument-serif italic font-normal text-purple-600">
-                  dolor
-                </span>
+                {es ? <>Puntos de{" "}<span className="font-instrument-serif italic font-normal text-purple-600">dolor</span></> : <>Pain{" "}<span className="font-instrument-serif italic font-normal text-purple-600">points</span></>}
               </h2>
               <p className="text-gray-600 mt-4 font-manrope text-lg">
-                Conceptos clave que guiaron el rediseño.
+                {es ? "Conceptos clave que guiaron el rediseño." : "Key concepts that guided the redesign."}
               </p>
             </div>
           </ScrollReveal>
@@ -328,7 +267,7 @@ export default function ProyectoJalife() {
           <ScrollReveal delay={0.1}>
             <div className="mb-12">
               <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-4">
-                Cómo llegué a estos hallazgos
+                {es ? "Cómo llegué a estos hallazgos" : "How I reached these findings"}
               </p>
               <div className="grid md:grid-cols-3 gap-4">
                 {researchMethods.map((method, i) => (
@@ -380,16 +319,13 @@ export default function ProyectoJalife() {
           <ScrollReveal>
             <div className="mb-16 max-w-2xl">
               <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
-                IMPACTO
+                {es ? "IMPACTO" : "IMPACT"}
               </span>
               <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-                Antes vs{" "}
-                <span className="font-instrument-serif italic font-normal text-purple-600">
-                  después
-                </span>
+                {es ? <>Antes vs{" "}<span className="font-instrument-serif italic font-normal text-purple-600">después</span></> : <>Before vs{" "}<span className="font-instrument-serif italic font-normal text-purple-600">after</span></>}
               </h2>
               <p className="text-gray-600 mt-4 font-manrope text-lg">
-                Tres ejes clave donde el rediseño aportó valor concreto.
+                {es ? "Tres ejes clave donde el rediseño aportó valor concreto." : "Three key areas where the redesign delivered concrete value."}
               </p>
             </div>
           </ScrollReveal>
@@ -417,7 +353,7 @@ export default function ProyectoJalife() {
                 {/* Antes */}
                 <div className="border-l-2 border-gray-200 pl-6">
                   <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-2">
-                    Antes
+                    {es ? "Antes" : "Before"}
                   </p>
                   <p className="text-sm text-gray-600 font-manrope leading-relaxed">
                     {row.before}
@@ -427,7 +363,7 @@ export default function ProyectoJalife() {
                 {/* Después */}
                 <div className="border-l-2 border-purple-300 pl-6">
                   <p className="text-xs uppercase tracking-widest text-purple-500 font-manrope mb-2">
-                    Después
+                    {es ? "Después" : "After"}
                   </p>
                   <p className="text-sm text-gray-700 font-manrope leading-relaxed">
                     {row.after}
@@ -445,17 +381,13 @@ export default function ProyectoJalife() {
           <ScrollReveal>
             <div className="mb-16 max-w-2xl">
               <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
-                ESTRUCTURA
+                {es ? "ESTRUCTURA" : "STRUCTURE"}
               </span>
               <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-                Arquitectura de{" "}
-                <span className="font-instrument-serif italic font-normal text-purple-600">
-                  información
-                </span>
+                {es ? <>Arquitectura de{" "}<span className="font-instrument-serif italic font-normal text-purple-600">información</span></> : <>Information{" "}<span className="font-instrument-serif italic font-normal text-purple-600">architecture</span></>}
               </h2>
               <p className="text-gray-600 mt-4 font-manrope text-lg">
-                Reorganización del sitemap para priorizar lo que el usuario
-                viene a buscar.
+                {es ? "Reorganización del sitemap para priorizar lo que el usuario viene a buscar." : "Sitemap reorganization to prioritize what the user comes to find."}
               </p>
             </div>
           </ScrollReveal>
@@ -508,17 +440,13 @@ export default function ProyectoJalife() {
                   Wireframes
                 </h3>
                 <p className="text-gray-400 font-manrope mb-6">
-                  Estructurando el sitio desde la base
+                  {es ? "Estructurando el sitio desde la base" : "Structuring the site from the ground up"}
                 </p>
                 <p className="text-gray-600 leading-relaxed mb-4 font-manrope">
-                  Se desarrollaron wireframes que permitieron definir la
-                  estructura del sitio y organizar la información de manera
-                  clara y jerárquica.
+                  {es ? "Se desarrollaron wireframes que permitieron definir la estructura del sitio y organizar la información de manera clara y jerárquica." : "Wireframes were developed to define the site structure and organize information in a clear and hierarchical way."}
                 </p>
                 <p className="text-gray-600 leading-relaxed font-manrope">
-                  A partir de esta base, se trabajó en una interfaz más
-                  limpia, actual y funcional, optimizando la navegación y
-                  mejorando la presentación de los productos.
+                  {es ? "A partir de esta base, se trabajó en una interfaz más limpia, actual y funcional, optimizando la navegación y mejorando la presentación de los productos." : "From this foundation, a cleaner, more modern and functional interface was developed, optimizing navigation and improving the presentation of products."}
                 </p>
               </div>
             </ScrollReveal>
@@ -544,16 +472,13 @@ export default function ProyectoJalife() {
           <ScrollReveal>
             <div className="mb-16 max-w-2xl">
               <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
-                RACIONAL
+                {es ? "RACIONAL" : "RATIONALE"}
               </span>
               <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-                Decisiones de{" "}
-                <span className="font-instrument-serif italic font-normal text-purple-600">
-                  diseño
-                </span>
+                {es ? <>Decisiones de{" "}<span className="font-instrument-serif italic font-normal text-purple-600">diseño</span></> : <>Design{" "}<span className="font-instrument-serif italic font-normal text-purple-600">decisions</span></>}
               </h2>
               <p className="text-gray-600 mt-4 font-manrope text-lg">
-                Qué decidí y por qué, en las definiciones clave del proyecto.
+                {es ? "Qué decidí y por qué, en las definiciones clave del proyecto." : "What I decided and why, across the key definitions of the project."}
               </p>
             </div>
           </ScrollReveal>
@@ -588,7 +513,7 @@ export default function ProyectoJalife() {
           <ScrollReveal delay={0.3}>
             <div>
               <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-4">
-                Aplicación visual
+                {es ? "Aplicación visual" : "Visual application"}
               </p>
               <div className="grid md:grid-cols-2 gap-4">
                 <div className="rounded-2xl overflow-hidden border border-gray-200/60">
@@ -621,13 +546,10 @@ export default function ProyectoJalife() {
           <ScrollReveal>
             <div className="mb-16 max-w-2xl">
               <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
-                GUÍA VISUAL
+                {es ? "GUÍA VISUAL" : "VISUAL GUIDE"}
               </span>
               <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-                Sistema{" "}
-                <span className="font-instrument-serif italic font-normal text-purple-600">
-                  visual
-                </span>
+                {es ? <>Sistema{" "}<span className="font-instrument-serif italic font-normal text-purple-600">visual</span></> : <>Visual{" "}<span className="font-instrument-serif italic font-normal text-purple-600">system</span></>}
               </h2>
             </div>
           </ScrollReveal>
@@ -637,7 +559,7 @@ export default function ProyectoJalife() {
             <ScrollReveal direction="left">
               <div className="bg-white border border-gray-200 rounded-2xl p-8 h-full">
                 <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-6">
-                  Tipografía
+                  {es ? "Tipografía" : "Typography"}
                 </p>
                 <p className="text-7xl md:text-8xl font-bold text-gray-900 mb-2 leading-none">
                   Aa
@@ -669,7 +591,7 @@ export default function ProyectoJalife() {
             <ScrollReveal direction="right" delay={0.2}>
               <div className="bg-white border border-gray-200 rounded-2xl p-8 h-full">
                 <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-6">
-                  Paleta de colores
+                  {es ? "Paleta de colores" : "Color palette"}
                 </p>
                 <div className="grid grid-cols-2 gap-4">
                   {visualPalette.map((color, i) => (
@@ -708,13 +630,10 @@ export default function ProyectoJalife() {
           <ScrollReveal>
             <div className="mb-12 max-w-2xl">
               <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
-                INTERACTIVO
+                {es ? "INTERACTIVO" : "INTERACTIVE"}
               </span>
               <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-                Prototipo{" "}
-                <span className="font-instrument-serif italic font-normal text-purple-600">
-                  navegable
-                </span>
+                {es ? <>Prototipo{" "}<span className="font-instrument-serif italic font-normal text-purple-600">navegable</span></> : <>Navigable{" "}<span className="font-instrument-serif italic font-normal text-purple-600">prototype</span></>}
               </h2>
             </div>
           </ScrollReveal>
@@ -738,13 +657,10 @@ export default function ProyectoJalife() {
           <ScrollReveal>
             <div className="mb-16 max-w-2xl">
               <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
-                REFLEXIÓN
+                {es ? "REFLEXIÓN" : "REFLECTION"}
               </span>
               <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-                Aprendizajes{" "}
-                <span className="font-instrument-serif italic font-normal text-purple-600">
-                  clave
-                </span>
+                {es ? <>Aprendizajes{" "}<span className="font-instrument-serif italic font-normal text-purple-600">clave</span></> : <>Key{" "}<span className="font-instrument-serif italic font-normal text-purple-600">takeaways</span></>}
               </h2>
             </div>
           </ScrollReveal>
@@ -781,13 +697,10 @@ export default function ProyectoJalife() {
         <div className="max-w-4xl mx-auto text-center">
           <ScrollReveal>
             <p className="text-gray-600 mb-6 font-manrope">
-              ¿Te gustó este proyecto?
+              {es ? "¿Te gustó este proyecto?" : "Did you like this project?"}
             </p>
             <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mb-10">
-              Explorá más de mi{" "}
-              <span className="font-instrument-serif italic font-normal text-purple-600">
-                trabajo
-              </span>
+              {es ? <>Explorá más de mi{" "}<span className="font-instrument-serif italic font-normal text-purple-600">trabajo</span></> : <>Explore more of my{" "}<span className="font-instrument-serif italic font-normal text-purple-600">work</span></>}
             </h2>
             <div className="flex flex-wrap gap-4 justify-center">
               <Button
@@ -799,11 +712,11 @@ export default function ProyectoJalife() {
                 <span className="inline-block transition-transform duration-300 group-hover:-translate-x-1">
                   ←
                 </span>
-                Volver al inicio
+                {es ? "Volver al inicio" : "Back to home"}
               </Button>
               <a href="mailto:milagrosdziuban1@gmail.com">
                 <Button className="group bg-white hover:bg-purple-50 text-gray-900 border border-gray-300 hover:border-purple-300 px-6 py-4 rounded-full font-manrope inline-flex items-center gap-2">
-                  Contactame
+                  {es ? "Contactame" : "Contact me"}
                   <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">
                     →
                   </span>

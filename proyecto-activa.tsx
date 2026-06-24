@@ -5,6 +5,7 @@ import { NavigationHeader } from "./components/navigation-header";
 import { ScrollReveal } from "./components/animated-components";
 import Image from "next/image";
 import { OtherProjects } from "./components/otherproject";
+import { useLanguage } from "./contexts/language-context";
 
 // Carrusel de pantallas finales
 function ScreensCarousel({
@@ -203,79 +204,27 @@ function ProcessStep({
 }
 
 export default function ProyectoActiva() {
+  const { lang } = useLanguage();
+  const es = lang === "es";
+
   const designThinking = [
-    {
-      icon: "/imagen/empatizar.png",
-      title: "Empatizar",
-      text: "Entrevistas con usuarios",
-    },
-    {
-      icon: "/imagen/definir.png",
-      title: "Definir",
-      text: "Identificación de necesidades",
-    },
-    {
-      icon: "/imagen/idear.png",
-      title: "Idear",
-      text: "Brainstorming + Benchmark",
-    },
-    {
-      icon: "/imagen/prototipar.png",
-      title: "Prototipar",
-      text: "Wireframes de baja fidelidad",
-    },
-    {
-      icon: "/imagen/testear.png",
-      title: "Testear",
-      text: "Validación con usuarios",
-    },
+    { icon: "/imagen/empatizar.png", title: es ? "Empatizar" : "Empathize", text: es ? "Entrevistas con usuarios" : "User interviews" },
+    { icon: "/imagen/definir.png", title: es ? "Definir" : "Define", text: es ? "Identificación de necesidades" : "Needs identification" },
+    { icon: "/imagen/idear.png", title: es ? "Idear" : "Ideate", text: "Brainstorming + Benchmark" },
+    { icon: "/imagen/prototipar.png", title: es ? "Prototipar" : "Prototype", text: es ? "Wireframes de baja fidelidad" : "Low-fidelity wireframes" },
+    { icon: "/imagen/testear.png", title: es ? "Testear" : "Test", text: es ? "Validación con usuarios" : "User validation" },
   ];
 
-  const screens = [
-    {
-      title: "Login",
-      description:
-        "Pantalla de acceso con autenticación segura y flujo guiado en 3 pasos.",
-      image: "/Login.png",
-      features: [
-        "Validación en tiempo real",
-        "Recuperación de contraseña",
-        "Mensajes de error claros",
-      ],
-    },
-    {
-      title: "Dashboard",
-      description:
-        "Panel de control centralizado con métricas en tiempo real y accesos rápidos.",
-      image: "/Dashboard.png",
-      features: [
-        "Métricas en tiempo real",
-        "Accesos rápidos personalizables",
-        "Notificaciones importantes",
-      ],
-    },
-    {
-      title: "Gestión",
-      description:
-        "Administración completa de procesos operativos con filtros y vistas configurables.",
-      image: "/Gestion.png",
-      features: [
-        "Filtros avanzados",
-        "Vista de tabla y tarjetas",
-        "Exportación a múltiples formatos",
-      ],
-    },
-    {
-      title: "Clientes",
-      description:
-        "Vista detallada con información, historial y acciones rápidas por cliente.",
-      image: "/Clientes.png",
-      features: [
-        "Ficha completa de cliente",
-        "Historial de actividades",
-        "Acciones contextuales",
-      ],
-    },
+  const screens = es ? [
+    { title: "Login", description: "Pantalla de acceso con autenticación segura y flujo guiado en 3 pasos.", image: "/Login.png", features: ["Validación en tiempo real", "Recuperación de contraseña", "Mensajes de error claros"] },
+    { title: "Dashboard", description: "Panel de control centralizado con métricas en tiempo real y accesos rápidos.", image: "/Dashboard.png", features: ["Métricas en tiempo real", "Accesos rápidos personalizables", "Notificaciones importantes"] },
+    { title: "Gestión", description: "Administración completa de procesos operativos con filtros y vistas configurables.", image: "/Gestion.png", features: ["Filtros avanzados", "Vista de tabla y tarjetas", "Exportación a múltiples formatos"] },
+    { title: "Clientes", description: "Vista detallada con información, historial y acciones rápidas por cliente.", image: "/Clientes.png", features: ["Ficha completa de cliente", "Historial de actividades", "Acciones contextuales"] },
+  ] : [
+    { title: "Login", description: "Secure access screen with a guided 3-step authentication flow.", image: "/Login.png", features: ["Real-time validation", "Password recovery", "Clear error messages"] },
+    { title: "Dashboard", description: "Centralized control panel with real-time metrics and quick access.", image: "/Dashboard.png", features: ["Real-time metrics", "Customizable quick access", "Important notifications"] },
+    { title: "Management", description: "Full administration of operational processes with configurable filters and views.", image: "/Gestion.png", features: ["Advanced filters", "Table and card views", "Export to multiple formats"] },
+    { title: "Clients", description: "Detailed view with information, history and quick actions per client.", image: "/Clientes.png", features: ["Complete client profile", "Activity history", "Contextual actions"] },
   ];
 
   const palette = [
@@ -285,122 +234,68 @@ export default function ProyectoActiva() {
     { hex: "#FACC15", name: "Yellow 400" },
   ];
 
-  const audienceTraits = [
-    {
-      label: "Rol",
-      value: "Equipo operativo y administrativo",
-    },
-    {
-      label: "Contexto",
-      value: "Trabajan varias horas en la herramienta cada día",
-    },
-    {
-      label: "Necesidad",
-      value: "Acceso rápido y trazabilidad de procesos",
-    },
+  const audienceTraits = es ? [
+    { label: "Rol", value: "Equipo operativo y administrativo" },
+    { label: "Contexto", value: "Trabajan varias horas en la herramienta cada día" },
+    { label: "Necesidad", value: "Acceso rápido y trazabilidad de procesos" },
+  ] : [
+    { label: "Role", value: "Operations and administrative team" },
+    { label: "Context", value: "They use the tool for several hours every day" },
+    { label: "Need", value: "Quick access and process traceability" },
   ];
 
-  const researchMethods = [
-    {
-      title: "Entrevistas con usuarios internos",
-      text: "Conversaciones con miembros del equipo para entender cómo gestionan los procesos hoy y dónde están las fricciones.",
-    },
-    {
-      title: "Mapeo de tareas",
-      text: "Relevamiento de las actividades más frecuentes y críticas, junto al tiempo que demandan en el flujo actual.",
-    },
-    {
-      title: "Revisión con stakeholders",
-      text: "Alineamiento con el equipo de negocio sobre objetivos, prioridades y métricas de éxito de la plataforma.",
-    },
+  const researchMethods = es ? [
+    { title: "Entrevistas con usuarios internos", text: "Conversaciones con miembros del equipo para entender cómo gestionan los procesos hoy y dónde están las fricciones." },
+    { title: "Mapeo de tareas", text: "Relevamiento de las actividades más frecuentes y críticas, junto al tiempo que demandan en el flujo actual." },
+    { title: "Revisión con stakeholders", text: "Alineamiento con el equipo de negocio sobre objetivos, prioridades y métricas de éxito de la plataforma." },
+  ] : [
+    { title: "Internal user interviews", text: "Conversations with team members to understand how they currently manage processes and where the friction points are." },
+    { title: "Task mapping", text: "Survey of the most frequent and critical activities, along with the time they take in the current flow." },
+    { title: "Stakeholder review", text: "Alignment with the business team on platform objectives, priorities and success metrics." },
   ];
 
-  const findings = [
-    {
-      title: "La información estaba dispersa",
-      text: "Los datos se manejaban entre planillas, mails y registros manuales. Nadie tenía la foto completa en un solo lugar.",
-    },
-    {
-      title: "Los errores manuales se repetían",
-      text: "Las tareas operativas dependían de copiar y pegar entre sistemas, generando inconsistencias frecuentes.",
-    },
-    {
-      title: "Faltaba visibilidad en tiempo real",
-      text: "El estado de los procesos solo se conocía consultando uno por uno, sin un dashboard centralizado.",
-    },
-    {
-      title: "Las decisiones se demoraban",
-      text: "Sin métricas accesibles, las decisiones operativas dependían de consultas largas y reportes manuales.",
-    },
+  const findings = es ? [
+    { title: "La información estaba dispersa", text: "Los datos se manejaban entre planillas, mails y registros manuales. Nadie tenía la foto completa en un solo lugar." },
+    { title: "Los errores manuales se repetían", text: "Las tareas operativas dependían de copiar y pegar entre sistemas, generando inconsistencias frecuentes." },
+    { title: "Faltaba visibilidad en tiempo real", text: "El estado de los procesos solo se conocía consultando uno por uno, sin un dashboard centralizado." },
+    { title: "Las decisiones se demoraban", text: "Sin métricas accesibles, las decisiones operativas dependían de consultas largas y reportes manuales." },
+  ] : [
+    { title: "Information was scattered", text: "Data was managed across spreadsheets, emails and manual records. Nobody had the full picture in one place." },
+    { title: "Manual errors kept recurring", text: "Operational tasks depended on copy-pasting between systems, generating frequent inconsistencies." },
+    { title: "No real-time visibility", text: "Process status was only known by checking each one individually, with no centralized dashboard." },
+    { title: "Decisions were delayed", text: "Without accessible metrics, operational decisions relied on lengthy queries and manual reports." },
   ];
 
-  const beforeAfter = [
-    {
-      aspect: "Gestión de procesos",
-      before:
-        "Procesos manuales repartidos entre planillas, mails y registros en papel. Difícil de rastrear y propenso a errores.",
-      after:
-        "Plataforma centralizada con todos los procesos visibles, con estados, asignaciones y trazabilidad en tiempo real.",
-    },
-    {
-      aspect: "Acceso a la información",
-      before:
-        "Consultar el estado requería abrir varios archivos o preguntar al responsable. La información se perdía entre canales.",
-      after:
-        "Dashboard único con métricas clave, búsquedas rápidas y vistas filtradas para encontrar lo necesario en segundos.",
-    },
-    {
-      aspect: "Errores operativos",
-      before:
-        "Las inconsistencias eran frecuentes por copiar y pegar entre sistemas. Detectarlas tardaba días.",
-      after:
-        "Validaciones en formularios, estados claros y alertas visuales reducen los errores antes de que sucedan.",
-    },
+  const beforeAfter = es ? [
+    { aspect: "Gestión de procesos", before: "Procesos manuales repartidos entre planillas, mails y registros en papel. Difícil de rastrear y propenso a errores.", after: "Plataforma centralizada con todos los procesos visibles, con estados, asignaciones y trazabilidad en tiempo real." },
+    { aspect: "Acceso a la información", before: "Consultar el estado requería abrir varios archivos o preguntar al responsable. La información se perdía entre canales.", after: "Dashboard único con métricas clave, búsquedas rápidas y vistas filtradas para encontrar lo necesario en segundos." },
+    { aspect: "Errores operativos", before: "Las inconsistencias eran frecuentes por copiar y pegar entre sistemas. Detectarlas tardaba días.", after: "Validaciones en formularios, estados claros y alertas visuales reducen los errores antes de que sucedan." },
+  ] : [
+    { aspect: "Process management", before: "Manual processes spread across spreadsheets, emails and paper records. Hard to track and error-prone.", after: "Centralized platform with all processes visible, with statuses, assignments and real-time traceability." },
+    { aspect: "Information access", before: "Checking status required opening multiple files or asking the person in charge. Information got lost across channels.", after: "Single dashboard with key metrics, quick search and filtered views to find what's needed in seconds." },
+    { aspect: "Operational errors", before: "Inconsistencies were frequent from copy-pasting between systems. Detecting them took days.", after: "Form validations, clear statuses and visual alerts reduce errors before they happen." },
   ];
 
-  const decisions = [
-    {
-      number: "01",
-      title: "Sidebar fija como navegación principal",
-      rationale:
-        "Los usuarios trabajan en sesiones largas y necesitan acceso constante a todas las secciones sin perder contexto. Una sidebar fija prioriza la velocidad de navegación sobre el espacio visual.",
-    },
-    {
-      number: "02",
-      title: "Dashboard con métricas accionables",
-      rationale:
-        "En vez de mostrar todos los datos posibles, se priorizaron las métricas que disparan decisiones concretas (alertas, pendientes, próximos vencimientos).",
-    },
-    {
-      number: "03",
-      title: "Tablas con filtros densos pero escaneables",
-      rationale:
-        "El equipo necesita manejar volumen sin perderse. Se diseñaron tablas con buena densidad de información pero con jerarquía visual clara (separadores, hover states, acciones contextuales).",
-    },
-    {
-      number: "04",
-      title: "Estados visuales por color y forma",
-      rationale:
-        "Para que el estado de cada proceso se pueda interpretar de un vistazo, se diseñó un sistema de estados con color + ícono + texto. Funciona incluso para usuarios con daltonismo.",
-    },
+  const decisions = es ? [
+    { number: "01", title: "Sidebar fija como navegación principal", rationale: "Los usuarios trabajan en sesiones largas y necesitan acceso constante a todas las secciones sin perder contexto. Una sidebar fija prioriza la velocidad de navegación sobre el espacio visual." },
+    { number: "02", title: "Dashboard con métricas accionables", rationale: "En vez de mostrar todos los datos posibles, se priorizaron las métricas que disparan decisiones concretas (alertas, pendientes, próximos vencimientos)." },
+    { number: "03", title: "Tablas con filtros densos pero escaneables", rationale: "El equipo necesita manejar volumen sin perderse. Se diseñaron tablas con buena densidad de información pero con jerarquía visual clara (separadores, hover states, acciones contextuales)." },
+    { number: "04", title: "Estados visuales por color y forma", rationale: "Para que el estado de cada proceso se pueda interpretar de un vistazo, se diseñó un sistema de estados con color + ícono + texto. Funciona incluso para usuarios con daltonismo." },
+  ] : [
+    { number: "01", title: "Fixed sidebar as main navigation", rationale: "Users work in long sessions and need constant access to all sections without losing context. A fixed sidebar prioritizes navigation speed over screen space." },
+    { number: "02", title: "Dashboard with actionable metrics", rationale: "Instead of showing all possible data, we prioritized metrics that trigger concrete decisions (alerts, pending items, upcoming deadlines)." },
+    { number: "03", title: "Dense but scannable tables", rationale: "The team needs to handle volume without getting lost. Tables were designed with good information density but clear visual hierarchy (separators, hover states, contextual actions)." },
+    { number: "04", title: "Visual status with color and shape", rationale: "So each process status can be interpreted at a glance, a status system with color + icon + text was designed. Works even for colorblind users." },
   ];
 
-  const takeaways = [
-    {
-      number: "01",
-      title: "Validar temprano",
-      text: "Las entrevistas iniciales fueron clave para detectar puntos de fricción que no eran evidentes en la propuesta original.",
-    },
-    {
-      number: "02",
-      title: "Pensar en sistema",
-      text: "Construir un Design System desde el inicio del proyecto facilitó la escalabilidad y aseguró consistencia entre pantallas.",
-    },
-    {
-      number: "03",
-      title: "Iterar sin miedo",
-      text: "Cada wireframe pasó por varias versiones. Iterar rápido en baja fidelidad ahorró tiempo en etapas posteriores.",
-    },
+  const takeaways = es ? [
+    { number: "01", title: "Validar temprano", text: "Las entrevistas iniciales fueron clave para detectar puntos de fricción que no eran evidentes en la propuesta original." },
+    { number: "02", title: "Pensar en sistema", text: "Construir un Design System desde el inicio del proyecto facilitó la escalabilidad y aseguró consistencia entre pantallas." },
+    { number: "03", title: "Iterar sin miedo", text: "Cada wireframe pasó por varias versiones. Iterar rápido en baja fidelidad ahorró tiempo en etapas posteriores." },
+  ] : [
+    { number: "01", title: "Validate early", text: "Initial interviews were key to detecting friction points that weren't obvious in the original proposal." },
+    { number: "02", title: "Think in systems", text: "Building a Design System from the start of the project enabled scalability and ensured consistency across screens." },
+    { number: "03", title: "Iterate boldly", text: "Every wireframe went through multiple versions. Iterating fast at low fidelity saved time in later stages." },
   ];
 
   return (
@@ -433,36 +328,21 @@ export default function ProyectoActiva() {
               </h1>
 
               <p className="text-lg text-gray-600 max-w-xl leading-relaxed mb-10 font-manrope">
-                Plataforma diseñada para optimizar y centralizar procesos
-                internos, mejorando la eficiencia operativa y facilitando el
-                acceso a la información en tiempo real.
+                {es ? "Plataforma diseñada para optimizar y centralizar procesos internos, mejorando la eficiencia operativa y facilitando el acceso a la información en tiempo real." : "Platform designed to optimize and centralize internal processes, improving operational efficiency and enabling real-time access to information."}
               </p>
 
-              {/* Meta del proyecto */}
               <div className="grid grid-cols-3 gap-6 text-sm">
                 <div>
-                  <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-2">
-                    Rol
-                  </p>
-                  <p className="text-gray-900 font-medium font-space-grotesk">
-                    UX/UI Designer
-                  </p>
+                  <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-2">{es ? "Rol" : "Role"}</p>
+                  <p className="text-gray-900 font-medium font-space-grotesk">UX/UI Designer</p>
                 </div>
                 <div>
-                  <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-2">
-                    Duración
-                  </p>
-                  <p className="text-gray-900 font-medium font-space-grotesk">
-                    3 meses
-                  </p>
+                  <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-2">{es ? "Duración" : "Duration"}</p>
+                  <p className="text-gray-900 font-medium font-space-grotesk">{es ? "3 meses" : "3 months"}</p>
                 </div>
                 <div>
-                  <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-2">
-                    Herramientas
-                  </p>
-                  <p className="text-gray-900 font-medium font-space-grotesk">
-                    Figma, FigJam, VS Code
-                  </p>
+                  <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-2">{es ? "Herramientas" : "Tools"}</p>
+                  <p className="text-gray-900 font-medium font-space-grotesk">Figma, FigJam, VS Code</p>
                 </div>
               </div>
             </div>
@@ -498,17 +378,13 @@ export default function ProyectoActiva() {
                   01
                 </span>
                 <h2 className="text-4xl md:text-5xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mb-6">
-                  Problema
+                  {es ? "Problema" : "Problem"}
                 </h2>
                 <p className="text-gray-600 leading-relaxed mb-4 font-manrope">
-                  La empresa Activa enfrenta dificultades para gestionar sus
-                  procesos internos debido a la falta de organización y
-                  control.
+                  {es ? "La empresa Activa enfrenta dificultades para gestionar sus procesos internos debido a la falta de organización y control." : "Activa faces difficulties managing its internal processes due to a lack of organization and control."}
                 </p>
                 <p className="text-gray-600 leading-relaxed font-manrope">
-                  Las tareas administrativas y operativas se realizan de forma
-                  manual, generando ineficiencias, errores y dificultades para
-                  acceder a la información de manera rápida y clara.
+                  {es ? "Las tareas administrativas y operativas se realizan de forma manual, generando ineficiencias, errores y dificultades para acceder a la información de manera rápida y clara." : "Administrative and operational tasks are performed manually, generating inefficiencies, errors and difficulties accessing information quickly and clearly."}
                 </p>
               </div>
             </ScrollReveal>
@@ -519,17 +395,13 @@ export default function ProyectoActiva() {
                   02
                 </span>
                 <h2 className="text-4xl md:text-5xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mb-6">
-                  Objetivo
+                  {es ? "Objetivo" : "Goal"}
                 </h2>
                 <p className="text-gray-600 leading-relaxed mb-4 font-manrope">
-                  Diseñar una plataforma centralizada que optimice la gestión
-                  de procesos internos, mejore la experiencia de los usuarios
-                  y reduzca errores operativos.
+                  {es ? "Diseñar una plataforma centralizada que optimice la gestión de procesos internos, mejore la experiencia de los usuarios y reduzca errores operativos." : "Design a centralized platform that optimizes internal process management, improves the user experience and reduces operational errors."}
                 </p>
                 <p className="text-gray-600 leading-relaxed font-manrope">
-                  La solución busca facilitar el seguimiento de tareas,
-                  optimizar tiempos y adaptarse a las necesidades futuras de
-                  la empresa.
+                  {es ? "La solución busca facilitar el seguimiento de tareas, optimizar tiempos y adaptarse a las necesidades futuras de la empresa." : "The solution aims to streamline task tracking, optimize timelines and adapt to the company's future needs."}
                 </p>
               </div>
             </ScrollReveal>
@@ -543,18 +415,13 @@ export default function ProyectoActiva() {
           <ScrollReveal>
             <div className="mb-12 max-w-2xl">
               <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
-                AUDIENCIA
+                {es ? "AUDIENCIA" : "AUDIENCE"}
               </span>
               <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-                Para{" "}
-                <span className="font-instrument-serif italic font-normal text-purple-600">
-                  quién
-                </span>{" "}
-                diseñé
+                {es ? <>Para{" "}<span className="font-instrument-serif italic font-normal text-purple-600">quién</span>{" "}diseñé</> : <>Who I{" "}<span className="font-instrument-serif italic font-normal text-purple-600">designed</span>{" "}for</>}
               </h2>
               <p className="text-gray-600 mt-4 font-manrope text-lg">
-                Activa es una herramienta interna. Sus usuarios pasan horas en
-                ella todos los días gestionando procesos del negocio.
+                {es ? "Activa es una herramienta interna. Sus usuarios pasan horas en ella todos los días gestionando procesos del negocio." : "Activa is an internal tool. Its users spend hours in it every day managing business processes."}
               </p>
             </div>
           </ScrollReveal>
@@ -587,7 +454,7 @@ export default function ProyectoActiva() {
           <ScrollReveal>
             <div className="mb-20 max-w-2xl">
               <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
-                METODOLOGÍA
+                {es ? "METODOLOGÍA" : "METHODOLOGY"}
               </span>
               <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
                 Design{" "}
@@ -641,17 +508,13 @@ export default function ProyectoActiva() {
           <ScrollReveal>
             <div className="mb-16 max-w-2xl">
               <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
-                INVESTIGACIÓN
+                {es ? "INVESTIGACIÓN" : "RESEARCH"}
               </span>
               <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-                Lo que{" "}
-                <span className="font-instrument-serif italic font-normal text-purple-600">
-                  descubrí
-                </span>
+                {es ? <>Lo que{" "}<span className="font-instrument-serif italic font-normal text-purple-600">descubrí</span></> : <>What I{" "}<span className="font-instrument-serif italic font-normal text-purple-600">found</span></>}
               </h2>
               <p className="text-gray-600 mt-4 font-manrope text-lg">
-                Insights principales que surgieron de la investigación y
-                guiaron las decisiones de diseño.
+                {es ? "Insights principales que surgieron de la investigación y guiaron las decisiones de diseño." : "Key insights that emerged from the research and guided the design decisions."}
               </p>
             </div>
           </ScrollReveal>
@@ -660,7 +523,7 @@ export default function ProyectoActiva() {
           <ScrollReveal delay={0.1}>
             <div className="mb-12">
               <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-4">
-                Cómo lo investigué
+                {es ? "Cómo lo investigué" : "How I researched it"}
               </p>
               <div className="grid md:grid-cols-3 gap-4">
                 {researchMethods.map((method, i) => (
@@ -714,17 +577,13 @@ export default function ProyectoActiva() {
           <ScrollReveal>
             <div className="mb-16 max-w-2xl">
               <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
-                IMPACTO
+                {es ? "IMPACTO" : "IMPACT"}
               </span>
               <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-                Antes vs con{" "}
-                <span className="font-instrument-serif italic font-normal text-purple-600">
-                  Activa
-                </span>
+                {es ? <>Antes vs con{" "}<span className="font-instrument-serif italic font-normal text-purple-600">Activa</span></> : <>Before vs with{" "}<span className="font-instrument-serif italic font-normal text-purple-600">Activa</span></>}
               </h2>
               <p className="text-gray-600 mt-4 font-manrope text-lg">
-                Tres ejes clave donde la herramienta aporta valor concreto al
-                equipo.
+                {es ? "Tres ejes clave donde la herramienta aporta valor concreto al equipo." : "Three key areas where the tool delivers concrete value to the team."}
               </p>
             </div>
           </ScrollReveal>
@@ -750,7 +609,7 @@ export default function ProyectoActiva() {
 
                 <div className="border-l-2 border-gray-200 pl-6">
                   <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-2">
-                    Antes
+                    {es ? "Antes" : "Before"}
                   </p>
                   <p className="text-sm text-gray-600 font-manrope leading-relaxed">
                     {row.before}
@@ -759,7 +618,7 @@ export default function ProyectoActiva() {
 
                 <div className="border-l-2 border-purple-300 pl-6">
                   <p className="text-xs uppercase tracking-widest text-purple-500 font-manrope mb-2">
-                    Con Activa
+                    {es ? "Con Activa" : "With Activa"}
                   </p>
                   <p className="text-sm text-gray-700 font-manrope leading-relaxed">
                     {row.after}
@@ -777,84 +636,87 @@ export default function ProyectoActiva() {
           <ScrollReveal>
             <div className="mb-20 max-w-2xl">
               <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
-                PROCESO
+                {es ? "PROCESO" : "PROCESS"}
               </span>
               <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-                Cómo lo{" "}
-                <span className="font-instrument-serif italic font-normal text-purple-600">
-                  diseñé
-                </span>
+                {es ? <>Cómo lo{" "}<span className="font-instrument-serif italic font-normal text-purple-600">diseñé</span></> : <>How I{" "}<span className="font-instrument-serif italic font-normal text-purple-600">designed it</span></>}
               </h2>
             </div>
           </ScrollReveal>
 
           <ProcessStep
             number="01"
-            title="Arquitectura"
-            subtitle="Estructurando la información y flujos"
+            title={es ? "Arquitectura" : "Architecture"}
+            subtitle={es ? "Estructurando la información y flujos" : "Structuring information and flows"}
             image="/arqActiva.png"
             imageLeft
-            paragraphs={[
+            paragraphs={es ? [
               "Como primer paso en el diseño se elaboró una arquitectura de información clara, tomando como base los flujos más frecuentes y relevantes para el negocio.",
               "Este mapa ayudó a organizar las secciones principales de la aplicación, definir jerarquías, y sentar las bases para una navegación fluida y coherente. La arquitectura fue validada con el equipo interno para asegurar que cubría todos los casos de uso necesarios.",
+            ] : [
+              "As a first step, a clear information architecture was built based on the most frequent and relevant business flows.",
+              "This map helped organize the main sections of the application, define hierarchies, and lay the foundation for smooth and coherent navigation. The architecture was validated with the internal team to ensure it covered all necessary use cases.",
             ]}
           />
 
           <ProcessStep
             number="02"
             title="Wireframes"
-            subtitle="Diseñando patrones y estructura de la plataforma"
+            subtitle={es ? "Diseñando patrones y estructura de la plataforma" : "Designing patterns and platform structure"}
             image="/wireframeActiva.png"
-            paragraphs={[
+            paragraphs={es ? [
               "Los wireframes permitieron visualizar la estructura de la plataforma desde las primeras etapas del diseño. Trabajé en varias iteraciones de baja fidelidad para definir la disposición de los elementos, jerarquizar la información y asegurar la usabilidad desde el comienzo.",
               "Estas primeras versiones fueron clave para alinear expectativas con el equipo y realizar ajustes rápidos antes de pasar a diseño visual.",
+            ] : [
+              "Wireframes allowed visualizing the platform structure from the earliest design stages. I worked through several low-fidelity iterations to define the layout of elements, prioritize information hierarchy, and ensure usability from the start.",
+              "These early versions were key for aligning expectations with the team and making quick adjustments before moving to visual design.",
             ]}
           />
 
           <ProcessStep
             number="03"
             title="Design System"
-            subtitle="Creando los primeros componentes"
+            subtitle={es ? "Creando los primeros componentes" : "Building the first components"}
             image="/designSystemActiva.png"
             imageLeft
-            paragraphs={[
+            paragraphs={es ? [
               "Para lograr coherencia visual y una implementación eficiente, diseñé un sistema de diseño adaptado a la identidad institucional de Activa.",
               "Incluye componentes reutilizables, estados interactivos y patrones consistentes que facilitan el desarrollo y aseguran una experiencia homogénea en toda la aplicación.",
               "El Design System también permite escalar la plataforma fácilmente a nuevas funcionalidades o futuras versiones, sin perder consistencia visual.",
+            ] : [
+              "To achieve visual coherence and efficient implementation, I designed a design system tailored to Activa's institutional identity.",
+              "It includes reusable components, interactive states, and consistent patterns that streamline development and ensure a uniform experience throughout the application.",
+              "The Design System also makes it easy to scale the platform to new features or future versions without losing visual consistency.",
             ]}
           />
 
           <ProcessStep
             number="04"
-            title="Pantallas"
-            subtitle="Dando vida a las ideas"
+            title={es ? "Pantallas" : "Screens"}
+            subtitle={es ? "Dando vida a las ideas" : "Bringing ideas to life"}
             image="/screensActiva.png"
-            paragraphs={[
+            paragraphs={es ? [
               "Se diseñaron las pantallas alineadas al diseño de la marca. Cada pantalla fue diseñada pensando en minimizar la fricción del usuario, priorizando la claridad y la eficiencia en la interacción.",
+            ] : [
+              "Screens were designed aligned with the brand design. Each screen was built with the goal of minimizing user friction, prioritizing clarity and efficiency in interaction.",
             ]}
             extra={
               <div className="mt-6 space-y-3">
-                {[
-                  {
-                    label: "Formulario de Login",
-                    count: "1 pantalla / 3 pasos",
-                  },
-                  {
-                    label: "Funcionalidades principales",
-                    count: "8 pantallas",
-                  },
+                {(es ? [
+                  { label: "Formulario de Login", count: "1 pantalla / 3 pasos" },
+                  { label: "Funcionalidades principales", count: "8 pantallas" },
                   { label: "Chat web", count: "2 pantallas" },
-                ].map((item, i) => (
+                ] : [
+                  { label: "Login form", count: "1 screen / 3 steps" },
+                  { label: "Main features", count: "8 screens" },
+                  { label: "Web chat", count: "2 screens" },
+                ]).map((item, i) => (
                   <div
                     key={i}
                     className="flex items-center justify-between py-3 border-b border-gray-200 last:border-0"
                   >
-                    <span className="text-gray-700 font-manrope">
-                      {item.label}
-                    </span>
-                    <span className="text-sm text-purple-500 font-manrope">
-                      {item.count}
-                    </span>
+                    <span className="text-gray-700 font-manrope">{item.label}</span>
+                    <span className="text-sm text-purple-500 font-manrope">{item.count}</span>
                   </div>
                 ))}
               </div>
@@ -869,17 +731,13 @@ export default function ProyectoActiva() {
           <ScrollReveal>
             <div className="mb-16 max-w-2xl">
               <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
-                RACIONAL
+                {es ? "RACIONAL" : "RATIONALE"}
               </span>
               <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-                Decisiones de{" "}
-                <span className="font-instrument-serif italic font-normal text-purple-600">
-                  diseño
-                </span>
+                {es ? <>Decisiones de{" "}<span className="font-instrument-serif italic font-normal text-purple-600">diseño</span></> : <>Design{" "}<span className="font-instrument-serif italic font-normal text-purple-600">decisions</span></>}
               </h2>
               <p className="text-gray-600 mt-4 font-manrope text-lg">
-                Qué decidí y por qué, en las definiciones clave de la
-                plataforma.
+                {es ? "Qué decidí y por qué, en las definiciones clave de la plataforma." : "What I decided and why, across the key definitions of the platform."}
               </p>
             </div>
           </ScrollReveal>
@@ -917,13 +775,10 @@ export default function ProyectoActiva() {
           <ScrollReveal>
             <div className="mb-16 max-w-2xl">
               <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
-                GUÍA VISUAL
+                {es ? "GUÍA VISUAL" : "VISUAL GUIDE"}
               </span>
               <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-                Sistema{" "}
-                <span className="font-instrument-serif italic font-normal text-purple-600">
-                  visual
-                </span>
+                {es ? <>Sistema{" "}<span className="font-instrument-serif italic font-normal text-purple-600">visual</span></> : <>Visual{" "}<span className="font-instrument-serif italic font-normal text-purple-600">system</span></>}
               </h2>
             </div>
           </ScrollReveal>
@@ -933,7 +788,7 @@ export default function ProyectoActiva() {
             <ScrollReveal direction="left">
               <div className="bg-white border border-gray-200 rounded-2xl p-8 h-full">
                 <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-6">
-                  Tipografía
+                  {es ? "Tipografía" : "Typography"}
                 </p>
                 <p className="text-7xl md:text-8xl font-bold text-gray-900 mb-2 leading-none">
                   Aa
@@ -965,7 +820,7 @@ export default function ProyectoActiva() {
             <ScrollReveal direction="right" delay={0.2}>
               <div className="bg-white border border-gray-200 rounded-2xl p-8 h-full">
                 <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-6">
-                  Paleta de colores
+                  {es ? "Paleta de colores" : "Color palette"}
                 </p>
                 <div className="grid grid-cols-2 gap-4">
                   {palette.map((color, i) => (
@@ -1004,13 +859,10 @@ export default function ProyectoActiva() {
           <ScrollReveal>
             <div className="mb-16 max-w-2xl">
               <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
-                RESULTADO
+                {es ? "RESULTADO" : "RESULT"}
               </span>
               <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-                Pantallas{" "}
-                <span className="font-instrument-serif italic font-normal text-purple-600">
-                  finales
-                </span>
+                {es ? <>Pantallas{" "}<span className="font-instrument-serif italic font-normal text-purple-600">finales</span></> : <>Final{" "}<span className="font-instrument-serif italic font-normal text-purple-600">screens</span></>}
               </h2>
             </div>
           </ScrollReveal>
@@ -1027,13 +879,10 @@ export default function ProyectoActiva() {
           <ScrollReveal>
             <div className="mb-16 max-w-2xl">
               <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
-                REFLEXIÓN
+                {es ? "REFLEXIÓN" : "REFLECTION"}
               </span>
               <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-                Aprendizajes{" "}
-                <span className="font-instrument-serif italic font-normal text-purple-600">
-                  clave
-                </span>
+                {es ? <>Aprendizajes{" "}<span className="font-instrument-serif italic font-normal text-purple-600">clave</span></> : <>Key{" "}<span className="font-instrument-serif italic font-normal text-purple-600">takeaways</span></>}
               </h2>
             </div>
           </ScrollReveal>
@@ -1070,13 +919,10 @@ export default function ProyectoActiva() {
         <div className="max-w-4xl mx-auto text-center">
           <ScrollReveal>
             <p className="text-gray-600 mb-6 font-manrope">
-              ¿Querés ver el caso completo?
+              {es ? "¿Querés ver el caso completo?" : "Want to see the full case study?"}
             </p>
             <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mb-10">
-              Mirá el proyecto en{" "}
-              <span className="font-instrument-serif italic font-normal text-purple-600">
-                Behance
-              </span>
+              {es ? <>Mirá el proyecto en{" "}<span className="font-instrument-serif italic font-normal text-purple-600">Behance</span></> : <>See the project on{" "}<span className="font-instrument-serif italic font-normal text-purple-600">Behance</span></>}
             </h2>
             <a
               href="https://www.behance.net/gallery/225209813/Gestion-de-empresas"
@@ -1084,7 +930,7 @@ export default function ProyectoActiva() {
               rel="noopener noreferrer"
               className="group inline-flex items-center gap-2 bg-gray-900 hover:bg-purple-600 text-white px-6 py-4 rounded-full shadow-lg font-manrope transition"
             >
-              Ver caso completo
+              {es ? "Ver caso completo" : "View full case study"}
               <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">
                 →
               </span>
