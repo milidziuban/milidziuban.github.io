@@ -6,9 +6,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
+import { useLanguage } from "@/contexts/language-context";
 
 export function NavigationHeader() {
   const pathname = usePathname();
+  const { lang } = useLanguage();
+  const cvHref = lang === "en" ? "/CV_MilagrosDziuban_2026_EN.pdf" : "/CV_MilagrosDziuban_2026_ES.pdf";
+  const cvLabel = lang === "en" ? "Download CV" : "Descargar CV";
   const [activeSection, setActiveSection] = useState("inicio");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -143,13 +147,13 @@ export function NavigationHeader() {
             className="overflow-hidden"
           >
             <a
-              href="/CV_MilagrosDziuban_2025.pdf"
+              href={cvHref}
               download
               target="_blank"
               rel="noopener noreferrer"
             >
               <Button className="bg-gray-800 hover:bg-purple-600 text-white px-6 py-2 font-medium rounded-[32px]">
-                Descargar CV
+                {cvLabel}
               </Button>
             </a>
           </motion.div>
@@ -261,9 +265,11 @@ export function NavigationHeader() {
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
-                    <Button className="w-full bg-gray-800 hover:bg-purple-600 text-white py-3 rounded-full font-medium">
-                      Descargar CV
-                    </Button>
+                    <a href={cvHref} download target="_blank" rel="noopener noreferrer">
+                      <Button className="w-full bg-gray-800 hover:bg-purple-600 text-white py-3 rounded-full font-medium">
+                        {cvLabel}
+                      </Button>
+                    </a>
                   </motion.div>
                 </motion.div>
               </nav>

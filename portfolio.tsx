@@ -108,14 +108,44 @@ function HeroSection({ t }: { t: T }) {
           transition={{ duration: 1 }}
           whileHover={{ scale: 1.04 }}
         >
-          <div className="absolute w-[88%] h-[88%] bg-purple-200 rounded-[42%_58%_55%_45%/45%_42%_58%_55%] -rotate-6" />
-          <div className="absolute w-[78%] h-[78%] bg-pink-100 rounded-[55%_45%_42%_58%/58%_55%_45%_42%] rotate-3 translate-x-6 translate-y-6" />
+          {/* Glow difuminado de base */}
+          <div className="absolute w-[75%] h-[75%] bg-purple-300/40 rounded-full blur-3xl" />
+
+          {/* Blobs orgánicos, suaves y con movimiento lento */}
+          <motion.div
+            className="absolute w-[88%] h-[88%] bg-gradient-to-br from-purple-200/70 via-purple-100/60 to-pink-100/50 rounded-[42%_58%_55%_45%/45%_42%_58%_55%]"
+            animate={{ rotate: [-6, -2, -6] }}
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          />
+          <motion.div
+            className="absolute w-[78%] h-[78%] bg-pink-100/60 rounded-[55%_45%_42%_58%/58%_55%_45%_42%] translate-x-6 translate-y-6 blur-sm"
+            animate={{ rotate: [3, 7, 3] }}
+            transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+          />
+
+          {/* Acentos decorativos */}
+          <motion.span
+            className="absolute top-[6%] right-[12%] text-purple-400/70 text-2xl select-none"
+            animate={{ opacity: [0.4, 0.9, 0.4], scale: [1, 1.15, 1] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          >
+            ✦
+          </motion.span>
+          <motion.span
+            className="absolute bottom-[18%] left-[6%] text-purple-300/60 text-lg select-none"
+            animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.1, 1] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+          >
+            ✦
+          </motion.span>
+
           <div className="relative p-3 rounded-2xl">
             <Image
               src="/yodibujo.png"
               alt="Retrato ilustrado de Milagros"
               width={1200}
               height={800}
+              priority
               className="rounded-xl relative"
             />
           </div>
@@ -335,7 +365,50 @@ function ProjectsSection({ t }: { t: T }) {
   );
 }
 
+function AIWorkflowBanner() {
+  const { lang } = useLanguage();
+  const es = lang === "es";
+
+  return (
+    <section className="px-6 py-20 bg-gradient-to-br from-[#f5edff] via-[#f1f1f6] to-[#f7f7fb]">
+      <ScrollReveal>
+        <a
+          href="/ai-workflow"
+          onClick={() => track("ai_workflow_banner_click", { source: "landing" })}
+          className="group relative block overflow-hidden rounded-3xl bg-gray-900 px-8 py-12 md:px-14 cursor-pointer mx-auto w-full max-w-6xl hover:max-w-[100vw] transition-[max-width] duration-700 ease-in-out"
+        >
+            <div className="relative max-w-6xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-8">
+              <div>
+                <span className="uppercase tracking-widest text-xs text-purple-400 font-bold">
+                  {es ? "MI PROCESO" : "MY PROCESS"}
+                </span>
+                <h2 className="text-3xl md:text-5xl font-medium text-white leading-[1.05] tracking-tighter font-space-grotesk mt-3">
+                  {es ? (
+                    <>Así trabajo{" "}<span className="font-instrument-serif italic font-normal text-purple-400">con IA</span></>
+                  ) : (
+                    <>How I work{" "}<span className="font-instrument-serif italic font-normal text-purple-400">with AI</span></>
+                  )}
+                </h2>
+              </div>
+
+              <div className="flex items-center gap-3 text-white font-manrope font-medium whitespace-nowrap">
+                <span className="group-hover:text-purple-400 transition-colors">
+                  {es ? "Ver mi workflow" : "See my workflow"}
+                </span>
+                <span className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-lg transition-all duration-500 group-hover:bg-purple-600 group-hover:border-purple-600 group-hover:-rotate-45">
+                  →
+                </span>
+              </div>
+            </div>
+        </a>
+      </ScrollReveal>
+    </section>
+  );
+}
+
 function ContactSection({ t }: { t: T }) {
+  const { lang } = useLanguage();
+  const cvHref = lang === "en" ? "/CV_MilagrosDziuban_2026_EN.pdf" : "/CV_MilagrosDziuban_2026_ES.pdf";
   const [isPlaygroundMode, setIsPlaygroundMode] = useState(false);
 
   useEffect(() => {
@@ -389,7 +462,7 @@ function ContactSection({ t }: { t: T }) {
             </div>
 
             <motion.div className="mt-12" whileTap={{ scale: 0.95 }}>
-              <a href="/CV_MilagrosDziuban_2025.pdf" download target="_blank" rel="noopener noreferrer" onClick={() => track("cv_download")}>
+              <a href={cvHref} download target="_blank" rel="noopener noreferrer" onClick={() => track("cv_download")}>
                 <Button className="group bg-gray-900 hover:bg-purple-600 text-white px-6 py-4 rounded-full shadow-lg font-manrope inline-flex items-center gap-2">
                   {t.contact.cv}
                   <span className="inline-block transition-transform duration-300 group-hover:translate-y-0.5">↓</span>
@@ -423,6 +496,7 @@ export default function Portfolio() {
       <HeroSection t={t} />
       <DesignSection t={t} />
       <ProjectsSection t={t} />
+      <AIWorkflowBanner />
       <ContactSection t={t} />
     </div>
   );
