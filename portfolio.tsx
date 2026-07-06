@@ -106,49 +106,60 @@ function HeroSection({ t }: { t: T }) {
           initial={{ opacity: 0, x: 80 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1 }}
-          whileHover={{ scale: 1.04 }}
         >
           {/* Glow difuminado de base */}
-          <div className="absolute w-[75%] h-[75%] bg-purple-300/40 rounded-full blur-3xl" />
+          <div className="absolute w-[85%] h-[85%] bg-purple-300/45 rounded-[3rem] blur-3xl" />
 
           {/* Blobs orgánicos, suaves y con movimiento lento */}
           <motion.div
-            className="absolute w-[88%] h-[88%] bg-gradient-to-br from-purple-200/70 via-purple-100/60 to-pink-100/50 rounded-[42%_58%_55%_45%/45%_42%_58%_55%]"
+            className="absolute w-[92%] h-[95%] bg-gradient-to-br from-purple-200/70 via-purple-100/60 to-pink-100/60 rounded-[42%_58%_55%_45%/45%_42%_58%_55%] blur-[2px]"
             animate={{ rotate: [-6, -2, -6] }}
             transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
           />
           <motion.div
-            className="absolute w-[78%] h-[78%] bg-pink-100/60 rounded-[55%_45%_42%_58%/58%_55%_45%_42%] translate-x-6 translate-y-6 blur-sm"
+            className="absolute w-[84%] h-[86%] bg-pink-100/60 rounded-[55%_45%_42%_58%/58%_55%_45%_42%] translate-x-6 translate-y-6 blur-sm"
             animate={{ rotate: [3, 7, 3] }}
             transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
           />
 
           {/* Acentos decorativos */}
           <motion.span
-            className="absolute top-[6%] right-[12%] text-purple-400/70 text-2xl select-none"
+            className="absolute top-[4%] right-[8%] z-20 text-purple-400/80 text-2xl select-none"
             animate={{ opacity: [0.4, 0.9, 0.4], scale: [1, 1.15, 1] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
           >
             ✦
           </motion.span>
           <motion.span
-            className="absolute bottom-[18%] left-[6%] text-purple-300/60 text-lg select-none"
+            className="absolute bottom-[10%] left-[4%] z-20 text-purple-300/70 text-lg select-none"
             animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.1, 1] }}
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
           >
             ✦
           </motion.span>
 
-          <div className="relative p-3 rounded-2xl">
+          {/* Foto sin fondo, integrada sobre los blobs */}
+          <motion.div
+            className="relative z-10 w-[85%] max-w-[430px]"
+            whileHover={{ scale: 1.03, rotate: -0.6 }}
+            transition={{ type: "spring", stiffness: 200, damping: 18 }}
+          >
             <Image
-              src="/yodibujo.png"
-              alt="Retrato ilustrado de Milagros"
-              width={1200}
-              height={800}
+              src="/hero-milagros-nobg-v7.png"
+              alt="Milagros trabajando en diseño UX/UI"
+              width={432}
+              height={457}
               priority
-              className="rounded-xl relative"
+              sizes="(max-width: 768px) 85vw, 430px"
+              className="w-full h-auto [filter:drop-shadow(0_22px_30px_rgba(88,28,135,0.28))]"
+              style={{
+                WebkitMaskImage:
+                  "radial-gradient(ellipse 82% 86% at 50% 44%, black 60%, transparent 92%)",
+                maskImage:
+                  "radial-gradient(ellipse 82% 86% at 50% 44%, black 60%, transparent 92%)",
+              }}
             />
-          </div>
+          </motion.div>
         </motion.div>
       </div>
 
