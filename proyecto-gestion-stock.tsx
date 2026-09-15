@@ -7,6 +7,7 @@ import { ScrollReveal } from "./components/animated-components";
 import Image from "next/image";
 import { OtherProjects } from "./components/otherproject";
 import { useLanguage } from "./contexts/language-context";
+import { SiteFooter } from "./components/site-footer";
 
 function ProcessStep({
   number,
@@ -28,19 +29,19 @@ function ProcessStep({
     return (
       <div className="mb-32 last:mb-0">
         <ScrollReveal>
-          <div className="bg-gray-50 border border-gray-200 rounded-2xl p-10">
+          <div className="bg-paper border border-hairline rounded-2xl p-10">
             <div className="grid md:grid-cols-[120px_1fr] gap-8 items-start">
-              <span className="font-instrument-serif italic text-6xl text-purple-400 leading-none">
+              <span className="font-instrument-serif italic text-6xl text-brand-lite leading-none">
                 {number}
               </span>
               <div>
-                <h3 className="text-3xl md:text-4xl font-medium text-gray-900 font-space-grotesk leading-tight mb-2">
+                <h3 className="text-3xl md:text-4xl font-medium text-ink font-space-grotesk leading-tight mb-2">
                   {title}
                 </h3>
                 {subtitle && (
-                  <p className="text-gray-400 font-manrope mb-6">{subtitle}</p>
+                  <p className="text-ink-3 font-manrope mb-6">{subtitle}</p>
                 )}
-                <div className="text-gray-600 font-manrope leading-relaxed space-y-4">
+                <div className="text-ink-2 font-manrope leading-relaxed space-y-4">
                   {children}
                 </div>
               </div>
@@ -69,16 +70,16 @@ function ProcessStep({
 
       <ScrollReveal direction={imageLeft ? "right" : "left"} delay={0.2}>
         <div className={imageLeft ? "md:order-2" : "md:order-1"}>
-          <span className="font-instrument-serif italic text-5xl text-purple-400 block mb-4 leading-none">
+          <span className="font-instrument-serif italic text-5xl text-brand-lite block mb-4 leading-none">
             {number}
           </span>
-          <h3 className="text-3xl md:text-4xl font-medium text-gray-900 font-space-grotesk leading-tight mb-2">
+          <h3 className="text-3xl md:text-4xl font-medium text-ink font-space-grotesk leading-tight mb-2">
             {title}
           </h3>
           {subtitle && (
-            <p className="text-gray-400 font-manrope mb-6">{subtitle}</p>
+            <p className="text-ink-3 font-manrope mb-6">{subtitle}</p>
           )}
-          <div className="text-gray-600 font-manrope leading-relaxed space-y-4">
+          <div className="text-ink-2 font-manrope leading-relaxed space-y-4">
             {children}
           </div>
         </div>
@@ -161,11 +162,11 @@ export default function ProyectoGestiondeStock() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-paper">
       <NavigationHeader />
 
       {/* HERO */}
-      <section className="relative px-6 py-32 bg-[#f5f7fb] overflow-hidden">
+      <section className="relative px-6 py-32 bg-paper-2 overflow-hidden">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div>
@@ -173,33 +174,33 @@ export default function ProyectoGestiondeStock() {
                 {["UX/UI", "Desktop App", "2025"].map((tag) => (
                   <span
                     key={tag}
-                    className="text-xs px-3 py-1 rounded-full border border-gray-300 text-gray-600 font-manrope"
+                    className="text-xs px-3 py-1 rounded-full border border-hairline text-ink-2 font-manrope"
                   >
                     {tag}
                   </span>
                 ))}
               </div>
 
-              <h1 className="text-5xl md:text-6xl font-medium tracking-tighter text-gray-900 leading-[1.05] font-space-grotesk mb-6">
-                {es ? <>Gestión de{" "}<span className="font-instrument-serif italic font-normal text-purple-600">stock</span></> : <>Stock{" "}<span className="font-instrument-serif italic font-normal text-purple-600">management</span></>}
+              <h1 className="text-5xl md:text-6xl font-medium tracking-tighter text-ink leading-[1.05] font-space-grotesk mb-6">
+                {es ? <>Gestión de{" "}<span className="font-instrument-serif italic font-normal text-brand">stock</span></> : <>Stock{" "}<span className="font-instrument-serif italic font-normal text-brand">management</span></>}
               </h1>
 
-              <p className="text-lg text-gray-600 max-w-xl leading-relaxed mb-10 font-manrope">
+              <p className="text-lg text-ink-2 max-w-xl leading-relaxed mb-10 font-manrope">
                 {es ? "Diseñé una solución enfocada en pequeñas y medianas empresas que necesitan controlar su stock de forma eficiente, reduciendo errores operativos y mejorando la toma de decisiones mediante un dashboard intuitivo." : "I designed a solution focused on small and medium-sized businesses that need to control their stock efficiently, reducing operational errors and improving decision-making through an intuitive dashboard."}
               </p>
 
               <div className="grid grid-cols-3 gap-6 text-sm">
                 <div>
-                  <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-2">{es ? "Rol" : "Role"}</p>
-                  <p className="text-gray-900 font-medium font-space-grotesk">UX/UI Designer</p>
+                  <p className="text-xs uppercase tracking-widest text-ink-3 font-manrope mb-2">{es ? "Rol" : "Role"}</p>
+                  <p className="text-ink font-medium font-space-grotesk">UX/UI Designer</p>
                 </div>
                 <div>
-                  <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-2">{es ? "Duración" : "Duration"}</p>
-                  <p className="text-gray-900 font-medium font-space-grotesk">{es ? "3 meses" : "3 months"}</p>
+                  <p className="text-xs uppercase tracking-widest text-ink-3 font-manrope mb-2">{es ? "Duración" : "Duration"}</p>
+                  <p className="text-ink font-medium font-space-grotesk">{es ? "3 meses" : "3 months"}</p>
                 </div>
                 <div>
-                  <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-2">{es ? "Herramientas" : "Tools"}</p>
-                  <p className="text-gray-900 font-medium font-space-grotesk">Figma, Miro</p>
+                  <p className="text-xs uppercase tracking-widest text-ink-3 font-manrope mb-2">{es ? "Herramientas" : "Tools"}</p>
+                  <p className="text-ink font-medium font-space-grotesk">Figma, Miro</p>
                 </div>
               </div>
             </div>
@@ -230,16 +231,16 @@ export default function ProyectoGestiondeStock() {
           <div className="grid md:grid-cols-2 gap-16">
             <ScrollReveal direction="left">
               <div>
-                <span className="font-instrument-serif italic text-2xl text-purple-400 mb-3 block">
+                <span className="font-instrument-serif italic text-2xl text-brand-lite mb-3 block">
                   01
                 </span>
-                <h2 className="text-4xl md:text-5xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mb-6">
+                <h2 className="text-4xl md:text-5xl font-medium text-ink leading-[1.05] tracking-tighter font-space-grotesk mb-6">
                   {es ? "Problema" : "Problem"}
                 </h2>
-                <p className="text-gray-600 leading-relaxed mb-4 font-manrope">
+                <p className="text-ink-2 leading-relaxed mb-4 font-manrope">
                   {es ? "Muchas empresas gestionan su inventario utilizando herramientas dispersas como hojas de cálculo o registros manuales, lo que genera inconsistencias, falta de visibilidad en tiempo real y errores en la actualización del stock." : "Many companies manage their inventory using scattered tools like spreadsheets or manual records, generating inconsistencies, lack of real-time visibility and errors when updating stock."}
                 </p>
-                <p className="text-gray-600 leading-relaxed font-manrope">
+                <p className="text-ink-2 leading-relaxed font-manrope">
                   {es ? "Esta fragmentación dificulta el control del inventario, aumenta el riesgo de pérdidas y demanda más tiempo en tareas operativas que podrían ser automatizadas." : "This fragmentation makes inventory control harder, increases the risk of losses and demands more time on operational tasks that could be automated."}
                 </p>
               </div>
@@ -247,13 +248,13 @@ export default function ProyectoGestiondeStock() {
 
             <ScrollReveal direction="right" delay={0.2}>
               <div>
-                <span className="font-instrument-serif italic text-2xl text-purple-400 mb-3 block">
+                <span className="font-instrument-serif italic text-2xl text-brand-lite mb-3 block">
                   02
                 </span>
-                <h2 className="text-4xl md:text-5xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mb-6">
+                <h2 className="text-4xl md:text-5xl font-medium text-ink leading-[1.05] tracking-tighter font-space-grotesk mb-6">
                   {es ? "Objetivo" : "Goal"}
                 </h2>
-                <p className="text-gray-600 leading-relaxed mb-4 font-manrope">
+                <p className="text-ink-2 leading-relaxed mb-4 font-manrope">
                   {es ? "Diseñar una plataforma que permita centralizar la gestión de stock en un solo lugar." : "Design a platform that allows centralizing stock management in one place."}
                 </p>
                 <ul className="space-y-2">
@@ -270,9 +271,9 @@ export default function ProyectoGestiondeStock() {
                   ]).map((item, i) => (
                     <li
                       key={i}
-                      className="flex items-start gap-3 text-gray-600 font-manrope"
+                      className="flex items-start gap-3 text-ink-2 font-manrope"
                     >
-                      <span className="text-purple-500 mt-1">✦</span>
+                      <span className="text-brand mt-1">✦</span>
                       {item}
                     </li>
                   ))}
@@ -284,17 +285,17 @@ export default function ProyectoGestiondeStock() {
       </section>
 
       {/* PARA QUIÉN */}
-      <section className="px-6 py-32 bg-gradient-to-b from-white via-gray-50 to-white">
+      <section className="px-6 py-32 bg-paper">
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
             <div className="mb-12 max-w-2xl">
-              <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
+              <span className="uppercase tracking-widest text-sm text-brand font-bold">
                 {es ? "AUDIENCIA" : "AUDIENCE"}
               </span>
-              <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-                {es ? <>Para{" "}<span className="font-instrument-serif italic font-normal text-purple-600">quién</span>{" "}diseñé</> : <>Who I{" "}<span className="font-instrument-serif italic font-normal text-purple-600">designed</span>{" "}for</>}
+              <h2 className="text-4xl md:text-6xl font-medium text-ink leading-[1.05] tracking-tighter font-space-grotesk mt-3">
+                {es ? <>Para{" "}<span className="font-instrument-serif italic font-normal text-brand">quién</span>{" "}diseñé</> : <>Who I{" "}<span className="font-instrument-serif italic font-normal text-brand">designed</span>{" "}for</>}
               </h2>
-              <p className="text-gray-600 mt-4 font-manrope text-lg">
+              <p className="text-ink-2 mt-4 font-manrope text-lg">
                 {es ? "Equipos chicos que hoy gestionan el stock entre planillas y memoria, y necesitan una herramienta que se entienda sin manual." : "Small teams that currently manage stock across spreadsheets and memory, and need a tool that can be understood without a manual."}
               </p>
             </div>
@@ -308,12 +309,12 @@ export default function ProyectoGestiondeStock() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-white border border-gray-200 rounded-2xl p-6"
+                className="bg-white border border-hairline rounded-2xl p-6"
               >
-                <p className="text-xs uppercase tracking-widest text-purple-500 font-manrope mb-2">
+                <p className="text-xs uppercase tracking-widest text-brand font-manrope mb-2">
                   {trait.label}
                 </p>
-                <p className="text-lg font-medium font-space-grotesk text-gray-900">
+                <p className="text-lg font-medium font-space-grotesk text-ink">
                   {trait.value}
                 </p>
               </motion.div>
@@ -327,13 +328,13 @@ export default function ProyectoGestiondeStock() {
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
             <div className="mb-16 max-w-2xl">
-              <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
+              <span className="uppercase tracking-widest text-sm text-brand font-bold">
                 {es ? "INVESTIGACIÓN" : "RESEARCH"}
               </span>
-              <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-                {es ? <>Lo que{" "}<span className="font-instrument-serif italic font-normal text-purple-600">descubrí</span></> : <>What I{" "}<span className="font-instrument-serif italic font-normal text-purple-600">found</span></>}
+              <h2 className="text-4xl md:text-6xl font-medium text-ink leading-[1.05] tracking-tighter font-space-grotesk mt-3">
+                {es ? <>Lo que{" "}<span className="font-instrument-serif italic font-normal text-brand">descubrí</span></> : <>What I{" "}<span className="font-instrument-serif italic font-normal text-brand">found</span></>}
               </h2>
-              <p className="text-gray-600 mt-4 font-manrope text-lg">
+              <p className="text-ink-2 mt-4 font-manrope text-lg">
                 {es ? "Insights que surgieron de la investigación y guiaron las decisiones de diseño." : "Insights that emerged from the research and guided the design decisions."}
               </p>
             </div>
@@ -342,19 +343,19 @@ export default function ProyectoGestiondeStock() {
           {/* Métodos */}
           <ScrollReveal delay={0.1}>
             <div className="mb-12">
-              <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-4">
+              <p className="text-xs uppercase tracking-widest text-ink-3 font-manrope mb-4">
                 {es ? "Cómo lo investigué" : "How I researched it"}
               </p>
               <div className="grid md:grid-cols-3 gap-4">
                 {researchMethods.map((method, i) => (
                   <div
                     key={i}
-                    className="border-l-2 border-purple-200 pl-4"
+                    className="border-l-2 border-brand/25 pl-4"
                   >
-                    <p className="font-medium font-space-grotesk text-gray-900 mb-2">
+                    <p className="font-medium font-space-grotesk text-ink mb-2">
                       {method.title}
                     </p>
-                    <p className="text-sm text-gray-600 font-manrope leading-relaxed">
+                    <p className="text-sm text-ink-2 font-manrope leading-relaxed">
                       {method.text}
                     </p>
                   </div>
@@ -373,15 +374,15 @@ export default function ProyectoGestiondeStock() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.08 }}
-                  className="bg-gray-50 border border-gray-200 rounded-2xl p-8 hover:border-purple-300 transition"
+                  className="bg-paper border border-hairline rounded-2xl p-8 hover:border-brand/40 transition"
                 >
-                  <span className="font-instrument-serif italic text-3xl text-purple-400 block mb-3 leading-none">
+                  <span className="font-instrument-serif italic text-3xl text-brand-lite block mb-3 leading-none">
                     0{i + 1}
                   </span>
-                  <h3 className="text-lg font-medium font-space-grotesk text-gray-900 mb-3">
+                  <h3 className="text-lg font-medium font-space-grotesk text-ink mb-3">
                     {finding.title}
                   </h3>
-                  <p className="text-gray-600 font-manrope leading-relaxed text-sm">
+                  <p className="text-ink-2 font-manrope leading-relaxed text-sm">
                     {finding.text}
                   </p>
                 </motion.div>
@@ -392,17 +393,17 @@ export default function ProyectoGestiondeStock() {
       </section>
 
       {/* ANTES vs CON GESTIÓN DE STOCK */}
-      <section className="px-6 py-32 bg-gradient-to-b from-white via-gray-50 to-white">
+      <section className="px-6 py-32 bg-paper">
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
             <div className="mb-16 max-w-2xl">
-              <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
+              <span className="uppercase tracking-widest text-sm text-brand font-bold">
                 {es ? "IMPACTO" : "IMPACT"}
               </span>
-              <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-                {es ? <>Antes vs{" "}<span className="font-instrument-serif italic font-normal text-purple-600">con la herramienta</span></> : <>Before vs{" "}<span className="font-instrument-serif italic font-normal text-purple-600">with the tool</span></>}
+              <h2 className="text-4xl md:text-6xl font-medium text-ink leading-[1.05] tracking-tighter font-space-grotesk mt-3">
+                {es ? <>Antes vs{" "}<span className="font-instrument-serif italic font-normal text-brand">con la herramienta</span></> : <>Before vs{" "}<span className="font-instrument-serif italic font-normal text-brand">with the tool</span></>}
               </h2>
-              <p className="text-gray-600 mt-4 font-manrope text-lg">
+              <p className="text-ink-2 mt-4 font-manrope text-lg">
                 {es ? "Tres ejes clave donde la plataforma aporta valor concreto al equipo." : "Three key areas where the platform delivers concrete value to the team."}
               </p>
             </div>
@@ -416,31 +417,31 @@ export default function ProyectoGestiondeStock() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="grid md:grid-cols-[180px_1fr_1fr] gap-6 bg-white border border-gray-200 rounded-2xl p-8"
+                className="grid md:grid-cols-[180px_1fr_1fr] gap-6 bg-white border border-hairline rounded-2xl p-8"
               >
                 <div>
-                  <span className="font-instrument-serif italic text-2xl text-purple-400 block mb-1">
+                  <span className="font-instrument-serif italic text-2xl text-brand-lite block mb-1">
                     0{i + 1}
                   </span>
-                  <h3 className="font-medium font-space-grotesk text-gray-900">
+                  <h3 className="font-medium font-space-grotesk text-ink">
                     {row.aspect}
                   </h3>
                 </div>
 
-                <div className="border-l-2 border-gray-200 pl-6">
-                  <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-2">
+                <div className="border-l-2 border-hairline pl-6">
+                  <p className="text-xs uppercase tracking-widest text-ink-3 font-manrope mb-2">
                     {es ? "Antes" : "Before"}
                   </p>
-                  <p className="text-sm text-gray-600 font-manrope leading-relaxed">
+                  <p className="text-sm text-ink-2 font-manrope leading-relaxed">
                     {row.before}
                   </p>
                 </div>
 
-                <div className="border-l-2 border-purple-300 pl-6">
-                  <p className="text-xs uppercase tracking-widest text-purple-500 font-manrope mb-2">
+                <div className="border-l-2 border-brand/40 pl-6">
+                  <p className="text-xs uppercase tracking-widest text-brand font-manrope mb-2">
                     {es ? "Con la herramienta" : "With the tool"}
                   </p>
-                  <p className="text-sm text-gray-700 font-manrope leading-relaxed">
+                  <p className="text-sm text-ink-2 font-manrope leading-relaxed">
                     {row.after}
                   </p>
                 </div>
@@ -455,11 +456,11 @@ export default function ProyectoGestiondeStock() {
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
             <div className="mb-20 max-w-2xl">
-              <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
+              <span className="uppercase tracking-widest text-sm text-brand font-bold">
                 {es ? "PROCESO" : "PROCESS"}
               </span>
-              <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-                {es ? <>Cómo lo{" "}<span className="font-instrument-serif italic font-normal text-purple-600">diseñé</span></> : <>How I{" "}<span className="font-instrument-serif italic font-normal text-purple-600">designed it</span></>}
+              <h2 className="text-4xl md:text-6xl font-medium text-ink leading-[1.05] tracking-tighter font-space-grotesk mt-3">
+                {es ? <>Cómo lo{" "}<span className="font-instrument-serif italic font-normal text-brand">diseñé</span></> : <>How I{" "}<span className="font-instrument-serif italic font-normal text-brand">designed it</span></>}
               </h2>
             </div>
           </ScrollReveal>
@@ -483,7 +484,7 @@ export default function ProyectoGestiondeStock() {
                 "Design a clear and scannable interface",
               ]).map((item, i) => (
                 <li key={i} className="flex items-start gap-3">
-                  <span className="text-purple-500 mt-1">✦</span>
+                  <span className="text-brand mt-1">✦</span>
                   {item}
                 </li>
               ))}
@@ -507,7 +508,7 @@ export default function ProyectoGestiondeStock() {
             imageLeft
           >
             <p>{es ? "Las pantallas de baja fidelidad se utilizaron para explorar y validar la disposición de los elementos de la interfaz, las interacciones principales y la jerarquía visual." : "Low-fidelity screens were used to explore and validate the layout of interface elements, main interactions and visual hierarchy."}</p>
-            <p className="border-l-2 border-purple-200 pl-4 italic">
+            <p className="border-l-2 border-brand/25 pl-4 italic">
               {es ? "💡 Esta etapa permitió validar rápidamente la disposición de elementos antes de pasar al diseño visual, evitando retrabajo." : "💡 This stage allowed quickly validating element layout before moving to visual design, avoiding rework."}
             </p>
           </ProcessStep>
@@ -531,7 +532,7 @@ export default function ProyectoGestiondeStock() {
                 "Data visualization",
               ]).map((item, i) => (
                 <li key={i} className="flex items-start gap-3">
-                  <span className="text-purple-500 mt-1">✦</span>
+                  <span className="text-brand mt-1">✦</span>
                   {item}
                 </li>
               ))}
@@ -541,17 +542,17 @@ export default function ProyectoGestiondeStock() {
       </section>
 
       {/* DECISIONES DE DISEÑO */}
-      <section className="px-6 py-32 bg-gradient-to-b from-white via-gray-50 to-white">
+      <section className="px-6 py-32 bg-paper">
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
             <div className="mb-16 max-w-2xl">
-              <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
+              <span className="uppercase tracking-widest text-sm text-brand font-bold">
                 {es ? "RACIONAL" : "RATIONALE"}
               </span>
-              <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-                {es ? <>Decisiones de{" "}<span className="font-instrument-serif italic font-normal text-purple-600">diseño</span></> : <>Design{" "}<span className="font-instrument-serif italic font-normal text-purple-600">decisions</span></>}
+              <h2 className="text-4xl md:text-6xl font-medium text-ink leading-[1.05] tracking-tighter font-space-grotesk mt-3">
+                {es ? <>Decisiones de{" "}<span className="font-instrument-serif italic font-normal text-brand">diseño</span></> : <>Design{" "}<span className="font-instrument-serif italic font-normal text-brand">decisions</span></>}
               </h2>
-              <p className="text-gray-600 mt-4 font-manrope text-lg">
+              <p className="text-ink-2 mt-4 font-manrope text-lg">
                 {es ? "Qué decidí y por qué, en las definiciones clave de la plataforma." : "What I decided and why, across the key definitions of the platform."}
               </p>
             </div>
@@ -566,15 +567,15 @@ export default function ProyectoGestiondeStock() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.08 }}
-                  className="bg-white border border-gray-200 rounded-2xl p-8 hover:border-purple-300 transition"
+                  className="bg-white border border-hairline rounded-2xl p-8 hover:border-brand/40 transition"
                 >
-                  <span className="font-instrument-serif italic text-3xl text-purple-400 block mb-3 leading-none">
+                  <span className="font-instrument-serif italic text-3xl text-brand-lite block mb-3 leading-none">
                     {d.number}
                   </span>
-                  <h3 className="text-xl font-medium font-space-grotesk text-gray-900 mb-3">
+                  <h3 className="text-xl font-medium font-space-grotesk text-ink mb-3">
                     {d.title}
                   </h3>
-                  <p className="text-gray-600 font-manrope leading-relaxed text-sm">
+                  <p className="text-ink-2 font-manrope leading-relaxed text-sm">
                     {d.rationale}
                   </p>
                 </motion.div>
@@ -589,13 +590,13 @@ export default function ProyectoGestiondeStock() {
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
             <div className="mb-16 max-w-2xl">
-              <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
+              <span className="uppercase tracking-widest text-sm text-brand font-bold">
                 {es ? "GUÍA VISUAL" : "VISUAL GUIDE"}
               </span>
-              <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-                {es ? <>Sistema{" "}<span className="font-instrument-serif italic font-normal text-purple-600">visual</span></> : <>Visual{" "}<span className="font-instrument-serif italic font-normal text-purple-600">system</span></>}
+              <h2 className="text-4xl md:text-6xl font-medium text-ink leading-[1.05] tracking-tighter font-space-grotesk mt-3">
+                {es ? <>Sistema{" "}<span className="font-instrument-serif italic font-normal text-brand">visual</span></> : <>Visual{" "}<span className="font-instrument-serif italic font-normal text-brand">system</span></>}
               </h2>
-              <p className="text-gray-600 mt-4 font-manrope text-lg">
+              <p className="text-ink-2 mt-4 font-manrope text-lg">
                 {es ? "Una paleta orientada a la lectura de datos y una tipografía pensada para densidad sin perder legibilidad." : "A palette oriented to data reading and typography designed for density without losing readability."}
               </p>
             </div>
@@ -604,14 +605,14 @@ export default function ProyectoGestiondeStock() {
           <div className="grid md:grid-cols-2 gap-8">
             {/* Tipografía */}
             <ScrollReveal direction="left">
-              <div className="bg-gray-50 border border-gray-200 rounded-2xl p-8 h-full">
-                <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-6">
+              <div className="bg-paper border border-hairline rounded-2xl p-8 h-full">
+                <p className="text-xs uppercase tracking-widest text-ink-3 font-manrope mb-6">
                   {es ? "Tipografía" : "Typography"}
                 </p>
-                <p className="text-7xl md:text-8xl font-bold text-gray-900 mb-2 leading-none">
+                <p className="text-7xl md:text-8xl font-bold text-ink mb-2 leading-none">
                   Aa
                 </p>
-                <p className="text-2xl font-space-grotesk text-gray-900 mb-6">
+                <p className="text-2xl font-space-grotesk text-ink mb-6">
                   Inter
                 </p>
                 <div className="flex flex-wrap gap-2 mb-8">
@@ -619,14 +620,14 @@ export default function ProyectoGestiondeStock() {
                     (w) => (
                       <span
                         key={w}
-                        className="px-3 py-1 rounded-full text-xs bg-white border border-gray-200 text-gray-700 font-manrope"
+                        className="px-3 py-1 rounded-full text-xs bg-white border border-hairline text-ink-2 font-manrope"
                       >
                         {w}
                       </span>
                     ),
                   )}
                 </div>
-                <div className="space-y-2 text-gray-700 font-manrope">
+                <div className="space-y-2 text-ink-2 font-manrope">
                   <p className="text-lg">ABCDEFGHIJKLMNOPQRSTUVWXYZ</p>
                   <p className="text-lg">abcdefghijklmnopqrstuvwxyz</p>
                   <p className="text-lg">1234567890</p>
@@ -636,8 +637,8 @@ export default function ProyectoGestiondeStock() {
 
             {/* Paleta */}
             <ScrollReveal direction="right" delay={0.2}>
-              <div className="bg-gray-50 border border-gray-200 rounded-2xl p-8 h-full">
-                <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-6">
+              <div className="bg-paper border border-hairline rounded-2xl p-8 h-full">
+                <p className="text-xs uppercase tracking-widest text-ink-3 font-manrope mb-6">
                   {es ? "Paleta de colores" : "Color palette"}
                 </p>
                 <div className="grid grid-cols-2 gap-4">
@@ -651,14 +652,14 @@ export default function ProyectoGestiondeStock() {
                       className="space-y-2"
                     >
                       <div
-                        className="w-full aspect-square rounded-xl border border-gray-200"
+                        className="w-full aspect-square rounded-xl border border-hairline"
                         style={{ backgroundColor: color.hex }}
                       />
                       <div className="flex items-center justify-between">
-                        <span className="text-sm font-medium text-gray-900 font-space-grotesk">
+                        <span className="text-sm font-medium text-ink font-space-grotesk">
                           {color.name}
                         </span>
-                        <span className="text-xs text-gray-500 font-mono">
+                        <span className="text-xs text-ink-3 font-mono">
                           {color.hex}
                         </span>
                       </div>
@@ -672,24 +673,24 @@ export default function ProyectoGestiondeStock() {
       </section>
 
       {/* PROTOTIPO */}
-      <section className="px-6 py-32 bg-gradient-to-br from-[#f7f7fb] via-[#f1f1f6] to-[#f5edff]">
+      <section className="px-6 py-32 bg-paper-2">
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
             <div className="mb-12 max-w-2xl">
-              <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
+              <span className="uppercase tracking-widest text-sm text-brand font-bold">
                 {es ? "INTERACTIVO" : "INTERACTIVE"}
               </span>
-              <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-                {es ? <>Prototipo{" "}<span className="font-instrument-serif italic font-normal text-purple-600">navegable</span></> : <>Navigable{" "}<span className="font-instrument-serif italic font-normal text-purple-600">prototype</span></>}
+              <h2 className="text-4xl md:text-6xl font-medium text-ink leading-[1.05] tracking-tighter font-space-grotesk mt-3">
+                {es ? <>Prototipo{" "}<span className="font-instrument-serif italic font-normal text-brand">navegable</span></> : <>Navigable{" "}<span className="font-instrument-serif italic font-normal text-brand">prototype</span></>}
               </h2>
-              <p className="text-gray-600 mt-4 font-manrope text-lg max-w-2xl">
+              <p className="text-ink-2 mt-4 font-manrope text-lg max-w-2xl">
                 {es ? "Se desarrolló un prototipo interactivo para simular el uso real de la plataforma, validando la navegación y las principales tareas del usuario." : "An interactive prototype was developed to simulate the real use of the platform, validating navigation and the main user tasks."}
               </p>
             </div>
           </ScrollReveal>
 
           <ScrollReveal delay={0.2}>
-            <div className="rounded-2xl overflow-hidden border border-gray-200 bg-white flex items-center justify-center">
+            <div className="rounded-2xl overflow-hidden border border-hairline bg-white flex items-center justify-center">
               <iframe
                 width="1200"
                 height="750"
@@ -706,11 +707,11 @@ export default function ProyectoGestiondeStock() {
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
             <div className="mb-16 max-w-2xl">
-              <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
+              <span className="uppercase tracking-widest text-sm text-brand font-bold">
                 {es ? "REFLEXIÓN" : "REFLECTION"}
               </span>
-              <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-                {es ? <>Aprendizajes{" "}<span className="font-instrument-serif italic font-normal text-purple-600">clave</span></> : <>Key{" "}<span className="font-instrument-serif italic font-normal text-purple-600">takeaways</span></>}
+              <h2 className="text-4xl md:text-6xl font-medium text-ink leading-[1.05] tracking-tighter font-space-grotesk mt-3">
+                {es ? <>Aprendizajes{" "}<span className="font-instrument-serif italic font-normal text-brand">clave</span></> : <>Key{" "}<span className="font-instrument-serif italic font-normal text-brand">takeaways</span></>}
               </h2>
             </div>
           </ScrollReveal>
@@ -723,15 +724,15 @@ export default function ProyectoGestiondeStock() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-gray-50 border border-gray-200 rounded-2xl p-8"
+                className="bg-paper border border-hairline rounded-2xl p-8"
               >
-                <span className="font-instrument-serif italic text-3xl text-purple-400 block mb-4">
+                <span className="font-instrument-serif italic text-3xl text-brand-lite block mb-4">
                   {item.number}
                 </span>
-                <h3 className="text-xl font-medium font-space-grotesk text-gray-900 mb-3">
+                <h3 className="text-xl font-medium font-space-grotesk text-ink mb-3">
                   {item.title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed font-manrope text-sm">
+                <p className="text-ink-2 leading-relaxed font-manrope text-sm">
                   {item.text}
                 </p>
               </motion.div>
@@ -746,18 +747,18 @@ export default function ProyectoGestiondeStock() {
       <section className="px-6 py-32 bg-white">
         <div className="max-w-4xl mx-auto text-center">
           <ScrollReveal>
-            <p className="text-gray-600 mb-6 font-manrope">
+            <p className="text-ink-2 mb-6 font-manrope">
               {es ? "¿Te gustó este proyecto?" : "Did you like this project?"}
             </p>
-            <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mb-10">
-              {es ? <>Explorá más de mi{" "}<span className="font-instrument-serif italic font-normal text-purple-600">trabajo</span></> : <>Explore more of my{" "}<span className="font-instrument-serif italic font-normal text-purple-600">work</span></>}
+            <h2 className="text-4xl md:text-6xl font-medium text-ink leading-[1.05] tracking-tighter font-space-grotesk mb-10">
+              {es ? <>Explorá más de mi{" "}<span className="font-instrument-serif italic font-normal text-brand">trabajo</span></> : <>Explore more of my{" "}<span className="font-instrument-serif italic font-normal text-brand">work</span></>}
             </h2>
             <div className="flex flex-wrap gap-4 justify-center">
               <Button
                 onClick={() => {
                   window.location.href = "/#proyectos";
                 }}
-                className="group bg-gray-900 hover:bg-purple-600 text-white px-6 py-4 rounded-full shadow-lg font-manrope inline-flex items-center gap-2"
+                className="group bg-ink hover:bg-brand text-white px-6 py-4 rounded-full shadow-lg font-manrope inline-flex items-center gap-2"
               >
                 <span className="inline-block transition-transform duration-300 group-hover:-translate-x-1">
                   ←
@@ -765,7 +766,7 @@ export default function ProyectoGestiondeStock() {
                 {es ? "Volver al inicio" : "Back to home"}
               </Button>
               <a href="mailto:milagrosdziuban1@gmail.com">
-                <Button className="group bg-white hover:bg-purple-50 text-gray-900 border border-gray-300 hover:border-purple-300 px-6 py-4 rounded-full font-manrope inline-flex items-center gap-2">
+                <Button className="group bg-white hover:bg-brand-tint text-ink border border-hairline hover:border-brand/40 px-6 py-4 rounded-full font-manrope inline-flex items-center gap-2">
                   {es ? "Contactame" : "Contact me"}
                   <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">
                     →
@@ -776,6 +777,7 @@ export default function ProyectoGestiondeStock() {
           </ScrollReveal>
         </div>
       </section>
+      <SiteFooter />
     </div>
   );
 }

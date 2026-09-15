@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Button } from "./components/ui/button";
 import { NavigationHeaderDark } from "./components/navigation-header-dark";
 import { useLanguage } from "./contexts/language-context";
+import { SiteFooter } from "./components/site-footer";
 
 // Helper para fases del proceso (dark)
 function ProcessStepDark({
@@ -41,16 +42,16 @@ function ProcessStepDark({
 
       <ScrollReveal direction={imageLeft ? "right" : "left"} delay={0.2}>
         <div className={imageLeft ? "md:order-2" : "md:order-1"}>
-          <span className="font-instrument-serif italic text-5xl text-purple-400 block mb-4 leading-none">
+          <span className="font-instrument-serif italic text-5xl text-brand-lite block mb-4 leading-none">
             {number}
           </span>
           <h3 className="text-3xl md:text-4xl font-medium text-white font-space-grotesk leading-tight mb-2">
             {title}
           </h3>
           {subtitle && (
-            <p className="text-purple-300/60 font-manrope mb-6">{subtitle}</p>
+            <p className="text-brand/40/60 font-manrope mb-6">{subtitle}</p>
           )}
-          <div className="text-gray-300 font-manrope leading-relaxed space-y-4">
+          <div className="text-hairline font-manrope leading-relaxed space-y-4">
             {children}
           </div>
         </div>
@@ -109,7 +110,7 @@ function ScreensCarouselDark({
               transition={{ duration: 0.4 }}
             >
               <div className="flex items-center gap-3 mb-4">
-                <span className="font-instrument-serif italic text-3xl text-purple-400">
+                <span className="font-instrument-serif italic text-3xl text-brand-lite">
                   {String(current + 1).padStart(2, "0")}
                 </span>
                 <span className="text-white/30">/</span>
@@ -121,7 +122,7 @@ function ScreensCarouselDark({
               <h3 className="text-3xl md:text-4xl font-medium font-space-grotesk text-white leading-tight mb-3">
                 {screen.title}
               </h3>
-              <p className="text-gray-300 font-manrope leading-relaxed mb-6">
+              <p className="text-hairline font-manrope leading-relaxed mb-6">
                 {screen.description}
               </p>
 
@@ -129,9 +130,9 @@ function ScreensCarouselDark({
                 {screen.features.map((f, i) => (
                   <li
                     key={i}
-                    className="flex items-start gap-3 text-sm text-gray-300 font-manrope"
+                    className="flex items-start gap-3 text-sm text-hairline font-manrope"
                   >
-                    <span className="text-purple-400 mt-1">✦</span>
+                    <span className="text-brand-lite mt-1">✦</span>
                     {f}
                   </li>
                 ))}
@@ -149,7 +150,7 @@ function ScreensCarouselDark({
               onClick={() => setCurrent(i)}
               className={`relative w-20 h-14 rounded-lg overflow-hidden border-2 transition ${
                 i === current
-                  ? "border-purple-400"
+                  ? "border-brand-lite"
                   : "border-transparent opacity-40 hover:opacity-80"
               }`}
             >
@@ -168,7 +169,7 @@ function ScreensCarouselDark({
             onClick={prev}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="w-12 h-12 rounded-full border border-white/20 bg-white/5 text-gray-200 hover:border-purple-400 hover:text-purple-300 flex items-center justify-center transition"
+            className="w-12 h-12 rounded-full border border-white/20 bg-white/5 text-hairline hover:border-brand-lite hover:text-brand/40 flex items-center justify-center transition"
           >
             ←
           </motion.button>
@@ -176,7 +177,7 @@ function ScreensCarouselDark({
             onClick={next}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="w-12 h-12 rounded-full bg-purple-600 hover:bg-purple-500 text-white flex items-center justify-center transition"
+            className="w-12 h-12 rounded-full bg-brand hover:bg-brand text-white flex items-center justify-center transition"
           >
             →
           </motion.button>
@@ -217,7 +218,7 @@ export default function ProyectoTowerDefense() {
                 {["UX/UI Game Design", "Desktop Game", "2025"].map((tag) => (
                   <span
                     key={tag}
-                    className="text-xs px-3 py-1 rounded-full border border-white/20 text-gray-300 font-manrope"
+                    className="text-xs px-3 py-1 rounded-full border border-white/20 text-hairline font-manrope"
                   >
                     {tag}
                   </span>
@@ -226,26 +227,26 @@ export default function ProyectoTowerDefense() {
 
               <h1 className="text-5xl md:text-6xl font-medium tracking-tighter text-white leading-[1.05] font-space-grotesk mb-6">
                 Tower{" "}
-                <span className="font-instrument-serif italic font-normal text-purple-400">
+                <span className="font-instrument-serif italic font-normal text-brand-lite">
                   Defense
                 </span>
               </h1>
 
-              <p className="text-lg text-gray-300 max-w-xl leading-relaxed mb-10 font-manrope">
+              <p className="text-lg text-hairline max-w-xl leading-relaxed mb-10 font-manrope">
                 {es ? "Caso de estudio desarrollado en el curso de UX Game Design (Docta). Se analizó un juego de Tower Defense para PC, en estado de prototipo, desarrollado como ejercicio práctico para otras carreras." : "Case study developed in the UX Game Design course (Docta). A Tower Defense PC game was analyzed in prototype state, developed as a practical exercise for other programs."}
               </p>
 
               <div className="grid grid-cols-3 gap-6 text-sm">
                 <div>
-                  <p className="text-xs uppercase tracking-widest text-purple-300/60 font-manrope mb-2">{es ? "Rol" : "Role"}</p>
+                  <p className="text-xs uppercase tracking-widest text-brand/40/60 font-manrope mb-2">{es ? "Rol" : "Role"}</p>
                   <p className="text-white font-medium font-space-grotesk">UX/UI Designer</p>
                 </div>
                 <div>
-                  <p className="text-xs uppercase tracking-widest text-purple-300/60 font-manrope mb-2">{es ? "Duración" : "Duration"}</p>
+                  <p className="text-xs uppercase tracking-widest text-brand/40/60 font-manrope mb-2">{es ? "Duración" : "Duration"}</p>
                   <p className="text-white font-medium font-space-grotesk">{es ? "3 meses" : "3 months"}</p>
                 </div>
                 <div>
-                  <p className="text-xs uppercase tracking-widest text-purple-300/60 font-manrope mb-2">{es ? "Herramientas" : "Tools"}</p>
+                  <p className="text-xs uppercase tracking-widest text-brand/40/60 font-manrope mb-2">{es ? "Herramientas" : "Tools"}</p>
                   <p className="text-white font-medium font-space-grotesk">Figma, Miro</p>
                 </div>
               </div>
@@ -277,13 +278,13 @@ export default function ProyectoTowerDefense() {
           <div className="grid md:grid-cols-2 gap-16">
             <ScrollReveal direction="left">
               <div>
-                <span className="font-instrument-serif italic text-2xl text-purple-400 mb-3 block">
+                <span className="font-instrument-serif italic text-2xl text-brand-lite mb-3 block">
                   01
                 </span>
                 <h2 className="text-4xl md:text-5xl font-medium text-white leading-[1.05] tracking-tighter font-space-grotesk mb-6">
                   {es ? "Problema" : "Problem"}
                 </h2>
-                <p className="text-gray-300 leading-relaxed font-manrope">
+                <p className="text-hairline leading-relaxed font-manrope">
                   {es ? "Al tratarse de un prototipo desarrollado con fines educativos, el juego presenta dificultades en la claridad de las mecánicas, la curva de aprendizaje y la comunicación de objetivos al jugador, lo que impacta en la experiencia de juego y en la comprensión de las decisiones estratégicas." : "Being a prototype developed for educational purposes, the game presents difficulties in the clarity of mechanics, the learning curve and the communication of objectives to the player, which impacts the gameplay experience and the understanding of strategic decisions."}
                 </p>
               </div>
@@ -291,13 +292,13 @@ export default function ProyectoTowerDefense() {
 
             <ScrollReveal direction="right" delay={0.2}>
               <div>
-                <span className="font-instrument-serif italic text-2xl text-purple-400 mb-3 block">
+                <span className="font-instrument-serif italic text-2xl text-brand-lite mb-3 block">
                   02
                 </span>
                 <h2 className="text-4xl md:text-5xl font-medium text-white leading-[1.05] tracking-tighter font-space-grotesk mb-6">
                   {es ? "Objetivo" : "Goal"}
                 </h2>
-                <p className="text-gray-300 leading-relaxed font-manrope">
+                <p className="text-hairline leading-relaxed font-manrope">
                   {es ? "Analizar un prototipo de juego de Tower Defense aplicando los principios de UX Game Design, evaluando la experiencia del jugador, las mecánicas, la curva de aprendizaje y la usabilidad, para identificar oportunidades de mejora y proponer soluciones de diseño." : "Analyze a Tower Defense game prototype applying UX Game Design principles, evaluating the player experience, mechanics, learning curve and usability, to identify improvement opportunities and propose design solutions."}
                 </p>
               </div>
@@ -312,13 +313,13 @@ export default function ProyectoTowerDefense() {
           <ScrollReveal>
             <div className="bg-[#121826] border border-white/10 rounded-3xl p-8 md:p-12 grid md:grid-cols-2 gap-10 items-center">
               <div>
-                <span className="uppercase tracking-widest text-sm text-purple-400 font-bold">
+                <span className="uppercase tracking-widest text-sm text-brand-lite font-bold">
                   GAME CONCEPT
                 </span>
                 <h2 className="text-3xl md:text-4xl font-medium text-white mt-4 mb-6 leading-tight font-space-grotesk">
-                  {es ? <>¿Qué es un juego de{" "}<span className="font-instrument-serif italic font-normal text-purple-400">Tower Defense</span>?</> : <>What is a{" "}<span className="font-instrument-serif italic font-normal text-purple-400">Tower Defense</span>{" "}game?</>}
+                  {es ? <>¿Qué es un juego de{" "}<span className="font-instrument-serif italic font-normal text-brand-lite">Tower Defense</span>?</> : <>What is a{" "}<span className="font-instrument-serif italic font-normal text-brand-lite">Tower Defense</span>{" "}game?</>}
                 </h2>
-                <p className="text-gray-300 leading-relaxed font-manrope">
+                <p className="text-hairline leading-relaxed font-manrope">
                   {es ? "Un Tower Defense es un juego de estrategia en el que el jugador debe defender una base colocando y mejorando torres a lo largo de un recorrido, con el objetivo de frenar oleadas de enemigos antes de que lleguen al final. Combina planificación, gestión de recursos y toma de decisiones tácticas." : "A Tower Defense is a strategy game in which the player must defend a base by placing and upgrading towers along a path, with the goal of stopping waves of enemies before they reach the end. It combines planning, resource management and tactical decision-making."}
                 </p>
               </div>
@@ -342,11 +343,11 @@ export default function ProyectoTowerDefense() {
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
             <div className="mb-20 max-w-2xl">
-              <span className="uppercase tracking-widest text-sm text-purple-400 font-bold">
+              <span className="uppercase tracking-widest text-sm text-brand-lite font-bold">
                 {es ? "PROCESO" : "PROCESS"}
               </span>
               <h2 className="text-4xl md:text-6xl font-medium text-white leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-                {es ? <>Cómo lo{" "}<span className="font-instrument-serif italic font-normal text-purple-400">analicé</span></> : <>How I{" "}<span className="font-instrument-serif italic font-normal text-purple-400">analyzed it</span></>}
+                {es ? <>Cómo lo{" "}<span className="font-instrument-serif italic font-normal text-brand-lite">analicé</span></> : <>How I{" "}<span className="font-instrument-serif italic font-normal text-brand-lite">analyzed it</span></>}
               </h2>
             </div>
           </ScrollReveal>
@@ -426,16 +427,16 @@ export default function ProyectoTowerDefense() {
         </div>
       </section>
 
-      {/* PANTALLAS — Carrusel */}
+      {/* PANTALLAS - Carrusel */}
       <section className="px-6 py-32 bg-[#0B001A]">
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
             <div className="mb-16 max-w-2xl">
-              <span className="uppercase tracking-widest text-sm text-purple-400 font-bold">
+              <span className="uppercase tracking-widest text-sm text-brand-lite font-bold">
                 {es ? "RESULTADO" : "RESULT"}
               </span>
               <h2 className="text-4xl md:text-6xl font-medium text-white leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-                {es ? <>Pantallas{" "}<span className="font-instrument-serif italic font-normal text-purple-400">del juego</span></> : <>Game{" "}<span className="font-instrument-serif italic font-normal text-purple-400">screens</span></>}
+                {es ? <>Pantallas{" "}<span className="font-instrument-serif italic font-normal text-brand-lite">del juego</span></> : <>Game{" "}<span className="font-instrument-serif italic font-normal text-brand-lite">screens</span></>}
               </h2>
             </div>
           </ScrollReveal>
@@ -450,18 +451,18 @@ export default function ProyectoTowerDefense() {
       <section className="px-6 py-32 bg-[#0B001A] border-t border-white/5">
         <div className="max-w-4xl mx-auto text-center">
           <ScrollReveal>
-            <p className="text-gray-300 mb-6 font-manrope">
+            <p className="text-hairline mb-6 font-manrope">
               {es ? "¿Te gustó este proyecto?" : "Did you like this project?"}
             </p>
             <h2 className="text-4xl md:text-6xl font-medium text-white leading-[1.05] tracking-tighter font-space-grotesk mb-10">
-              {es ? <>Explorá más de mi{" "}<span className="font-instrument-serif italic font-normal text-purple-400">trabajo</span></> : <>Explore more of my{" "}<span className="font-instrument-serif italic font-normal text-purple-400">work</span></>}
+              {es ? <>Explorá más de mi{" "}<span className="font-instrument-serif italic font-normal text-brand-lite">trabajo</span></> : <>Explore more of my{" "}<span className="font-instrument-serif italic font-normal text-brand-lite">work</span></>}
             </h2>
             <div className="flex flex-wrap gap-4 justify-center">
               <Button
                 onClick={() => {
                   window.location.href = "/#proyectos";
                 }}
-                className="group bg-purple-600 hover:bg-purple-500 text-white px-6 py-4 rounded-full shadow-lg font-manrope inline-flex items-center gap-2"
+                className="group bg-brand hover:bg-brand text-white px-6 py-4 rounded-full shadow-lg font-manrope inline-flex items-center gap-2"
               >
                 <span className="inline-block transition-transform duration-300 group-hover:-translate-x-1">
                   ←
@@ -469,7 +470,7 @@ export default function ProyectoTowerDefense() {
                 {es ? "Volver a proyectos" : "Back to projects"}
               </Button>
               <a href="mailto:milagrosdziuban1@gmail.com">
-                <Button className="group bg-transparent hover:bg-white/5 text-white border border-white/20 hover:border-purple-400 px-6 py-4 rounded-full font-manrope inline-flex items-center gap-2">
+                <Button className="group bg-transparent hover:bg-white/5 text-white border border-white/20 hover:border-brand-lite px-6 py-4 rounded-full font-manrope inline-flex items-center gap-2">
                   {es ? "Contactame" : "Contact me"}
                   <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">
                     →
@@ -480,6 +481,7 @@ export default function ProyectoTowerDefense() {
           </ScrollReveal>
         </div>
       </section>
+      <SiteFooter />
     </div>
   );
 }

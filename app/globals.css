@@ -124,24 +124,204 @@
   }
 }
 
-/* Clases de utilidad para las fuentes */
+/* ============================================================
+   SISTEMA DE DISEÑO - Milagros Dziuban
+   Un solo tema (claro), un solo acento, una sola escala de radios.
+   Los tokens de shadcn de arriba se dejan intactos a proposito:
+   estos viven en su propio namespace para no pisarlos.
+   ============================================================ */
+
+:root {
+  /* Superficies */
+  --paper: #fbfafa;        /* fondo de pagina */
+  --paper-2: #f5f3f5;      /* banda alterna, muy sutil */
+  --surface: #ffffff;      /* tarjetas y media */
+
+  /* Tinta */
+  --ink: #17141a;          /* titulos, fondo de la banda de cierre */
+  --ink-2: #4a444f;        /* cuerpo */
+  --ink-3: #6c666f;        /* meta, captions */
+  --hairline: #e7e3e8;     /* filetes de 1px */
+
+  /* Acento unico: violeta profundo, saturacion 52% */
+  --brand: #5b2a86;
+  --brand-strong: #46206a; /* hover */
+  --brand-tint: #f4f0f8;   /* washes y chips */
+  --brand-lite: #c0a6e8;   /* acento sobre fondo oscuro */
+
+  /* Forma: contenedores 20px, chips 10px, botones pastilla */
+  --r-card: 20px;
+  --r-chip: 10px;
+
+  /* Sombra tintada al fondo, nunca negro puro */
+  --shadow-soft: 0 24px 48px -32px rgba(23, 20, 26, 0.3);
+  --shadow-lift: 0 32px 64px -36px rgba(23, 20, 26, 0.38);
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-hairline: var(--hairline);
+  --color-brand: var(--brand);
+  --color-brand-strong: var(--brand-strong);
+  --color-brand-tint: var(--brand-tint);
+  --color-brand-lite: var(--brand-lite);
+  --radius-card: var(--r-card);
+  --radius-chip: var(--r-chip);
+}
+
+/* ---------- Tipografia ----------
+   Display: Space Grotesk. Cuerpo: Manrope. Meta y numeros: Geist Mono.
+   El enfasis dentro de un titular se hace con italica de la MISMA familia,
+   nunca inyectando una serif suelta en una linea sans. */
+.font-display,
 .font-space-grotesk {
   font-family: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
 }
 
+.font-body,
 .font-manrope {
   font-family: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
 }
 
-.font-instrument-serif {
-  font-family: var(--font-instrument-serif), ui-serif, Georgia, serif;
+.font-meta {
+  font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
+  font-variant-numeric: tabular-nums;
 }
 
+/* La serif de acento quedo retirada del sistema: el enfasis se hace con
+   la italica de la familia display. La clase sigue existiendo porque las
+   paginas de caso de estudio la usan en ~190 lugares; ahora apunta al
+   display, asi no queda una serif suelta dentro de un titular sans. */
+.font-instrument-serif {
+  font-family: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: -0.01em;
+}
+
+/* Titulares: sin huerfanos, descendentes de italicas sin recortar */
+.balance {
+  text-wrap: balance;
+}
+
+.pretty {
+  text-wrap: pretty;
+}
+
+/* ---------- Base ---------- */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 7rem;
+  background-color: var(--paper);
+}
+
+body {
+  background-color: var(--paper);
+  color: var(--ink-2);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background-color: var(--brand);
+  color: #fff;
+}
+
+/* Foco visible en todo lo interactivo. No se elimina nunca. */
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.on-ink a:focus-visible,
+.on-ink button:focus-visible {
+  outline-color: var(--brand-lite);
+}
+
+/* Salto al contenido para navegacion por teclado */
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -100px;
+  z-index: 100;
+  padding: 0.75rem 1.25rem;
+  border-radius: 999px;
+  background-color: var(--ink);
+  color: #fff;
+  font-size: 0.875rem;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* ---------- Movimiento ---------- */
 @keyframes marquee {
   0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  /* Un cuarto = una copia de la lista (la cinta renderiza 4 copias) */
+  100% { transform: translateX(-25%); }
 }
 
 .animate-marquee {
-  animation: marquee 30s linear infinite;
+  animation: marquee 42s linear infinite;
+  will-change: transform;
+}
+
+.marquee-track:hover .animate-marquee,
+.marquee-track:focus-within .animate-marquee {
+  animation-play-state: paused;
+}
+
+/* Menu movil: entrada por CSS, salida por desmontaje directo */
+@keyframes menu-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes menu-drop {
+  from { opacity: 0; transform: translateY(-12px); }
+  to { opacity: 1; transform: none; }
+}
+
+.menu-backdrop {
+  animation: menu-fade 0.2s ease-out both;
+}
+
+.menu-panel {
+  animation: menu-drop 0.28s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Mascara lateral para que la cinta se funda con el fondo */
+.marquee-mask {
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-marquee {
+    animation: none;
+    transform: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

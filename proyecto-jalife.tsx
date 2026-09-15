@@ -6,17 +6,18 @@ import { NavigationHeader } from "./components/navigation-header";
 import { ScrollReveal } from "./components/animated-components";
 import { OtherProjects } from "./components/otherproject";
 import { useLanguage } from "./contexts/language-context";
+import { SiteFooter } from "./components/site-footer";
 
 export default function ProyectoJalife() {
   const { lang } = useLanguage();
   const es = lang === "es";
 
   const audienceTraits = es ? [
-    { label: "Edad", value: "25 – 45 años" },
+    { label: "Edad", value: "25 a 45 años" },
     { label: "Comportamiento", value: "Investigan online antes de contactar" },
     { label: "Expectativa", value: "Claridad, credibilidad y rapidez" },
   ] : [
-    { label: "Age", value: "25 – 45 years old" },
+    { label: "Age", value: "25 to 45 years old" },
     { label: "Behavior", value: "They research online before making contact" },
     { label: "Expectation", value: "Clarity, credibility and speed" },
   ];
@@ -100,11 +101,11 @@ export default function ProyectoJalife() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-paper">
       <NavigationHeader />
 
       {/* HERO */}
-      <section className="relative px-6 py-32 bg-[#f5f7fb] overflow-hidden">
+      <section className="relative px-6 py-32 bg-paper-2 overflow-hidden">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div>
@@ -112,36 +113,36 @@ export default function ProyectoJalife() {
                 {["UX/UI", "Website", "2025"].map((tag) => (
                   <span
                     key={tag}
-                    className="text-xs px-3 py-1 rounded-full border border-gray-300 text-gray-600 font-manrope"
+                    className="text-xs px-3 py-1 rounded-full border border-hairline text-ink-2 font-manrope"
                   >
                     {tag}
                   </span>
                 ))}
               </div>
 
-              <h1 className="text-5xl md:text-6xl font-medium tracking-tighter text-gray-900 leading-[1.05] font-space-grotesk mb-6">
+              <h1 className="text-5xl md:text-6xl font-medium tracking-tighter text-ink leading-[1.05] font-space-grotesk mb-6">
                 Proyecto{" "}
                 <span className="font-instrument-serif italic font-normal text-red-500">
                   Jalife
                 </span>
               </h1>
 
-              <p className="text-lg text-gray-600 max-w-xl leading-relaxed mb-10 font-manrope">
+              <p className="text-lg text-ink-2 max-w-xl leading-relaxed mb-10 font-manrope">
                 {es ? "Proyecto enfocado en rediseñar la página web de la marca, optimizando la experiencia de navegación y la presentación de sus servicios. Se trabajó en una interfaz más limpia, actual y funcional, con una estructura visual coherente y mejoras en usabilidad." : "Project focused on redesigning the brand's website, optimizing the navigation experience and the presentation of its services. The work produced a cleaner, more modern and functional interface with coherent visual structure and usability improvements."}
               </p>
 
               <div className="grid grid-cols-3 gap-6 text-sm">
                 <div>
-                  <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-2">{es ? "Rol" : "Role"}</p>
-                  <p className="text-gray-900 font-medium font-space-grotesk">UX/UI Designer</p>
+                  <p className="text-xs uppercase tracking-widest text-ink-3 font-manrope mb-2">{es ? "Rol" : "Role"}</p>
+                  <p className="text-ink font-medium font-space-grotesk">UX/UI Designer</p>
                 </div>
                 <div>
-                  <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-2">{es ? "Duración" : "Duration"}</p>
-                  <p className="text-gray-900 font-medium font-space-grotesk">{es ? "4 semanas" : "4 weeks"}</p>
+                  <p className="text-xs uppercase tracking-widest text-ink-3 font-manrope mb-2">{es ? "Duración" : "Duration"}</p>
+                  <p className="text-ink font-medium font-space-grotesk">{es ? "4 semanas" : "4 weeks"}</p>
                 </div>
                 <div>
-                  <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-2">{es ? "Herramientas" : "Tools"}</p>
-                  <p className="text-gray-900 font-medium font-space-grotesk">Figma</p>
+                  <p className="text-xs uppercase tracking-widest text-ink-3 font-manrope mb-2">{es ? "Herramientas" : "Tools"}</p>
+                  <p className="text-ink font-medium font-space-grotesk">Figma</p>
                 </div>
               </div>
             </div>
@@ -172,16 +173,16 @@ export default function ProyectoJalife() {
           <div className="grid md:grid-cols-2 gap-16">
             <ScrollReveal direction="left">
               <div>
-                <span className="font-instrument-serif italic text-2xl text-purple-400 mb-3 block">
+                <span className="font-instrument-serif italic text-2xl text-brand-lite mb-3 block">
                   01
                 </span>
-                <h2 className="text-4xl md:text-5xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mb-6">
+                <h2 className="text-4xl md:text-5xl font-medium text-ink leading-[1.05] tracking-tighter font-space-grotesk mb-6">
                   {es ? "Problema" : "Problem"}
                 </h2>
-                <p className="text-gray-600 leading-relaxed mb-4 font-manrope">
+                <p className="text-ink-2 leading-relaxed mb-4 font-manrope">
                   {es ? "El sitio web presentaba una estructura visual poco clara y dificultades de navegación que afectaban la comprensión de sus servicios y productos." : "The website had an unclear visual structure and navigation difficulties that affected the understanding of its services and products."}
                 </p>
-                <p className="text-gray-600 leading-relaxed font-manrope">
+                <p className="text-ink-2 leading-relaxed font-manrope">
                   {es ? "Esto generaba una percepción poco profesional de la marca y complicaba el proceso de encontrar información relevante." : "This created an unprofessional perception of the brand and complicated the process of finding relevant information."}
                 </p>
               </div>
@@ -189,16 +190,16 @@ export default function ProyectoJalife() {
 
             <ScrollReveal direction="right" delay={0.2}>
               <div>
-                <span className="font-instrument-serif italic text-2xl text-purple-400 mb-3 block">
+                <span className="font-instrument-serif italic text-2xl text-brand-lite mb-3 block">
                   02
                 </span>
-                <h2 className="text-4xl md:text-5xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mb-6">
+                <h2 className="text-4xl md:text-5xl font-medium text-ink leading-[1.05] tracking-tighter font-space-grotesk mb-6">
                   {es ? "Objetivo" : "Goal"}
                 </h2>
-                <p className="text-gray-600 leading-relaxed mb-4 font-manrope">
+                <p className="text-ink-2 leading-relaxed mb-4 font-manrope">
                   {es ? "Rediseñar el sitio web para mejorar la experiencia del usuario mediante una interfaz moderna, clara y funcional." : "Redesign the website to improve the user experience through a modern, clear and functional interface."}
                 </p>
-                <p className="text-gray-600 leading-relaxed font-manrope">
+                <p className="text-ink-2 leading-relaxed font-manrope">
                   {es ? "Lograr una navegación intuitiva, una presentación visual atractiva y alineada con la identidad de la marca, y una estructura que facilite el acceso rápido a la información clave." : "Achieve intuitive navigation, an attractive visual presentation aligned with the brand identity, and a structure that facilitates quick access to key information."}
                 </p>
               </div>
@@ -208,17 +209,17 @@ export default function ProyectoJalife() {
       </section>
 
       {/* PARA QUIÉN */}
-      <section className="px-6 py-32 bg-gradient-to-b from-white via-gray-50 to-white">
+      <section className="px-6 py-32 bg-paper">
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
             <div className="mb-12 max-w-2xl">
-              <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
+              <span className="uppercase tracking-widest text-sm text-brand font-bold">
                 {es ? "AUDIENCIA" : "AUDIENCE"}
               </span>
-              <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-                {es ? <>Para{" "}<span className="font-instrument-serif italic font-normal text-purple-600">quién</span>{" "}diseñé</> : <>Who I{" "}<span className="font-instrument-serif italic font-normal text-purple-600">designed</span>{" "}for</>}
+              <h2 className="text-4xl md:text-6xl font-medium text-ink leading-[1.05] tracking-tighter font-space-grotesk mt-3">
+                {es ? <>Para{" "}<span className="font-instrument-serif italic font-normal text-brand">quién</span>{" "}diseñé</> : <>Who I{" "}<span className="font-instrument-serif italic font-normal text-brand">designed</span>{" "}for</>}
               </h2>
-              <p className="text-gray-600 mt-4 font-manrope text-lg">
+              <p className="text-ink-2 mt-4 font-manrope text-lg">
                 {es ? "Personas que llegan al sitio buscando información clara y rápida sobre los servicios de la marca, en general antes de tomar contacto comercial." : "People who visit the site looking for clear and quick information about the brand's services, usually before making commercial contact."}
               </p>
             </div>
@@ -232,12 +233,12 @@ export default function ProyectoJalife() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-white border border-gray-200 rounded-2xl p-6"
+                className="bg-white border border-hairline rounded-2xl p-6"
               >
-                <p className="text-xs uppercase tracking-widest text-purple-500 font-manrope mb-2">
+                <p className="text-xs uppercase tracking-widest text-brand font-manrope mb-2">
                   {trait.label}
                 </p>
-                <p className="text-lg font-medium font-space-grotesk text-gray-900">
+                <p className="text-lg font-medium font-space-grotesk text-ink">
                   {trait.value}
                 </p>
               </motion.div>
@@ -251,13 +252,13 @@ export default function ProyectoJalife() {
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
             <div className="mb-16 max-w-2xl">
-              <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
+              <span className="uppercase tracking-widest text-sm text-brand font-bold">
                 {es ? "INVESTIGACIÓN" : "RESEARCH"}
               </span>
-              <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-                {es ? <>Puntos de{" "}<span className="font-instrument-serif italic font-normal text-purple-600">dolor</span></> : <>Pain{" "}<span className="font-instrument-serif italic font-normal text-purple-600">points</span></>}
+              <h2 className="text-4xl md:text-6xl font-medium text-ink leading-[1.05] tracking-tighter font-space-grotesk mt-3">
+                {es ? <>Puntos de{" "}<span className="font-instrument-serif italic font-normal text-brand">dolor</span></> : <>Pain{" "}<span className="font-instrument-serif italic font-normal text-brand">points</span></>}
               </h2>
-              <p className="text-gray-600 mt-4 font-manrope text-lg">
+              <p className="text-ink-2 mt-4 font-manrope text-lg">
                 {es ? "Conceptos clave que guiaron el rediseño." : "Key concepts that guided the redesign."}
               </p>
             </div>
@@ -266,19 +267,19 @@ export default function ProyectoJalife() {
           {/* Métodos */}
           <ScrollReveal delay={0.1}>
             <div className="mb-12">
-              <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-4">
+              <p className="text-xs uppercase tracking-widest text-ink-3 font-manrope mb-4">
                 {es ? "Cómo llegué a estos hallazgos" : "How I reached these findings"}
               </p>
               <div className="grid md:grid-cols-3 gap-4">
                 {researchMethods.map((method, i) => (
                   <div
                     key={i}
-                    className="border-l-2 border-purple-200 pl-4"
+                    className="border-l-2 border-brand/25 pl-4"
                   >
-                    <p className="font-medium font-space-grotesk text-gray-900 mb-2">
+                    <p className="font-medium font-space-grotesk text-ink mb-2">
                       {method.title}
                     </p>
-                    <p className="text-sm text-gray-600 font-manrope leading-relaxed">
+                    <p className="text-sm text-ink-2 font-manrope leading-relaxed">
                       {method.text}
                     </p>
                   </div>
@@ -297,13 +298,13 @@ export default function ProyectoJalife() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.08 }}
-                  className="bg-white border border-gray-200 rounded-2xl p-6 hover:border-purple-300 transition"
+                  className="bg-white border border-hairline rounded-2xl p-6 hover:border-brand/40 transition"
                 >
                   <div className="text-3xl mb-4">{insight.icon}</div>
-                  <span className="font-instrument-serif italic text-sm text-purple-400 block mb-2">
+                  <span className="font-instrument-serif italic text-sm text-brand-lite block mb-2">
                     0{i + 1}
                   </span>
-                  <h3 className="text-base font-medium font-space-grotesk text-gray-900 leading-snug">
+                  <h3 className="text-base font-medium font-space-grotesk text-ink leading-snug">
                     {insight.title}
                   </h3>
                 </motion.div>
@@ -314,17 +315,17 @@ export default function ProyectoJalife() {
       </section>
 
       {/* ANTES vs DESPUÉS conceptual */}
-      <section className="px-6 py-32 bg-gradient-to-b from-white via-gray-50 to-white">
+      <section className="px-6 py-32 bg-paper">
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
             <div className="mb-16 max-w-2xl">
-              <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
+              <span className="uppercase tracking-widest text-sm text-brand font-bold">
                 {es ? "IMPACTO" : "IMPACT"}
               </span>
-              <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-                {es ? <>Antes vs{" "}<span className="font-instrument-serif italic font-normal text-purple-600">después</span></> : <>Before vs{" "}<span className="font-instrument-serif italic font-normal text-purple-600">after</span></>}
+              <h2 className="text-4xl md:text-6xl font-medium text-ink leading-[1.05] tracking-tighter font-space-grotesk mt-3">
+                {es ? <>Antes vs{" "}<span className="font-instrument-serif italic font-normal text-brand">después</span></> : <>Before vs{" "}<span className="font-instrument-serif italic font-normal text-brand">after</span></>}
               </h2>
-              <p className="text-gray-600 mt-4 font-manrope text-lg">
+              <p className="text-ink-2 mt-4 font-manrope text-lg">
                 {es ? "Tres ejes clave donde el rediseño aportó valor concreto." : "Three key areas where the redesign delivered concrete value."}
               </p>
             </div>
@@ -338,34 +339,34 @@ export default function ProyectoJalife() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="grid md:grid-cols-[180px_1fr_1fr] gap-6 bg-white border border-gray-200 rounded-2xl p-8"
+                className="grid md:grid-cols-[180px_1fr_1fr] gap-6 bg-white border border-hairline rounded-2xl p-8"
               >
                 {/* Aspect */}
                 <div>
-                  <span className="font-instrument-serif italic text-2xl text-purple-400 block mb-1">
+                  <span className="font-instrument-serif italic text-2xl text-brand-lite block mb-1">
                     0{i + 1}
                   </span>
-                  <h3 className="font-medium font-space-grotesk text-gray-900">
+                  <h3 className="font-medium font-space-grotesk text-ink">
                     {row.aspect}
                   </h3>
                 </div>
 
                 {/* Antes */}
-                <div className="border-l-2 border-gray-200 pl-6">
-                  <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-2">
+                <div className="border-l-2 border-hairline pl-6">
+                  <p className="text-xs uppercase tracking-widest text-ink-3 font-manrope mb-2">
                     {es ? "Antes" : "Before"}
                   </p>
-                  <p className="text-sm text-gray-600 font-manrope leading-relaxed">
+                  <p className="text-sm text-ink-2 font-manrope leading-relaxed">
                     {row.before}
                   </p>
                 </div>
 
                 {/* Después */}
-                <div className="border-l-2 border-purple-300 pl-6">
-                  <p className="text-xs uppercase tracking-widest text-purple-500 font-manrope mb-2">
+                <div className="border-l-2 border-brand/40 pl-6">
+                  <p className="text-xs uppercase tracking-widest text-brand font-manrope mb-2">
                     {es ? "Después" : "After"}
                   </p>
-                  <p className="text-sm text-gray-700 font-manrope leading-relaxed">
+                  <p className="text-sm text-ink-2 font-manrope leading-relaxed">
                     {row.after}
                   </p>
                 </div>
@@ -380,13 +381,13 @@ export default function ProyectoJalife() {
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
             <div className="mb-16 max-w-2xl">
-              <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
+              <span className="uppercase tracking-widest text-sm text-brand font-bold">
                 {es ? "ESTRUCTURA" : "STRUCTURE"}
               </span>
-              <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-                {es ? <>Arquitectura de{" "}<span className="font-instrument-serif italic font-normal text-purple-600">información</span></> : <>Information{" "}<span className="font-instrument-serif italic font-normal text-purple-600">architecture</span></>}
+              <h2 className="text-4xl md:text-6xl font-medium text-ink leading-[1.05] tracking-tighter font-space-grotesk mt-3">
+                {es ? <>Arquitectura de{" "}<span className="font-instrument-serif italic font-normal text-brand">información</span></> : <>Information{" "}<span className="font-instrument-serif italic font-normal text-brand">architecture</span></>}
               </h2>
-              <p className="text-gray-600 mt-4 font-manrope text-lg">
+              <p className="text-ink-2 mt-4 font-manrope text-lg">
                 {es ? "Reorganización del sitemap para priorizar lo que el usuario viene a buscar." : "Sitemap reorganization to prioritize what the user comes to find."}
               </p>
             </div>
@@ -401,21 +402,21 @@ export default function ProyectoJalife() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.08 }}
-                  className="bg-gray-50 border border-gray-200 rounded-2xl p-6"
+                  className="bg-paper border border-hairline rounded-2xl p-6"
                 >
-                  <span className="font-instrument-serif italic text-sm text-purple-400 block mb-2">
+                  <span className="font-instrument-serif italic text-sm text-brand-lite block mb-2">
                     0{i + 1}
                   </span>
-                  <h3 className="font-medium font-space-grotesk text-gray-900 text-lg mb-4">
+                  <h3 className="font-medium font-space-grotesk text-ink text-lg mb-4">
                     {section.title}
                   </h3>
                   <div className="space-y-2">
                     {section.children.map((child, j) => (
                       <div
                         key={j}
-                        className="flex items-center gap-2 text-sm text-gray-600 font-manrope"
+                        className="flex items-center gap-2 text-sm text-ink-2 font-manrope"
                       >
-                        <span className="text-purple-400">└</span>
+                        <span className="text-brand-lite">└</span>
                         {child}
                       </div>
                     ))}
@@ -428,24 +429,24 @@ export default function ProyectoJalife() {
       </section>
 
       {/* WIREFRAMES */}
-      <section className="px-6 py-32 bg-gradient-to-b from-white via-gray-50 to-white">
+      <section className="px-6 py-32 bg-paper">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <ScrollReveal direction="left">
               <div>
-                <span className="font-instrument-serif italic text-5xl text-purple-400 block mb-4 leading-none">
+                <span className="font-instrument-serif italic text-5xl text-brand-lite block mb-4 leading-none">
                   01
                 </span>
-                <h3 className="text-3xl md:text-4xl font-medium text-gray-900 font-space-grotesk leading-tight mb-2">
+                <h3 className="text-3xl md:text-4xl font-medium text-ink font-space-grotesk leading-tight mb-2">
                   Wireframes
                 </h3>
-                <p className="text-gray-400 font-manrope mb-6">
+                <p className="text-ink-3 font-manrope mb-6">
                   {es ? "Estructurando el sitio desde la base" : "Structuring the site from the ground up"}
                 </p>
-                <p className="text-gray-600 leading-relaxed mb-4 font-manrope">
+                <p className="text-ink-2 leading-relaxed mb-4 font-manrope">
                   {es ? "Se desarrollaron wireframes que permitieron definir la estructura del sitio y organizar la información de manera clara y jerárquica." : "Wireframes were developed to define the site structure and organize information in a clear and hierarchical way."}
                 </p>
-                <p className="text-gray-600 leading-relaxed font-manrope">
+                <p className="text-ink-2 leading-relaxed font-manrope">
                   {es ? "A partir de esta base, se trabajó en una interfaz más limpia, actual y funcional, optimizando la navegación y mejorando la presentación de los productos." : "From this foundation, a cleaner, more modern and functional interface was developed, optimizing navigation and improving the presentation of products."}
                 </p>
               </div>
@@ -471,13 +472,13 @@ export default function ProyectoJalife() {
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
             <div className="mb-16 max-w-2xl">
-              <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
+              <span className="uppercase tracking-widest text-sm text-brand font-bold">
                 {es ? "RACIONAL" : "RATIONALE"}
               </span>
-              <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-                {es ? <>Decisiones de{" "}<span className="font-instrument-serif italic font-normal text-purple-600">diseño</span></> : <>Design{" "}<span className="font-instrument-serif italic font-normal text-purple-600">decisions</span></>}
+              <h2 className="text-4xl md:text-6xl font-medium text-ink leading-[1.05] tracking-tighter font-space-grotesk mt-3">
+                {es ? <>Decisiones de{" "}<span className="font-instrument-serif italic font-normal text-brand">diseño</span></> : <>Design{" "}<span className="font-instrument-serif italic font-normal text-brand">decisions</span></>}
               </h2>
-              <p className="text-gray-600 mt-4 font-manrope text-lg">
+              <p className="text-ink-2 mt-4 font-manrope text-lg">
                 {es ? "Qué decidí y por qué, en las definiciones clave del proyecto." : "What I decided and why, across the key definitions of the project."}
               </p>
             </div>
@@ -493,15 +494,15 @@ export default function ProyectoJalife() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.08 }}
-                  className="bg-gray-50 border border-gray-200 rounded-2xl p-8 hover:border-purple-300 transition"
+                  className="bg-paper border border-hairline rounded-2xl p-8 hover:border-brand/40 transition"
                 >
-                  <span className="font-instrument-serif italic text-3xl text-purple-400 block mb-3 leading-none">
+                  <span className="font-instrument-serif italic text-3xl text-brand-lite block mb-3 leading-none">
                     {d.number}
                   </span>
-                  <h3 className="text-xl font-medium font-space-grotesk text-gray-900 mb-3">
+                  <h3 className="text-xl font-medium font-space-grotesk text-ink mb-3">
                     {d.title}
                   </h3>
-                  <p className="text-gray-600 font-manrope leading-relaxed text-sm">
+                  <p className="text-ink-2 font-manrope leading-relaxed text-sm">
                     {d.rationale}
                   </p>
                 </motion.div>
@@ -512,11 +513,11 @@ export default function ProyectoJalife() {
           {/* Aplicación visual */}
           <ScrollReveal delay={0.3}>
             <div>
-              <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-4">
+              <p className="text-xs uppercase tracking-widest text-ink-3 font-manrope mb-4">
                 {es ? "Aplicación visual" : "Visual application"}
               </p>
               <div className="grid md:grid-cols-2 gap-4">
-                <div className="rounded-2xl overflow-hidden border border-gray-200/60">
+                <div className="rounded-2xl overflow-hidden border border-hairline/60">
                   <Image
                     src="/1.gif"
                     alt="Hero section Jalife"
@@ -525,7 +526,7 @@ export default function ProyectoJalife() {
                     className="w-full h-auto"
                   />
                 </div>
-                <div className="rounded-2xl overflow-hidden border border-gray-200/60">
+                <div className="rounded-2xl overflow-hidden border border-hairline/60">
                   <Image
                     src="/bodysection.png"
                     alt="Body section Jalife"
@@ -541,15 +542,15 @@ export default function ProyectoJalife() {
       </section>
 
       {/* SISTEMA VISUAL */}
-      <section className="px-6 py-32 bg-gradient-to-b from-white via-gray-50 to-white">
+      <section className="px-6 py-32 bg-paper">
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
             <div className="mb-16 max-w-2xl">
-              <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
+              <span className="uppercase tracking-widest text-sm text-brand font-bold">
                 {es ? "GUÍA VISUAL" : "VISUAL GUIDE"}
               </span>
-              <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-                {es ? <>Sistema{" "}<span className="font-instrument-serif italic font-normal text-purple-600">visual</span></> : <>Visual{" "}<span className="font-instrument-serif italic font-normal text-purple-600">system</span></>}
+              <h2 className="text-4xl md:text-6xl font-medium text-ink leading-[1.05] tracking-tighter font-space-grotesk mt-3">
+                {es ? <>Sistema{" "}<span className="font-instrument-serif italic font-normal text-brand">visual</span></> : <>Visual{" "}<span className="font-instrument-serif italic font-normal text-brand">system</span></>}
               </h2>
             </div>
           </ScrollReveal>
@@ -557,14 +558,14 @@ export default function ProyectoJalife() {
           <div className="grid md:grid-cols-2 gap-8">
             {/* Tipografía */}
             <ScrollReveal direction="left">
-              <div className="bg-white border border-gray-200 rounded-2xl p-8 h-full">
-                <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-6">
+              <div className="bg-white border border-hairline rounded-2xl p-8 h-full">
+                <p className="text-xs uppercase tracking-widest text-ink-3 font-manrope mb-6">
                   {es ? "Tipografía" : "Typography"}
                 </p>
-                <p className="text-7xl md:text-8xl font-bold text-gray-900 mb-2 leading-none">
+                <p className="text-7xl md:text-8xl font-bold text-ink mb-2 leading-none">
                   Aa
                 </p>
-                <p className="text-2xl font-space-grotesk text-gray-900 mb-6">
+                <p className="text-2xl font-space-grotesk text-ink mb-6">
                   Inter
                 </p>
                 <div className="flex flex-wrap gap-2 mb-8">
@@ -572,14 +573,14 @@ export default function ProyectoJalife() {
                     (w) => (
                       <span
                         key={w}
-                        className="px-3 py-1 rounded-full text-xs bg-gray-100 text-gray-700 font-manrope"
+                        className="px-3 py-1 rounded-full text-xs bg-paper-2 text-ink-2 font-manrope"
                       >
                         {w}
                       </span>
                     ),
                   )}
                 </div>
-                <div className="space-y-2 text-gray-700 font-manrope">
+                <div className="space-y-2 text-ink-2 font-manrope">
                   <p className="text-lg">ABCDEFGHIJKLMNOPQRSTUVWXYZ</p>
                   <p className="text-lg">abcdefghijklmnopqrstuvwxyz</p>
                   <p className="text-lg">1234567890</p>
@@ -589,8 +590,8 @@ export default function ProyectoJalife() {
 
             {/* Paleta */}
             <ScrollReveal direction="right" delay={0.2}>
-              <div className="bg-white border border-gray-200 rounded-2xl p-8 h-full">
-                <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-6">
+              <div className="bg-white border border-hairline rounded-2xl p-8 h-full">
+                <p className="text-xs uppercase tracking-widest text-ink-3 font-manrope mb-6">
                   {es ? "Paleta de colores" : "Color palette"}
                 </p>
                 <div className="grid grid-cols-2 gap-4">
@@ -604,14 +605,14 @@ export default function ProyectoJalife() {
                       className="space-y-2"
                     >
                       <div
-                        className="w-full aspect-square rounded-xl border border-gray-200"
+                        className="w-full aspect-square rounded-xl border border-hairline"
                         style={{ backgroundColor: color.hex }}
                       />
                       <div className="flex items-center justify-between">
-                        <span className="text-sm font-medium text-gray-900 font-space-grotesk">
+                        <span className="text-sm font-medium text-ink font-space-grotesk">
                           {color.name}
                         </span>
-                        <span className="text-xs text-gray-500 font-mono">
+                        <span className="text-xs text-ink-3 font-mono">
                           {color.hex}
                         </span>
                       </div>
@@ -629,17 +630,17 @@ export default function ProyectoJalife() {
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
             <div className="mb-12 max-w-2xl">
-              <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
+              <span className="uppercase tracking-widest text-sm text-brand font-bold">
                 {es ? "INTERACTIVO" : "INTERACTIVE"}
               </span>
-              <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-                {es ? <>Prototipo{" "}<span className="font-instrument-serif italic font-normal text-purple-600">navegable</span></> : <>Navigable{" "}<span className="font-instrument-serif italic font-normal text-purple-600">prototype</span></>}
+              <h2 className="text-4xl md:text-6xl font-medium text-ink leading-[1.05] tracking-tighter font-space-grotesk mt-3">
+                {es ? <>Prototipo{" "}<span className="font-instrument-serif italic font-normal text-brand">navegable</span></> : <>Navigable{" "}<span className="font-instrument-serif italic font-normal text-brand">prototype</span></>}
               </h2>
             </div>
           </ScrollReveal>
 
           <ScrollReveal delay={0.2}>
-            <div className="rounded-2xl overflow-hidden border border-gray-200 bg-white flex items-center justify-center">
+            <div className="rounded-2xl overflow-hidden border border-hairline bg-white flex items-center justify-center">
               <iframe
                 width="800"
                 height="450"
@@ -652,15 +653,15 @@ export default function ProyectoJalife() {
       </section>
 
       {/* APRENDIZAJES */}
-      <section className="px-6 py-32 bg-gradient-to-br from-[#f7f7fb] via-[#f1f1f6] to-[#f5edff]">
+      <section className="px-6 py-32 bg-paper-2">
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
             <div className="mb-16 max-w-2xl">
-              <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
+              <span className="uppercase tracking-widest text-sm text-brand font-bold">
                 {es ? "REFLEXIÓN" : "REFLECTION"}
               </span>
-              <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-                {es ? <>Aprendizajes{" "}<span className="font-instrument-serif italic font-normal text-purple-600">clave</span></> : <>Key{" "}<span className="font-instrument-serif italic font-normal text-purple-600">takeaways</span></>}
+              <h2 className="text-4xl md:text-6xl font-medium text-ink leading-[1.05] tracking-tighter font-space-grotesk mt-3">
+                {es ? <>Aprendizajes{" "}<span className="font-instrument-serif italic font-normal text-brand">clave</span></> : <>Key{" "}<span className="font-instrument-serif italic font-normal text-brand">takeaways</span></>}
               </h2>
             </div>
           </ScrollReveal>
@@ -673,15 +674,15 @@ export default function ProyectoJalife() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-white border border-gray-200 rounded-2xl p-8"
+                className="bg-white border border-hairline rounded-2xl p-8"
               >
-                <span className="font-instrument-serif italic text-3xl text-purple-400 block mb-4">
+                <span className="font-instrument-serif italic text-3xl text-brand-lite block mb-4">
                   {item.number}
                 </span>
-                <h3 className="text-xl font-medium font-space-grotesk text-gray-900 mb-3">
+                <h3 className="text-xl font-medium font-space-grotesk text-ink mb-3">
                   {item.title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed font-manrope text-sm">
+                <p className="text-ink-2 leading-relaxed font-manrope text-sm">
                   {item.text}
                 </p>
               </motion.div>
@@ -696,18 +697,18 @@ export default function ProyectoJalife() {
       <section className="px-6 py-32 bg-white">
         <div className="max-w-4xl mx-auto text-center">
           <ScrollReveal>
-            <p className="text-gray-600 mb-6 font-manrope">
+            <p className="text-ink-2 mb-6 font-manrope">
               {es ? "¿Te gustó este proyecto?" : "Did you like this project?"}
             </p>
-            <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mb-10">
-              {es ? <>Explorá más de mi{" "}<span className="font-instrument-serif italic font-normal text-purple-600">trabajo</span></> : <>Explore more of my{" "}<span className="font-instrument-serif italic font-normal text-purple-600">work</span></>}
+            <h2 className="text-4xl md:text-6xl font-medium text-ink leading-[1.05] tracking-tighter font-space-grotesk mb-10">
+              {es ? <>Explorá más de mi{" "}<span className="font-instrument-serif italic font-normal text-brand">trabajo</span></> : <>Explore more of my{" "}<span className="font-instrument-serif italic font-normal text-brand">work</span></>}
             </h2>
             <div className="flex flex-wrap gap-4 justify-center">
               <Button
                 onClick={() => {
                   window.location.href = "/#proyectos";
                 }}
-                className="group bg-gray-900 hover:bg-purple-600 text-white px-6 py-4 rounded-full shadow-lg font-manrope inline-flex items-center gap-2"
+                className="group bg-ink hover:bg-brand text-white px-6 py-4 rounded-full shadow-lg font-manrope inline-flex items-center gap-2"
               >
                 <span className="inline-block transition-transform duration-300 group-hover:-translate-x-1">
                   ←
@@ -715,7 +716,7 @@ export default function ProyectoJalife() {
                 {es ? "Volver al inicio" : "Back to home"}
               </Button>
               <a href="mailto:milagrosdziuban1@gmail.com">
-                <Button className="group bg-white hover:bg-purple-50 text-gray-900 border border-gray-300 hover:border-purple-300 px-6 py-4 rounded-full font-manrope inline-flex items-center gap-2">
+                <Button className="group bg-white hover:bg-brand-tint text-ink border border-hairline hover:border-brand/40 px-6 py-4 rounded-full font-manrope inline-flex items-center gap-2">
                   {es ? "Contactame" : "Contact me"}
                   <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">
                     →
@@ -726,6 +727,7 @@ export default function ProyectoJalife() {
           </ScrollReveal>
         </div>
       </section>
+      <SiteFooter />
     </div>
   );
 }

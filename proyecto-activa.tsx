@@ -6,6 +6,7 @@ import { ScrollReveal } from "./components/animated-components";
 import Image from "next/image";
 import { OtherProjects } from "./components/otherproject";
 import { useLanguage } from "./contexts/language-context";
+import { SiteFooter } from "./components/site-footer";
 
 // Carrusel de pantallas finales
 function ScreensCarousel({
@@ -31,7 +32,7 @@ function ScreensCarousel({
       {/* Slide principal: imagen + contenido */}
       <div className="grid md:grid-cols-[1.4fr_1fr] gap-8 md:gap-12 items-center">
         {/* Imagen */}
-        <div className="relative rounded-2xl overflow-hidden bg-white border border-gray-200/60 aspect-[16/10]">
+        <div className="relative rounded-2xl overflow-hidden bg-white border border-hairline/60 aspect-[16/10]">
           <AnimatePresence mode="wait">
             <motion.div
               key={current}
@@ -63,19 +64,19 @@ function ScreensCarousel({
             >
               {/* Counter editorial */}
               <div className="flex items-center gap-3 mb-4">
-                <span className="font-instrument-serif italic text-3xl text-purple-400">
+                <span className="font-instrument-serif italic text-3xl text-brand-lite">
                   {String(current + 1).padStart(2, "0")}
                 </span>
-                <span className="text-gray-300">/</span>
-                <span className="text-gray-400 font-manrope text-sm">
+                <span className="text-hairline">/</span>
+                <span className="text-ink-3 font-manrope text-sm">
                   {String(total).padStart(2, "0")}
                 </span>
               </div>
 
-              <h3 className="text-3xl md:text-4xl font-medium font-space-grotesk text-gray-900 leading-tight mb-3">
+              <h3 className="text-3xl md:text-4xl font-medium font-space-grotesk text-ink leading-tight mb-3">
                 {screen.title}
               </h3>
-              <p className="text-gray-600 font-manrope leading-relaxed mb-6">
+              <p className="text-ink-2 font-manrope leading-relaxed mb-6">
                 {screen.description}
               </p>
 
@@ -83,9 +84,9 @@ function ScreensCarousel({
                 {screen.features.map((f, i) => (
                   <li
                     key={i}
-                    className="flex items-start gap-3 text-sm text-gray-700 font-manrope"
+                    className="flex items-start gap-3 text-sm text-ink-2 font-manrope"
                   >
-                    <span className="text-purple-500 mt-1">✦</span>
+                    <span className="text-brand mt-1">✦</span>
                     {f}
                   </li>
                 ))}
@@ -105,7 +106,7 @@ function ScreensCarousel({
               onClick={() => setCurrent(i)}
               className={`relative w-20 h-14 rounded-lg overflow-hidden border-2 transition ${
                 i === current
-                  ? "border-purple-500"
+                  ? "border-brand"
                   : "border-transparent opacity-50 hover:opacity-100"
               }`}
             >
@@ -125,7 +126,7 @@ function ScreensCarousel({
             onClick={prev}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="w-12 h-12 rounded-full border border-gray-300 bg-white text-gray-700 hover:border-purple-400 hover:text-purple-600 flex items-center justify-center transition"
+            className="w-12 h-12 rounded-full border border-hairline bg-white text-ink-2 hover:border-brand-lite hover:text-brand flex items-center justify-center transition"
             aria-label="Anterior"
           >
             ←
@@ -134,7 +135,7 @@ function ScreensCarousel({
             onClick={next}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="w-12 h-12 rounded-full bg-gray-900 hover:bg-purple-600 text-white flex items-center justify-center transition"
+            className="w-12 h-12 rounded-full bg-ink hover:bg-brand text-white flex items-center justify-center transition"
             aria-label="Siguiente"
           >
             →
@@ -181,17 +182,17 @@ function ProcessStep({
 
       <ScrollReveal direction={imageLeft ? "right" : "left"} delay={0.2}>
         <div className={imageLeft ? "md:order-2" : "md:order-1"}>
-          <span className="font-instrument-serif italic text-5xl text-purple-400 block mb-4 leading-none">
+          <span className="font-instrument-serif italic text-5xl text-brand-lite block mb-4 leading-none">
             {number}
           </span>
-          <h3 className="text-3xl md:text-4xl font-medium text-gray-900 font-space-grotesk leading-tight mb-2">
+          <h3 className="text-3xl md:text-4xl font-medium text-ink font-space-grotesk leading-tight mb-2">
             {title}
           </h3>
-          <p className="text-gray-400 font-manrope mb-6">{subtitle}</p>
+          <p className="text-ink-3 font-manrope mb-6">{subtitle}</p>
           {paragraphs.map((p, i) => (
             <p
               key={i}
-              className="text-gray-600 leading-relaxed mb-4 font-manrope"
+              className="text-ink-2 leading-relaxed mb-4 font-manrope"
             >
               {p}
             </p>
@@ -299,11 +300,11 @@ export default function ProyectoActiva() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-paper">
       <NavigationHeader />
 
       {/* HERO */}
-      <section className="relative px-6 py-32 bg-[#f5f7fb] overflow-hidden">
+      <section className="relative px-6 py-32 bg-paper-2 overflow-hidden">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             {/* Lado izquierdo: contenido */}
@@ -313,36 +314,36 @@ export default function ProyectoActiva() {
                 {["UX/UI", "Desktop App", "2025"].map((tag) => (
                   <span
                     key={tag}
-                    className="text-xs px-3 py-1 rounded-full border border-gray-300 text-gray-600 font-manrope"
+                    className="text-xs px-3 py-1 rounded-full border border-hairline text-ink-2 font-manrope"
                   >
                     {tag}
                   </span>
                 ))}
               </div>
 
-              <h1 className="text-5xl md:text-6xl font-medium tracking-tighter text-gray-900 leading-[1.05] font-space-grotesk mb-6">
+              <h1 className="text-5xl md:text-6xl font-medium tracking-tighter text-ink leading-[1.05] font-space-grotesk mb-6">
                 Proyecto{" "}
-                <span className="font-instrument-serif italic font-normal text-purple-600">
+                <span className="font-instrument-serif italic font-normal text-brand">
                   Activa
                 </span>
               </h1>
 
-              <p className="text-lg text-gray-600 max-w-xl leading-relaxed mb-10 font-manrope">
+              <p className="text-lg text-ink-2 max-w-xl leading-relaxed mb-10 font-manrope">
                 {es ? "Plataforma diseñada para optimizar y centralizar procesos internos, mejorando la eficiencia operativa y facilitando el acceso a la información en tiempo real." : "Platform designed to optimize and centralize internal processes, improving operational efficiency and enabling real-time access to information."}
               </p>
 
               <div className="grid grid-cols-3 gap-6 text-sm">
                 <div>
-                  <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-2">{es ? "Rol" : "Role"}</p>
-                  <p className="text-gray-900 font-medium font-space-grotesk">UX/UI Designer</p>
+                  <p className="text-xs uppercase tracking-widest text-ink-3 font-manrope mb-2">{es ? "Rol" : "Role"}</p>
+                  <p className="text-ink font-medium font-space-grotesk">UX/UI Designer</p>
                 </div>
                 <div>
-                  <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-2">{es ? "Duración" : "Duration"}</p>
-                  <p className="text-gray-900 font-medium font-space-grotesk">{es ? "3 meses" : "3 months"}</p>
+                  <p className="text-xs uppercase tracking-widest text-ink-3 font-manrope mb-2">{es ? "Duración" : "Duration"}</p>
+                  <p className="text-ink font-medium font-space-grotesk">{es ? "3 meses" : "3 months"}</p>
                 </div>
                 <div>
-                  <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-2">{es ? "Herramientas" : "Tools"}</p>
-                  <p className="text-gray-900 font-medium font-space-grotesk">Figma, FigJam, VS Code</p>
+                  <p className="text-xs uppercase tracking-widest text-ink-3 font-manrope mb-2">{es ? "Herramientas" : "Tools"}</p>
+                  <p className="text-ink font-medium font-space-grotesk">Figma, FigJam, VS Code</p>
                 </div>
               </div>
             </div>
@@ -374,16 +375,16 @@ export default function ProyectoActiva() {
           <div className="grid md:grid-cols-2 gap-16">
             <ScrollReveal direction="left">
               <div>
-                <span className="font-instrument-serif italic text-2xl text-purple-400 mb-3 block">
+                <span className="font-instrument-serif italic text-2xl text-brand-lite mb-3 block">
                   01
                 </span>
-                <h2 className="text-4xl md:text-5xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mb-6">
+                <h2 className="text-4xl md:text-5xl font-medium text-ink leading-[1.05] tracking-tighter font-space-grotesk mb-6">
                   {es ? "Problema" : "Problem"}
                 </h2>
-                <p className="text-gray-600 leading-relaxed mb-4 font-manrope">
+                <p className="text-ink-2 leading-relaxed mb-4 font-manrope">
                   {es ? "La empresa Activa enfrenta dificultades para gestionar sus procesos internos debido a la falta de organización y control." : "Activa faces difficulties managing its internal processes due to a lack of organization and control."}
                 </p>
-                <p className="text-gray-600 leading-relaxed font-manrope">
+                <p className="text-ink-2 leading-relaxed font-manrope">
                   {es ? "Las tareas administrativas y operativas se realizan de forma manual, generando ineficiencias, errores y dificultades para acceder a la información de manera rápida y clara." : "Administrative and operational tasks are performed manually, generating inefficiencies, errors and difficulties accessing information quickly and clearly."}
                 </p>
               </div>
@@ -391,16 +392,16 @@ export default function ProyectoActiva() {
 
             <ScrollReveal direction="right" delay={0.2}>
               <div>
-                <span className="font-instrument-serif italic text-2xl text-purple-400 mb-3 block">
+                <span className="font-instrument-serif italic text-2xl text-brand-lite mb-3 block">
                   02
                 </span>
-                <h2 className="text-4xl md:text-5xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mb-6">
+                <h2 className="text-4xl md:text-5xl font-medium text-ink leading-[1.05] tracking-tighter font-space-grotesk mb-6">
                   {es ? "Objetivo" : "Goal"}
                 </h2>
-                <p className="text-gray-600 leading-relaxed mb-4 font-manrope">
+                <p className="text-ink-2 leading-relaxed mb-4 font-manrope">
                   {es ? "Diseñar una plataforma centralizada que optimice la gestión de procesos internos, mejore la experiencia de los usuarios y reduzca errores operativos." : "Design a centralized platform that optimizes internal process management, improves the user experience and reduces operational errors."}
                 </p>
-                <p className="text-gray-600 leading-relaxed font-manrope">
+                <p className="text-ink-2 leading-relaxed font-manrope">
                   {es ? "La solución busca facilitar el seguimiento de tareas, optimizar tiempos y adaptarse a las necesidades futuras de la empresa." : "The solution aims to streamline task tracking, optimize timelines and adapt to the company's future needs."}
                 </p>
               </div>
@@ -410,17 +411,17 @@ export default function ProyectoActiva() {
       </section>
 
       {/* PARA QUIÉN */}
-      <section className="px-6 py-32 bg-gradient-to-b from-white via-gray-50 to-white">
+      <section className="px-6 py-32 bg-paper">
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
             <div className="mb-12 max-w-2xl">
-              <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
+              <span className="uppercase tracking-widest text-sm text-brand font-bold">
                 {es ? "AUDIENCIA" : "AUDIENCE"}
               </span>
-              <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-                {es ? <>Para{" "}<span className="font-instrument-serif italic font-normal text-purple-600">quién</span>{" "}diseñé</> : <>Who I{" "}<span className="font-instrument-serif italic font-normal text-purple-600">designed</span>{" "}for</>}
+              <h2 className="text-4xl md:text-6xl font-medium text-ink leading-[1.05] tracking-tighter font-space-grotesk mt-3">
+                {es ? <>Para{" "}<span className="font-instrument-serif italic font-normal text-brand">quién</span>{" "}diseñé</> : <>Who I{" "}<span className="font-instrument-serif italic font-normal text-brand">designed</span>{" "}for</>}
               </h2>
-              <p className="text-gray-600 mt-4 font-manrope text-lg">
+              <p className="text-ink-2 mt-4 font-manrope text-lg">
                 {es ? "Activa es una herramienta interna. Sus usuarios pasan horas en ella todos los días gestionando procesos del negocio." : "Activa is an internal tool. Its users spend hours in it every day managing business processes."}
               </p>
             </div>
@@ -434,12 +435,12 @@ export default function ProyectoActiva() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-white border border-gray-200 rounded-2xl p-6"
+                className="bg-white border border-hairline rounded-2xl p-6"
               >
-                <p className="text-xs uppercase tracking-widest text-purple-500 font-manrope mb-2">
+                <p className="text-xs uppercase tracking-widest text-brand font-manrope mb-2">
                   {trait.label}
                 </p>
-                <p className="text-lg font-medium font-space-grotesk text-gray-900">
+                <p className="text-lg font-medium font-space-grotesk text-ink">
                   {trait.value}
                 </p>
               </motion.div>
@@ -448,17 +449,17 @@ export default function ProyectoActiva() {
         </div>
       </section>
 
-      {/* DESIGN THINKING — Timeline */}
+      {/* DESIGN THINKING - Timeline */}
       <section className="px-6 py-32 bg-white">
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
             <div className="mb-20 max-w-2xl">
-              <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
+              <span className="uppercase tracking-widest text-sm text-brand font-bold">
                 {es ? "METODOLOGÍA" : "METHODOLOGY"}
               </span>
-              <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
+              <h2 className="text-4xl md:text-6xl font-medium text-ink leading-[1.05] tracking-tighter font-space-grotesk mt-3">
                 Design{" "}
-                <span className="font-instrument-serif italic font-normal text-purple-600">
+                <span className="font-instrument-serif italic font-normal text-brand">
                   Thinking
                 </span>
               </h2>
@@ -467,7 +468,7 @@ export default function ProyectoActiva() {
 
           <div className="relative">
             {/* Línea conectora (desktop) */}
-            <div className="hidden md:block absolute top-10 left-[10%] right-[10%] h-[2px] bg-gradient-to-r from-purple-200 via-purple-300 to-purple-200" />
+            <div className="hidden md:block absolute top-10 left-[10%] right-[10%] h-[2px] bg-gradient-to-r from-brand/25 via-brand/40 to-brand/25" />
 
             <div className="grid grid-cols-1 md:grid-cols-5 gap-8 relative">
               {designThinking.map((step, i) => (
@@ -486,13 +487,13 @@ export default function ProyectoActiva() {
                       className="w-12 h-12 object-contain"
                     />
                   </div>
-                  <span className="font-instrument-serif italic text-sm text-purple-400 mb-1">
+                  <span className="font-instrument-serif italic text-sm text-brand-lite mb-1">
                     0{i + 1}
                   </span>
-                  <h3 className="text-lg font-medium font-space-grotesk text-gray-900">
+                  <h3 className="text-lg font-medium font-space-grotesk text-ink">
                     {step.title}
                   </h3>
-                  <p className="text-gray-600 text-sm mt-2 font-manrope">
+                  <p className="text-ink-2 text-sm mt-2 font-manrope">
                     {step.text}
                   </p>
                 </motion.div>
@@ -503,17 +504,17 @@ export default function ProyectoActiva() {
       </section>
 
       {/* HALLAZGOS */}
-      <section className="px-6 py-32 bg-gradient-to-b from-white via-gray-50 to-white">
+      <section className="px-6 py-32 bg-paper">
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
             <div className="mb-16 max-w-2xl">
-              <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
+              <span className="uppercase tracking-widest text-sm text-brand font-bold">
                 {es ? "INVESTIGACIÓN" : "RESEARCH"}
               </span>
-              <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-                {es ? <>Lo que{" "}<span className="font-instrument-serif italic font-normal text-purple-600">descubrí</span></> : <>What I{" "}<span className="font-instrument-serif italic font-normal text-purple-600">found</span></>}
+              <h2 className="text-4xl md:text-6xl font-medium text-ink leading-[1.05] tracking-tighter font-space-grotesk mt-3">
+                {es ? <>Lo que{" "}<span className="font-instrument-serif italic font-normal text-brand">descubrí</span></> : <>What I{" "}<span className="font-instrument-serif italic font-normal text-brand">found</span></>}
               </h2>
-              <p className="text-gray-600 mt-4 font-manrope text-lg">
+              <p className="text-ink-2 mt-4 font-manrope text-lg">
                 {es ? "Insights principales que surgieron de la investigación y guiaron las decisiones de diseño." : "Key insights that emerged from the research and guided the design decisions."}
               </p>
             </div>
@@ -522,19 +523,19 @@ export default function ProyectoActiva() {
           {/* Métodos */}
           <ScrollReveal delay={0.1}>
             <div className="mb-12">
-              <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-4">
+              <p className="text-xs uppercase tracking-widest text-ink-3 font-manrope mb-4">
                 {es ? "Cómo lo investigué" : "How I researched it"}
               </p>
               <div className="grid md:grid-cols-3 gap-4">
                 {researchMethods.map((method, i) => (
                   <div
                     key={i}
-                    className="border-l-2 border-purple-200 pl-4"
+                    className="border-l-2 border-brand/25 pl-4"
                   >
-                    <p className="font-medium font-space-grotesk text-gray-900 mb-2">
+                    <p className="font-medium font-space-grotesk text-ink mb-2">
                       {method.title}
                     </p>
-                    <p className="text-sm text-gray-600 font-manrope leading-relaxed">
+                    <p className="text-sm text-ink-2 font-manrope leading-relaxed">
                       {method.text}
                     </p>
                   </div>
@@ -553,15 +554,15 @@ export default function ProyectoActiva() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.08 }}
-                  className="bg-white border border-gray-200 rounded-2xl p-8 hover:border-purple-300 transition"
+                  className="bg-white border border-hairline rounded-2xl p-8 hover:border-brand/40 transition"
                 >
-                  <span className="font-instrument-serif italic text-3xl text-purple-400 block mb-3 leading-none">
+                  <span className="font-instrument-serif italic text-3xl text-brand-lite block mb-3 leading-none">
                     0{i + 1}
                   </span>
-                  <h3 className="text-lg font-medium font-space-grotesk text-gray-900 mb-3">
+                  <h3 className="text-lg font-medium font-space-grotesk text-ink mb-3">
                     {finding.title}
                   </h3>
-                  <p className="text-gray-600 font-manrope leading-relaxed text-sm">
+                  <p className="text-ink-2 font-manrope leading-relaxed text-sm">
                     {finding.text}
                   </p>
                 </motion.div>
@@ -576,13 +577,13 @@ export default function ProyectoActiva() {
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
             <div className="mb-16 max-w-2xl">
-              <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
+              <span className="uppercase tracking-widest text-sm text-brand font-bold">
                 {es ? "IMPACTO" : "IMPACT"}
               </span>
-              <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-                {es ? <>Antes vs con{" "}<span className="font-instrument-serif italic font-normal text-purple-600">Activa</span></> : <>Before vs with{" "}<span className="font-instrument-serif italic font-normal text-purple-600">Activa</span></>}
+              <h2 className="text-4xl md:text-6xl font-medium text-ink leading-[1.05] tracking-tighter font-space-grotesk mt-3">
+                {es ? <>Antes vs con{" "}<span className="font-instrument-serif italic font-normal text-brand">Activa</span></> : <>Before vs with{" "}<span className="font-instrument-serif italic font-normal text-brand">Activa</span></>}
               </h2>
-              <p className="text-gray-600 mt-4 font-manrope text-lg">
+              <p className="text-ink-2 mt-4 font-manrope text-lg">
                 {es ? "Tres ejes clave donde la herramienta aporta valor concreto al equipo." : "Three key areas where the tool delivers concrete value to the team."}
               </p>
             </div>
@@ -596,31 +597,31 @@ export default function ProyectoActiva() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="grid md:grid-cols-[180px_1fr_1fr] gap-6 bg-gray-50 border border-gray-200 rounded-2xl p-8"
+                className="grid md:grid-cols-[180px_1fr_1fr] gap-6 bg-paper border border-hairline rounded-2xl p-8"
               >
                 <div>
-                  <span className="font-instrument-serif italic text-2xl text-purple-400 block mb-1">
+                  <span className="font-instrument-serif italic text-2xl text-brand-lite block mb-1">
                     0{i + 1}
                   </span>
-                  <h3 className="font-medium font-space-grotesk text-gray-900">
+                  <h3 className="font-medium font-space-grotesk text-ink">
                     {row.aspect}
                   </h3>
                 </div>
 
-                <div className="border-l-2 border-gray-200 pl-6">
-                  <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-2">
+                <div className="border-l-2 border-hairline pl-6">
+                  <p className="text-xs uppercase tracking-widest text-ink-3 font-manrope mb-2">
                     {es ? "Antes" : "Before"}
                   </p>
-                  <p className="text-sm text-gray-600 font-manrope leading-relaxed">
+                  <p className="text-sm text-ink-2 font-manrope leading-relaxed">
                     {row.before}
                   </p>
                 </div>
 
-                <div className="border-l-2 border-purple-300 pl-6">
-                  <p className="text-xs uppercase tracking-widest text-purple-500 font-manrope mb-2">
+                <div className="border-l-2 border-brand/40 pl-6">
+                  <p className="text-xs uppercase tracking-widest text-brand font-manrope mb-2">
                     {es ? "Con Activa" : "With Activa"}
                   </p>
-                  <p className="text-sm text-gray-700 font-manrope leading-relaxed">
+                  <p className="text-sm text-ink-2 font-manrope leading-relaxed">
                     {row.after}
                   </p>
                 </div>
@@ -631,15 +632,15 @@ export default function ProyectoActiva() {
       </section>
 
       {/* PROCESO DE DISEÑO */}
-      <section className="px-6 py-32 bg-gradient-to-b from-white via-gray-50 to-white">
+      <section className="px-6 py-32 bg-paper">
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
             <div className="mb-20 max-w-2xl">
-              <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
+              <span className="uppercase tracking-widest text-sm text-brand font-bold">
                 {es ? "PROCESO" : "PROCESS"}
               </span>
-              <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-                {es ? <>Cómo lo{" "}<span className="font-instrument-serif italic font-normal text-purple-600">diseñé</span></> : <>How I{" "}<span className="font-instrument-serif italic font-normal text-purple-600">designed it</span></>}
+              <h2 className="text-4xl md:text-6xl font-medium text-ink leading-[1.05] tracking-tighter font-space-grotesk mt-3">
+                {es ? <>Cómo lo{" "}<span className="font-instrument-serif italic font-normal text-brand">diseñé</span></> : <>How I{" "}<span className="font-instrument-serif italic font-normal text-brand">designed it</span></>}
               </h2>
             </div>
           </ScrollReveal>
@@ -713,10 +714,10 @@ export default function ProyectoActiva() {
                 ]).map((item, i) => (
                   <div
                     key={i}
-                    className="flex items-center justify-between py-3 border-b border-gray-200 last:border-0"
+                    className="flex items-center justify-between py-3 border-b border-hairline last:border-0"
                   >
-                    <span className="text-gray-700 font-manrope">{item.label}</span>
-                    <span className="text-sm text-purple-500 font-manrope">{item.count}</span>
+                    <span className="text-ink-2 font-manrope">{item.label}</span>
+                    <span className="text-sm text-brand font-manrope">{item.count}</span>
                   </div>
                 ))}
               </div>
@@ -730,13 +731,13 @@ export default function ProyectoActiva() {
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
             <div className="mb-16 max-w-2xl">
-              <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
+              <span className="uppercase tracking-widest text-sm text-brand font-bold">
                 {es ? "RACIONAL" : "RATIONALE"}
               </span>
-              <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-                {es ? <>Decisiones de{" "}<span className="font-instrument-serif italic font-normal text-purple-600">diseño</span></> : <>Design{" "}<span className="font-instrument-serif italic font-normal text-purple-600">decisions</span></>}
+              <h2 className="text-4xl md:text-6xl font-medium text-ink leading-[1.05] tracking-tighter font-space-grotesk mt-3">
+                {es ? <>Decisiones de{" "}<span className="font-instrument-serif italic font-normal text-brand">diseño</span></> : <>Design{" "}<span className="font-instrument-serif italic font-normal text-brand">decisions</span></>}
               </h2>
-              <p className="text-gray-600 mt-4 font-manrope text-lg">
+              <p className="text-ink-2 mt-4 font-manrope text-lg">
                 {es ? "Qué decidí y por qué, en las definiciones clave de la plataforma." : "What I decided and why, across the key definitions of the platform."}
               </p>
             </div>
@@ -751,15 +752,15 @@ export default function ProyectoActiva() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.08 }}
-                  className="bg-gray-50 border border-gray-200 rounded-2xl p-8 hover:border-purple-300 transition"
+                  className="bg-paper border border-hairline rounded-2xl p-8 hover:border-brand/40 transition"
                 >
-                  <span className="font-instrument-serif italic text-3xl text-purple-400 block mb-3 leading-none">
+                  <span className="font-instrument-serif italic text-3xl text-brand-lite block mb-3 leading-none">
                     {d.number}
                   </span>
-                  <h3 className="text-xl font-medium font-space-grotesk text-gray-900 mb-3">
+                  <h3 className="text-xl font-medium font-space-grotesk text-ink mb-3">
                     {d.title}
                   </h3>
-                  <p className="text-gray-600 font-manrope leading-relaxed text-sm">
+                  <p className="text-ink-2 font-manrope leading-relaxed text-sm">
                     {d.rationale}
                   </p>
                 </motion.div>
@@ -770,15 +771,15 @@ export default function ProyectoActiva() {
       </section>
 
       {/* GUÍA VISUAL */}
-      <section className="px-6 py-32 bg-gradient-to-b from-white via-gray-50 to-white">
+      <section className="px-6 py-32 bg-paper">
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
             <div className="mb-16 max-w-2xl">
-              <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
+              <span className="uppercase tracking-widest text-sm text-brand font-bold">
                 {es ? "GUÍA VISUAL" : "VISUAL GUIDE"}
               </span>
-              <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-                {es ? <>Sistema{" "}<span className="font-instrument-serif italic font-normal text-purple-600">visual</span></> : <>Visual{" "}<span className="font-instrument-serif italic font-normal text-purple-600">system</span></>}
+              <h2 className="text-4xl md:text-6xl font-medium text-ink leading-[1.05] tracking-tighter font-space-grotesk mt-3">
+                {es ? <>Sistema{" "}<span className="font-instrument-serif italic font-normal text-brand">visual</span></> : <>Visual{" "}<span className="font-instrument-serif italic font-normal text-brand">system</span></>}
               </h2>
             </div>
           </ScrollReveal>
@@ -786,14 +787,14 @@ export default function ProyectoActiva() {
           <div className="grid md:grid-cols-2 gap-8">
             {/* Tipografía */}
             <ScrollReveal direction="left">
-              <div className="bg-white border border-gray-200 rounded-2xl p-8 h-full">
-                <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-6">
+              <div className="bg-white border border-hairline rounded-2xl p-8 h-full">
+                <p className="text-xs uppercase tracking-widest text-ink-3 font-manrope mb-6">
                   {es ? "Tipografía" : "Typography"}
                 </p>
-                <p className="text-7xl md:text-8xl font-bold text-gray-900 mb-2 leading-none">
+                <p className="text-7xl md:text-8xl font-bold text-ink mb-2 leading-none">
                   Aa
                 </p>
-                <p className="text-2xl font-space-grotesk text-gray-900 mb-6">
+                <p className="text-2xl font-space-grotesk text-ink mb-6">
                   Inter
                 </p>
                 <div className="flex flex-wrap gap-2 mb-8">
@@ -801,14 +802,14 @@ export default function ProyectoActiva() {
                     (w) => (
                       <span
                         key={w}
-                        className="px-3 py-1 rounded-full text-xs bg-gray-100 text-gray-700 font-manrope"
+                        className="px-3 py-1 rounded-full text-xs bg-paper-2 text-ink-2 font-manrope"
                       >
                         {w}
                       </span>
                     ),
                   )}
                 </div>
-                <div className="space-y-2 text-gray-700 font-manrope">
+                <div className="space-y-2 text-ink-2 font-manrope">
                   <p className="text-lg">ABCDEFGHIJKLMNOPQRSTUVWXYZ</p>
                   <p className="text-lg">abcdefghijklmnopqrstuvwxyz</p>
                   <p className="text-lg">1234567890</p>
@@ -818,8 +819,8 @@ export default function ProyectoActiva() {
 
             {/* Paleta */}
             <ScrollReveal direction="right" delay={0.2}>
-              <div className="bg-white border border-gray-200 rounded-2xl p-8 h-full">
-                <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-6">
+              <div className="bg-white border border-hairline rounded-2xl p-8 h-full">
+                <p className="text-xs uppercase tracking-widest text-ink-3 font-manrope mb-6">
                   {es ? "Paleta de colores" : "Color palette"}
                 </p>
                 <div className="grid grid-cols-2 gap-4">
@@ -837,10 +838,10 @@ export default function ProyectoActiva() {
                         style={{ backgroundColor: color.hex }}
                       />
                       <div className="flex items-center justify-between">
-                        <span className="text-sm font-medium text-gray-900 font-space-grotesk">
+                        <span className="text-sm font-medium text-ink font-space-grotesk">
                           {color.name}
                         </span>
-                        <span className="text-xs text-gray-500 font-mono">
+                        <span className="text-xs text-ink-3 font-mono">
                           {color.hex}
                         </span>
                       </div>
@@ -853,16 +854,16 @@ export default function ProyectoActiva() {
         </div>
       </section>
 
-      {/* PANTALLAS FINALES — Carrusel */}
+      {/* PANTALLAS FINALES - Carrusel */}
       <section className="px-6 py-32 bg-white">
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
             <div className="mb-16 max-w-2xl">
-              <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
+              <span className="uppercase tracking-widest text-sm text-brand font-bold">
                 {es ? "RESULTADO" : "RESULT"}
               </span>
-              <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-                {es ? <>Pantallas{" "}<span className="font-instrument-serif italic font-normal text-purple-600">finales</span></> : <>Final{" "}<span className="font-instrument-serif italic font-normal text-purple-600">screens</span></>}
+              <h2 className="text-4xl md:text-6xl font-medium text-ink leading-[1.05] tracking-tighter font-space-grotesk mt-3">
+                {es ? <>Pantallas{" "}<span className="font-instrument-serif italic font-normal text-brand">finales</span></> : <>Final{" "}<span className="font-instrument-serif italic font-normal text-brand">screens</span></>}
               </h2>
             </div>
           </ScrollReveal>
@@ -874,15 +875,15 @@ export default function ProyectoActiva() {
       </section>
 
       {/* APRENDIZAJES */}
-      <section className="px-6 py-32 bg-gradient-to-br from-[#f7f7fb] via-[#f1f1f6] to-[#f5edff]">
+      <section className="px-6 py-32 bg-paper-2">
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
             <div className="mb-16 max-w-2xl">
-              <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
+              <span className="uppercase tracking-widest text-sm text-brand font-bold">
                 {es ? "REFLEXIÓN" : "REFLECTION"}
               </span>
-              <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-                {es ? <>Aprendizajes{" "}<span className="font-instrument-serif italic font-normal text-purple-600">clave</span></> : <>Key{" "}<span className="font-instrument-serif italic font-normal text-purple-600">takeaways</span></>}
+              <h2 className="text-4xl md:text-6xl font-medium text-ink leading-[1.05] tracking-tighter font-space-grotesk mt-3">
+                {es ? <>Aprendizajes{" "}<span className="font-instrument-serif italic font-normal text-brand">clave</span></> : <>Key{" "}<span className="font-instrument-serif italic font-normal text-brand">takeaways</span></>}
               </h2>
             </div>
           </ScrollReveal>
@@ -895,15 +896,15 @@ export default function ProyectoActiva() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-white border border-gray-200 rounded-2xl p-8"
+                className="bg-white border border-hairline rounded-2xl p-8"
               >
-                <span className="font-instrument-serif italic text-3xl text-purple-400 block mb-4">
+                <span className="font-instrument-serif italic text-3xl text-brand-lite block mb-4">
                   {item.number}
                 </span>
-                <h3 className="text-xl font-medium font-space-grotesk text-gray-900 mb-3">
+                <h3 className="text-xl font-medium font-space-grotesk text-ink mb-3">
                   {item.title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed font-manrope text-sm">
+                <p className="text-ink-2 leading-relaxed font-manrope text-sm">
                   {item.text}
                 </p>
               </motion.div>
@@ -918,17 +919,17 @@ export default function ProyectoActiva() {
       <section className="px-6 py-32 bg-white">
         <div className="max-w-4xl mx-auto text-center">
           <ScrollReveal>
-            <p className="text-gray-600 mb-6 font-manrope">
+            <p className="text-ink-2 mb-6 font-manrope">
               {es ? "¿Querés ver el caso completo?" : "Want to see the full case study?"}
             </p>
-            <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mb-10">
-              {es ? <>Mirá el proyecto en{" "}<span className="font-instrument-serif italic font-normal text-purple-600">Behance</span></> : <>See the project on{" "}<span className="font-instrument-serif italic font-normal text-purple-600">Behance</span></>}
+            <h2 className="text-4xl md:text-6xl font-medium text-ink leading-[1.05] tracking-tighter font-space-grotesk mb-10">
+              {es ? <>Mirá el proyecto en{" "}<span className="font-instrument-serif italic font-normal text-brand">Behance</span></> : <>See the project on{" "}<span className="font-instrument-serif italic font-normal text-brand">Behance</span></>}
             </h2>
             <a
               href="https://www.behance.net/gallery/225209813/Gestion-de-empresas"
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 bg-gray-900 hover:bg-purple-600 text-white px-6 py-4 rounded-full shadow-lg font-manrope transition"
+              className="group inline-flex items-center gap-2 bg-ink hover:bg-brand text-white px-6 py-4 rounded-full shadow-lg font-manrope transition"
             >
               {es ? "Ver caso completo" : "View full case study"}
               <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">
@@ -938,6 +939,7 @@ export default function ProyectoActiva() {
           </ScrollReveal>
         </div>
       </section>
+      <SiteFooter />
     </div>
   );
 }

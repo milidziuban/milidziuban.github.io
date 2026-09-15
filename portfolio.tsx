@@ -1,497 +1,479 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { NavigationHeader } from "./components/navigation-header";
-import {
-  AnimatedProjectCard,
-  ScrollReveal,
-} from "./components/animated-components";
 import Image from "next/image";
-import { useState, useEffect } from "react"; // useState kept for playground mode checks
+import Link from "next/link";
+import { motion, useReducedMotion } from "framer-motion";
+import { ArrowDown, ArrowRight, ArrowUpRight, Mail, Linkedin } from "lucide-react";
 import { track } from "@vercel/analytics";
-import { translations, type T } from "./lib/i18n";
-import { useLanguage } from "./contexts/language-context";
 
-// Sección Hero
+import { NavigationHeader } from "@/components/navigation-header";
+import { SiteFooter } from "@/components/site-footer";
+import { ScrollReveal, EASE } from "@/components/animated-components";
+import { ProjectCard } from "@/components/project-card";
+import { featuredProjects } from "@/components/data/projects-data";
+import { useLanguage } from "@/contexts/language-context";
+import { translations, type Lang, type T } from "@/lib/i18n";
+
+const EMAIL = "milagrosdziuban1@gmail.com";
+const LINKEDIN = "https://www.linkedin.com/in/milagros-dziuban-dise%C3%B1adora/";
+
+/* ------------------------------------------------------------------ */
+/* Hero: solo tipografia. El titular ocupa todo el ancho y entra linea   */
+/* por linea; abajo, una fila con filete separa descripcion y CTA.       */
+/* ------------------------------------------------------------------ */
 function HeroSection({ t }: { t: T }) {
-  const [isPlaygroundMode, setIsPlaygroundMode] = useState(false);
+  const reduce = useReducedMotion();
 
-  useEffect(() => {
-    const checkPlaygroundMode = () => {
-      const context = document.getElementById("playground-context");
-      if (context) {
-        setIsPlaygroundMode(context.getAttribute("data-active") === "true");
-      }
-    };
-    const interval = setInterval(checkPlaygroundMode, 100);
-    return () => clearInterval(interval);
-  }, []);
-
-  const skills = [
-    "UX Design",
-    "UI Design",
-    "Design Systems",
-    "Prototyping",
-    "User Research",
-    "Interaction Design",
-  ];
+  // Cada linea del titular entra con un pequeno retraso respecto a la
+  // anterior; con reduce-motion se pintan todas de una.
+  const line = (i: number) => ({
+    initial: reduce ? false : { opacity: 0, y: 28 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.8, delay: 0.08 + i * 0.1, ease: EASE },
+  });
 
   return (
     <section
       id="inicio"
-      className="px-6 pt-28 md:pt-36 pb-12 min-h-screen flex flex-col"
+      className="flex min-h-[100dvh] flex-col justify-center px-6 pt-28 pb-16"
     >
-      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-18 items-center flex-1 w-full">
-        {/* TEXTO */}
-        <motion.div
-          initial={{ opacity: 0, x: -80 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1 }}
-          className="relative"
+      <div className="mx-auto w-full max-w-6xl">
+        <motion.p
+          {...line(0)}
+          className="font-meta flex items-center gap-3 text-[12px] tracking-wide text-ink-3 uppercase"
         >
-          <div className="inline-flex items-center gap-2 mb-6">
-            <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
-              {t.hero.badge}
-            </span>
-          </div>
+          <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-brand" />
+          {t.hero.eyebrow}
+        </motion.p>
 
-          <h1 className="text-5xl md:text-7xl font-medium tracking-tighter text-gray-900 mb-6 font-space-grotesk leading-[1.05]">
+        <h1 className="font-display mt-7 text-[clamp(2.75rem,7.2vw,6rem)] leading-[1.02] font-medium tracking-[-0.03em] text-ink">
+          <motion.span {...line(1)} className="block">
             {t.hero.h1a}{" "}
-            <span className="font-instrument-serif italic font-normal text-purple-600">
-              {t.hero.h1b}
-            </span>
-            <br />
-            {t.hero.h1c}
-          </h1>
+            <em className="pr-[0.06em] italic text-brand">{t.hero.h1em}</em>
+          </motion.span>
+          <motion.span {...line(2)} className="block">
+            {t.hero.h1b}
+          </motion.span>
+        </h1>
 
-          <p className="mb-10 text-gray-600 leading-relaxed text-lg font-manrope max-w-xl">
+        <motion.div
+          {...line(3)}
+          className="mt-12 grid gap-8 border-t border-hairline pt-8 md:mt-16 md:grid-cols-12 md:items-start md:gap-x-12"
+        >
+          <p className="font-body pretty max-w-[46ch] text-[17px] leading-relaxed text-ink-2 md:col-span-7 md:text-[18px]">
             {t.hero.desc}
           </p>
 
-          {/* CTAs */}
-          <div className="flex items-center gap-6">
-            <Button
-              onClick={() => {
-                track("cta_ver_proyectos", { source: "hero" });
-                const element = document.getElementById("proyectos");
-                if (element) element.scrollIntoView({ behavior: "smooth" });
-              }}
-              className="group bg-gray-900 hover:bg-purple-600 text-white px-6 py-4 rounded-full font-manrope shadow-lg cursor-pointer inline-flex items-center gap-2"
+          <div className="flex flex-wrap items-center gap-x-7 gap-y-4 md:col-span-5 md:justify-end">
+            <Link
+              href="#proyectos"
+              onClick={() => track("cta_ver_proyectos", { source: "hero" })}
+              className="font-body group inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3.5 text-[15px] font-medium text-white transition-colors duration-200 hover:bg-brand active:scale-[0.98]"
             >
               {t.hero.cta}
-              <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
-            </Button>
+              <ArrowRight
+                size={17}
+                strokeWidth={1.75}
+                className="transition-transform duration-300 group-hover:translate-x-1"
+                aria-hidden="true"
+              />
+            </Link>
 
-            <button
-              onClick={
-                !isPlaygroundMode
-                  ? () => {
-                      track("linkedin_click", { source: "hero" });
-                      window.open("https://www.linkedin.com/in/milagros-dziuban-dise%C3%B1adora/", "_blank");
-                    }
-                  : undefined
-              }
-              className="relative text-gray-700 font-manrope font-medium hover:text-purple-600 transition cursor-pointer group"
+            <a
+              href={LINKEDIN}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => track("linkedin_click", { source: "hero" })}
+              className="font-body group relative inline-flex items-center gap-1.5 text-[15px] font-medium text-ink-2 transition-colors duration-200 hover:text-brand"
             >
-              LinkedIn
-              <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-purple-600 transition-all duration-300 group-hover:w-full" />
-            </button>
+              {t.hero.linkedin}
+              <ArrowUpRight size={15} strokeWidth={1.75} aria-hidden="true" />
+              <span className="absolute -bottom-1 left-0 h-[1.5px] w-0 bg-brand transition-all duration-300 group-hover:w-[calc(100%-18px)]" />
+            </a>
           </div>
         </motion.div>
-
-        {/* VISUAL */}
-        <motion.div
-          className="relative flex items-center justify-center"
-          initial={{ opacity: 0, x: 80 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1 }}
-        >
-          {/* Glow difuminado de base */}
-          <div className="absolute w-[85%] h-[85%] bg-purple-300/45 rounded-[3rem] blur-3xl" />
-
-          {/* Blobs orgánicos, suaves y con movimiento lento */}
-          <motion.div
-            className="absolute w-[92%] h-[95%] bg-gradient-to-br from-purple-200/70 via-purple-100/60 to-pink-100/60 rounded-[42%_58%_55%_45%/45%_42%_58%_55%] blur-[2px]"
-            animate={{ rotate: [-6, -2, -6] }}
-            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-          />
-          <motion.div
-            className="absolute w-[84%] h-[86%] bg-pink-100/60 rounded-[55%_45%_42%_58%/58%_55%_45%_42%] translate-x-6 translate-y-6 blur-sm"
-            animate={{ rotate: [3, 7, 3] }}
-            transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-          />
-
-          {/* Acentos decorativos */}
-          <motion.span
-            className="absolute top-[4%] right-[8%] z-20 text-purple-400/80 text-2xl select-none"
-            animate={{ opacity: [0.4, 0.9, 0.4], scale: [1, 1.15, 1] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-          >
-            ✦
-          </motion.span>
-          <motion.span
-            className="absolute bottom-[10%] left-[4%] z-20 text-purple-300/70 text-lg select-none"
-            animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.1, 1] }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-          >
-            ✦
-          </motion.span>
-
-          {/* Foto sin fondo, integrada sobre los blobs */}
-          <motion.div
-            className="relative z-10 w-[85%] max-w-[430px]"
-            whileHover={{ scale: 1.03, rotate: -0.6 }}
-            transition={{ type: "spring", stiffness: 200, damping: 18 }}
-          >
-            <Image
-              src="/hero-milagros-nobg-v7.png"
-              alt="Milagros trabajando en diseño UX/UI"
-              width={432}
-              height={457}
-              priority
-              sizes="(max-width: 768px) 85vw, 430px"
-              className="w-full h-auto [filter:drop-shadow(0_22px_30px_rgba(88,28,135,0.28))]"
-              style={{
-                WebkitMaskImage:
-                  "radial-gradient(ellipse 82% 86% at 50% 44%, black 60%, transparent 92%)",
-                maskImage:
-                  "radial-gradient(ellipse 82% 86% at 50% 44%, black 60%, transparent 92%)",
-              }}
-            />
-          </motion.div>
-        </motion.div>
       </div>
+    </section>
+  );
+}
 
-      {/* MARQUEE de skills */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1, duration: 0.8 }}
-        className="relative w-full overflow-hidden py-6 mt-10 border-y border-gray-200/60"
-      >
-        <div className="flex whitespace-nowrap animate-marquee w-max">
-          {[...Array(2)].map((_, repeat) => (
-            <div key={repeat} className="flex items-center shrink-0 font-instrument-serif italic text-3xl md:text-4xl text-gray-400">
-              {skills.map((skill, i) => (
-                <span key={i} className="flex items-center">
-                  <span className="px-8">{skill}</span>
-                  <span className="text-purple-400">✦</span>
-                </span>
+/* ------------------------------------------------------------------ */
+/* Cinta de capacidades: banda a sangre entre filetes.                  */
+/* Es la unica marquesina de la pagina y se pausa al pasar el mouse.    */
+/* ------------------------------------------------------------------ */
+function CapabilitiesStrip({ t }: { t: T }) {
+  return (
+    <section aria-label={t.capabilities.join(", ")} className="border-y border-hairline bg-paper-2">
+      <div className="marquee-track marquee-mask overflow-hidden py-5">
+        <div className="animate-marquee flex w-max whitespace-nowrap">
+          {/* 4 copias: con 2 la pista quedaba mas corta que el viewport y
+              aparecia un hueco en blanco al final de cada ciclo */}
+          {[0, 1, 2, 3].map((copy) => (
+            <ul key={copy} className="flex shrink-0 items-center" aria-hidden={copy !== 0}>
+              {t.capabilities.map((item) => (
+                <li key={item} className="flex items-center">
+                  <span className="font-meta px-7 text-[12px] tracking-wide text-ink-3 uppercase">
+                    {item}
+                  </span>
+                  <span aria-hidden="true" className="h-3 w-px bg-hairline" />
+                </li>
               ))}
-            </div>
+            </ul>
           ))}
         </div>
-      </motion.div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        className="flex flex-col items-center gap-3 mt-10"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.2 }}
-      >
-        <span className="text-xs uppercase tracking-widest text-gray-500 font-manrope">Scroll</span>
-        <div className="relative w-[2px] h-12 bg-gray-200 overflow-hidden rounded-full">
-          <motion.div
-            className="absolute top-0 left-0 w-full bg-purple-600 rounded-full"
-            initial={{ height: "0%" }}
-            animate={{ height: ["0%", "100%", "0%"], top: ["0%", "0%", "100%"] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          />
-        </div>
-      </motion.div>
-    </section>
-  );
-}
-
-function DesignSection({ t }: { t: T }) {
-  const tools = ["Figma", "FigJam", "Sketch", "Adobe XD", "Photoshop", "Illustrator", "Notion", "Miro"];
-
-  return (
-    <section id="sobre-mi" className="px-6 py-32 bg-gradient-to-b from-white via-gray-50 to-white">
-      <div className="max-w-6xl mx-auto">
-        {/* HEADER + INTRO */}
-        <div className="mb-20 max-w-3xl">
-          <ScrollReveal>
-            <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">{t.about.badge}</span>
-            <h2 className="text-5xl md:text-7xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-              {t.about.t1}{" "}
-              <span className="font-instrument-serif italic font-normal text-purple-600">{t.about.t2}</span>
-            </h2>
-          </ScrollReveal>
-          <ScrollReveal delay={0.2}>
-            <p className="text-gray-600 text-lg leading-relaxed font-manrope mt-8">{t.about.desc}</p>
-          </ScrollReveal>
-        </div>
-
-        {/* TOOLS */}
-        <ScrollReveal delay={0.3}>
-          <div className="mb-24">
-            <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-4">{t.about.tools}</p>
-            <div className="flex flex-wrap gap-2">
-              {tools.map((tool) => (
-                <span key={tool} className="px-4 py-2 rounded-full bg-white border border-gray-200 text-sm font-manrope text-gray-700 hover:border-purple-300 hover:text-purple-600 transition cursor-default">
-                  {tool}
-                </span>
-              ))}
-            </div>
-          </div>
-        </ScrollReveal>
-
-        {/* EXPERIENCIA */}
-        <div className="grid md:grid-cols-[220px_1fr] gap-8 mb-24">
-          <ScrollReveal direction="left">
-            <h3 className="text-3xl font-medium text-gray-900 font-space-grotesk md:sticky md:top-32">{t.about.experience}</h3>
-          </ScrollReveal>
-          <ScrollReveal direction="right" delay={0.2}>
-            <div className="relative pl-8 border-l border-gray-200">
-              {t.about.jobs.map((job, i) => (
-                <motion.div key={i} className="relative pb-12 last:pb-0" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
-                  <div className="absolute -left-[37px] top-1.5 w-3 h-3 rounded-full bg-purple-500 ring-4 ring-white" />
-                  <p className="text-sm text-purple-500 font-manrope mb-1">{job.date}</p>
-                  <h4 className="text-xl font-medium text-gray-900 font-space-grotesk">
-                    {job.role}{" "}
-                    <span className="text-gray-500">{job.prep} {job.company}</span>
-                  </h4>
-                  <p className="text-gray-600 mt-2 font-manrope">{job.desc}</p>
-                </motion.div>
-              ))}
-            </div>
-          </ScrollReveal>
-        </div>
-
-        {/* FORMACIÓN */}
-        <div className="grid md:grid-cols-[220px_1fr] gap-8">
-          <ScrollReveal direction="left">
-            <h3 className="text-3xl font-medium text-gray-900 font-space-grotesk md:sticky md:top-32">{t.about.formation}</h3>
-          </ScrollReveal>
-          <ScrollReveal direction="right" delay={0.2}>
-            <div className="grid sm:grid-cols-2 gap-4">
-              {t.about.studies.map((item, i) => (
-                <motion.div
-                  key={i}
-                  className={`rounded-2xl p-6 border transition ${"featured" in item && item.featured ? "bg-purple-50 border-purple-200 sm:col-span-2" : "bg-white border-gray-200 hover:border-purple-200"}`}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.05 }}
-                >
-                  <p className="text-xs text-purple-500 font-manrope mb-2 uppercase tracking-widest">{item.date}</p>
-                  <h4 className="font-medium text-gray-900 font-space-grotesk mb-1">{item.title}</h4>
-                  <p className="text-sm text-gray-600 font-manrope">{item.place}</p>
-                </motion.div>
-              ))}
-            </div>
-          </ScrollReveal>
-        </div>
       </div>
     </section>
   );
 }
 
-function ProjectsSection({ t }: { t: T }) {
-  const [isPlaygroundMode, setIsPlaygroundMode] = useState(false);
-
-  useEffect(() => {
-    const checkPlaygroundMode = () => {
-      const context = document.getElementById("playground-context");
-      if (context) {
-        setIsPlaygroundMode(context.getAttribute("data-active") === "true");
-      }
-    };
-    const interval = setInterval(checkPlaygroundMode, 100);
-    return () => clearInterval(interval);
-  }, []);
-
-  const projectData = [
-    { title: "Wappoints", image: "/Wappoints.png", url: "/proyecto-wappoints", tags: ["UX/UI", "Web App", "Built with AI"] },
-    { title: "Proyecto Activa", image: "/Activa.png", url: "/proyecto-activa", tags: ["UX/UI", "Desktop App", "Research"] },
-    { title: "Proyecto Jalife", image: "/Jalife.png", url: "/proyecto-jalife", tags: ["UX/UI", "WebPage"] },
-    { title: "Gestión de Stock", image: "/Gestióndestock.png", url: "/proyecto-gestion-stock", tags: ["UX/UI", "Desktop App"] },
-    { title: "Game Design", image: "/GameDesign.png", url: "/proyecto-towerdefense", tags: ["UX/UI", "VideoJuego"] },
+/* ------------------------------------------------------------------ */
+/* Sobre mi: retrato + intro, despues dos filas con etiqueta fija.      */
+/* ------------------------------------------------------------------ */
+function AboutSection({ t }: { t: T }) {
+  const tools = [
+    "Figma",
+    "Visual Studio",
+    "Photoshop",
+    "Notion",
+    "Miro",
   ];
 
-  const projects = projectData.map((p, i) => ({ ...p, description: t.projects.items[i].desc }));
-
   return (
-    <section id="proyectos" className="px-6 pt-28 pb-32 bg-gradient-to-br from-[#f7f7fb] via-[#f1f1f6] to-[#f5edff]">
-      <div className="max-w-6xl mx-auto">
-        <ScrollReveal>
-          <div className="mb-16 max-w-2xl">
-            <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">{t.projects.badge}</span>
-            <h2 className="text-5xl md:text-7xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-              {t.projects.t1}{" "}
-              <span className="font-instrument-serif italic font-normal text-purple-600">{t.projects.t2}</span>
-            </h2>
+    <section id="sobre-mi" className="bg-paper px-6 py-28 md:py-36">
+      <div className="mx-auto max-w-6xl">
+        <div className="grid items-start gap-12 md:grid-cols-12 md:gap-x-14">
+          <ScrollReveal direction="right" className="md:col-span-5">
+            <div className="relative overflow-hidden rounded-card border border-hairline bg-brand-tint">
+              <Image
+                src="/imagen/pngcv.png"
+                alt={t.about.portraitAlt}
+                width={420}
+                height={520}
+                sizes="(max-width: 768px) 100vw, 440px"
+                className="h-auto w-full object-cover"
+              />
+            </div>
+          </ScrollReveal>
+
+          <div className="md:col-span-7">
+            <ScrollReveal>
+              <h2 className="font-display text-[clamp(2rem,4.4vw,3.25rem)] leading-[1.14] font-medium tracking-tight text-ink">
+                {t.about.t1}{" "}
+                <em className="pb-1 leading-[1.15] italic text-brand">{t.about.t2}</em>
+              </h2>
+            </ScrollReveal>
+
+            <ScrollReveal delay={0.1}>
+              <p className="font-body pretty mt-6 max-w-[58ch] text-[17px] leading-relaxed text-ink-2">
+                {t.about.desc}
+              </p>
+            </ScrollReveal>
+
+            <ScrollReveal delay={0.15}>
+              <h3 className="font-display mt-10 text-sm font-semibold text-ink">{t.about.tools}</h3>
+              <ul className="mt-4 flex flex-wrap gap-2">
+                {tools.map((tool) => (
+                  <li
+                    key={tool}
+                    className="font-body rounded-chip border border-hairline bg-surface px-3.5 py-2 text-[13px] text-ink-2"
+                  >
+                    {tool}
+                  </li>
+                ))}
+              </ul>
+            </ScrollReveal>
           </div>
-        </ScrollReveal>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-16">
-          {projects.map((project, index) => (
-            <motion.div
-              key={index}
-              className="group cursor-pointer"
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.6, delay: (index % 2) * 0.1 }}
-              onClick={
-                !isPlaygroundMode
-                  ? () => {
-                      track("project_click", { project: project.title, url: project.url });
-                      window.location.href = project.url;
-                    }
-                  : undefined
-              }
-            >
-              <div className="relative rounded-2xl overflow-hidden bg-white border border-gray-200/60 aspect-[16/10] mb-5">
-                <Image src={project.image} alt={project.title} fill className="object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
-                <div className="absolute top-4 right-4 w-12 h-12 rounded-full bg-white/90 backdrop-blur flex items-center justify-center shadow-sm opacity-0 -translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
-                  <span className="text-gray-900 text-lg transition-transform duration-300 group-hover:-rotate-45">→</span>
-                </div>
-              </div>
+        {/* Experiencia */}
+        <div className="mt-24 grid gap-8 md:grid-cols-[200px_1fr] md:gap-x-14">
+          <ScrollReveal>
+            <h3 className="font-display text-2xl font-medium tracking-tight text-ink md:sticky md:top-28">
+              {t.about.experience}
+            </h3>
+          </ScrollReveal>
 
-              <div className="flex items-start gap-4">
-                <span className="font-instrument-serif italic text-2xl text-purple-400 mt-1 shrink-0 w-10">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <div className="flex-1">
-                  <h3 className="text-2xl font-medium text-gray-900 font-space-grotesk group-hover:text-purple-600 transition-colors mb-2">
-                    {project.title}
-                  </h3>
-                  <p className="text-gray-600 text-sm font-manrope mb-3 leading-relaxed">{project.description}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {project.tags.map((tag, i) => (
-                      <span key={i} className="text-xs px-3 py-1 rounded-full border border-gray-300 text-gray-600 font-manrope">{tag}</span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          ))}
+          <ol className="border-l border-hairline pl-8">
+            {t.about.jobs.map((job, i) => (
+              <ScrollReveal
+                as="li"
+                key={job.company}
+                delay={i * 0.08}
+                className="relative block pb-11 last:pb-0"
+              >
+                <span
+                  aria-hidden="true"
+                  className="absolute top-2 -left-[37px] h-2.5 w-2.5 rounded-full bg-brand ring-4 ring-paper"
+                />
+                <p className="font-meta text-[11.5px] text-ink-3 uppercase">{job.date}</p>
+                <h4 className="font-display mt-2 text-xl font-medium tracking-tight text-ink">
+                  {job.role}{" "}
+                  <span className="text-ink-3">
+                    {job.prep} {job.company}
+                  </span>
+                </h4>
+                <p className="font-body pretty mt-2 max-w-[58ch] leading-relaxed text-ink-2">
+                  {job.desc}
+                </p>
+              </ScrollReveal>
+            ))}
+          </ol>
+        </div>
+
+        {/* Formacion */}
+        <div className="mt-24 grid gap-8 md:grid-cols-[200px_1fr] md:gap-x-14">
+          <ScrollReveal>
+            <h3 className="font-display text-2xl font-medium tracking-tight text-ink md:sticky md:top-28">
+              {t.about.formation}
+            </h3>
+          </ScrollReveal>
+
+          <ul className="grid gap-4 sm:grid-cols-2">
+            {t.about.studies.map((item, i) => (
+              <ScrollReveal
+                as="li"
+                key={item.title}
+                delay={i * 0.05}
+                className={`h-full rounded-card border p-6 transition-colors duration-200 ${
+                  item.featured
+                    ? "border-transparent bg-brand-tint sm:col-span-2"
+                    : "border-hairline bg-surface hover:border-brand/40"
+                }`}
+              >
+                <p className="font-meta text-[11.5px] text-ink-3 uppercase">{item.date}</p>
+                <h4 className="font-display mt-2 text-[17px] leading-snug font-medium text-ink">
+                  {item.title}
+                </h4>
+                <p className="font-body mt-1 text-sm text-ink-2">{item.place}</p>
+              </ScrollReveal>
+            ))}
+          </ul>
         </div>
       </div>
     </section>
   );
 }
 
-function AIWorkflowBanner() {
-  const { lang } = useLanguage();
-  const es = lang === "es";
+/* ------------------------------------------------------------------ */
+/* Proyectos: uno principal a ancho completo y el resto en una grilla   */
+/* pareja de dos columnas, con las filas alineadas.                     */
+/* ------------------------------------------------------------------ */
+function ProjectsSection({ t, lang }: { t: T; lang: Lang }) {
+  const [lead, ...rest] = featuredProjects;
+
+  // Con una cantidad impar de tarjetas la ultima queda sola en la columna
+  // izquierda y deja media fila vacia al lado. En ese caso la sacamos de la
+  // grilla y la mostramos a ancho completo para cerrar la seccion.
+  const trailing = rest.length % 2 === 1 ? rest[rest.length - 1] : null;
+  const gridProjects = trailing ? rest.slice(0, -1) : rest;
 
   return (
-    <section className="px-6 py-20 bg-gradient-to-br from-[#f5edff] via-[#f1f1f6] to-[#f7f7fb]">
-      <ScrollReveal>
-        <a
-          href="/ai-workflow"
-          onClick={() => track("ai_workflow_banner_click", { source: "landing" })}
-          className="group relative block overflow-hidden rounded-3xl bg-gray-900 px-8 py-12 md:px-14 cursor-pointer mx-auto w-full max-w-6xl hover:max-w-[100vw] transition-[max-width] duration-700 ease-in-out"
-        >
-            <div className="relative max-w-6xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-8">
-              <div>
-                <span className="uppercase tracking-widest text-xs text-purple-400 font-bold">
-                  {es ? "MI PROCESO" : "MY PROCESS"}
-                </span>
-                <h2 className="text-3xl md:text-5xl font-medium text-white leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-                  {es ? (
-                    <>Así trabajo{" "}<span className="font-instrument-serif italic font-normal text-purple-400">con IA</span></>
-                  ) : (
-                    <>How I work{" "}<span className="font-instrument-serif italic font-normal text-purple-400">with AI</span></>
-                  )}
-                </h2>
+    <section id="proyectos" className="bg-paper-2 px-6 py-28 md:py-36">
+      <div className="mx-auto max-w-6xl">
+        <ScrollReveal>
+          <h2 className="font-display text-[clamp(2rem,4.4vw,3.25rem)] leading-[1.14] font-medium tracking-tight text-ink">
+            {t.projects.t1}{" "}
+            <em className="pb-1 leading-[1.15] italic text-brand">{t.projects.t2}</em>
+          </h2>
+        </ScrollReveal>
+
+        {/* Proyecto principal */}
+        {lead && (
+          <ScrollReveal delay={0.1}>
+            <Link
+              href={lead.href}
+              onClick={() => track("project_click", { project: lead.title, url: lead.href, source: "lead" })}
+              className="group mt-14 grid items-center gap-8 md:grid-cols-12 md:gap-x-12"
+            >
+              <div className="relative aspect-[16/10] overflow-hidden rounded-card border border-hairline bg-surface md:col-span-7">
+                <Image
+                  src={lead.image}
+                  alt={`Vista previa del proyecto ${lead.title}`}
+                  fill
+                  priority
+                  sizes="(max-width: 768px) 100vw, 660px"
+                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                />
               </div>
 
-              <div className="flex items-center gap-3 text-white font-manrope font-medium whitespace-nowrap">
-                <span className="group-hover:text-purple-400 transition-colors">
-                  {es ? "Ver mi workflow" : "See my workflow"}
-                </span>
-                <span className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-lg transition-all duration-500 group-hover:bg-purple-600 group-hover:border-purple-600 group-hover:-rotate-45">
-                  →
+              <div className="md:col-span-5">
+                <p className="font-meta text-[11.5px] text-ink-3 uppercase">{t.projects.lead}</p>
+                <h3 className="font-display mt-3 text-3xl font-medium tracking-tight text-ink transition-colors duration-200 group-hover:text-brand md:text-4xl">
+                  {lead.title}
+                </h3>
+                <p className="font-body pretty mt-4 max-w-[46ch] leading-relaxed text-ink-2">
+                  {lead.description[lang]}
+                </p>
+                <ul className="mt-5 flex flex-wrap gap-1.5">
+                  {lead.tags[lang].map((tag) => (
+                    <li
+                      key={tag}
+                      className="font-meta rounded-chip bg-brand-tint px-2.5 py-1 text-[10.5px] text-brand uppercase"
+                    >
+                      {tag}
+                    </li>
+                  ))}
+                </ul>
+                <span className="font-body mt-7 inline-flex items-center gap-2 text-[15px] font-medium text-ink transition-colors duration-200 group-hover:text-brand">
+                  {t.projects.caseStudy}
+                  <ArrowUpRight
+                    size={16}
+                    strokeWidth={1.75}
+                    className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                    aria-hidden="true"
+                  />
                 </span>
               </div>
-            </div>
-        </a>
+            </Link>
+          </ScrollReveal>
+        )}
+
+        {/* Resto, en dos columnas parejas: todas las imagenes al mismo alto */}
+        <div className="mt-24 grid items-start gap-x-10 gap-y-16 md:grid-cols-2">
+          {gridProjects.map((project, i) => (
+            <ScrollReveal key={project.id} delay={(i % 2) * 0.08}>
+              <ProjectCard project={project} lang={lang} index={i + 2} source="grid" />
+            </ScrollReveal>
+          ))}
+        </div>
+
+        {/* La impar, con imagen y texto lado a lado en vez de media fila vacia */}
+        {trailing && (
+          <ScrollReveal className="mt-16">
+            <ProjectCard
+              project={trailing}
+              lang={lang}
+              index={rest.length + 1}
+              source="grid"
+              layout="wide"
+            />
+          </ScrollReveal>
+        )}
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Proceso: banda ancha que lleva a la pagina de workflow.              */
+/* ------------------------------------------------------------------ */
+function ProcessBand({ t }: { t: T }) {
+  return (
+    <section className="bg-paper px-6 py-20">
+      <ScrollReveal className="mx-auto max-w-6xl">
+        <Link
+          href="/ai-workflow"
+          onClick={() => track("ai_workflow_banner_click", { source: "landing" })}
+          className="group flex flex-col gap-8 rounded-card border border-hairline bg-brand-tint px-8 py-12 transition-colors duration-300 hover:border-brand/40 md:flex-row md:items-end md:justify-between md:px-14"
+        >
+          <div>
+            <h2 className="font-display text-[clamp(1.75rem,3.4vw,2.5rem)] leading-[1.14] font-medium tracking-tight text-ink">
+              {t.process.t1}{" "}
+              <em className="pb-1 leading-[1.15] italic text-brand">{t.process.t2}</em>
+            </h2>
+            <p className="font-body pretty mt-4 max-w-[52ch] leading-relaxed text-ink-2">
+              {t.process.desc}
+            </p>
+          </div>
+
+          <span className="font-body inline-flex shrink-0 items-center gap-3 text-[15px] font-medium whitespace-nowrap text-ink">
+            {t.process.cta}
+            <span className="grid h-12 w-12 place-items-center rounded-full border border-brand/25 text-brand transition-colors duration-300 group-hover:bg-brand group-hover:text-white">
+              <ArrowUpRight size={18} strokeWidth={1.75} aria-hidden="true" />
+            </span>
+          </span>
+        </Link>
       </ScrollReveal>
     </section>
   );
 }
 
-function ContactSection({ t }: { t: T }) {
-  const { lang } = useLanguage();
-  const cvHref = lang === "en" ? "/CV_MilagrosDziuban_2026_EN.pdf" : "/CV_MilagrosDziuban_2026_ES.pdf";
-  const [isPlaygroundMode, setIsPlaygroundMode] = useState(false);
+/* ------------------------------------------------------------------ */
+/* Contacto: unica banda oscura, cierra la pagina junto al pie.         */
+/* ------------------------------------------------------------------ */
+function ContactSection({ t, lang }: { t: T; lang: Lang }) {
+  const cvHref =
+    lang === "en" ? "/CV_MilagrosDziuban_2026_EN.pdf" : "/CV_MilagrosDziuban_2026_ES.pdf";
 
-  useEffect(() => {
-    const checkPlaygroundMode = () => {
-      const context = document.getElementById("playground-context");
-      if (context) {
-        setIsPlaygroundMode(context.getAttribute("data-active") === "true");
-      }
-    };
-    const interval = setInterval(checkPlaygroundMode, 100);
-    return () => clearInterval(interval);
-  }, []);
+  const channels = [
+    {
+      label: t.contact.email,
+      value: EMAIL,
+      href: `mailto:${EMAIL}`,
+      icon: Mail,
+      external: false,
+    },
+    {
+      label: t.contact.linkedin,
+      value: "LinkedIn",
+      href: LINKEDIN,
+      icon: Linkedin,
+      external: true,
+    },
+  ];
 
   return (
-    <section id="contacto" className="px-6 py-32 bg-gradient-to-br from-[#f7f7fb] via-[#f1f1f6] to-[#f5edff]">
-      <div className="max-w-6xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-20 items-center">
-          <ScrollReveal direction="left">
-            <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">{t.contact.badge}</span>
-            <h2 className="text-5xl md:text-7xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-              {t.contact.t1}
-              <span className="font-instrument-serif italic font-normal text-purple-600">{t.contact.t2}</span>
-              {t.contact.t3}
-            </h2>
-            <p className="text-gray-600 mt-6 max-w-md font-manrope text-lg leading-relaxed">{t.contact.desc}</p>
+    <section id="contacto" className="on-ink bg-ink px-6 pt-28 pb-16 md:pt-36">
+      <div className="mx-auto grid max-w-6xl gap-14 md:grid-cols-12 md:gap-x-14">
+        <ScrollReveal className="md:col-span-6">
+          <h2 className="font-display text-[clamp(2.25rem,5vw,3.75rem)] leading-[1.14] font-medium tracking-tight text-white">
+            {t.contact.t1}
+            <em className="pb-1 leading-[1.15] italic text-brand-lite">
+              {t.contact.t2}
+            </em>
+          </h2>
+          <p className="font-body pretty mt-6 max-w-[44ch] leading-relaxed text-white/65">
+            {t.contact.desc}
+          </p>
+          <p className="font-meta mt-8 text-[11.5px] tracking-wide text-white/55 uppercase">
+            {t.contact.availability}
+          </p>
+        </ScrollReveal>
 
-            <div className="mt-12 space-y-3">
-              {[
-                { icon: "✉", text: "milagrosdziuban1@gmail.com", url: "mailto:milagrosdziuban1@gmail.com" },
-                { icon: "in", text: "LinkedIn", url: "https://www.linkedin.com/in/milagros-dziuban-dise%C3%B1adora/" },
-              ].map((item, index) => (
-                <motion.a
-                  key={index}
-                  href={item.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => track("contact_click", { method: item.text, source: "contact_section" })}
-                  className="group flex items-center gap-4 bg-white border border-gray-200 rounded-2xl px-6 py-4 hover:border-purple-300 transition"
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
+        <ScrollReveal delay={0.12} className="md:col-span-5 md:col-start-8">
+          <ul className="grid gap-0">
+            {channels.map(({ label, value, href, icon: Icon, external }) => (
+              <li key={value}>
+                <a
+                  href={href}
+                  target={external ? "_blank" : undefined}
+                  rel={external ? "noopener noreferrer" : undefined}
+                  onClick={() => track("contact_click", { method: value, source: "contact" })}
+                  className="group flex items-center gap-4 border-b border-white/10 py-5 transition-colors duration-200 hover:border-brand-lite"
                 >
-                  <div className="w-11 h-11 rounded-xl bg-gray-900 text-white flex items-center justify-center font-manrope text-sm group-hover:bg-purple-600 transition">
-                    {item.icon}
-                  </div>
-                  <span className="font-manrope text-gray-800 flex-1">{item.text}</span>
-                  <span className="text-gray-400 transition-all duration-300 group-hover:text-purple-600 group-hover:translate-x-1">→</span>
-                </motion.a>
-              ))}
-            </div>
+                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white/8 text-white transition-colors duration-200 group-hover:bg-brand-lite group-hover:text-ink">
+                    <Icon size={17} strokeWidth={1.75} aria-hidden="true" />
+                  </span>
+                  <span className="min-w-0 flex-1">
+                    <span className="font-body block text-[15px] text-white">{label}</span>
+                    <span className="font-body block truncate text-sm text-white/50">{value}</span>
+                  </span>
+                  <ArrowUpRight
+                    size={16}
+                    strokeWidth={1.75}
+                    className="shrink-0 text-white/55 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-brand-lite"
+                    aria-hidden="true"
+                  />
+                </a>
+              </li>
+            ))}
+          </ul>
 
-            <motion.div className="mt-12" whileTap={{ scale: 0.95 }}>
-              <a href={cvHref} download target="_blank" rel="noopener noreferrer" onClick={() => track("cv_download")}>
-                <Button className="group bg-gray-900 hover:bg-purple-600 text-white px-6 py-4 rounded-full shadow-lg font-manrope inline-flex items-center gap-2">
-                  {t.contact.cv}
-                  <span className="inline-block transition-transform duration-300 group-hover:translate-y-0.5">↓</span>
-                </Button>
-              </a>
-            </motion.div>
-          </ScrollReveal>
-
-          <ScrollReveal direction="right" delay={0.2}>
-            <motion.div className="relative flex justify-center items-center" whileHover={{ scale: 1.03 }}>
-              <div className="absolute w-[88%] h-[88%] bg-purple-200 rounded-[55%_45%_42%_58%/58%_55%_45%_42%] rotate-6" />
-              <div className="absolute w-[78%] h-[78%] bg-pink-100 rounded-[42%_58%_55%_45%/45%_42%_58%_55%] -rotate-3 -translate-x-6 translate-y-6" />
-              <div className="relative p-3 rounded-3xl">
-                <Image src="/imagen/pngcv.png" alt="Milagros UX/UI Designer" width={420} height={480} className="rounded-2xl object-cover relative" />
-              </div>
-            </motion.div>
-          </ScrollReveal>
-        </div>
+          <a
+            href={cvHref}
+            download
+            onClick={() => track("cv_download", { source: "contact" })}
+            className="font-body group mt-9 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3.5 text-[15px] font-medium text-ink transition-colors duration-200 hover:bg-brand-lite active:scale-[0.98]"
+          >
+            {t.contact.cv}
+            <ArrowDown
+              size={16}
+              strokeWidth={2}
+              className="transition-transform duration-300 group-hover:translate-y-0.5"
+              aria-hidden="true"
+            />
+          </a>
+        </ScrollReveal>
       </div>
     </section>
   );
@@ -502,13 +484,17 @@ export default function Portfolio() {
   const t = translations[lang];
 
   return (
-    <div className="min-h-screen bg-gray-50 overflow-x-hidden relative">
+    <div className="relative min-h-screen overflow-x-hidden bg-paper">
       <NavigationHeader />
-      <HeroSection t={t} />
-      <DesignSection t={t} />
-      <ProjectsSection t={t} />
-      <AIWorkflowBanner />
-      <ContactSection t={t} />
+      <main id="contenido">
+        <HeroSection t={t} />
+        <CapabilitiesStrip t={t} />
+        <AboutSection t={t} />
+        <ProjectsSection t={t} lang={lang} />
+        <ProcessBand t={t} />
+        <ContactSection t={t} lang={lang} />
+      </main>
+      <SiteFooter compact />
     </div>
   );
 }

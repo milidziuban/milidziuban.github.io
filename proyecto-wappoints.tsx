@@ -7,6 +7,7 @@ import { ScrollReveal } from "./components/animated-components";
 import Image from "next/image";
 import { OtherProjects } from "./components/otherproject";
 import { useLanguage } from "./contexts/language-context";
+import { SiteFooter } from "./components/site-footer";
 
 function ProcessStep({
   number,
@@ -29,19 +30,19 @@ function ProcessStep({
     return (
       <div className="mb-32 last:mb-0">
         <ScrollReveal>
-          <div className="bg-gray-50 border border-gray-200 rounded-2xl p-10">
+          <div className="bg-paper border border-hairline rounded-2xl p-10">
             <div className="grid md:grid-cols-[120px_1fr] gap-8 items-start">
-              <span className="font-instrument-serif italic text-6xl text-purple-400 leading-none">
+              <span className="font-instrument-serif italic text-6xl text-brand-lite leading-none">
                 {number}
               </span>
               <div>
-                <h3 className="text-3xl md:text-4xl font-medium text-gray-900 font-space-grotesk leading-tight mb-2">
+                <h3 className="text-3xl md:text-4xl font-medium text-ink font-space-grotesk leading-tight mb-2">
                   {title}
                 </h3>
                 {subtitle && (
-                  <p className="text-gray-400 font-manrope mb-6">{subtitle}</p>
+                  <p className="text-ink-3 font-manrope mb-6">{subtitle}</p>
                 )}
-                <div className="text-gray-600 font-manrope leading-relaxed space-y-4">
+                <div className="text-ink-2 font-manrope leading-relaxed space-y-4">
                   {children}
                 </div>
               </div>
@@ -61,7 +62,7 @@ function ProcessStep({
           }`}
         >
           <div
-            className={`relative rounded-2xl overflow-hidden border border-gray-200 bg-white ${
+            className={`relative rounded-2xl overflow-hidden border border-hairline bg-white ${
               imagePortrait ? "max-w-[280px]" : ""
             }`}
           >
@@ -70,6 +71,8 @@ function ProcessStep({
               alt={title}
               width={imagePortrait ? 360 : 640}
               height={imagePortrait ? 720 : 480}
+              // Los pasos del recorrido son GIF animados. Sin `unoptimized`
+              // el optimizador de Next los congela en el primer frame.
               unoptimized
               className="w-full h-auto object-contain"
             />
@@ -79,16 +82,16 @@ function ProcessStep({
 
       <ScrollReveal direction={imageLeft ? "right" : "left"} delay={0.2}>
         <div className={imageLeft ? "md:order-2" : "md:order-1"}>
-          <span className="font-instrument-serif italic text-5xl text-purple-400 block mb-4 leading-none">
+          <span className="font-instrument-serif italic text-5xl text-brand-lite block mb-4 leading-none">
             {number}
           </span>
-          <h3 className="text-3xl md:text-4xl font-medium text-gray-900 font-space-grotesk leading-tight mb-2">
+          <h3 className="text-3xl md:text-4xl font-medium text-ink font-space-grotesk leading-tight mb-2">
             {title}
           </h3>
           {subtitle && (
-            <p className="text-gray-400 font-manrope mb-6">{subtitle}</p>
+            <p className="text-ink-3 font-manrope mb-6">{subtitle}</p>
           )}
-          <div className="text-gray-600 font-manrope leading-relaxed space-y-4">
+          <div className="text-ink-2 font-manrope leading-relaxed space-y-4">
             {children}
           </div>
         </div>
@@ -175,11 +178,11 @@ export default function ProyectoWappoints() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-paper">
       <NavigationHeader />
 
       {/* HERO */}
-      <section className="relative px-6 py-32 bg-[#f5f7fb] overflow-hidden">
+      <section className="relative px-6 py-32 bg-paper-2 overflow-hidden">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div>
@@ -187,33 +190,33 @@ export default function ProyectoWappoints() {
                 {["UX/UI", "Web App", "Built with AI", "2026"].map((tag) => (
                   <span
                     key={tag}
-                    className="text-xs px-3 py-1 rounded-full border border-gray-300 text-gray-600 font-manrope"
+                    className="text-xs px-3 py-1 rounded-full border border-hairline text-ink-2 font-manrope"
                   >
                     {tag}
                   </span>
                 ))}
               </div>
 
-              <h1 className="text-5xl md:text-6xl font-medium tracking-tighter text-gray-900 leading-[1.05] font-space-grotesk mb-6">
-                {es ? <>Wappoints,{" "}<span className="font-instrument-serif italic font-normal text-purple-600">fidelización</span>{" "}construida con AI</> : <>Wappoints,{" "}<span className="font-instrument-serif italic font-normal text-purple-600">loyalty</span>{" "}built with AI</>}
+              <h1 className="text-5xl md:text-6xl font-medium tracking-tighter text-ink leading-[1.05] font-space-grotesk mb-6">
+                {es ? <>Wappoints,{" "}<span className="font-instrument-serif italic font-normal text-brand">fidelización</span>{" "}construida con AI</> : <>Wappoints,{" "}<span className="font-instrument-serif italic font-normal text-brand">loyalty</span>{" "}built with AI</>}
               </h1>
 
-              <p className="text-lg text-gray-600 max-w-xl leading-relaxed mb-10 font-manrope">
+              <p className="text-lg text-ink-2 max-w-xl leading-relaxed mb-10 font-manrope">
                 {es ? "Plataforma multi-negocio y multi-sucursal para programas de fidelización, donde el cliente final se inscribe por WhatsApp sin descargar nada. Diseñada en Figma y construida desde cero usando AI como copiloto." : "Multi-business and multi-branch platform for loyalty programs, where the end customer signs up via WhatsApp without downloading anything. Designed in Figma and built from scratch using AI as co-pilot."}
               </p>
 
               <div className="grid grid-cols-3 gap-6 text-sm">
                 <div>
-                  <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-2">{es ? "Rol" : "Role"}</p>
-                  <p className="text-gray-900 font-medium font-space-grotesk">{es ? "Diseño + Build con AI" : "Design + Build with AI"}</p>
+                  <p className="text-xs uppercase tracking-widest text-ink-3 font-manrope mb-2">{es ? "Rol" : "Role"}</p>
+                  <p className="text-ink font-medium font-space-grotesk">{es ? "Diseño + Build con AI" : "Design + Build with AI"}</p>
                 </div>
                 <div>
-                  <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-2">{es ? "Duración" : "Duration"}</p>
-                  <p className="text-gray-900 font-medium font-space-grotesk">{es ? "En curso" : "Ongoing"}</p>
+                  <p className="text-xs uppercase tracking-widest text-ink-3 font-manrope mb-2">{es ? "Duración" : "Duration"}</p>
+                  <p className="text-ink font-medium font-space-grotesk">{es ? "En curso" : "Ongoing"}</p>
                 </div>
                 <div>
-                  <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-2">{es ? "Herramientas" : "Tools"}</p>
-                  <p className="text-gray-900 font-medium font-space-grotesk">Figma, Lovable, Claude Code, Cursor</p>
+                  <p className="text-xs uppercase tracking-widest text-ink-3 font-manrope mb-2">{es ? "Herramientas" : "Tools"}</p>
+                  <p className="text-ink font-medium font-space-grotesk">Figma, Lovable, Claude Code, Cursor</p>
                 </div>
               </div>
             </div>
@@ -227,7 +230,7 @@ export default function ProyectoWappoints() {
               <div className="rounded-2xl overflow-hidden w-full">
                 <Image
                   src="/imagen/wappoints-hero.png"
-                  alt="Wappoints — Vista global de administración"
+                  alt="Wappoints, vista global de administración"
                   width={720}
                   height={520}
                   className="w-full h-auto object-cover"
@@ -244,16 +247,16 @@ export default function ProyectoWappoints() {
           <div className="grid md:grid-cols-2 gap-16">
             <ScrollReveal direction="left">
               <div>
-                <span className="font-instrument-serif italic text-2xl text-purple-400 mb-3 block">
+                <span className="font-instrument-serif italic text-2xl text-brand-lite mb-3 block">
                   01
                 </span>
-                <h2 className="text-4xl md:text-5xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mb-6">
+                <h2 className="text-4xl md:text-5xl font-medium text-ink leading-[1.05] tracking-tighter font-space-grotesk mb-6">
                   {es ? "Problema" : "Problem"}
                 </h2>
-                <p className="text-gray-600 leading-relaxed mb-4 font-manrope">
+                <p className="text-ink-2 leading-relaxed mb-4 font-manrope">
                   {es ? "Los programas de fidelización del mercado están pensados para cadenas grandes: caros, complejos y con un onboarding que el cliente final rara vez completa. Pedir que descargue una app es el principal motivo de abandono." : "Loyalty programs on the market are designed for large chains: expensive, complex, with an onboarding the end customer rarely completes. Asking them to download an app is the main reason for drop-off."}
                 </p>
-                <p className="text-gray-600 leading-relaxed font-manrope">
+                <p className="text-ink-2 leading-relaxed font-manrope">
                   {es ? "Para los comercios chicos con varias sucursales (o varios negocios), no existe una plataforma simple que les permita administrar todo desde un solo lugar y que el cliente pueda empezar a sumar puntos en segundos." : "For small businesses with several branches (or multiple businesses), there's no simple platform that lets them manage everything from one place while customers can start earning points in seconds."}
                 </p>
               </div>
@@ -261,13 +264,13 @@ export default function ProyectoWappoints() {
 
             <ScrollReveal direction="right" delay={0.2}>
               <div>
-                <span className="font-instrument-serif italic text-2xl text-purple-400 mb-3 block">
+                <span className="font-instrument-serif italic text-2xl text-brand-lite mb-3 block">
                   02
                 </span>
-                <h2 className="text-4xl md:text-5xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mb-6">
+                <h2 className="text-4xl md:text-5xl font-medium text-ink leading-[1.05] tracking-tighter font-space-grotesk mb-6">
                   {es ? "Objetivo" : "Goal"}
                 </h2>
-                <p className="text-gray-600 leading-relaxed mb-4 font-manrope">
+                <p className="text-ink-2 leading-relaxed mb-4 font-manrope">
                   {es ? "Diseñar y construir una plataforma profesional pensada para gastronomía multi-sucursal." : "Design and build a professional platform built for multi-branch food & beverage businesses."}
                 </p>
                 <ul className="space-y-2">
@@ -286,9 +289,9 @@ export default function ProyectoWappoints() {
                   ]).map((item, i) => (
                     <li
                       key={i}
-                      className="flex items-start gap-3 text-gray-600 font-manrope"
+                      className="flex items-start gap-3 text-ink-2 font-manrope"
                     >
-                      <span className="text-purple-500 mt-1">✦</span>
+                      <span className="text-brand mt-1">✦</span>
                       {item}
                     </li>
                   ))}
@@ -300,17 +303,17 @@ export default function ProyectoWappoints() {
       </section>
 
       {/* PARA QUIÉN */}
-      <section className="px-6 py-32 bg-gradient-to-b from-white via-gray-50 to-white">
+      <section className="px-6 py-32 bg-paper">
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
             <div className="mb-12 max-w-2xl">
-              <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
+              <span className="uppercase tracking-widest text-sm text-brand font-bold">
                 {es ? "AUDIENCIA" : "AUDIENCE"}
               </span>
-              <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-                {es ? <>Para{" "}<span className="font-instrument-serif italic font-normal text-purple-600">quién</span>{" "}diseñé</> : <>Who I{" "}<span className="font-instrument-serif italic font-normal text-purple-600">designed</span>{" "}for</>}
+              <h2 className="text-4xl md:text-6xl font-medium text-ink leading-[1.05] tracking-tighter font-space-grotesk mt-3">
+                {es ? <>Para{" "}<span className="font-instrument-serif italic font-normal text-brand">quién</span>{" "}diseñé</> : <>Who I{" "}<span className="font-instrument-serif italic font-normal text-brand">designed</span>{" "}for</>}
               </h2>
-              <p className="text-gray-600 mt-4 font-manrope text-lg">
+              <p className="text-ink-2 mt-4 font-manrope text-lg">
                 {es ? "Tres perfiles muy distintos conviven en la plataforma. Cada pantalla se diseñó pensando en qué rol la va a usar." : "Three very different profiles coexist in the platform. Every screen was designed thinking about which role will use it."}
               </p>
             </div>
@@ -324,12 +327,12 @@ export default function ProyectoWappoints() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-white border border-gray-200 rounded-2xl p-6"
+                className="bg-white border border-hairline rounded-2xl p-6"
               >
-                <p className="text-xs uppercase tracking-widest text-purple-500 font-manrope mb-2">
+                <p className="text-xs uppercase tracking-widest text-brand font-manrope mb-2">
                   {trait.label}
                 </p>
-                <p className="text-lg font-medium font-space-grotesk text-gray-900">
+                <p className="text-lg font-medium font-space-grotesk text-ink">
                   {trait.value}
                 </p>
               </motion.div>
@@ -343,13 +346,13 @@ export default function ProyectoWappoints() {
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
             <div className="mb-16 max-w-2xl">
-              <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
+              <span className="uppercase tracking-widest text-sm text-brand font-bold">
                 {es ? "INVESTIGACIÓN" : "RESEARCH"}
               </span>
-              <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-                {es ? <>Lo que{" "}<span className="font-instrument-serif italic font-normal text-purple-600">descubrí</span></> : <>What I{" "}<span className="font-instrument-serif italic font-normal text-purple-600">found</span></>}
+              <h2 className="text-4xl md:text-6xl font-medium text-ink leading-[1.05] tracking-tighter font-space-grotesk mt-3">
+                {es ? <>Lo que{" "}<span className="font-instrument-serif italic font-normal text-brand">descubrí</span></> : <>What I{" "}<span className="font-instrument-serif italic font-normal text-brand">found</span></>}
               </h2>
-              <p className="text-gray-600 mt-4 font-manrope text-lg">
+              <p className="text-ink-2 mt-4 font-manrope text-lg">
                 {es ? "Insights de hablar con comercios y de probar plataformas existentes como cliente y como admin." : "Insights from talking to businesses and testing existing platforms as both a customer and an admin."}
               </p>
             </div>
@@ -364,15 +367,15 @@ export default function ProyectoWappoints() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.08 }}
-                  className="bg-gray-50 border border-gray-200 rounded-2xl p-8 hover:border-purple-300 transition"
+                  className="bg-paper border border-hairline rounded-2xl p-8 hover:border-brand/40 transition"
                 >
-                  <span className="font-instrument-serif italic text-3xl text-purple-400 block mb-3 leading-none">
+                  <span className="font-instrument-serif italic text-3xl text-brand-lite block mb-3 leading-none">
                     0{i + 1}
                   </span>
-                  <h3 className="text-lg font-medium font-space-grotesk text-gray-900 mb-3">
+                  <h3 className="text-lg font-medium font-space-grotesk text-ink mb-3">
                     {finding.title}
                   </h3>
-                  <p className="text-gray-600 font-manrope leading-relaxed text-sm">
+                  <p className="text-ink-2 font-manrope leading-relaxed text-sm">
                     {finding.text}
                   </p>
                 </motion.div>
@@ -383,17 +386,17 @@ export default function ProyectoWappoints() {
       </section>
 
       {/* CONSTRUIDO CON AI */}
-      <section className="px-6 py-32 bg-gradient-to-b from-white via-purple-50/40 to-white">
+      <section className="px-6 py-32 bg-brand-tint/40">
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
             <div className="mb-16 max-w-2xl">
-              <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
+              <span className="uppercase tracking-widest text-sm text-brand font-bold">
                 BUILT WITH AI
               </span>
-              <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-                {es ? <>Diseñar y{" "}<span className="font-instrument-serif italic font-normal text-purple-600">construir</span>{" "}con AI</> : <>Designing and{" "}<span className="font-instrument-serif italic font-normal text-purple-600">building</span>{" "}with AI</>}
+              <h2 className="text-4xl md:text-6xl font-medium text-ink leading-[1.05] tracking-tighter font-space-grotesk mt-3">
+                {es ? <>Diseñar y{" "}<span className="font-instrument-serif italic font-normal text-brand">construir</span>{" "}con AI</> : <>Designing and{" "}<span className="font-instrument-serif italic font-normal text-brand">building</span>{" "}with AI</>}
               </h2>
-              <p className="text-gray-600 mt-4 font-manrope text-lg">
+              <p className="text-ink-2 mt-4 font-manrope text-lg">
                 {es ? "No tercericé la decisión: usé la AI como un equipo extendido para ejecutar más rápido lo que ya tenía claro." : "I didn't outsource the decision-making: I used AI as an extended team to execute faster what I already had clear."}
               </p>
             </div>
@@ -408,15 +411,15 @@ export default function ProyectoWappoints() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.08 }}
-                  className="bg-white border border-gray-200 rounded-2xl p-8"
+                  className="bg-white border border-hairline rounded-2xl p-8"
                 >
-                  <p className="text-xs uppercase tracking-widest text-purple-500 font-manrope mb-3">
+                  <p className="text-xs uppercase tracking-widest text-brand font-manrope mb-3">
                     {es ? "Herramienta" : "Tool"}
                   </p>
-                  <h3 className="text-xl font-medium font-space-grotesk text-gray-900 mb-3">
+                  <h3 className="text-xl font-medium font-space-grotesk text-ink mb-3">
                     {tool.title}
                   </h3>
-                  <p className="text-gray-600 font-manrope leading-relaxed text-sm">
+                  <p className="text-ink-2 font-manrope leading-relaxed text-sm">
                     {tool.text}
                   </p>
                 </motion.div>
@@ -425,8 +428,8 @@ export default function ProyectoWappoints() {
           </ScrollReveal>
 
           <ScrollReveal delay={0.2}>
-            <div className="bg-gray-900 text-white rounded-2xl p-10 md:p-14">
-              <p className="text-xs uppercase tracking-widest text-purple-300 font-manrope mb-4">
+            <div className="bg-ink text-white rounded-2xl p-10 md:p-14">
+              <p className="text-xs uppercase tracking-widest text-brand/40 font-manrope mb-4">
                 {es ? "Mi flujo de trabajo" : "My workflow"}
               </p>
               <h3 className="text-2xl md:text-3xl font-medium font-space-grotesk leading-tight mb-8 max-w-3xl">
@@ -445,13 +448,13 @@ export default function ProyectoWappoints() {
                   { n: "04", t: "Validation", d: "Tests on the real product, adjustments in hours and back to the loop." },
                 ]).map((step, i) => (
                   <div key={i}>
-                    <span className="font-instrument-serif italic text-2xl text-purple-300 block mb-2">
+                    <span className="font-instrument-serif italic text-2xl text-brand/40 block mb-2">
                       {step.n}
                     </span>
                     <p className="font-medium font-space-grotesk mb-2">
                       {step.t}
                     </p>
-                    <p className="text-sm text-gray-300 font-manrope leading-relaxed">
+                    <p className="text-sm text-hairline font-manrope leading-relaxed">
                       {step.d}
                     </p>
                   </div>
@@ -463,17 +466,17 @@ export default function ProyectoWappoints() {
       </section>
 
       {/* ANTES vs DESPUÉS */}
-      <section className="px-6 py-32 bg-gradient-to-b from-white via-gray-50 to-white">
+      <section className="px-6 py-32 bg-paper">
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
             <div className="mb-16 max-w-2xl">
-              <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
+              <span className="uppercase tracking-widest text-sm text-brand font-bold">
                 {es ? "IMPACTO" : "IMPACT"}
               </span>
-              <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-                {es ? <>Antes vs{" "}<span className="font-instrument-serif italic font-normal text-purple-600">con Wappoints</span></> : <>Before vs{" "}<span className="font-instrument-serif italic font-normal text-purple-600">with Wappoints</span></>}
+              <h2 className="text-4xl md:text-6xl font-medium text-ink leading-[1.05] tracking-tighter font-space-grotesk mt-3">
+                {es ? <>Antes vs{" "}<span className="font-instrument-serif italic font-normal text-brand">con Wappoints</span></> : <>Before vs{" "}<span className="font-instrument-serif italic font-normal text-brand">with Wappoints</span></>}
               </h2>
-              <p className="text-gray-600 mt-4 font-manrope text-lg">
+              <p className="text-ink-2 mt-4 font-manrope text-lg">
                 {es ? "Tres ejes donde la plataforma cambia la forma en que un comercio gestiona su relación con clientes." : "Three areas where the platform changes how a business manages its relationship with customers."}
               </p>
             </div>
@@ -487,31 +490,31 @@ export default function ProyectoWappoints() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="grid md:grid-cols-[180px_1fr_1fr] gap-6 bg-white border border-gray-200 rounded-2xl p-8"
+                className="grid md:grid-cols-[180px_1fr_1fr] gap-6 bg-white border border-hairline rounded-2xl p-8"
               >
                 <div>
-                  <span className="font-instrument-serif italic text-2xl text-purple-400 block mb-1">
+                  <span className="font-instrument-serif italic text-2xl text-brand-lite block mb-1">
                     0{i + 1}
                   </span>
-                  <h3 className="font-medium font-space-grotesk text-gray-900">
+                  <h3 className="font-medium font-space-grotesk text-ink">
                     {row.aspect}
                   </h3>
                 </div>
 
-                <div className="border-l-2 border-gray-200 pl-6">
-                  <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-2">
+                <div className="border-l-2 border-hairline pl-6">
+                  <p className="text-xs uppercase tracking-widest text-ink-3 font-manrope mb-2">
                     {es ? "Antes" : "Before"}
                   </p>
-                  <p className="text-sm text-gray-600 font-manrope leading-relaxed">
+                  <p className="text-sm text-ink-2 font-manrope leading-relaxed">
                     {row.before}
                   </p>
                 </div>
 
-                <div className="border-l-2 border-purple-300 pl-6">
-                  <p className="text-xs uppercase tracking-widest text-purple-500 font-manrope mb-2">
+                <div className="border-l-2 border-brand/40 pl-6">
+                  <p className="text-xs uppercase tracking-widest text-brand font-manrope mb-2">
                     {es ? "Con Wappoints" : "With Wappoints"}
                   </p>
-                  <p className="text-sm text-gray-700 font-manrope leading-relaxed">
+                  <p className="text-sm text-ink-2 font-manrope leading-relaxed">
                     {row.after}
                   </p>
                 </div>
@@ -526,13 +529,13 @@ export default function ProyectoWappoints() {
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
             <div className="mb-20 max-w-2xl">
-              <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
+              <span className="uppercase tracking-widest text-sm text-brand font-bold">
                 {es ? "PRODUCTO" : "PRODUCT"}
               </span>
-              <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-                {es ? <>Qué hay{" "}<span className="font-instrument-serif italic font-normal text-purple-600">adentro</span></> : <>What's{" "}<span className="font-instrument-serif italic font-normal text-purple-600">inside</span></>}
+              <h2 className="text-4xl md:text-6xl font-medium text-ink leading-[1.05] tracking-tighter font-space-grotesk mt-3">
+                {es ? <>Qué hay{" "}<span className="font-instrument-serif italic font-normal text-brand">adentro</span></> : <>What's{" "}<span className="font-instrument-serif italic font-normal text-brand">inside</span></>}
               </h2>
-              <p className="text-gray-600 mt-4 font-manrope text-lg">
+              <p className="text-ink-2 mt-4 font-manrope text-lg">
                 {es ? "Recorrido por los módulos principales que componen la plataforma." : "A walkthrough of the main modules that make up the platform."}
               </p>
             </div>
@@ -545,7 +548,7 @@ export default function ProyectoWappoints() {
             image="/imagen/wappoints-home-sucursal.gif"
           >
             <p>
-              {es ? "La pantalla que ve el empleado de cara al cliente. Las dos acciones principales —asignar puntos y canjear premio— viven arriba de todo, seguidas de las métricas del día y la actividad reciente." : "The screen the employee sees when facing the customer. The two main actions — assign points and redeem reward — live at the very top, followed by the day's metrics and recent activity."}
+              {es ? "La pantalla que ve el empleado de cara al cliente. Las dos acciones principales (asignar puntos y canjear premio) viven arriba de todo, seguidas de las métricas del día y la actividad reciente." : "The screen the employee sees when facing the customer. The two main actions (assign points and redeem reward) live at the very top, followed by the day's metrics and recent activity."}
             </p>
             <ul className="space-y-2 mt-4">
               {(es ? [
@@ -558,7 +561,7 @@ export default function ProyectoWappoints() {
                 "Local customer ranking for the month",
               ]).map((item, i) => (
                 <li key={i} className="flex items-start gap-3">
-                  <span className="text-purple-500 mt-1">✦</span>
+                  <span className="text-brand mt-1">✦</span>
                   {item}
                 </li>
               ))}
@@ -575,7 +578,7 @@ export default function ProyectoWappoints() {
             <p>
               {es ? "Panel consolidado con métricas de todas las sucursales, comparativas semanales, alertas accionables y ranking de clientes global." : "Consolidated panel with metrics from all branches, weekly comparisons, actionable alerts and a global customer ranking."}
             </p>
-            <p className="border-l-2 border-purple-200 pl-4 italic">
+            <p className="border-l-2 border-brand/25 pl-4 italic">
               {es ? "💡 Las alertas no son gráficos vacíos: son avisos concretos como \"Belgrano cayó 3.4% esta semana\" o \"Stock bajo en Combo desayuno\"." : "💡 Alerts aren't empty charts: they're concrete notices like \"Belgrano dropped 3.4% this week\" or \"Low stock on Breakfast Combo\"."}
             </p>
           </ProcessStep>
@@ -619,17 +622,17 @@ export default function ProyectoWappoints() {
       </section>
 
       {/* DECISIONES DE DISEÑO */}
-      <section className="px-6 py-32 bg-gradient-to-b from-white via-gray-50 to-white">
+      <section className="px-6 py-32 bg-paper">
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
             <div className="mb-16 max-w-2xl">
-              <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
+              <span className="uppercase tracking-widest text-sm text-brand font-bold">
                 {es ? "RACIONAL" : "RATIONALE"}
               </span>
-              <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-                {es ? <>Decisiones de{" "}<span className="font-instrument-serif italic font-normal text-purple-600">diseño</span></> : <>Design{" "}<span className="font-instrument-serif italic font-normal text-purple-600">decisions</span></>}
+              <h2 className="text-4xl md:text-6xl font-medium text-ink leading-[1.05] tracking-tighter font-space-grotesk mt-3">
+                {es ? <>Decisiones de{" "}<span className="font-instrument-serif italic font-normal text-brand">diseño</span></> : <>Design{" "}<span className="font-instrument-serif italic font-normal text-brand">decisions</span></>}
               </h2>
-              <p className="text-gray-600 mt-4 font-manrope text-lg">
+              <p className="text-ink-2 mt-4 font-manrope text-lg">
                 {es ? "Qué decidí y por qué, en los puntos que más impactan en la adopción." : "What I decided and why, at the points that most impact adoption."}
               </p>
             </div>
@@ -644,15 +647,15 @@ export default function ProyectoWappoints() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.08 }}
-                  className="bg-white border border-gray-200 rounded-2xl p-8 hover:border-purple-300 transition"
+                  className="bg-white border border-hairline rounded-2xl p-8 hover:border-brand/40 transition"
                 >
-                  <span className="font-instrument-serif italic text-3xl text-purple-400 block mb-3 leading-none">
+                  <span className="font-instrument-serif italic text-3xl text-brand-lite block mb-3 leading-none">
                     {d.number}
                   </span>
-                  <h3 className="text-xl font-medium font-space-grotesk text-gray-900 mb-3">
+                  <h3 className="text-xl font-medium font-space-grotesk text-ink mb-3">
                     {d.title}
                   </h3>
-                  <p className="text-gray-600 font-manrope leading-relaxed text-sm">
+                  <p className="text-ink-2 font-manrope leading-relaxed text-sm">
                     {d.rationale}
                   </p>
                 </motion.div>
@@ -667,13 +670,13 @@ export default function ProyectoWappoints() {
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
             <div className="mb-16 max-w-2xl">
-              <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
+              <span className="uppercase tracking-widest text-sm text-brand font-bold">
                 {es ? "GUÍA VISUAL" : "VISUAL GUIDE"}
               </span>
-              <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-                {es ? <>Sistema{" "}<span className="font-instrument-serif italic font-normal text-purple-600">visual</span></> : <>Visual{" "}<span className="font-instrument-serif italic font-normal text-purple-600">system</span></>}
+              <h2 className="text-4xl md:text-6xl font-medium text-ink leading-[1.05] tracking-tighter font-space-grotesk mt-3">
+                {es ? <>Sistema{" "}<span className="font-instrument-serif italic font-normal text-brand">visual</span></> : <>Visual{" "}<span className="font-instrument-serif italic font-normal text-brand">system</span></>}
               </h2>
-              <p className="text-gray-600 mt-4 font-manrope text-lg">
+              <p className="text-ink-2 mt-4 font-manrope text-lg">
                 {es ? "Tipografía moderna y una paleta con códigos claros: azul para sumar, naranja para canjear, verde y rojo para estado." : "Modern typography and a palette with clear codes: blue for earning, orange for redeeming, green and red for status."}
               </p>
             </div>
@@ -681,14 +684,14 @@ export default function ProyectoWappoints() {
 
           <div className="grid md:grid-cols-2 gap-8">
             <ScrollReveal direction="left">
-              <div className="bg-gray-50 border border-gray-200 rounded-2xl p-8 h-full">
-                <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-6">
+              <div className="bg-paper border border-hairline rounded-2xl p-8 h-full">
+                <p className="text-xs uppercase tracking-widest text-ink-3 font-manrope mb-6">
                   {es ? "Tipografía" : "Typography"}
                 </p>
-                <p className="text-7xl md:text-8xl font-bold text-gray-900 mb-2 leading-none">
+                <p className="text-7xl md:text-8xl font-bold text-ink mb-2 leading-none">
                   Aa
                 </p>
-                <p className="text-2xl font-space-grotesk text-gray-900 mb-6">
+                <p className="text-2xl font-space-grotesk text-ink mb-6">
                   Inter
                 </p>
                 <div className="flex flex-wrap gap-2 mb-8">
@@ -696,14 +699,14 @@ export default function ProyectoWappoints() {
                     (w) => (
                       <span
                         key={w}
-                        className="px-3 py-1 rounded-full text-xs bg-white border border-gray-200 text-gray-700 font-manrope"
+                        className="px-3 py-1 rounded-full text-xs bg-white border border-hairline text-ink-2 font-manrope"
                       >
                         {w}
                       </span>
                     ),
                   )}
                 </div>
-                <div className="space-y-2 text-gray-700 font-manrope">
+                <div className="space-y-2 text-ink-2 font-manrope">
                   <p className="text-lg">ABCDEFGHIJKLMNOPQRSTUVWXYZ</p>
                   <p className="text-lg">abcdefghijklmnopqrstuvwxyz</p>
                   <p className="text-lg">1234567890</p>
@@ -712,8 +715,8 @@ export default function ProyectoWappoints() {
             </ScrollReveal>
 
             <ScrollReveal direction="right" delay={0.2}>
-              <div className="bg-gray-50 border border-gray-200 rounded-2xl p-8 h-full">
-                <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-6">
+              <div className="bg-paper border border-hairline rounded-2xl p-8 h-full">
+                <p className="text-xs uppercase tracking-widest text-ink-3 font-manrope mb-6">
                   {es ? "Paleta de colores" : "Color palette"}
                 </p>
                 <div className="grid grid-cols-2 gap-4">
@@ -727,14 +730,14 @@ export default function ProyectoWappoints() {
                       className="space-y-2"
                     >
                       <div
-                        className="w-full aspect-square rounded-xl border border-gray-200"
+                        className="w-full aspect-square rounded-xl border border-hairline"
                         style={{ backgroundColor: color.hex }}
                       />
                       <div className="flex items-center justify-between">
-                        <span className="text-sm font-medium text-gray-900 font-space-grotesk">
+                        <span className="text-sm font-medium text-ink font-space-grotesk">
                           {color.name}
                         </span>
-                        <span className="text-xs text-gray-500 font-mono">
+                        <span className="text-xs text-ink-3 font-mono">
                           {color.hex}
                         </span>
                       </div>
@@ -752,11 +755,11 @@ export default function ProyectoWappoints() {
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
             <div className="mb-16 max-w-2xl">
-              <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
+              <span className="uppercase tracking-widest text-sm text-brand font-bold">
                 {es ? "REFLEXIÓN" : "REFLECTION"}
               </span>
-              <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mt-3">
-                {es ? <>Aprendizajes{" "}<span className="font-instrument-serif italic font-normal text-purple-600">clave</span></> : <>Key{" "}<span className="font-instrument-serif italic font-normal text-purple-600">takeaways</span></>}
+              <h2 className="text-4xl md:text-6xl font-medium text-ink leading-[1.05] tracking-tighter font-space-grotesk mt-3">
+                {es ? <>Aprendizajes{" "}<span className="font-instrument-serif italic font-normal text-brand">clave</span></> : <>Key{" "}<span className="font-instrument-serif italic font-normal text-brand">takeaways</span></>}
               </h2>
             </div>
           </ScrollReveal>
@@ -769,15 +772,15 @@ export default function ProyectoWappoints() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-gray-50 border border-gray-200 rounded-2xl p-8"
+                className="bg-paper border border-hairline rounded-2xl p-8"
               >
-                <span className="font-instrument-serif italic text-3xl text-purple-400 block mb-4">
+                <span className="font-instrument-serif italic text-3xl text-brand-lite block mb-4">
                   {item.number}
                 </span>
-                <h3 className="text-xl font-medium font-space-grotesk text-gray-900 mb-3">
+                <h3 className="text-xl font-medium font-space-grotesk text-ink mb-3">
                   {item.title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed font-manrope text-sm">
+                <p className="text-ink-2 leading-relaxed font-manrope text-sm">
                   {item.text}
                 </p>
               </motion.div>
@@ -792,18 +795,18 @@ export default function ProyectoWappoints() {
       <section className="px-6 py-32 bg-white">
         <div className="max-w-4xl mx-auto text-center">
           <ScrollReveal>
-            <p className="text-gray-600 mb-6 font-manrope">
+            <p className="text-ink-2 mb-6 font-manrope">
               {es ? "¿Te gustó este proyecto?" : "Did you like this project?"}
             </p>
-            <h2 className="text-4xl md:text-6xl font-medium text-gray-900 leading-[1.05] tracking-tighter font-space-grotesk mb-10">
-              {es ? <>Explorá más de mi{" "}<span className="font-instrument-serif italic font-normal text-purple-600">trabajo</span></> : <>Explore more of my{" "}<span className="font-instrument-serif italic font-normal text-purple-600">work</span></>}
+            <h2 className="text-4xl md:text-6xl font-medium text-ink leading-[1.05] tracking-tighter font-space-grotesk mb-10">
+              {es ? <>Explorá más de mi{" "}<span className="font-instrument-serif italic font-normal text-brand">trabajo</span></> : <>Explore more of my{" "}<span className="font-instrument-serif italic font-normal text-brand">work</span></>}
             </h2>
             <div className="flex flex-wrap gap-4 justify-center">
               <Button
                 onClick={() => {
                   window.location.href = "/#proyectos";
                 }}
-                className="group bg-gray-900 hover:bg-purple-600 text-white px-6 py-4 rounded-full shadow-lg font-manrope inline-flex items-center gap-2"
+                className="group bg-ink hover:bg-brand text-white px-6 py-4 rounded-full shadow-lg font-manrope inline-flex items-center gap-2"
               >
                 <span className="inline-block transition-transform duration-300 group-hover:-translate-x-1">
                   ←
@@ -811,7 +814,7 @@ export default function ProyectoWappoints() {
                 {es ? "Volver al inicio" : "Back to home"}
               </Button>
               <a href="mailto:milagrosdziuban1@gmail.com">
-                <Button className="group bg-white hover:bg-purple-50 text-gray-900 border border-gray-300 hover:border-purple-300 px-6 py-4 rounded-full font-manrope inline-flex items-center gap-2">
+                <Button className="group bg-white hover:bg-brand-tint text-ink border border-hairline hover:border-brand/40 px-6 py-4 rounded-full font-manrope inline-flex items-center gap-2">
                   {es ? "Contactame" : "Contact me"}
                   <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">
                     →
@@ -822,6 +825,7 @@ export default function ProyectoWappoints() {
           </ScrollReveal>
         </div>
       </section>
+      <SiteFooter />
     </div>
   );
 }

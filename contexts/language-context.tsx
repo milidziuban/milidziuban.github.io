@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useState, ReactNode } from "react";
+import { createContext, useContext, useEffect, useState, ReactNode } from "react";
 
 export type Lang = "es" | "en";
 
@@ -15,13 +15,21 @@ const LanguageContext = createContext<LanguageContextType>({
 });
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [lang, setLang] = useState<Lang>(() => {
-    if (typeof window !== "undefined") {
-      const saved = localStorage.getItem("lang");
-      if (saved === "es" || saved === "en") return saved;
-    }
-    return "es";
-  });
+  // El servidor siempre renderiza "es". Leer localStorage en el inicializador
+  // haria que el cliente pinte otro idioma en el primer render: mismatch de
+  // hidratacion. Por eso la preferencia guardada se aplica en un efecto.
+  const [lang, setLang] = useState<Lang>("es");
+
+  useEffect(() => {
+    const saved = localStorage.getItem("lang");
+    if (saved === "es" || saved === "en") setLang(saved);
+  }, []);
+
+  // El atributo lang del <html> tiene que seguir al idioma activo. Si queda
+  // fijo en "es", un lector de pantalla lee el ingles con fonetica espanola.
+  useEffect(() => {
+    document.documentElement.lang = lang;
+  }, [lang]);
 
   function handleSetLang(l: Lang) {
     localStorage.setItem("lang", l);

@@ -6,6 +6,7 @@ import { NavigationHeader } from "./components/navigation-header";
 import { ScrollReveal } from "./components/animated-components";
 import { track } from "@vercel/analytics";
 import { useLanguage } from "./contexts/language-context";
+import { SiteFooter } from "./components/site-footer";
 
 export default function AIWorkflow() {
   const { lang } = useLanguage();
@@ -17,7 +18,7 @@ export default function AIWorkflow() {
           number: "01",
           title: "Research",
           tools: ["Claude", "ChatGPT", "Notion"],
-          desc: "Uso IA para acelerar el desk research: benchmarks de competidores, síntesis de entrevistas y armado de proto-personas. Le pido que desafíe mis supuestos en lugar de confirmarlos — el análisis final y las decisiones sobre qué investigar siguen siendo míos.",
+          desc: "Uso IA para acelerar el desk research: benchmarks de competidores, síntesis de entrevistas y armado de proto-personas. Le pido que desafíe mis supuestos en lugar de confirmarlos. El análisis final y las decisiones sobre qué investigar siguen siendo míos.",
           example: "Para Wappoints, mapeé el mercado de apps de fidelización en una tarde: features, pricing y quejas frecuentes de usuarios reales extraídas de reviews.",
         },
         {
@@ -31,14 +32,14 @@ export default function AIWorkflow() {
           number: "03",
           title: "Prototipado rápido",
           tools: ["Lovable", "v0", "Claude Code", "Cursor"],
-          desc: "Paso del diseño en Figma a un producto navegable en código real, iterando con prompts. Un prototipo funcional revela problemas de flujo y de estados que un mockup estático nunca muestra — y se puede testear con usuarios reales.",
+          desc: "Paso del diseño en Figma a un producto navegable en código real, iterando con prompts. Un prototipo funcional revela problemas de flujo y de estados que un mockup estático nunca muestra, y se puede testear con usuarios reales.",
           example: "Wappoints pasó de mockups a una web app multi-rol funcionando. Este portfolio también: lo construí y lo mantengo con v0 y Claude Code.",
         },
         {
           number: "04",
           title: "Testing de copy",
           tools: ["Claude", "ChatGPT"],
-          desc: "Genero variantes de microcopy — CTAs, estados vacíos, mensajes de error, onboarding — y las comparo contra el tono del producto. También lo uso para mantener la versión bilingüe ES/EN de mis proyectos sin que se sienta traducida.",
+          desc: "Genero variantes de microcopy (CTAs, estados vacíos, mensajes de error, onboarding) y las comparo contra el tono del producto. También lo uso para mantener la versión bilingüe ES/EN de mis proyectos sin que se sienta traducida.",
           example: "Todo el contenido de este sitio existe en español e inglés, revisado para que cada versión suene natural en su idioma.",
         },
       ]
@@ -47,7 +48,7 @@ export default function AIWorkflow() {
           number: "01",
           title: "Research",
           tools: ["Claude", "ChatGPT", "Notion"],
-          desc: "I use AI to speed up desk research: competitor benchmarks, interview synthesis and proto-personas. I ask it to challenge my assumptions instead of confirming them — the final analysis and decisions about what to research remain mine.",
+          desc: "I use AI to speed up desk research: competitor benchmarks, interview synthesis and proto-personas. I ask it to challenge my assumptions instead of confirming them. The final analysis and decisions about what to research remain mine.",
           example: "For Wappoints, I mapped the loyalty-app market in one afternoon: features, pricing and recurring complaints from real users extracted from reviews.",
         },
         {
@@ -61,14 +62,14 @@ export default function AIWorkflow() {
           number: "03",
           title: "Rapid prototyping",
           tools: ["Lovable", "v0", "Claude Code", "Cursor"],
-          desc: "I go from Figma designs to a navigable product in real code, iterating with prompts. A working prototype reveals flow and state problems a static mockup never shows — and it can be tested with real users.",
+          desc: "I go from Figma designs to a navigable product in real code, iterating with prompts. A working prototype reveals flow and state problems a static mockup never shows, and it can be tested with real users.",
           example: "Wappoints went from mockups to a working multi-role web app. So did this portfolio: I built it and maintain it with v0 and Claude Code.",
         },
         {
           number: "04",
           title: "Copy testing",
           tools: ["Claude", "ChatGPT"],
-          desc: "I generate microcopy variants — CTAs, empty states, error messages, onboarding — and compare them against the product's tone. I also use it to keep the ES/EN bilingual version of my projects from feeling translated.",
+          desc: "I generate microcopy variants (CTAs, empty states, error messages, onboarding) and compare them against the product's tone. I also use it to keep the ES/EN bilingual version of my projects from feeling translated.",
           example: "Everything on this site exists in Spanish and English, reviewed so each version sounds natural in its own language.",
         },
       ];
@@ -123,37 +124,37 @@ export default function AIWorkflow() {
       ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-paper">
       <NavigationHeader />
 
       {/* HERO */}
-      <section className="relative px-6 pt-40 pb-24 bg-[#f5f7fb] overflow-hidden">
-        <div className="absolute top-20 right-[10%] w-72 h-72 bg-purple-200/50 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-[5%] w-56 h-56 bg-pink-100/60 rounded-full blur-3xl" />
+      <section className="relative px-6 pt-40 pb-24 bg-paper-2 overflow-hidden">
+        <div className="absolute top-20 right-[10%] w-72 h-72 bg-brand/25 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-[5%] w-56 h-56 bg-brand-tint/60 rounded-full blur-3xl" />
         <div className="max-w-6xl mx-auto relative">
           <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-            <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
+            <span className="uppercase tracking-widest text-sm text-brand font-bold">
               {es ? "MI WORKFLOW CON IA" : "MY AI WORKFLOW"}
             </span>
-            <h1 className="text-5xl md:text-7xl font-medium tracking-tighter text-gray-900 leading-[1.05] font-space-grotesk mt-3 mb-8 max-w-4xl">
+            <h1 className="text-5xl md:text-7xl font-medium tracking-tighter text-ink leading-[1.05] font-space-grotesk mt-3 mb-8 max-w-4xl">
               {es ? (
                 <>
                   Cómo integro la{" "}
-                  <span className="font-instrument-serif italic font-normal text-purple-600">IA</span>{" "}
+                  <span className="font-instrument-serif italic font-normal text-brand">IA</span>{" "}
                   a mi proceso de diseño
                 </>
               ) : (
                 <>
                   How I integrate{" "}
-                  <span className="font-instrument-serif italic font-normal text-purple-600">AI</span>{" "}
+                  <span className="font-instrument-serif italic font-normal text-brand">AI</span>{" "}
                   into my design process
                 </>
               )}
             </h1>
-            <p className="text-lg text-gray-600 max-w-2xl leading-relaxed font-manrope">
+            <p className="text-lg text-ink-2 max-w-2xl leading-relaxed font-manrope">
               {es
-                ? "No es una lista de herramientas de moda: es cómo trabajo todos los días. Uso IA en cuatro momentos concretos del proceso — research, assets, prototipado y copy — y este mismo sitio es parte de la evidencia."
-                : "This isn't a list of trendy tools: it's how I actually work every day. I use AI at four concrete moments of the process — research, assets, prototyping and copy — and this very site is part of the evidence."}
+                ? "No es una lista de herramientas de moda: es cómo trabajo todos los días. Uso IA en cuatro momentos concretos del proceso (research, assets, prototipado y copy) y este mismo sitio es parte de la evidencia."
+                : "This isn't a list of trendy tools: it's how I actually work every day. I use AI at four concrete moments of the process (research, assets, prototyping and copy) and this very site is part of the evidence."}
             </p>
           </motion.div>
         </div>
@@ -163,7 +164,7 @@ export default function AIWorkflow() {
       <section className="px-6 py-28 bg-white">
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
-            <h2 className="text-4xl md:text-5xl font-medium text-gray-900 tracking-tighter font-space-grotesk mb-16">
+            <h2 className="text-4xl md:text-5xl font-medium text-ink tracking-tighter font-space-grotesk mb-16">
               {es ? "Cuatro momentos, un mismo criterio" : "Four moments, one same judgment"}
             </h2>
           </ScrollReveal>
@@ -171,28 +172,28 @@ export default function AIWorkflow() {
           <div className="space-y-8">
             {phases.map((phase, i) => (
               <ScrollReveal key={phase.number} delay={i * 0.08}>
-                <div className="group bg-gray-50 border border-gray-200 rounded-2xl p-8 md:p-10 hover:border-purple-200 transition">
+                <div className="group bg-paper border border-hairline rounded-2xl p-8 md:p-10 hover:border-brand/25 transition">
                   <div className="grid md:grid-cols-[100px_1fr] gap-6 items-start">
-                    <span className="font-instrument-serif italic text-6xl text-purple-400 leading-none">
+                    <span className="font-instrument-serif italic text-6xl text-brand-lite leading-none">
                       {phase.number}
                     </span>
                     <div>
                       <div className="flex flex-wrap items-center gap-3 mb-4">
-                        <h3 className="text-2xl md:text-3xl font-medium text-gray-900 font-space-grotesk">
+                        <h3 className="text-2xl md:text-3xl font-medium text-ink font-space-grotesk">
                           {phase.title}
                         </h3>
                         <div className="flex flex-wrap gap-2">
                           {phase.tools.map((tool) => (
-                            <span key={tool} className="text-xs px-3 py-1 rounded-full bg-white border border-gray-300 text-gray-600 font-manrope">
+                            <span key={tool} className="text-xs px-3 py-1 rounded-full bg-white border border-hairline text-ink-2 font-manrope">
                               {tool}
                             </span>
                           ))}
                         </div>
                       </div>
-                      <p className="text-gray-600 font-manrope leading-relaxed mb-4">{phase.desc}</p>
-                      <div className="border-l-2 border-purple-300 pl-4">
-                        <p className="text-sm text-gray-500 font-manrope leading-relaxed">
-                          <span className="text-purple-500 font-semibold">{es ? "En la práctica: " : "In practice: "}</span>
+                      <p className="text-ink-2 font-manrope leading-relaxed mb-4">{phase.desc}</p>
+                      <div className="border-l-2 border-brand/40 pl-4">
+                        <p className="text-sm text-ink-3 font-manrope leading-relaxed">
+                          <span className="text-brand font-semibold">{es ? "En la práctica: " : "In practice: "}</span>
                           {phase.example}
                         </p>
                       </div>
@@ -206,15 +207,15 @@ export default function AIWorkflow() {
       </section>
 
       {/* STACK */}
-      <section className="px-6 py-28 bg-gradient-to-b from-white via-gray-50 to-white">
+      <section className="px-6 py-28 bg-paper">
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
-            <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">STACK</span>
-            <h2 className="text-4xl md:text-5xl font-medium text-gray-900 tracking-tighter font-space-grotesk mt-3 mb-16">
+            <span className="uppercase tracking-widest text-sm text-brand font-bold">STACK</span>
+            <h2 className="text-4xl md:text-5xl font-medium text-ink tracking-tighter font-space-grotesk mt-3 mb-16">
               {es ? (
-                <>Las herramientas,{" "}<span className="font-instrument-serif italic font-normal text-purple-600">por etapa</span></>
+                <>Las herramientas,{" "}<span className="font-instrument-serif italic font-normal text-brand">por etapa</span></>
               ) : (
-                <>The tools,{" "}<span className="font-instrument-serif italic font-normal text-purple-600">by stage</span></>
+                <>The tools,{" "}<span className="font-instrument-serif italic font-normal text-brand">by stage</span></>
               )}
             </h2>
           </ScrollReveal>
@@ -222,11 +223,11 @@ export default function AIWorkflow() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {stack.map((group, i) => (
               <ScrollReveal key={group.group} delay={i * 0.08}>
-                <div className="bg-white border border-gray-200 rounded-2xl p-6 h-full hover:border-purple-200 transition">
-                  <p className="text-xs uppercase tracking-widest text-gray-500 font-manrope mb-4">{group.group}</p>
+                <div className="bg-white border border-hairline rounded-2xl p-6 h-full hover:border-brand/25 transition">
+                  <p className="text-xs uppercase tracking-widest text-ink-3 font-manrope mb-4">{group.group}</p>
                   <div className="flex flex-wrap gap-2">
                     {group.tools.map((tool) => (
-                      <span key={tool} className="px-3 py-1.5 rounded-full bg-gray-50 border border-gray-200 text-sm font-manrope text-gray-700">
+                      <span key={tool} className="px-3 py-1.5 rounded-full bg-paper border border-hairline text-sm font-manrope text-ink-2">
                         {tool}
                       </span>
                     ))}
@@ -242,14 +243,14 @@ export default function AIWorkflow() {
       <section className="px-6 py-28 bg-white">
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
-            <span className="uppercase tracking-widest text-sm text-purple-500 font-bold">
+            <span className="uppercase tracking-widest text-sm text-brand font-bold">
               {es ? "PRINCIPIOS" : "PRINCIPLES"}
             </span>
-            <h2 className="text-4xl md:text-5xl font-medium text-gray-900 tracking-tighter font-space-grotesk mt-3 mb-16 max-w-3xl">
+            <h2 className="text-4xl md:text-5xl font-medium text-ink tracking-tighter font-space-grotesk mt-3 mb-16 max-w-3xl">
               {es ? (
-                <>Lo que la IA{" "}<span className="font-instrument-serif italic font-normal text-purple-600">no</span>{" "}decide</>
+                <>Lo que la IA{" "}<span className="font-instrument-serif italic font-normal text-brand">no</span>{" "}decide</>
               ) : (
-                <>What AI does{" "}<span className="font-instrument-serif italic font-normal text-purple-600">not</span>{" "}decide</>
+                <>What AI does{" "}<span className="font-instrument-serif italic font-normal text-brand">not</span>{" "}decide</>
               )}
             </h2>
           </ScrollReveal>
@@ -257,10 +258,10 @@ export default function AIWorkflow() {
           <div className="grid md:grid-cols-3 gap-6">
             {principles.map((principle, i) => (
               <ScrollReveal key={i} delay={i * 0.1}>
-                <div className="bg-purple-50 border border-purple-100 rounded-2xl p-8 h-full">
-                  <span className="font-instrument-serif italic text-4xl text-purple-400 block mb-4">✦</span>
-                  <h3 className="text-xl font-medium text-gray-900 font-space-grotesk mb-3">{principle.title}</h3>
-                  <p className="text-gray-600 text-sm font-manrope leading-relaxed">{principle.desc}</p>
+                <div className="bg-brand-tint border border-brand-tint rounded-2xl p-8 h-full">
+                  <span className="font-instrument-serif italic text-4xl text-brand-lite block mb-4">✦</span>
+                  <h3 className="text-xl font-medium text-ink font-space-grotesk mb-3">{principle.title}</h3>
+                  <p className="text-ink-2 text-sm font-manrope leading-relaxed">{principle.desc}</p>
                 </div>
               </ScrollReveal>
             ))}
@@ -269,30 +270,30 @@ export default function AIWorkflow() {
       </section>
 
       {/* CTA FINAL */}
-      <section className="px-6 py-28 bg-gradient-to-br from-[#f7f7fb] via-[#f1f1f6] to-[#f5edff]">
+      <section className="px-6 py-28 bg-paper-2">
         <div className="max-w-3xl mx-auto text-center">
           <ScrollReveal>
-            <h2 className="text-4xl md:text-5xl font-medium text-gray-900 tracking-tighter font-space-grotesk mb-6">
+            <h2 className="text-4xl md:text-5xl font-medium text-ink tracking-tighter font-space-grotesk mb-6">
               {es ? (
-                <>¿Querés verlo{" "}<span className="font-instrument-serif italic font-normal text-purple-600">aplicado</span>?</>
+                <>¿Querés verlo{" "}<span className="font-instrument-serif italic font-normal text-brand">aplicado</span>?</>
               ) : (
-                <>Want to see it{" "}<span className="font-instrument-serif italic font-normal text-purple-600">applied</span>?</>
+                <>Want to see it{" "}<span className="font-instrument-serif italic font-normal text-brand">applied</span>?</>
               )}
             </h2>
-            <p className="text-gray-600 font-manrope text-lg leading-relaxed mb-10">
+            <p className="text-ink-2 font-manrope text-lg leading-relaxed mb-10">
               {es
                 ? "Wappoints es el caso más completo: diseñado en Figma y construido desde cero con este workflow."
                 : "Wappoints is the most complete case: designed in Figma and built from scratch with this workflow."}
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <a href="/proyecto-wappoints" onClick={() => track("workflow_to_wappoints")}>
-                <Button className="group bg-gray-900 hover:bg-purple-600 text-white px-6 py-4 rounded-full font-manrope shadow-lg inline-flex items-center gap-2">
+                <Button className="group bg-ink hover:bg-brand text-white px-6 py-4 rounded-full font-manrope shadow-lg inline-flex items-center gap-2">
                   {es ? "Ver caso Wappoints" : "View Wappoints case"}
                   <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
                 </Button>
               </a>
               <a href="/#contacto" onClick={() => track("workflow_to_contact")}>
-                <Button variant="outline" className="border-gray-300 text-gray-800 hover:border-purple-400 hover:text-purple-600 px-6 py-4 rounded-full font-manrope bg-white">
+                <Button variant="outline" className="border-hairline text-ink hover:border-brand-lite hover:text-brand px-6 py-4 rounded-full font-manrope bg-white">
                   {es ? "Hablemos" : "Let's talk"}
                 </Button>
               </a>
@@ -300,6 +301,7 @@ export default function AIWorkflow() {
           </ScrollReveal>
         </div>
       </section>
+      <SiteFooter />
     </div>
   );
 }
